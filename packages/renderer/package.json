@@ -1,0 +1,28 @@
+{
+  "name": "@qevora/qevora-renderer",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@qevora/schemas": "*",
+    "@qevora/shared": "*",
+    "@qevora/design-system": "*",
+    "@qevora/ui": "*"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "typescript": "^5.4.5",
+    "rimraf": "^5.0.7"
+  }
+}

@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: var(--color-background, #ffffff);
+  color: var(--color-text, #111827);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}

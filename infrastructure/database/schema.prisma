@@ -1,0 +1,237 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// --- Users & Subscription Plans ---
+model User {
+  id                 String           @id @default(uuid())
+  email              String           @unique
+  fullName           String?
+  avatarUrl          String?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  deletedAt          DateTime?        // Soft delete support
+  planId             String
+  subscriptionPlan   SubscriptionPlan @relation(fields: [planId], references: [id])
+  authAccounts       AuthAccount[]
+  projects           Project[]
+  billingRecords     BillingRecord[]
+  notifications      Notification[]
+  auditLogs          AuditLog[]
+  adminActions       AdminAction[]
+  usageRecords       UsageRecord[]
+  quotaSnapshots     QuotaSnapshot[]
+
+  @@index([email])
+}
+
+model SubscriptionPlan {
+  id                 String   @id @default(uuid())
+  name               String   @unique
+  slug               String   @unique
+  priceMonthly       Float
+  priceYearly        Float
+  maxProjects        Int
+  maxPagesPerSite    Int
+  aiTokensPerMonth   Int
+  customDomains      Boolean  @default(false)
+  createdAt          DateTime @default(now())
+  users              User[]
+}
+
+model BillingRecord {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id])
+  amount         Float
+  currency       String   @default("USD")
+  status         String   // "paid", "pending", "failed"
+  invoiceUrl     String?
+  billingCycle   String   // "monthly", "yearly"
+  createdAt      DateTime @default(now())
+}
+
+// --- Authentication Accounts ---
+model AuthAccount {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider     String   // "email", "google", "github"
+  passwordHash String?
+  providerId   String?  // OAuth user ID
+  createdAt    DateTime @default(now())
+
+  @@unique([provider, providerId])
+}
+
+// --- Projects & Site Schemas ---
+model Project {
+  id             String           @id @default(uuid())
+  userId         String
+  user           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name           String
+  description    String?
+  status         String           @default("draft") // "draft", "published", "archived"
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  deletedAt      DateTime?        // Soft delete
+  versions       ProjectVersion[]
+  conversations  Conversation[]
+  publishedSites PublishedSite[]
+  customDomains  CustomDomain[]
+
+  @@index([userId])
+}
+
+model ProjectVersion {
+  id             String         @id @default(uuid())
+  projectId      String
+  project        Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  versionNumber  Int
+  schemaId       String
+  websiteSchema  WebsiteSchema  @relation(fields: [schemaId], references: [id])
+  createdBy      String         // "user" or "ai"
+  s3SnapshotKey  String?        // Backup location
+  createdAt      DateTime       @default(now())
+
+  @@index([projectId, versionNumber])
+}
+
+model WebsiteSchema {
+  id             String           @id @default(uuid())
+  siteId         String           @db.Uuid
+  schemaVersion  String           @default("1.0")
+  payload        Json             // JSON matching SiteSchema Zod validator
+  createdAt      DateTime         @default(now())
+  projectVersions ProjectVersion[]
+}
+
+// --- AI Chat Conversations ---
+model Conversation {
+  id        String    @id @default(uuid())
+  projectId String
+  project   Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  messages  Message[]
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           String       // "user" or "assistant"
+  content        String
+  tokensUsed     Int          @default(0)
+  createdAt      DateTime     @default(now())
+}
+
+// --- Templates ---
+model TemplateCategory {
+  id        String     @id @default(uuid())
+  name      String     @unique
+  slug      String     @unique
+  templates Template[]
+}
+
+model Template {
+  id             String           @id @default(uuid())
+  name           String
+  description    String?
+  categoryId     String
+  category       TemplateCategory @relation(fields: [categoryId], references: [id])
+  previewUrl     String?
+  schemaPayload  Json             // Full WebsiteSchema template JSON
+  isFeatured     Boolean          @default(false)
+  createdAt      DateTime         @default(now())
+}
+
+// --- Deployment & Publishing ---
+model PublishedSite {
+  id             String        @id @default(uuid())
+  projectId      String
+  project        Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  subdomain      String        @unique
+  cfPageUrl      String        // Cloudflare Pages project link
+  s3Prefix       String        // S3 bucket content namespace
+  status         String        // "active", "suspended"
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  customDomains  CustomDomain[]
+
+  @@index([projectId])
+}
+
+model CustomDomain {
+  id              String        @id @default(uuid())
+  projectId       String
+  project         Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  publishedSiteId String
+  publishedSite   PublishedSite @relation(fields: [publishedSiteId], references: [id], onDelete: Cascade)
+  domainName      String        @unique
+  verificationTxt String
+  isVerified      Boolean       @default(false)
+  sslStatus       String        @default("pending") // "issued", "pending", "failed"
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+// --- Usage Tracking & Quota Gates ---
+model UsageRecord {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  tokenCost    Int
+  actionType   String   // "generation", "edit"
+  promptLength Int
+  latencyMs    Int
+  createdAt    DateTime @default(now())
+
+  @@index([userId])
+}
+
+model QuotaSnapshot {
+  id             String   @id @default(uuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id])
+  tokensConsumed Int      @default(0)
+  projectsCreated Int     @default(0)
+  pagesCreated    Int     @default(0)
+  lastResetAt    DateTime @default(now())
+}
+
+// --- System Logs & Auditing ---
+model Notification {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  message     String
+  isRead      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  action     String   // e.g. "project.create", "domain.connect"
+  ipAddress  String?
+  userAgent  String?
+  meta       Json?
+  createdAt  DateTime @default(now())
+}
+
+model AdminAction {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  actionType String
+  targetId   String?
+  notes      String?
+  createdAt  DateTime @default(now())
+}

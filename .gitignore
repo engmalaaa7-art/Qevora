@@ -1,0 +1,50 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Next.js
+.next/
+out/
+
+# Turbo
+.turbo/
+
+# Build
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment
+.env
+.env.local
+
+# Prisma
+prisma/generated/
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary PostgreSQL
+temp_pg/
+
+# Screenshots & Reports
+artifacts/
+screenshots/
+coverage/
+
+# Cache
+.cache/
