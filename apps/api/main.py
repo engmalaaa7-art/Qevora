@@ -618,8 +618,9 @@ async def export_project(project_id: str, format: str, user_id: str = Depends(ge
         raise HTTPException(status_code=404, detail="No schema found to export. Generate first.")
 
     try:
+        from config import RENDERER_CLI_PATH
         proc = subprocess.Popen(
-            ["node", "../../packages/renderer/dist/compile-cli.js"],
+            ["node", RENDERER_CLI_PATH],
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

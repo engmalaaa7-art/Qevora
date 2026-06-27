@@ -9,6 +9,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("qevora.config")
 
 ENV = os.getenv("ENV", "development")
+RENDERER_CLI_PATH = os.getenv("RENDERER_CLI_PATH", "../../packages/renderer/dist/compile-cli.js")
 
 # Database URL — Neon PostgreSQL in production
 DATABASE_URL = os.getenv(

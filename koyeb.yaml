@@ -1,0 +1,18 @@
+services:
+  - name: qevora-api
+    github:
+      repository: engmalaaa7-art/Qevora
+      branch: main
+      build_command: ""
+      run_command: ""
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - port: 8000
+        protocol: http
+    env:
+      - key: PORT
+        value: "8000"
+      - key: ENV
+        value: "production"
+    regions:
+      - was

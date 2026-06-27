@@ -57,8 +57,9 @@ async def handle_publish_site(task_id: str, payload: Dict[str, Any]):
 
         # Invoke headless compiler
         start_time = time.time()
+        from config import RENDERER_CLI_PATH
         proc = subprocess.Popen(
-            ["node", "../../packages/renderer/dist/compile-cli.js"],
+            ["node", RENDERER_CLI_PATH],
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

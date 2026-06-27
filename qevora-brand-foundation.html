@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qevora — Brand Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   QEVORA DESIGN SYSTEM — BRAND FOUNDATION v1.0
+   ============================================================ */
+
+:root {
+  /* ── BRAND COLORS ── */
+  --q-brand-50:  #f5f0ff;
+  --q-brand-100: #ede0ff;
+  --q-brand-200: #d9c0ff;
+  --q-brand-300: #bf95ff;
+  --q-brand-400: #a164ff;
+  --q-brand-500: #8640f5;
+  --q-brand-600: #7520e8;
+  --q-brand-700: #6218c4;
+  --q-brand-800: #521aa0;
+  --q-brand-900: #3d1075;
+  --q-brand-950: #250a4d;
+
+  /* ── PRIMARY (Deep Violet) ── */
+  --q-primary:        #7c3aed;
+  --q-primary-light:  #9d5cff;
+  --q-primary-dark:   #5b21b6;
+  --q-primary-alpha:  #7c3aed1a;
+
+  /* ── ACCENT (Electric Lavender) ── */
+  --q-accent:       #c084fc;
+  --q-accent-light: #ddb4fe;
+  --q-accent-dark:  #a855f7;
+
+  /* ── SURFACE (Dark Mode Base) ── */
+  --q-bg-base:    #07040f;
+  --q-bg-subtle:  #0e0820;
+  --q-bg-muted:   #150d2e;
+  --q-bg-card:    #1a1035;
+  --q-bg-overlay: #241442;
+  --q-bg-raised:  #2d1a52;
+
+  /* ── SURFACE (Light Mode Base) ── */
+  --q-light-bg:     #fafaf9;
+  --q-light-subtle: #f4f0ff;
+  --q-light-card:   #ffffff;
+  --q-light-border: #e8e0f0;
+
+  /* ── NEUTRALS ── */
+  --q-neutral-50:  #f8f7fa;
+  --q-neutral-100: #eeecf4;
+  --q-neutral-200: #d8d4e8;
+  --q-neutral-300: #b8b0cc;
+  --q-neutral-400: #9088a8;
+  --q-neutral-500: #6e6480;
+  --q-neutral-600: #514868;
+  --q-neutral-700: #3a3050;
+  --q-neutral-800: #251c3c;
+  --q-neutral-900: #150e28;
+  --q-neutral-950: #09060f;
+
+  /* ── SEMANTIC COLORS ── */
+  --q-success:      #10b981;
+  --q-success-bg:   #10b98115;
+  --q-success-text: #34d399;
+  --q-warning:      #f59e0b;
+  --q-warning-bg:   #f59e0b15;
+  --q-warning-text: #fbbf24;
+  --q-danger:       #ef4444;
+  --q-danger-bg:    #ef444415;
+  --q-danger-text:  #f87171;
+  --q-info:         #3b82f6;
+  --q-info-bg:      #3b82f615;
+  --q-info-text:    #60a5fa;
+
+  /* ── TEXT ── */
+  --q-text-primary:   #f0ebff;
+  --q-text-secondary: #b8a8d4;
+  --q-text-muted:     #7a6a94;
+  --q-text-disabled:  #4a3a64;
+  --q-text-inverse:   #1a0a30;
+
+  /* ── BORDERS ── */
+  --q-border:       #2d1a5240;
+  --q-border-light: #3d2a6240;
+  --q-border-focus: #7c3aed80;
+
+  /* ── GRADIENTS ── */
+  --q-grad-primary: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+  --q-grad-dark:    linear-gradient(135deg, #3d1075 0%, #7c3aed 100%);
+  --q-grad-glass:   linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(192,132,252,0.06) 100%);
+  --q-grad-surface: linear-gradient(180deg, #1a1035 0%, #0e0820 100%);
+  --q-grad-hero:    radial-gradient(ellipse 80% 60% at 50% 0%, #3d107540 0%, transparent 70%);
+  --q-grad-glow:    radial-gradient(circle at 50% 50%, #7c3aed30 0%, transparent 70%);
+
+  /* ── SPACING ── */
+  --q-space-1:  4px;
+  --q-space-2:  8px;
+  --q-space-3:  12px;
+  --q-space-4:  16px;
+  --q-space-5:  20px;
+  --q-space-6:  24px;
+  --q-space-8:  32px;
+  --q-space-10: 40px;
+  --q-space-12: 48px;
+  --q-space-16: 64px;
+  --q-space-20: 80px;
+  --q-space-24: 96px;
+
+  /* ── BORDER RADIUS ── */
+  --q-radius-xs: 4px;
+  --q-radius-sm: 6px;
+  --q-radius-md: 10px;
+  --q-radius-lg: 14px;
+  --q-radius-xl: 20px;
+  --q-radius-2xl: 28px;
+  --q-radius-full: 9999px;
+
+  /* ── SHADOWS ── */
+  --q-shadow-sm:  0 1px 3px rgba(7,4,15,0.4), 0 1px 2px rgba(7,4,15,0.2);
+  --q-shadow-md:  0 4px 16px rgba(7,4,15,0.5), 0 2px 6px rgba(124,58,237,0.08);
+  --q-shadow-lg:  0 10px 40px rgba(7,4,15,0.6), 0 4px 16px rgba(124,58,237,0.12);
+  --q-shadow-xl:  0 20px 60px rgba(7,4,15,0.7), 0 8px 24px rgba(124,58,237,0.16);
+  --q-shadow-glow-sm: 0 0 16px rgba(124,58,237,0.4);
+  --q-shadow-glow-md: 0 0 32px rgba(124,58,237,0.3), 0 0 64px rgba(124,58,237,0.15);
+  --q-shadow-glow-lg: 0 0 60px rgba(124,58,237,0.4), 0 0 120px rgba(124,58,237,0.2);
+
+  /* ── TYPOGRAPHY ── */
+  --q-font-display: 'Syne', sans-serif;
+  --q-font-body:    'DM Sans', sans-serif;
+  --q-font-mono:    'DM Mono', monospace;
+
+  /* ── MOTION ── */
+  --q-ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --q-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --q-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --q-duration-fast:   150ms;
+  --q-duration-base:   250ms;
+  --q-duration-slow:   400ms;
+  --q-duration-slower: 600ms;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--q-bg-base);
+  color: var(--q-text-primary);
+  font-family: var(--q-font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.brand-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.brand-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7,4,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--q-border);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--q-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--q-text-primary);
+  text-decoration: none;
+}
+
+.brand-nav-logo-mark {
+  width: 28px; height: 28px;
+}
+
+.brand-nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.brand-nav-links a {
+  display: block;
+  padding: 6px 14px;
+  border-radius: var(--q-radius-full);
+  color: var(--q-text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all var(--q-duration-fast) var(--q-ease-smooth);
+  font-family: var(--q-font-body);
+}
+
+.brand-nav-links a:hover,
+.brand-nav-links a.active {
+  color: var(--q-accent);
+  background: var(--q-primary-alpha);
+}
+
+/* ============================================================
+   HERO / COVER
+   ============================================================ */
+.brand-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 80px 32px;
+}
+
+.brand-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, #4c1d9540 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 80%, #7c3aed20 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 20% 60%, #a855f715 0%, transparent 60%);
+}
+
+.brand-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+}
+
+.brand-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.brand-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--q-radius-full);
+  border: 1px solid var(--q-border-light);
+  background: var(--q-primary-alpha);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--q-accent);
+  margin-bottom: 24px;
+}
+
+.brand-hero h1 {
+  font-family: var(--q-font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #d8b4fe 60%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-hero p {
+  font-size: 18px;
+  color: var(--q-text-secondary);
+  max-width: 480px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section {
+  padding: 80px 0;
+  border-top: 1px solid var(--q-border);
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.section-number {
+  font-family: var(--q-font-mono);
+  font-size: 11px;
+  color: var(--q-primary);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.section-title {
+  font-family: var(--q-font-display);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--q-text-primary);
+}
+
+.section-subtitle {
+  font-size: 14px;
+  color: var(--q-text-muted);
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+/* ============================================================
+   1. BRAND DNA
+   ============================================================ */
+.dna-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.dna-card {
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-xl);
+  padding: 28px 24px;
+  transition: all var(--q-duration-base) var(--q-ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.dna-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--q-grad-glass);
+  opacity: 0;
+  transition: opacity var(--q-duration-base);
+}
+
+.dna-card:hover { border-color: var(--q-border-focus); transform: translateY(-2px); }
+.dna-card:hover::before { opacity: 1; }
+
+.dna-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.dna-label {
+  font-family: var(--q-font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--q-text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.dna-desc {
+  font-size: 12px;
+  color: var(--q-text-muted);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   2. COLOR SYSTEM
+   ============================================================ */
+.color-group { margin-bottom: 40px; }
+
+.color-group-title {
+  font-family: var(--q-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--q-text-muted);
+  margin-bottom: 16px;
+}
+
+.color-scale {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  gap: 4px;
+  border-radius: var(--q-radius-lg);
+  overflow: hidden;
+}
+
+.color-swatch {
+  aspect-ratio: 1;
+  min-height: 56px;
+  position: relative;
+  cursor: pointer;
+  transition: transform var(--q-duration-fast);
+}
+
+.color-swatch:hover { transform: scaleY(1.08); z-index: 2; }
+
+.color-swatch-label {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--q-font-mono);
+  font-size: 9px;
+  opacity: 0;
+  transition: opacity var(--q-duration-fast);
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.color-swatch:hover .color-swatch-label { opacity: 1; }
+
+.color-palettes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.color-tile {
+  border-radius: var(--q-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--q-border);
+  cursor: pointer;
+  transition: transform var(--q-duration-fast), box-shadow var(--q-duration-fast);
+}
+
+.color-tile:hover { transform: translateY(-3px); box-shadow: var(--q-shadow-lg); }
+
+.color-tile-swatch {
+  height: 80px;
+}
+
+.color-tile-info {
+  background: var(--q-bg-card);
+  padding: 12px 14px;
+}
+
+.color-tile-name {
+  font-family: var(--q-font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--q-text-primary);
+  margin-bottom: 2px;
+}
+
+.color-tile-hex {
+  font-family: var(--q-font-mono);
+  font-size: 11px;
+  color: var(--q-text-muted);
+}
+
+.color-tile-role {
+  font-size: 10px;
+  color: var(--q-accent);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.semantic-colors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.semantic-color {
+  border-radius: var(--q-radius-lg);
+  padding: 16px;
+  border: 1px solid var(--q-border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.semantic-dot {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.semantic-info-name {
+  font-family: var(--q-font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--q-text-primary);
+}
+
+.semantic-info-hex {
+  font-family: var(--q-font-mono);
+  font-size: 11px;
+  color: var(--q-text-muted);
+}
+
+/* ============================================================
+   3. TYPOGRAPHY
+   ============================================================ */
+.type-samples { display: flex; flex-direction: column; gap: 32px; }
+
+.type-sample {
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-xl);
+  padding: 32px;
+  position: relative;
+}
+
+.type-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--q-border);
+}
+
+.type-family {
+  font-size: 11px;
+  font-family: var(--q-font-mono);
+  color: var(--q-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.type-usage {
+  font-size: 11px;
+  color: var(--q-text-muted);
+  font-family: var(--q-font-mono);
+}
+
+.type-heading-display {
+  font-family: var(--q-font-display);
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--q-text-primary);
+}
+
+.type-heading-h1 {
+  font-family: var(--q-font-display);
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--q-text-primary);
+}
+
+.type-heading-h2 {
+  font-family: var(--q-font-display);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--q-text-primary);
+}
+
+.type-body {
+  font-family: var(--q-font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: var(--q-text-secondary);
+}
+
+.type-mono-sample {
+  font-family: var(--q-font-mono);
+  font-size: 14px;
+  color: var(--q-accent);
+  background: var(--q-bg-subtle);
+  padding: 16px 20px;
+  border-radius: var(--q-radius-md);
+  border: 1px solid var(--q-border);
+  line-height: 1.8;
+}
+
+.type-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-xl);
+  padding: 32px;
+}
+
+.type-scale-row {
+  display: grid;
+  grid-template-columns: 80px 60px 1fr;
+  align-items: baseline;
+  gap: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--q-border);
+}
+
+.type-scale-row:last-child { border-bottom: none; }
+
+.type-scale-label {
+  font-family: var(--q-font-mono);
+  font-size: 10px;
+  color: var(--q-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.type-scale-size {
+  font-family: var(--q-font-mono);
+  font-size: 10px;
+  color: var(--q-primary);
+}
+
+/* ============================================================
+   4. SPACING
+   ============================================================ */
+.spacing-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-xl);
+  padding: 32px;
+}
+
+.spacing-row {
+  display: grid;
+  grid-template-columns: 60px 60px 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.spacing-token {
+  font-family: var(--q-font-mono);
+  font-size: 10px;
+  color: var(--q-text-muted);
+}
+
+.spacing-value {
+  font-family: var(--q-font-mono);
+  font-size: 10px;
+  color: var(--q-primary);
+}
+
+.spacing-bar-wrap { display: flex; align-items: center; }
+
+.spacing-bar {
+  height: 20px;
+  background: linear-gradient(90deg, var(--q-primary) 0%, var(--q-accent) 100%);
+  border-radius: 3px;
+  opacity: 0.7;
+  transition: opacity var(--q-duration-fast);
+}
+
+.spacing-bar:hover { opacity: 1; }
+
+/* ============================================================
+   5. COMPONENTS
+   ============================================================ */
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.component-card {
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-xl);
+  padding: 28px;
+}
+
+.component-card-title {
+  font-family: var(--q-font-mono);
+  font-size: 10px;
+  color: var(--q-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--q-border);
+}
+
+/* Buttons */
+.btn-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+
+.q-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--q-font-body);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all var(--q-duration-fast) var(--q-ease-smooth);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* Primary */
+.q-btn-primary {
+  background: var(--q-grad-primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: var(--q-radius-md);
+  font-size: 14px;
+  box-shadow: 0 0 0 0 rgba(124,58,237,0);
+}
+.q-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--q-shadow-glow-sm);
+}
+
+/* Secondary */
+.q-btn-secondary {
+  background: transparent;
+  color: var(--q-text-primary);
+  padding: 9px 20px;
+  border-radius: var(--q-radius-md);
+  font-size: 14px;
+  border: 1px solid var(--q-border-light);
+}
+.q-btn-secondary:hover {
+  background: var(--q-primary-alpha);
+  border-color: var(--q-border-focus);
+  color: var(--q-accent);
+}
+
+/* Ghost */
+.q-btn-ghost {
+  background: transparent;
+  color: var(--q-accent);
+  padding: 9px 20px;
+  border-radius: var(--q-radius-md);
+  font-size: 14px;
+}
+.q-btn-ghost:hover { background: var(--q-primary-alpha); }
+
+/* Sizes */
+.q-btn-sm {
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: var(--q-radius-sm);
+}
+
+.q-btn-lg {
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: var(--q-radius-lg);
+}
+
+.q-btn-icon {
+  width: 36px; height: 36px;
+  padding: 0;
+  border-radius: var(--q-radius-md);
+  font-size: 16px;
+}
+
+/* Input */
+.q-input-wrap { position: relative; margin-bottom: 12px; }
+
+.q-input {
+  width: 100%;
+  background: var(--q-bg-subtle);
+  border: 1px solid var(--q-border-light);
+  border-radius: var(--q-radius-md);
+  padding: 10px 14px;
+  font-family: var(--q-font-body);
+  font-size: 14px;
+  color: var(--q-text-primary);
+  outline: none;
+  transition: all var(--q-duration-fast);
+}
+
+.q-input::placeholder { color: var(--q-text-disabled); }
+
+.q-input:focus {
+  border-color: var(--q-primary);
+  box-shadow: 0 0 0 3px var(--q-primary-alpha);
+}
+
+.q-input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--q-text-muted);
+  font-size: 14px;
+}
+
+.q-input.has-icon { padding-left: 36px; }
+
+/* Badges */
+.badge-group { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.q-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--q-radius-full);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.q-badge-primary { background: var(--q-primary-alpha); color: var(--q-accent); border: 1px solid rgba(124,58,237,0.3); }
+.q-badge-success { background: var(--q-success-bg); color: var(--q-success-text); border: 1px solid rgba(16,185,129,0.2); }
+.q-badge-warning { background: var(--q-warning-bg); color: var(--q-warning-text); border: 1px solid rgba(245,158,11,0.2); }
+.q-badge-danger  { background: var(--q-danger-bg);  color: var(--q-danger-text);  border: 1px solid rgba(239,68,68,0.2); }
+.q-badge-info    { background: var(--q-info-bg);    color: var(--q-info-text);    border: 1px solid rgba(59,130,246,0.2); }
+
+/* Cards */
+.card-group { display: flex; flex-direction: column; gap: 12px; }
+
+.q-card {
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-xl);
+  padding: 20px;
+  transition: all var(--q-duration-base) var(--q-ease-out);
+}
+.q-card:hover { border-color: var(--q-border-focus); transform: translateY(-1px); box-shadow: var(--q-shadow-md); }
+
+.q-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.q-card-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--q-radius-md);
+  background: var(--q-primary-alpha);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.q-card-title {
+  font-family: var(--q-font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--q-text-primary);
+}
+
+.q-card-body { font-size: 13px; color: var(--q-text-muted); line-height: 1.5; }
+
+/* Glass Card */
+.q-card-glass {
+  background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(168,85,247,0.05) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: var(--q-radius-xl);
+  padding: 20px;
+}
+
+/* Toggle */
+.q-toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.q-toggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+}
+
+.q-toggle input { opacity: 0; width: 0; height: 0; }
+
+.q-toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--q-bg-overlay);
+  border-radius: var(--q-radius-full);
+  border: 1px solid var(--q-border);
+  transition: all var(--q-duration-base);
+  cursor: pointer;
+}
+
+.q-toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  left: 2px; top: 2px;
+  border-radius: 50%;
+  background: var(--q-text-muted);
+  transition: all var(--q-duration-base) var(--q-ease-spring);
+}
+
+.q-toggle input:checked + .q-toggle-slider {
+  background: var(--q-primary);
+  border-color: var(--q-primary);
+}
+
+.q-toggle input:checked + .q-toggle-slider::before {
+  transform: translateX(18px);
+  background: #fff;
+}
+
+.q-toggle-label { font-size: 13px; color: var(--q-text-secondary); }
+
+/* Avatar */
+.q-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--q-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Progress */
+.q-progress-wrap { margin-bottom: 12px; }
+.q-progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--q-text-muted); margin-bottom: 6px; }
+.q-progress-bar { height: 6px; background: var(--q-bg-overlay); border-radius: var(--q-radius-full); overflow: hidden; }
+.q-progress-fill { height: 100%; border-radius: var(--q-radius-full); background: var(--q-grad-primary); }
+
+/* Alert */
+.q-alert {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--q-radius-lg);
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.q-alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.q-alert-title { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+.q-alert-desc { opacity: 0.8; font-size: 12px; }
+
+.q-alert-info { background: var(--q-info-bg); border: 1px solid rgba(59,130,246,0.2); color: var(--q-info-text); }
+.q-alert-success { background: var(--q-success-bg); border: 1px solid rgba(16,185,129,0.2); color: var(--q-success-text); }
+.q-alert-warning { background: var(--q-warning-bg); border: 1px solid rgba(245,158,11,0.2); color: var(--q-warning-text); }
+.q-alert-danger { background: var(--q-danger-bg); border: 1px solid rgba(239,68,68,0.2); color: var(--q-danger-text); }
+
+/* Code block */
+.q-code {
+  background: var(--q-bg-subtle);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-lg);
+  padding: 20px;
+  font-family: var(--q-font-mono);
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--q-accent-light);
+  overflow-x: auto;
+}
+
+.q-code .kw { color: #c084fc; }
+.q-code .str { color: #a3e635; }
+.q-code .num { color: #fb923c; }
+.q-code .comment { color: var(--q-text-muted); font-style: italic; }
+
+/* ============================================================
+   6. GRADIENTS & EFFECTS
+   ============================================================ */
+.gradients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.gradient-swatch {
+  height: 120px;
+  border-radius: var(--q-radius-xl);
+  border: 1px solid var(--q-border);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--q-duration-fast);
+}
+
+.gradient-swatch:hover { transform: scale(1.02); }
+
+.gradient-swatch-label {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  font-family: var(--q-font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   7. MOTION SYSTEM
+   ============================================================ */
+.motion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.motion-card {
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-xl);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.motion-demo {
+  width: 48px; height: 48px;
+  border-radius: var(--q-radius-md);
+  background: var(--q-grad-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.motion-card:hover .motion-demo-scale { transform: scale(1.2); transition: transform 250ms cubic-bezier(0.34,1.56,0.64,1); }
+.motion-card:hover .motion-demo-fade { opacity: 0.3; transition: opacity 150ms ease; }
+.motion-card:hover .motion-demo-slide { transform: translateX(8px); transition: transform 250ms cubic-bezier(0.16,1,0.3,1); }
+.motion-card:hover .motion-demo-rotate { transform: rotate(45deg); transition: transform 400ms cubic-bezier(0.16,1,0.3,1); }
+.motion-demo-fade, .motion-demo-scale, .motion-demo-slide, .motion-demo-rotate { transition: all var(--q-duration-base); }
+
+.motion-info { text-align: center; }
+.motion-name { font-family: var(--q-font-display); font-size: 13px; font-weight: 600; color: var(--q-text-primary); margin-bottom: 4px; }
+.motion-detail { font-family: var(--q-font-mono); font-size: 10px; color: var(--q-text-muted); }
+
+/* ============================================================
+   8. ICON STYLE
+   ============================================================ */
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 12px;
+}
+
+.icon-item {
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-lg);
+  padding: 16px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--q-duration-fast);
+}
+
+.icon-item:hover {
+  border-color: var(--q-border-focus);
+  background: var(--q-primary-alpha);
+  transform: translateY(-2px);
+}
+
+.icon-item-symbol { font-size: 22px; margin-bottom: 8px; display: block; }
+.icon-item-name { font-family: var(--q-font-mono); font-size: 9px; color: var(--q-text-muted); }
+
+/* ============================================================
+   9. BRAND VOICE
+   ============================================================ */
+.voice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.voice-card {
+  background: var(--q-bg-card);
+  border: 1px solid var(--q-border);
+  border-radius: var(--q-radius-xl);
+  padding: 28px;
+}
+
+.voice-title {
+  font-family: var(--q-font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.voice-example {
+  background: var(--q-bg-subtle);
+  border-radius: var(--q-radius-md);
+  padding: 14px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  border-left: 3px solid var(--q-border);
+  color: var(--q-text-secondary);
+  font-style: italic;
+}
+
+.voice-example.good { border-left-color: var(--q-success); }
+.voice-example.bad  { border-left-color: var(--q-danger); text-decoration: line-through; opacity: 0.5; }
+
+/* ============================================================
+   FOOTER / TOKEN PREVIEW
+   ============================================================ */
+.token-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--q-font-mono);
+  font-size: 12px;
+}
+
+.token-table th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--q-text-muted);
+  border-bottom: 1px solid var(--q-border);
+}
+
+.token-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--q-border);
+  vertical-align: middle;
+}
+
+.token-table tr:last-child td { border-bottom: none; }
+.token-table tr:hover td { background: var(--q-bg-subtle); }
+
+.token-name { color: var(--q-accent); }
+.token-value { color: var(--q-text-secondary); }
+.token-preview { }
+.token-dot {
+  width: 28px; height: 28px;
+  border-radius: var(--q-radius-sm);
+  display: inline-block;
+}
+
+/* ============================================================
+   COPIED TOAST
+   ============================================================ */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--q-bg-raised);
+  border: 1px solid var(--q-border-focus);
+  color: var(--q-text-primary);
+  padding: 10px 20px;
+  border-radius: var(--q-radius-full);
+  font-size: 13px;
+  font-family: var(--q-font-mono);
+  z-index: 9999;
+  transition: transform 0.3s var(--q-ease-spring), opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--q-bg-base); }
+::-webkit-scrollbar-thumb { background: var(--q-bg-raised); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--q-primary); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .brand-nav-links { display: none; }
+  .brand-wrapper { padding: 0 16px; }
+  .voice-grid { grid-template-columns: 1fr; }
+  .color-scale { grid-template-columns: repeat(6, 1fr); }
+  .section { padding: 48px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="brand-nav">
+  <a class="brand-nav-logo" href="#">
+    <svg class="brand-nav-logo-mark" viewBox="0 0 40 40" fill="none">
+      <defs>
+        <linearGradient id="ng" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#7c3aed"/>
+          <stop offset="100%" stop-color="#c084fc"/>
+        </linearGradient>
+      </defs>
+      <path d="M20 4 A16 16 0 1 1 19.9 4" stroke="url(#ng)" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <polygon points="18,18 26,26 18,26" fill="url(#ng)" opacity="0.9"/>
+    </svg>
+    Qevora Brand
+  </a>
+  <ul class="brand-nav-links">
+    <li><a href="#dna" class="active">DNA</a></li>
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#spacing">Spacing</a></li>
+    <li><a href="#components">Components</a></li>
+    <li><a href="#gradients">Gradients</a></li>
+    <li><a href="#motion">Motion</a></li>
+    <li><a href="#icons">Icons</a></li>
+    <li><a href="#voice">Voice</a></li>
+    <li><a href="#tokens">Tokens</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="brand-hero">
+  <div class="brand-hero-bg"></div>
+  <div class="brand-hero-grid"></div>
+  <div class="brand-hero-content">
+    <div class="brand-hero-badge">
+      <span>⬡</span>
+      Brand Foundation · v1.0
+    </div>
+    <h1>Qevora Design System</h1>
+    <p>Complete brand identity, design tokens, and component library for building the future of AI website creation.</p>
+  </div>
+</div>
+
+<div class="brand-wrapper">
+
+  <!-- ── 1. BRAND DNA ── -->
+  <section class="section" id="dna">
+    <div class="section-header">
+      <span class="section-number">01 —</span>
+      <div>
+        <div class="section-title">Brand DNA</div>
+        <div class="section-subtitle">Core personality traits that define every design decision</div>
+      </div>
+    </div>
+
+    <div class="dna-grid">
+      <div class="dna-card">
+        <span class="dna-icon">◈</span>
+        <div class="dna-label">Intelligent</div>
+        <div class="dna-desc">Every interaction feels smart, purposeful, and considered. AI isn't a gimmick — it's the core.</div>
+      </div>
+      <div class="dna-card">
+        <span class="dna-icon">◇</span>
+        <div class="dna-label">Premium</div>
+        <div class="dna-desc">Polished surfaces, refined spacing, and meticulous details. Comparable to Framer and Linear.</div>
+      </div>
+      <div class="dna-card">
+        <span class="dna-icon">○</span>
+        <div class="dna-label">Minimal</div>
+        <div class="dna-desc">Remove everything unnecessary. What remains must be perfect. Clarity over decoration.</div>
+      </div>
+      <div class="dna-card">
+        <span class="dna-icon">△</span>
+        <div class="dna-label">Confident</div>
+        <div class="dna-desc">Bold typography. Strong hierarchy. Never apologetic. The product knows what it is.</div>
+      </div>
+      <div class="dna-card">
+        <span class="dna-icon">⬡</span>
+        <div class="dna-label">Modern</div>
+        <div class="dna-desc">2024–2025 aesthetic: dark mode, glass effects, subtle motion. Timeless, never trendy.</div>
+      </div>
+      <div class="dna-card">
+        <span class="dna-icon">◉</span>
+        <div class="dna-label">Human-centered</div>
+        <div class="dna-desc">Built for real people. Non-technical users feel empowered, not intimidated.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2. COLOR SYSTEM ── -->
+  <section class="section" id="colors">
+    <div class="section-header">
+      <span class="section-number">02 —</span>
+      <div>
+        <div class="section-title">Color System</div>
+        <div class="section-subtitle">Click any swatch to copy the hex value</div>
+      </div>
+    </div>
+
+    <!-- Brand Scale -->
+    <div class="color-group">
+      <div class="color-group-title">Brand Violet — Full Scale</div>
+      <div class="color-scale">
+        <div class="color-swatch" style="background:#f5f0ff" onclick="copyColor('#f5f0ff')"><div class="color-swatch-label">50</div></div>
+        <div class="color-swatch" style="background:#ede0ff" onclick="copyColor('#ede0ff')"><div class="color-swatch-label">100</div></div>
+        <div class="color-swatch" style="background:#d9c0ff" onclick="copyColor('#d9c0ff')"><div class="color-swatch-label">200</div></div>
+        <div class="color-swatch" style="background:#bf95ff" onclick="copyColor('#bf95ff')"><div class="color-swatch-label">300</div></div>
+        <div class="color-swatch" style="background:#a164ff" onclick="copyColor('#a164ff')"><div class="color-swatch-label">400</div></div>
+        <div class="color-swatch" style="background:#8640f5" onclick="copyColor('#8640f5')"><div class="color-swatch-label">500</div></div>
+        <div class="color-swatch" style="background:#7520e8" onclick="copyColor('#7520e8')"><div class="color-swatch-label">600</div></div>
+        <div class="color-swatch" style="background:#6218c4" onclick="copyColor('#6218c4')"><div class="color-swatch-label">700</div></div>
+        <div class="color-swatch" style="background:#521aa0" onclick="copyColor('#521aa0')"><div class="color-swatch-label">800</div></div>
+        <div class="color-swatch" style="background:#3d1075" onclick="copyColor('#3d1075')"><div class="color-swatch-label">900</div></div>
+        <div class="color-swatch" style="background:#250a4d" onclick="copyColor('#250a4d')"><div class="color-swatch-label">950</div></div>
+      </div>
+    </div>
+
+    <!-- Core Palette -->
+    <div class="color-group">
+      <div class="color-group-title">Core Design Tokens</div>
+      <div class="color-palettes">
+        <div class="color-tile" onclick="copyColor('#7c3aed')">
+          <div class="color-tile-swatch" style="background:#7c3aed"></div>
+          <div class="color-tile-info">
+            <div class="color-tile-name">Primary</div>
+            <div class="color-tile-hex">#7C3AED</div>
+            <div class="color-tile-role">Main brand violet</div>
+          </div>
+        </div>
+        <div class="color-tile" onclick="copyColor('#c084fc')">
+          <div class="color-tile-swatch" style="background:#c084fc"></div>
+          <div class="color-tile-info">
+            <div class="color-tile-name">Accent</div>
+            <div class="color-tile-hex">#C084FC</div>
+            <div class="color-tile-role">Highlights & glows</div>
+          </div>
+        </div>
+        <div class="color-tile" onclick="copyColor('#07040f')">
+          <div class="color-tile-swatch" style="background:#07040f;border-bottom:1px solid #1a1035"></div>
+          <div class="color-tile-info">
+            <div class="color-tile-name">BG Base</div>
+            <div class="color-tile-hex">#07040F</div>
+            <div class="color-tile-role">Page background</div>
+          </div>
+        </div>
+        <div class="color-tile" onclick="copyColor('#1a1035')">
+          <div class="color-tile-swatch" style="background:#1a1035"></div>
+          <div class="color-tile-info">
+            <div class="color-tile-name">Surface</div>
+            <div class="color-tile-hex">#1A1035</div>
+            <div class="color-tile-role">Cards & panels</div>
+          </div>
+        </div>
+        <div class="color-tile" onclick="copyColor('#f0ebff')">
+          <div class="color-tile-swatch" style="background:#f0ebff"></div>
+          <div class="color-tile-info">
+            <div class="color-tile-name">Text Primary</div>
+            <div class="color-tile-hex">#F0EBFF</div>
+            <div class="color-tile-role">Main text</div>
+          </div>
+        </div>
+        <div class="color-tile" onclick="copyColor('#b8a8d4')">
+          <div class="color-tile-swatch" style="background:#b8a8d4"></div>
+          <div class="color-tile-info">
+            <div class="color-tile-name">Text Secondary</div>
+            <div class="color-tile-hex">#B8A8D4</div>
+            <div class="color-tile-role">Descriptions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semantic Colors -->
+    <div class="color-group">
+      <div class="color-group-title">Semantic Colors</div>
+      <div class="semantic-colors">
+        <div class="semantic-color">
+          <div class="semantic-dot" style="background:var(--q-success-bg);border:1px solid rgba(16,185,129,0.3)">✓</div>
+          <div>
+            <div class="semantic-info-name">Success</div>
+            <div class="semantic-info-hex">#10B981</div>
+          </div>
+        </div>
+        <div class="semantic-color">
+          <div class="semantic-dot" style="background:var(--q-warning-bg);border:1px solid rgba(245,158,11,0.3)">!</div>
+          <div>
+            <div class="semantic-info-name">Warning</div>
+            <div class="semantic-info-hex">#F59E0B</div>
+          </div>
+        </div>
+        <div class="semantic-color">
+          <div class="semantic-dot" style="background:var(--q-danger-bg);border:1px solid rgba(239,68,68,0.3)">✕</div>
+          <div>
+            <div class="semantic-info-name">Danger</div>
+            <div class="semantic-info-hex">#EF4444</div>
+          </div>
+        </div>
+        <div class="semantic-color">
+          <div class="semantic-dot" style="background:var(--q-info-bg);border:1px solid rgba(59,130,246,0.3)">i</div>
+          <div>
+            <div class="semantic-info-name">Info</div>
+            <div class="semantic-info-hex">#3B82F6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. TYPOGRAPHY ── -->
+  <section class="section" id="typography">
+    <div class="section-header">
+      <span class="section-number">03 —</span>
+      <div>
+        <div class="section-title">Typography</div>
+        <div class="section-subtitle">Three-font system: Display · Body · Mono</div>
+      </div>
+    </div>
+
+    <div class="type-samples">
+
+      <!-- Syne Display -->
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="type-family">Syne — Display Font</div>
+          <div class="type-usage">Headings · Logo · Headlines · CTAs</div>
+        </div>
+        <div class="type-heading-display">Build the Web.<br>Just Describe It.</div>
+        <div style="margin-top:16px;display:flex;gap:24px">
+          <div class="type-heading-h1">AI Website Builder</div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="type-heading-h2">Publish in minutes</div>
+        </div>
+      </div>
+
+      <!-- DM Sans Body -->
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="type-family">DM Sans — Body Font</div>
+          <div class="type-usage">Body · UI labels · Buttons · Descriptions</div>
+        </div>
+        <div class="type-body">Qevora turns your ideas into fully functional websites in seconds. Simply describe your business, product, or vision, and our AI handles the rest — from layout to copy to SEO. No design skills required. No coding needed. Just your imagination.</div>
+        <div style="margin-top:16px;display:flex;gap:20px;align-items:center">
+          <button class="q-btn q-btn-primary">Get Started →</button>
+          <span style="font-size:13px;color:var(--q-text-muted)">Free forever plan available</span>
+        </div>
+      </div>
+
+      <!-- DM Mono -->
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="type-family">DM Mono — Monospace Font</div>
+          <div class="type-usage">Code editor · AI prompts · Tokens · Tech labels</div>
+        </div>
+        <div class="type-mono-sample">
+<span class="comment">// Qevora AI Prompt</span>
+<span class="kw">const</span> website = <span class="kw">await</span> qevora.generate({
+  description: <span class="str">"Modern SaaS landing page for a project management tool"</span>,
+  style:       <span class="str">"minimal, dark, premium"</span>,
+  pages:       <span class="num">5</span>,
+  responsive:  <span class="kw">true</span>
+});
+<span class="comment">// → Generated in 3.2 seconds</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Type Scale -->
+    <div style="margin-top:32px">
+      <div class="color-group-title" style="margin-bottom:0">Type Scale Reference</div>
+    </div>
+    <div class="type-scale" style="margin-top:16px">
+      <div class="type-scale-row">
+        <div class="type-scale-label">Display</div>
+        <div class="type-scale-size">56px / 800</div>
+        <div style="font-family:var(--q-font-display);font-size:56px;font-weight:800;letter-spacing:-0.03em;line-height:1;color:var(--q-text-primary)">Qevora</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">H1</div>
+        <div class="type-scale-size">40px / 700</div>
+        <div style="font-family:var(--q-font-display);font-size:40px;font-weight:700;letter-spacing:-0.025em;color:var(--q-text-primary)">Build anything</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">H2</div>
+        <div class="type-scale-size">28px / 700</div>
+        <div style="font-family:var(--q-font-display);font-size:28px;font-weight:700;color:var(--q-text-primary)">AI-powered generation</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">H3</div>
+        <div class="type-scale-size">20px / 600</div>
+        <div style="font-family:var(--q-font-display);font-size:20px;font-weight:600;color:var(--q-text-primary)">Live visual editor</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">Body L</div>
+        <div class="type-scale-size">18px / 300</div>
+        <div style="font-family:var(--q-font-body);font-size:18px;font-weight:300;color:var(--q-text-secondary)">Create professional websites in minutes</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">Body</div>
+        <div class="type-scale-size">15px / 400</div>
+        <div style="font-family:var(--q-font-body);font-size:15px;color:var(--q-text-secondary)">Describe your idea and let AI do the work</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">Label</div>
+        <div class="type-scale-size">12px / 500</div>
+        <div style="font-family:var(--q-font-body);font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--q-text-muted)">NEW FEATURE</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">Mono</div>
+        <div class="type-scale-size">13px / 400</div>
+        <div style="font-family:var(--q-font-mono);font-size:13px;color:var(--q-accent)">const ai = new Qevora()</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4. SPACING ── -->
+  <section class="section" id="spacing">
+    <div class="section-header">
+      <span class="section-number">04 —</span>
+      <div>
+        <div class="section-title">Spacing Scale</div>
+        <div class="section-subtitle">8-point grid system — all values are multiples of 4</div>
+      </div>
+    </div>
+    <div class="spacing-scale">
+      <div class="spacing-row"><div class="spacing-token">space-1</div><div class="spacing-value">4px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:4px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-2</div><div class="spacing-value">8px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:8px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-3</div><div class="spacing-value">12px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:12px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-4</div><div class="spacing-value">16px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:16px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-5</div><div class="spacing-value">20px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:20px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-6</div><div class="spacing-value">24px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:24px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-8</div><div class="spacing-value">32px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:32px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-10</div><div class="spacing-value">40px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:40px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-12</div><div class="spacing-value">48px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:48px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-16</div><div class="spacing-value">64px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:64px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-20</div><div class="spacing-value">80px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:80px"></div></div></div>
+      <div class="spacing-row"><div class="spacing-token">space-24</div><div class="spacing-value">96px</div><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:96px"></div></div></div>
+    </div>
+  </section>
+
+  <!-- ── 5. COMPONENTS ── -->
+  <section class="section" id="components">
+    <div class="section-header">
+      <span class="section-number">05 —</span>
+      <div>
+        <div class="section-title">UI Components</div>
+        <div class="section-subtitle">Interactive components — hover to see states</div>
+      </div>
+    </div>
+
+    <div class="components-grid">
+
+      <!-- Buttons -->
+      <div class="component-card">
+        <div class="component-card-title">Buttons</div>
+        <div class="btn-group">
+          <button class="q-btn q-btn-primary">Get Started</button>
+          <button class="q-btn q-btn-secondary">Learn More</button>
+          <button class="q-btn q-btn-ghost">Cancel</button>
+        </div>
+        <div class="btn-group">
+          <button class="q-btn q-btn-primary q-btn-sm">Small</button>
+          <button class="q-btn q-btn-primary">Default</button>
+          <button class="q-btn q-btn-primary q-btn-lg">Large</button>
+        </div>
+        <div class="btn-group">
+          <button class="q-btn q-btn-secondary q-btn-icon">⬡</button>
+          <button class="q-btn q-btn-secondary q-btn-icon">◈</button>
+          <button class="q-btn q-btn-secondary q-btn-icon">✦</button>
+        </div>
+      </div>
+
+      <!-- Inputs -->
+      <div class="component-card">
+        <div class="component-card-title">Inputs</div>
+        <div class="q-input-wrap">
+          <span class="q-input-icon">🔍</span>
+          <input class="q-input has-icon" type="text" placeholder="Search or describe your website...">
+        </div>
+        <div class="q-input-wrap">
+          <input class="q-input" type="email" placeholder="your@email.com">
+        </div>
+        <div class="q-input-wrap">
+          <input class="q-input" type="text" value="qevora.app/my-site" readonly style="color:var(--q-accent)">
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="component-card">
+        <div class="component-card-title">Badges & Status</div>
+        <div class="badge-group">
+          <span class="q-badge q-badge-primary">✦ AI-powered</span>
+          <span class="q-badge q-badge-success">● Live</span>
+          <span class="q-badge q-badge-warning">⚡ Beta</span>
+          <span class="q-badge q-badge-danger">● Offline</span>
+          <span class="q-badge q-badge-info">New</span>
+        </div>
+        <div style="margin-top:16px">
+          <div class="q-toggle-wrap">
+            <label class="q-toggle"><input type="checkbox" checked><span class="q-toggle-slider"></span></label>
+            <span class="q-toggle-label">AI Content Generation</span>
+          </div>
+          <div class="q-toggle-wrap">
+            <label class="q-toggle"><input type="checkbox"><span class="q-toggle-slider"></span></label>
+            <span class="q-toggle-label">SEO Optimization</span>
+          </div>
+          <div class="q-toggle-wrap">
+            <label class="q-toggle"><input type="checkbox" checked><span class="q-toggle-slider"></span></label>
+            <span class="q-toggle-label">Responsive Design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="component-card">
+        <div class="component-card-title">Cards</div>
+        <div class="card-group">
+          <div class="q-card">
+            <div class="q-card-header">
+              <div class="q-card-icon">⬡</div>
+              <div>
+                <div class="q-card-title">AI Generation</div>
+              </div>
+              <span class="q-badge q-badge-success" style="margin-left:auto">Active</span>
+            </div>
+            <div class="q-card-body">Your website is ready. 5 pages generated in 3.2 seconds.</div>
+          </div>
+          <div class="q-card-glass">
+            <div style="font-family:var(--q-font-display);font-size:13px;font-weight:600;color:var(--q-accent);margin-bottom:6px">Glass Surface Card</div>
+            <div style="font-size:12px;color:var(--q-text-muted)">Used for featured content, hero panels, and AI suggestion cards.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="component-card">
+        <div class="component-card-title">Progress & Metrics</div>
+        <div>
+          <div class="q-progress-wrap">
+            <div class="q-progress-label"><span>SEO Score</span><span>94%</span></div>
+            <div class="q-progress-bar"><div class="q-progress-fill" style="width:94%"></div></div>
+          </div>
+          <div class="q-progress-wrap">
+            <div class="q-progress-label"><span>Performance</span><span>87%</span></div>
+            <div class="q-progress-bar"><div class="q-progress-fill" style="width:87%"></div></div>
+          </div>
+          <div class="q-progress-wrap">
+            <div class="q-progress-label"><span>Accessibility</span><span>100%</span></div>
+            <div class="q-progress-bar"><div class="q-progress-fill" style="width:100%"></div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
+          <div class="q-avatar" style="background:var(--q-grad-primary);color:#fff">AH</div>
+          <div class="q-avatar" style="background:var(--q-bg-overlay);border:1px solid var(--q-border);color:var(--q-accent)">Q</div>
+          <div class="q-avatar" style="background:var(--q-success-bg);border:1px solid rgba(16,185,129,0.3);color:var(--q-success-text)">+5</div>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div class="component-card">
+        <div class="component-card-title">Alerts & Notifications</div>
+        <div class="q-alert q-alert-success">
+          <div class="q-alert-icon">✓</div>
+          <div>
+            <div class="q-alert-title">Website Published!</div>
+            <div class="q-alert-desc">Your site is live at qevora.app/your-site</div>
+          </div>
+        </div>
+        <div class="q-alert q-alert-info">
+          <div class="q-alert-icon">◈</div>
+          <div>
+            <div class="q-alert-title">AI is generating your pages</div>
+            <div class="q-alert-desc">This usually takes 5–10 seconds</div>
+          </div>
+        </div>
+        <div class="q-alert q-alert-warning">
+          <div class="q-alert-icon">!</div>
+          <div>
+            <div class="q-alert-title">Custom domain required</div>
+            <div class="q-alert-desc">Upgrade to Pro to use your own domain</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 6. GRADIENTS ── -->
+  <section class="section" id="gradients">
+    <div class="section-header">
+      <span class="section-number">06 —</span>
+      <div>
+        <div class="section-title">Gradient System</div>
+        <div class="section-subtitle">Brand-approved gradients for UI, marketing, and illustrations</div>
+      </div>
+    </div>
+    <div class="gradients-grid">
+      <div class="gradient-swatch" style="background:linear-gradient(135deg,#7c3aed,#c084fc)" onclick="copyColor('linear-gradient(135deg,#7c3aed,#c084fc)')">
+        <div class="gradient-swatch-label">Grad Primary</div>
+      </div>
+      <div class="gradient-swatch" style="background:linear-gradient(135deg,#3d1075,#7c3aed)" onclick="copyColor('linear-gradient(135deg,#3d1075,#7c3aed)')">
+        <div class="gradient-swatch-label">Grad Dark</div>
+      </div>
+      <div class="gradient-swatch" style="background:linear-gradient(135deg,#5b21b6,#a855f7,#c084fc)" onclick="copyColor('linear-gradient(135deg,#5b21b6,#a855f7,#c084fc)')">
+        <div class="gradient-swatch-label">Grad Spectrum</div>
+      </div>
+      <div class="gradient-swatch" style="background:linear-gradient(180deg,#1a1035,#07040f)" onclick="copyColor('#1a1035')">
+        <div class="gradient-swatch-label">Grad Surface</div>
+      </div>
+      <div class="gradient-swatch" style="background:radial-gradient(ellipse at top,#4c1d9540,#07040f)" onclick="copyColor('radial-gradient')">
+        <div class="gradient-swatch-label">Grad Hero</div>
+      </div>
+      <div class="gradient-swatch" style="background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(192,132,252,0.05));backdrop-filter:blur(20px);border:1px solid rgba(124,58,237,0.2)">
+        <div class="gradient-swatch-label">Glass Effect</div>
+      </div>
+    </div>
+
+    <!-- Glass Guidelines -->
+    <div style="margin-top:32px;background:var(--q-bg-card);border:1px solid var(--q-border);border-radius:var(--q-radius-xl);padding:28px">
+      <div class="color-group-title" style="margin-bottom:16px">Glassmorphism Guidelines</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+        <div>
+          <div style="font-family:var(--q-font-mono);font-size:10px;color:var(--q-primary);margin-bottom:6px">BLUR</div>
+          <div class="q-code" style="padding:10px">backdrop-filter: blur(12px);</div>
+        </div>
+        <div>
+          <div style="font-family:var(--q-font-mono);font-size:10px;color:var(--q-primary);margin-bottom:6px">BACKGROUND</div>
+          <div class="q-code" style="padding:10px">rgba(124,58,237, 0.08–0.15)</div>
+        </div>
+        <div>
+          <div style="font-family:var(--q-font-mono);font-size:10px;color:var(--q-primary);margin-bottom:6px">BORDER</div>
+          <div class="q-code" style="padding:10px">rgba(124,58,237, 0.2–0.3)</div>
+        </div>
+        <div>
+          <div style="font-family:var(--q-font-mono);font-size:10px;color:var(--q-primary);margin-bottom:6px">USE FOR</div>
+          <div class="q-code" style="padding:10px">Modals · Tooltips · Cards</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 7. MOTION ── -->
+  <section class="section" id="motion">
+    <div class="section-header">
+      <span class="section-number">07 —</span>
+      <div>
+        <div class="section-title">Motion System</div>
+        <div class="section-subtitle">Hover each card to see the interaction</div>
+      </div>
+    </div>
+    <div class="motion-grid">
+      <div class="motion-card">
+        <div class="motion-demo motion-demo-scale">⬡</div>
+        <div class="motion-info">
+          <div class="motion-name">Spring Scale</div>
+          <div class="motion-detail">250ms · cubic-bezier(0.34,1.56,0.64,1)</div>
+        </div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-demo motion-demo-fade">◈</div>
+        <div class="motion-info">
+          <div class="motion-name">Fast Fade</div>
+          <div class="motion-detail">150ms · ease</div>
+        </div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-demo motion-demo-slide">→</div>
+        <div class="motion-info">
+          <div class="motion-name">Smooth Slide</div>
+          <div class="motion-detail">250ms · cubic-bezier(0.16,1,0.3,1)</div>
+        </div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-demo motion-demo-rotate">✦</div>
+        <div class="motion-info">
+          <div class="motion-name">Slow Rotate</div>
+          <div class="motion-detail">400ms · cubic-bezier(0.16,1,0.3,1)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Duration Table -->
+    <div style="margin-top:24px;background:var(--q-bg-card);border:1px solid var(--q-border);border-radius:var(--q-radius-xl);padding:24px">
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Token</th><th>Value</th><th>Use Case</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="token-name">duration-fast</td><td class="token-value">150ms</td><td style="color:var(--q-text-secondary);font-family:var(--q-font-body)">Hover states, icon swaps, badge changes</td></tr>
+          <tr><td class="token-name">duration-base</td><td class="token-value">250ms</td><td style="color:var(--q-text-secondary);font-family:var(--q-font-body)">Button clicks, input focus, menu open</td></tr>
+          <tr><td class="token-name">duration-slow</td><td class="token-value">400ms</td><td style="color:var(--q-text-secondary);font-family:var(--q-font-body)">Page transitions, modal entrance</td></tr>
+          <tr><td class="token-name">duration-slower</td><td class="token-value">600ms</td><td style="color:var(--q-text-secondary);font-family:var(--q-font-body)">Hero animations, onboarding reveals</td></tr>
+          <tr><td class="token-name">ease-out</td><td class="token-value">cubic-bezier(0.16,1,0.3,1)</td><td style="color:var(--q-text-secondary);font-family:var(--q-font-body)">Elements entering the screen</td></tr>
+          <tr><td class="token-name">ease-spring</td><td class="token-value">cubic-bezier(0.34,1.56,0.64,1)</td><td style="color:var(--q-text-secondary);font-family:var(--q-font-body)">Playful pops, success states</td></tr>
+          <tr><td class="token-name">ease-smooth</td><td class="token-value">cubic-bezier(0.4,0,0.2,1)</td><td style="color:var(--q-text-secondary);font-family:var(--q-font-body)">Default material transition</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── 8. ICONS ── -->
+  <section class="section" id="icons">
+    <div class="section-header">
+      <span class="section-number">08 —</span>
+      <div>
+        <div class="section-title">Icon Language</div>
+        <div class="section-subtitle">Lucide Icons base — rounded, minimal, 1.5px stroke, 24×24 grid</div>
+      </div>
+    </div>
+    <div class="icons-grid">
+      <div class="icon-item"><span class="icon-item-symbol">◈</span><div class="icon-item-name">ai</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">⬡</span><div class="icon-item-name">platform</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">◎</span><div class="icon-item-name">publish</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">△</span><div class="icon-item-name">generate</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">✦</span><div class="icon-item-name">premium</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">⊞</span><div class="icon-item-name">editor</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">◇</span><div class="icon-item-name">design</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">⊕</span><div class="icon-item-name">add</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">→</span><div class="icon-item-name">next</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">⟳</span><div class="icon-item-name">refresh</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">○</span><div class="icon-item-name">circle</div></div>
+      <div class="icon-item"><span class="icon-item-symbol">✕</span><div class="icon-item-name">close</div></div>
+    </div>
+
+    <!-- Icon Style Rules -->
+    <div style="margin-top:24px;background:var(--q-bg-card);border:1px solid var(--q-border);border-radius:var(--q-radius-xl);padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+      <div>
+        <div style="font-family:var(--q-font-mono);font-size:10px;color:var(--q-success-text);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">✓ Do</div>
+        <div style="font-size:13px;color:var(--q-text-secondary);line-height:1.8">Consistent 24×24 grid<br>1.5px stroke weight<br>Rounded line caps<br>Match text size</div>
+      </div>
+      <div>
+        <div style="font-family:var(--q-font-mono);font-size:10px;color:var(--q-danger-text);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">✕ Don't</div>
+        <div style="font-size:13px;color:var(--q-text-secondary);line-height:1.8">Mix icon libraries<br>Use filled + outline together<br>Scale below 16px<br>Use decorative icons in UI</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 9. BRAND VOICE ── -->
+  <section class="section" id="voice">
+    <div class="section-header">
+      <span class="section-number">09 —</span>
+      <div>
+        <div class="section-title">Brand Voice</div>
+        <div class="section-subtitle">How Qevora speaks — in UI, marketing, and support</div>
+      </div>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-title"><span style="color:var(--q-success-text)">✓</span> We Say</div>
+        <div class="voice-example good">"Describe your website and we'll build it in seconds."</div>
+        <div class="voice-example good">"Your site is live. Here's what AI optimized for you."</div>
+        <div class="voice-example good">"Need help? Just tell us what you want to change."</div>
+        <div class="voice-example good">"Built by you. Powered by Qevora."</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-title"><span style="color:var(--q-danger-text)">✕</span> We Don't Say</div>
+        <div class="voice-example bad">"Utilize our cutting-edge AI algorithms to generate..."</div>
+        <div class="voice-example bad">"Please input your requirements into the system."</div>
+        <div class="voice-example bad">"Error 404: Component rendering failed unexpectedly."</div>
+        <div class="voice-example bad">"Revolutionizing the web creation ecosystem!"</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 10. DESIGN TOKENS ── -->
+  <section class="section" id="tokens">
+    <div class="section-header">
+      <span class="section-number">10 —</span>
+      <div>
+        <div class="section-title">Design Tokens Reference</div>
+        <div class="section-subtitle">CSS variables — copy and use directly</div>
+      </div>
+    </div>
+    <div style="background:var(--q-bg-card);border:1px solid var(--q-border);border-radius:var(--q-radius-xl);overflow:hidden">
+      <table class="token-table">
+        <thead>
+          <tr><th>Token</th><th>Value</th><th>Preview</th></tr>
+        </thead>
+        <tbody>
+          <tr onclick="copyColor('#7c3aed')" style="cursor:pointer">
+            <td class="token-name">--q-primary</td>
+            <td class="token-value">#7C3AED</td>
+            <td><div class="token-dot" style="background:#7c3aed"></div></td>
+          </tr>
+          <tr onclick="copyColor('#c084fc')" style="cursor:pointer">
+            <td class="token-name">--q-accent</td>
+            <td class="token-value">#C084FC</td>
+            <td><div class="token-dot" style="background:#c084fc"></div></td>
+          </tr>
+          <tr onclick="copyColor('#07040f')" style="cursor:pointer">
+            <td class="token-name">--q-bg-base</td>
+            <td class="token-value">#07040F</td>
+            <td><div class="token-dot" style="background:#07040f;border:1px solid #2d1a52"></div></td>
+          </tr>
+          <tr onclick="copyColor('#1a1035')" style="cursor:pointer">
+            <td class="token-name">--q-bg-card</td>
+            <td class="token-value">#1A1035</td>
+            <td><div class="token-dot" style="background:#1a1035"></div></td>
+          </tr>
+          <tr onclick="copyColor('#f0ebff')" style="cursor:pointer">
+            <td class="token-name">--q-text-primary</td>
+            <td class="token-value">#F0EBFF</td>
+            <td><div class="token-dot" style="background:#f0ebff"></div></td>
+          </tr>
+          <tr onclick="copyColor('#b8a8d4')" style="cursor:pointer">
+            <td class="token-name">--q-text-secondary</td>
+            <td class="token-value">#B8A8D4</td>
+            <td><div class="token-dot" style="background:#b8a8d4"></div></td>
+          </tr>
+          <tr onclick="copyColor('#10b981')" style="cursor:pointer">
+            <td class="token-name">--q-success</td>
+            <td class="token-value">#10B981</td>
+            <td><div class="token-dot" style="background:#10b981"></div></td>
+          </tr>
+          <tr onclick="copyColor('#f59e0b')" style="cursor:pointer">
+            <td class="token-name">--q-warning</td>
+            <td class="token-value">#F59E0B</td>
+            <td><div class="token-dot" style="background:#f59e0b"></div></td>
+          </tr>
+          <tr onclick="copyColor('#ef4444')" style="cursor:pointer">
+            <td class="token-name">--q-danger</td>
+            <td class="token-value">#EF4444</td>
+            <td><div class="token-dot" style="background:#ef4444"></div></td>
+          </tr>
+          <tr>
+            <td class="token-name">--q-radius-md</td>
+            <td class="token-value">10px</td>
+            <td><div style="width:28px;height:28px;background:var(--q-bg-overlay);border:1px solid var(--q-border);border-radius:10px"></div></td>
+          </tr>
+          <tr>
+            <td class="token-name">--q-radius-xl</td>
+            <td class="token-value">20px</td>
+            <td><div style="width:28px;height:28px;background:var(--q-bg-overlay);border:1px solid var(--q-border);border-radius:20px"></div></td>
+          </tr>
+          <tr>
+            <td class="token-name">--q-font-display</td>
+            <td class="token-value">'Syne'</td>
+            <td><div style="font-family:var(--q-font-display);font-size:13px;color:var(--q-text-primary);font-weight:700">Aa Bb Cc</div></td>
+          </tr>
+          <tr>
+            <td class="token-name">--q-font-body</td>
+            <td class="token-value">'DM Sans'</td>
+            <td><div style="font-family:var(--q-font-body);font-size:13px;color:var(--q-text-primary)">Aa Bb Cc</div></td>
+          </tr>
+          <tr>
+            <td class="token-name">--q-font-mono</td>
+            <td class="token-value">'DM Mono'</td>
+            <td><div style="font-family:var(--q-font-mono);font-size:13px;color:var(--q-accent)">Aa Bb Cc</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center;padding:60px 0 40px;border-top:1px solid var(--q-border);margin-top:60px">
+      <svg viewBox="0 0 40 40" fill="none" style="width:36px;height:36px;margin:0 auto 12px">
+        <defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#c084fc"/></linearGradient></defs>
+        <path d="M20 4 A16 16 0 1 1 19.9 4" stroke="url(#fg)" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <polygon points="18,18 26,26 18,26" fill="url(#fg)" opacity="0.9"/>
+      </svg>
+      <div style="font-family:var(--q-font-display);font-size:20px;font-weight:700;color:var(--q-text-primary);margin-bottom:6px">Qevora Brand Foundation</div>
+      <div style="font-family:var(--q-font-mono);font-size:11px;color:var(--q-text-muted)">v1.0 · Design System · Click any color to copy</div>
+    </div>
+
+  </section>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">Copied!</div>
+
+<script>
+function copyColor(val) {
+  navigator.clipboard.writeText(val).catch(()=>{});
+  const t = document.getElementById('toast');
+  t.textContent = `Copied: ${val}`;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// Active nav on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.brand-nav-links a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === `#${e.target.id}`);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

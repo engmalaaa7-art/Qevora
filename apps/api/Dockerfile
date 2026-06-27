@@ -1,4 +1,4 @@
-# Stage 1: Build node CLI compiler
+# Stage 1: Build standalone node CLI compiler
 FROM node:20-alpine AS node-builder
 WORKDIR /app
 
@@ -14,13 +14,14 @@ COPY packages/ai-engine/package.json ./packages/ai-engine/
 RUN npm ci
 
 COPY packages ./packages
-RUN npx turbo run build --filter=@qevora/qevora-renderer
+# Using the new esbuild standalone command
+RUN npx turbo run build:cli --filter=@qevora/qevora-renderer
 
 # Stage 2: Production FastAPI runner
 FROM python:3.12-slim AS runner
 WORKDIR /app
 
-# Install system dependencies, Node.js, and clean cache
+# Install system dependencies, Node.js (for the CLI binary), and clean cache
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     ca-certificates \
@@ -33,15 +34,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Setup python environment
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
-
-# Copy node compiler and its compiled workspace dependencies
-COPY --from=node-builder /app/package.json /app/package-lock.json /app/
-COPY --from=node-builder /app/packages /app/packages
-COPY --from=node-builder /app/node_modules /app/node_modules
+# Cloud-Agnostic mapping for the renderer binary
+ENV RENDERER_CLI_PATH=/app/bin/renderer.cjs
 
 # Copy python dependencies
 COPY apps/api/requirements.txt ./apps/api/
 RUN pip install --no-cache-dir -r apps/api/requirements.txt
+
+# Copy ONLY the standalone compiled node compiler (No node_modules or workspace needed)
+COPY --from=node-builder /app/packages/renderer/dist/renderer.cjs /app/bin/renderer.cjs
 
 # Copy backend source
 COPY apps/api /app/apps/api
