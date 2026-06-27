@@ -1,0 +1,455 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Qevora | User Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#5b38ee",
+                    "error-container": "#93000a",
+                    "surface": "#14121c",
+                    "on-tertiary-container": "#fff0e2",
+                    "surface-variant": "#35333e",
+                    "outline-variant": "#474556",
+                    "on-tertiary-fixed": "#291800",
+                    "inverse-surface": "#e5e0ef",
+                    "tertiary-fixed-dim": "#ffb955",
+                    "surface-container-high": "#2a2933",
+                    "surface-bright": "#3a3843",
+                    "primary-container": "#6c4dff",
+                    "on-secondary-fixed": "#002116",
+                    "on-error": "#690005",
+                    "surface-tint": "#c8bfff",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "background": "#14121c",
+                    "surface-container-low": "#1c1a24",
+                    "on-primary": "#2d009d",
+                    "on-surface-variant": "#c9c4d9",
+                    "primary-fixed-dim": "#c8bfff",
+                    "tertiary": "#ffb955",
+                    "on-primary-fixed-variant": "#4206d7",
+                    "tertiary-fixed": "#ffddb4",
+                    "on-surface": "#e5e0ef",
+                    "secondary": "#44f1bc",
+                    "inverse-on-surface": "#312f3a",
+                    "on-tertiary": "#452b00",
+                    "secondary-fixed": "#54fdc6",
+                    "primary": "#c8bfff",
+                    "on-background": "#e5e0ef",
+                    "secondary-container": "#00d4a1",
+                    "on-primary-fixed": "#190064",
+                    "surface-dim": "#14121c",
+                    "tertiary-container": "#986300",
+                    "surface-container-lowest": "#0e0d17",
+                    "surface-container-highest": "#35333e",
+                    "on-primary-container": "#f6f0ff",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#928ea2",
+                    "on-secondary": "#003828",
+                    "error": "#ffb4ab",
+                    "primary-fixed": "#e5deff",
+                    "on-secondary-fixed-variant": "#00513c",
+                    "secondary-fixed-dim": "#27e0ab",
+                    "surface-container": "#201e29",
+                    "on-secondary-container": "#00563f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "container-max": "1440px",
+                    "base": "4px",
+                    "xl": "64px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "xs": "8px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Rubik"],
+                    "label-sm": ["Rubik"],
+                    "headline-xl": ["Rubik"],
+                    "display-lg-mobile": ["Rubik"],
+                    "label-md": ["Rubik"],
+                    "display-lg": ["Rubik"],
+                    "body-md": ["Rubik"],
+                    "headline-lg": ["Rubik"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0D1117;
+            font-family: 'Rubik', sans-serif;
+            color: #e5e0ef;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(200, 191, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .luminous-outline {
+            position: relative;
+        }
+
+        .luminous-outline::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, #6c4dff, transparent 50%);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .progress-shimmer {
+            background: linear-gradient(90deg, #6c4dff, #44f1bc);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .nav-active-indicator {
+            box-shadow: 0 0 15px rgba(108, 77, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background selection:bg-primary/30">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[320px] bg-surface-container-lowest backdrop-blur-xl border-r border-outline-variant/30 flex flex-col py-xl px-md z-50 hidden md:flex">
+<div class="mb-xl px-4">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Creative Suite</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Pro Plan Member</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<!-- Dashboard Active Logic: Since this is account settings, it falls under a specific sub-state, but we'll prioritize Dashboard as the root if Profile isn't in main list -->
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-lg px-4 py-3 nav-active-indicator transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all px-4 py-3 rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">folder_open</span>
+<span class="font-label-md text-label-md">Projects</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all px-4 py-3 rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">payments</span>
+<span class="font-label-md text-label-md">Subscriptions</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all px-4 py-3 rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">history</span>
+<span class="font-label-md text-label-md">Activity</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all px-4 py-3 rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">shield</span>
+<span class="font-label-md text-label-md">Security</span>
+</a>
+</nav>
+<div class="mt-auto pt-md border-t border-outline-variant/20 flex flex-col gap-2">
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 rounded-lg group transition-colors" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">help_outline</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 rounded-lg group transition-colors" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<button class="mt-4 w-full py-3 bg-inverse-primary text-on-primary-container font-label-md text-label-md rounded-lg shadow-lg hover:brightness-110 active:scale-[0.98] transition-all">
+                Upgrade to Max
+            </button>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<div class="md:ml-[320px] min-h-screen flex flex-col relative">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-320px)] bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 flex justify-between items-center h-16 px-lg z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary">Account Settings</h2>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md" href="#">Explorer</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md" href="#">Community</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md" href="#">Resources</a>
+</nav>
+<div class="h-6 w-px bg-outline-variant/30"></div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">dark_mode</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/50">
+<img class="w-full h-full object-cover" data-alt="High-fidelity cinematic 3D portrait of a creative professional male with a modern, stylish look. The lighting is moody and studio-style with deep purples and cool blue highlights reflecting off his glasses. Background is a soft-focus tech studio with holographic interfaces. Premium UI design aesthetic, photorealistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnQHMAJ9CNmPyvbeTxPxCU9OTO2rQ4Le4fv4rYpG7XfkX13V7IjPO0E1jnaRj1YAkQteeTneh51IdOGIcGPsPaogSjkvlPBY7n7jb8pUUxkYepaUuS4E-12YL7R5gzAX_o6j8bJT7OXfM1LY-F8kDmQZby6VprqHeguU7mNBFRYgV1uShismDtS3usR7dgfrMA73IzepaiqwiIeIcjxYCWnHX2QbSzVAT5ulVneMqDy29CcPfLaobLFipmMnHXb7edkz086qUGTvE">
+</div>
+</div>
+</div>
+<!-- Mobile Menu Toggle (Simplified) -->
+<button class="md:hidden material-symbols-outlined text-primary">menu</button>
+</header>
+<!-- Content Canvas -->
+<main class="mt-16 p-sm md:p-lg flex-1">
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Section 1: Profile Header Card -->
+<section class="lg:col-span-12 glass-card rounded-xl p-md flex flex-col md:flex-row items-center gap-lg luminous-outline">
+<div class="relative group">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up professional headshot of Alex Rivera, a digital creator, with sharp facial features and thoughtful expression. Studio lighting with a subtle purple backlight creating a halo effect. The style is modern, sleek, and high-tech, fitting for a leading AI software company profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpYfdFHndCNkexoFAqKO97oeqNNtYhEM6y5KJJkYOP5yRXaVtfTq8j2cKcZHIxCuVO23dEtWCDZ7QbTrrQcIYuK8qrGTJQc4espIs4rt0-76aQYEEHSNC_cp98H1zaH3wX560Rbxr9XlYy9i8HCP4WwS3bkucfAO2XV0p7xyRlNf-kLYlLewhx13Omx51vdSxatOCWhPwsLSLLyOGyidK0Aa-hs56m4ut1XKFslHzpYZUnV--vnR1ttn8FcqDdkeKqyiDKTsJQ70k">
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-on-primary p-2 rounded-full shadow-lg material-symbols-outlined text-[18px]">edit</button>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="font-headline-xl text-headline-xl text-on-surface">Alex Rivera</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant">alex@qevora.ai</p>
+<div class="mt-4 flex flex-wrap justify-center md:justify-start gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full font-label-sm text-label-sm">Pro Creator</span>
+<span class="px-3 py-1 bg-secondary/10 text-secondary border border-secondary/20 rounded-full font-label-sm text-label-sm">AI Early Adopter</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 w-full md:w-auto">
+<button class="px-xl py-3 bg-primary text-on-primary-container font-label-md text-label-md rounded-lg active:scale-95 transition-transform">Edit Profile</button>
+<button class="px-xl py-3 border border-outline-variant text-on-surface-variant font-label-md text-label-md rounded-lg hover:bg-surface-variant/20 transition-colors">Public Profile</button>
+</div>
+</section>
+<!-- Section 2: Projects Card (Bento Style Grid) -->
+<section class="lg:col-span-8 flex flex-col gap-gutter">
+<div class="glass-card rounded-xl p-md">
+<div class="flex justify-between items-center mb-md">
+<h4 class="font-headline-lg text-headline-lg">Recent Projects</h4>
+<button class="text-primary font-label-md text-label-md hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Project 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-lg overflow-hidden glass-card mb-3 relative">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="A clean, minimalist website landing page design for a digital agency. The UI features dark mode glassmorphism, bold sans-serif typography, and a centered hero section with a glowing purple orb. Modern web design aesthetic, 8k resolution, crisp details." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAm5SO3yS74Ig-au46swIUvUJ5huaSNiez4Uj8nmJnxJtj2viu-B5zqQ1LRED5ii9rNxupwhIIM2QEqwsX-sp9v2ZAHmb1nZS6A4Mdc4Zw5PYFTmHJjdXT6RIC4y-eofF4MdwIpDEXjtMWbOtuzKOmJTEKXYdyZxFDKit-p3Spvqby4Is20k0r6Zk7CqQ6bw-x1MGz8WeEMycHMR6WygDh7DpW5xEMgjLNNGdeH7NiZAT7woGaU1zWUzp1hg-H3hc61LL2U1Zmqnbg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+<span class="text-primary material-symbols-outlined">open_in_new</span>
+</div>
+</div>
+<h5 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Portfolio Site</h5>
+<p class="text-[12px] text-on-surface-variant">Last edited 2h ago</p>
+</div>
+<!-- Project 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-lg overflow-hidden glass-card mb-3 relative">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="A futuristic mobile app interface for a fitness tracker. High-fidelity glassmorphic cards showing heart rate graphs and step counts. Vibrant neon green accents on a deep charcoal background. Professional UI kit style, sharp lines." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCX1oWxW9h-k57Do6cB0Urqt2-fgAGSvzWkCkASxFoTvQY2VTm9IvuQxwkoxp_Ngp0OFJMNiIl8ipTPm3Tp3o52VbqjF_XnqYxaI9rJuDIRPZtasJkqmzWrbB5l3JNbJ4K3JfICIQB1LSj6nKH31-5_91n4sqWR9nEfMxrpf6plkp5xHfeTrGMw2NoZm-5LrNIyg5Hwzalfu8kucvAaEEFTM5c21aG-lt2O5RUeJgmrhsAE0hOkIK4DeiKuscQQO_KwL7jo0hfTZ6A')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+<span class="text-primary material-symbols-outlined">open_in_new</span>
+</div>
+</div>
+<h5 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Qevora App</h5>
+<p class="text-[12px] text-on-surface-variant">Last edited 1d ago</p>
+</div>
+<!-- Project 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-lg overflow-hidden glass-card mb-3 relative">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="An advanced AI dashboard with intricate data visualizations, node-based workflows, and floating translucent panels. Palette of deep indigo, electric purple, and soft teal. Technologically sophisticated, cinematic depth, premium finish." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9hOZDSSBTd33LYlNAld9GSSC_cN73mBvJb0As2r_B0EB7eXGY89VEjnhNWAdUQb295oQZIip9VPaqF8H84aRThyTRHcumLHGhrT9rL3P2znoXlI52NAUCLwd5P1ie6o9t0N2JqWJ8tG8BwtLAA5FX36L7V1XEWCFkvrLe2QQDD568XLsrlrJm0DI8ldXfGpI7ooHjdAvH1DJqKOwB5BQf-u32YC2RYmXpaiXHSSJaRwxb0co-4jTrJrXA8eJQxDw5wQnykEMCOvE')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+<span class="text-primary material-symbols-outlined">open_in_new</span>
+</div>
+</div>
+<h5 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">AI Concept</h5>
+<p class="text-[12px] text-on-surface-variant">Last edited 3d ago</p>
+</div>
+</div>
+</div>
+<!-- Section 4: Activity Timeline Card -->
+<div class="glass-card rounded-xl p-md">
+<h4 class="font-headline-lg text-headline-lg mb-md">Activity Timeline</h4>
+<div class="space-y-6 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-px before:bg-outline-variant/30">
+<div class="flex gap-4 relative">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center z-10 shrink-0">
+<span class="material-symbols-outlined text-[14px] text-on-primary">add</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Generated 'Portfolio Site'</p>
+<p class="text-[12px] text-on-surface-variant">Just now • AI Builder v2.4</p>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center z-10 shrink-0">
+<span class="material-symbols-outlined text-[14px] text-on-secondary">publish</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Published 'Qevora App'</p>
+<p class="text-[12px] text-on-surface-variant">Yesterday at 4:30 PM</p>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center z-10 shrink-0">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">credit_card</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Updated Subscription</p>
+<p class="text-[12px] text-on-surface-variant">2 days ago • Pro Plan Renewal</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3 & 5 Sidebars -->
+<aside class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Subscription & Usage Card -->
+<div class="glass-card rounded-xl p-md border-l-4 border-l-primary">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="font-headline-lg text-headline-lg">Pro Plan</h4>
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Active Subscription</p>
+</div>
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface">Storage Usage</span>
+<span class="font-label-md text-label-md text-on-surface-variant">12.4 GB / 50 GB</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full w-[24.8%] progress-shimmer rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface">AI Credits</span>
+<span class="font-label-md text-label-md text-on-surface-variant">1,240 / 5,000</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full w-[24.8%] bg-primary rounded-full"></div>
+</div>
+<p class="mt-2 text-[12px] text-on-surface-variant">Next renewal: Oct 12, 2023</p>
+</div>
+<button class="w-full py-3 border border-primary/30 text-primary font-label-md text-label-md rounded-lg hover:bg-primary/5 transition-colors">Manage Billing</button>
+</div>
+</div>
+<!-- Security & Connections Card -->
+<div class="glass-card rounded-xl p-md">
+<h4 class="font-headline-lg text-headline-lg mb-md">Security</h4>
+<div class="space-y-4 mb-md">
+<div class="flex items-center gap-3 p-3 bg-secondary/5 border border-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">2FA Enabled</p>
+<p class="text-[12px] text-on-surface-variant">Protected by Authenticator</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-variant/20 rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Password Change</p>
+<p class="text-[12px] text-on-surface-variant">Last updated 2 days ago</p>
+</div>
+</div>
+</div>
+<h5 class="font-label-md text-label-md mb-3 text-on-surface-variant">Connected Accounts</h5>
+<div class="flex gap-3">
+<button class="w-10 h-10 rounded-lg glass-card flex items-center justify-center hover:text-primary transition-colors">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+</button>
+<button class="w-10 h-10 rounded-lg glass-card flex items-center justify-center hover:text-primary transition-colors">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.908 3.152-1.928 4.176-1.224 1.224-3.136 2.568-6.64 2.568-5.392 0-9.696-4.384-9.696-9.776s4.304-9.776 9.696-9.776c2.928 0 5.144 1.152 6.84 2.744l2.304-2.304C18.624 1.44 15.936 0 12.48 0 6.48 0 1.44 4.8 1.44 10.8s5.04 10.8 11.04 10.8c3.24 0 5.712-1.056 7.64-3.072 2-2 2.632-4.816 2.632-7.12 0-.672-.048-1.32-.144-1.936h-10.128z"></path></svg>
+</button>
+<button class="w-10 h-10 rounded-lg glass-card flex items-center justify-center hover:text-primary transition-colors">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"></path></svg>
+</button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Background Atmospheric Element -->
+<div class="fixed top-0 right-0 -z-10 opacity-30 pointer-events-none">
+
+</div>
+</div>
+<!-- Mobile Bottom Navigation (Strict Platform Rule) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-low backdrop-blur-xl border-t border-outline-variant/30 flex justify-around py-sm z-50">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-[10px] font-label-sm">Projects</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-label-sm">Profile</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and effects
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('mousedown', () => {
+                elem.style.transform = 'scale(0.96)';
+            });
+            elem.addEventListener('mouseup', () => {
+                elem.style.transform = '';
+            });
+            elem.addEventListener('mouseleave', () => {
+                elem.style.transform = '';
+            });
+        });
+
+        // Simple parallax or mouse movement effect for glass cards
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.querySelectorAll('.glass-card').forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const dx = e.clientX - (rect.left + rect.width / 2);
+                const dy = e.clientY - (rect.top + rect.height / 2);
+                
+                if (Math.abs(dx) < 500 && Math.abs(dy) < 500) {
+                    card.style.borderColor = `rgba(108, 77, 255, ${0.1 + (Math.abs(dx) / 5000)})`;
+                }
+            });
+        });
+    </script>
+</body></html>

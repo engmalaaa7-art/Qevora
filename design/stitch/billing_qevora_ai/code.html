@@ -1,0 +1,450 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Billing &amp; Subscription | Qevora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#e5e0ef",
+                    "on-primary-fixed-variant": "#4206d7",
+                    "primary-container": "#6c4dff",
+                    "secondary-fixed": "#54fdc7",
+                    "surface-container": "#201e29",
+                    "glow-purple": "rgba(108, 77, 255, 0.4)",
+                    "on-secondary-fixed-variant": "#00513c",
+                    "tertiary-container": "#996300",
+                    "tertiary": "#ffb955",
+                    "inverse-surface": "#e5e0ef",
+                    "shimmer-gradient": "linear-gradient(90deg, #6c4dff, #44f1bc)",
+                    "glass-fill": "rgba(255, 255, 255, 0.03)",
+                    "surface-container-low": "#1c1a24",
+                    "tertiary-fixed-dim": "#ffb955",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#c8bfff",
+                    "surface-container-lowest": "#0e0d17",
+                    "on-secondary-container": "#005640",
+                    "surface-dim": "#14121c",
+                    "inverse-primary": "#5b38ee",
+                    "on-primary-fixed": "#190064",
+                    "secondary-container": "#00d4a2",
+                    "glass-border": "rgba(255, 255, 255, 0.1)",
+                    "surface-variant": "#35333e",
+                    "surface-container-highest": "#35333e",
+                    "surface": "#14121c",
+                    "background-deep": "#0D1117",
+                    "secondary": "#44f1bc",
+                    "on-tertiary-container": "#fff0e2",
+                    "on-tertiary": "#452b00",
+                    "on-error-container": "#ffdad6",
+                    "surface-main": "#14121c",
+                    "primary": "#c8bfff",
+                    "error-container": "#93000a",
+                    "on-primary-container": "#f6f0ff",
+                    "on-primary": "#2d009d",
+                    "surface-bright": "#3a3843",
+                    "background": "#14121c",
+                    "on-secondary-fixed": "#002116",
+                    "on-tertiary-fixed": "#2a1800",
+                    "on-surface-variant": "#c9c4d9",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#27e0ac",
+                    "on-secondary": "#003828",
+                    "on-surface": "#e5e0ef",
+                    "surface-container-high": "#2a2933",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "surface-tint": "#c8bfff",
+                    "outline": "#928ea2",
+                    "primary-fixed": "#e5deff",
+                    "tertiary-fixed": "#ffddb5",
+                    "inverse-on-surface": "#312f3a",
+                    "outline-variant": "#474556"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "sm": "16px",
+                    "md": "24px",
+                    "container-max": "1440px",
+                    "sidebar-width": "320px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "lg": "40px",
+                    "xl": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Rubik"],
+                    "caption": ["Rubik"],
+                    "label-md": ["Rubik"],
+                    "headline-xl": ["Rubik"],
+                    "display-lg": ["Rubik"],
+                    "body-lg": ["Rubik"],
+                    "body-md": ["Rubik"],
+                    "label-sm": ["Rubik"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0D1117;
+            font-family: 'Rubik', sans-serif;
+            color: #e5e0ef;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .bloom-glow {
+            box-shadow: 0 0 15px rgba(108, 77, 255, 0.4);
+        }
+        .shimmer-bg {
+            background: linear-gradient(90deg, #6c4dff, #44f1bc);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+        .luminous-border {
+            position: relative;
+        }
+        .luminous-border::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, #6c4dff 0%, transparent 50%, #44f1bc 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0D1117;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #35333e;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<!-- SideNavBar (Shared Component Anchor) -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container dark:bg-surface-container border-r border-glass-border backdrop-blur-xl flex flex-col p-md z-50">
+<div class="mb-xl px-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Qevora</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Enterprise Tier</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-md px-md py-sm font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:bg-glass-fill hover:backdrop-blur-md rounded-lg active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md py-sm font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:bg-glass-fill hover:backdrop-blur-md rounded-lg active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+                Projects
+            </a>
+<a class="flex items-center gap-md px-md py-sm font-body-md text-body-md bg-primary-container text-on-primary-container shadow-[0_0_15px_rgba(108,77,255,0.4)] rounded-lg active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+                Billing
+            </a>
+<a class="flex items-center gap-md px-md py-sm font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:bg-glass-fill hover:backdrop-blur-md rounded-lg active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto space-y-md">
+<div class="p-md glass-card rounded-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Storage Capacity</p>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden mb-xs">
+<div class="shimmer-bg h-full w-[24.8%]"></div>
+</div>
+<p class="font-caption text-caption text-secondary">24.8% Used</p>
+<button class="mt-md w-full bg-primary-container text-on-primary-container py-xs rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Upgrade Plan</button>
+</div>
+<div class="pt-md border-t border-glass-border">
+<a class="flex items-center gap-md px-md py-sm font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+                    Support
+                </a>
+<a class="flex items-center gap-md px-md py-sm font-body-md text-body-md text-error hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Sign Out
+                </a>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component Anchor) -->
+<header class="sticky top-0 z-40 w-full backdrop-blur-md border-b border-glass-border flex items-center justify-between px-md h-16 ml-sidebar-width" style="width: calc(100% - 320px);">
+<div class="flex items-center gap-lg">
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Lumina Dashboard</h2>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-glass-fill border border-glass-border rounded-full pl-xl pr-md py-xs text-label-md focus:ring-1 focus:ring-primary outline-none w-64" placeholder="Search resources..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex gap-sm mr-md border-r border-glass-border pr-md">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Support</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Docs</a>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-glass-fill text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-glass-fill text-on-surface-variant">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<div class="flex items-center gap-sm ml-sm cursor-pointer hover:opacity-80 transition-opacity">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-glass-border">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional woman with a confident expression, wearing a sleek minimalist black blazer. The lighting is dramatic and cinematic, with soft purple and teal neon rim lighting reflecting off her hair and skin, echoing the Qevora Lumina brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH1OqpOz0ZOIR3KnKPfxGHDc_TQDGdXm3OJeKla1YZWV55NmcaMp549IC1_UMzVE33ZbMOnJfU_bBBHDG8WzAOF9hvFvw8Rleo3Lc1x77E7Pvu7nvSbqVECR1VBXzDN4A52XdyrTfM3OIxX7n6vMlpQ4kZ_UJ-ytxotOqNmjAE-USzFrfSMmnOwRNJ8MCPIJYOIQ1w0oOJUJ-RQFMyJFJ32AWVYZeZhrU1bu7wiCdEsMPj5jWSHaFgHEojMxAVW9NaylZW-l7UfvQ">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width p-xl min-h-[calc(100vh-64px)]">
+<div class="max-w-container-max mx-auto">
+<!-- Header & Breadcrumbs -->
+<div class="mb-lg">
+<nav class="flex items-center gap-xs font-label-md text-label-md text-on-surface-variant mb-base">
+<span>Account</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary">Billing</span>
+</nav>
+<h1 class="font-headline-xl text-headline-xl text-on-surface">Billing &amp; Subscription</h1>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Current Plan Section (Span 8) -->
+<section class="col-span-12 lg:col-span-8">
+<div class="glass-card rounded-xl p-xl luminous-border h-full flex flex-col justify-between">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<span class="px-sm py-xs bg-primary-container/20 text-primary rounded-full font-label-sm text-label-sm mb-md inline-block">ACTIVE PLAN</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Pro Plan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Best for professionals and high-performance creative teams.</p>
+</div>
+<div class="text-right">
+<div class="font-display-lg text-display-lg text-on-surface leading-none">$19<span class="text-headline-md">/mo</span></div>
+<p class="font-label-md text-label-md text-on-surface-variant mt-sm">Next renewal: Oct 12, 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-md pt-lg border-t border-glass-border">
+<button class="bg-primary-container text-on-primary-container px-xl py-sm rounded-lg font-label-md text-label-md bloom-glow active:scale-95 transition-all">Upgrade Plan</button>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-error transition-colors px-md">Cancel Subscription</button>
+</div>
+</div>
+</section>
+<!-- Coupon Section (Span 4) -->
+<section class="col-span-12 lg:col-span-4">
+<div class="glass-card rounded-xl p-md flex flex-col h-full">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-md">Coupon Code</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-xl">Have a referral or promo code? Apply it here to save on your next cycle.</p>
+<div class="mt-auto relative">
+<input class="w-full bg-glass-fill border border-glass-border rounded-lg px-md py-sm font-label-md text-label-md text-on-surface focus:border-primary outline-none transition-colors uppercase tracking-widest" placeholder="ENTER CODE" type="text">
+<button class="absolute right-xs top-1/2 -translate-y-1/2 bg-surface-variant text-on-surface px-md py-xs rounded-md font-label-sm text-label-sm hover:bg-primary-container hover:text-on-primary-container transition-all">APPLY</button>
+</div>
+</div>
+</section>
+<!-- Usage Section -->
+<section class="col-span-12 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="glass-card rounded-xl p-xl">
+<div class="flex justify-between items-center mb-xl">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">AI Credits</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Monthly generative allocation</p>
+</div>
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<div class="relative pt-1">
+<div class="flex mb-sm items-center justify-between">
+<div>
+<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-secondary bg-secondary/10">
+                                        Usage Status
+                                    </span>
+</div>
+<div class="text-right">
+<span class="text-xs font-semibold inline-block text-on-surface">
+                                        1,240 / 5,000
+                                    </span>
+</div>
+</div>
+<div class="overflow-hidden h-2 mb-xs text-xs flex rounded-full bg-surface-variant">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center shimmer-bg" style="width:24.8%"></div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-sm">Resetting in 18 days</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-xl">
+<div class="flex justify-between items-center mb-xl">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Storage</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Cloud workspace capacity</p>
+</div>
+<span class="material-symbols-outlined text-secondary">cloud</span>
+</div>
+<div class="relative pt-1">
+<div class="flex mb-sm items-center justify-between">
+<div>
+<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-primary bg-primary/10">
+                                        Data Limit
+                                    </span>
+</div>
+<div class="text-right">
+<span class="text-xs font-semibold inline-block text-on-surface">
+                                        12.4 GB / 50 GB
+                                    </span>
+</div>
+</div>
+<div class="overflow-hidden h-2 mb-xs text-xs flex rounded-full bg-surface-variant">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center shimmer-bg" style="width:24.8%"></div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-sm">Across all active projects</p>
+</div>
+</div>
+</section>
+<!-- Payment Methods -->
+<section class="col-span-12">
+<div class="glass-card rounded-xl p-xl">
+<div class="flex justify-between items-center mb-xl">
+<h4 class="font-headline-md text-headline-md text-on-surface">Payment Methods</h4>
+<button class="flex items-center gap-xs font-label-md text-label-md text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                                Add Payment Method
+                            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-low border border-glass-border rounded-xl p-md flex items-center justify-between group hover:border-primary/50 transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-12 h-8 bg-[#1a1a1a] rounded flex items-center justify-center border border-glass-border">
+<span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Visa ending in 4242</p>
+<p class="font-caption text-caption text-on-surface-variant uppercase">Expiry 04/26 • PRIMARY</p>
+</div>
+</div>
+<div class="flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs hover:bg-glass-fill rounded text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-xs hover:bg-glass-fill rounded text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Invoice History -->
+<section class="col-span-12">
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="p-xl border-b border-glass-border">
+<h4 class="font-headline-md text-headline-md text-on-surface">Invoice History</h4>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-glass-fill">
+<tr>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Invoice ID</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Amount</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-xl py-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-glass-border">
+<tr class="hover:bg-glass-fill transition-colors">
+<td class="px-xl py-md font-body-md text-body-md text-on-surface">Sep 12, 2023</td>
+<td class="px-xl py-md font-body-md text-body-md text-on-surface-variant">#INV-94021</td>
+<td class="px-xl py-md font-body-md text-body-md text-on-surface">$19.00</td>
+<td class="px-xl py-md">
+<span class="px-sm py-base bg-secondary/10 text-secondary rounded-full font-label-sm text-label-sm">Paid</span>
+</td>
+<td class="px-xl py-md text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-glass-fill transition-colors">
+<td class="px-xl py-md font-body-md text-body-md text-on-surface">Aug 12, 2023</td>
+<td class="px-xl py-md font-body-md text-body-md text-on-surface-variant">#INV-93118</td>
+<td class="px-xl py-md font-body-md text-body-md text-on-surface">$19.00</td>
+<td class="px-xl py-md">
+<span class="px-sm py-base bg-secondary/10 text-secondary rounded-full font-label-sm text-label-sm">Paid</span>
+</td>
+<td class="px-xl py-md text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-glass-fill transition-colors">
+<td class="px-xl py-md font-body-md text-body-md text-on-surface">Jul 12, 2023</td>
+<td class="px-xl py-md font-body-md text-body-md text-on-surface-variant">#INV-92850</td>
+<td class="px-xl py-md font-body-md text-body-md text-on-surface">$19.00</td>
+<td class="px-xl py-md">
+<span class="px-sm py-base bg-secondary/10 text-secondary rounded-full font-label-sm text-label-sm">Paid</span>
+</td>
+<td class="px-xl py-md text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+
+        // Simulating usage bar animation trigger on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const usageBars = document.querySelectorAll('.shimmer-bg');
+            usageBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.transition = 'width 1.5s cubic-bezier(0.65, 0, 0.35, 1)';
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+</body></html>

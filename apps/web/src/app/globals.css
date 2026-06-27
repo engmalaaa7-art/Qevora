@@ -2,8 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: var(--color-background, #ffffff);
-  color: var(--color-text, #111827);
-  transition: background-color 0.2s ease, color 0.2s ease;
+/* ===== Qevora Design System – Base Overrides ===== */
+@layer base {
+  :root {
+    --font-rubik: "Rubik", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-rubik), "Rubik", sans-serif;
+    background-color: #09090b;
+    color: #e5e1e4;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(192, 193, 255, 0.25);
+    color: #fff;
+  }
+
+  /* Focus Ring */
+  *:focus-visible {
+    outline: 2px solid #5b5fff;
+    outline-offset: 2px;
+  }
+}
+
+/* ===== Qevora Design System – Component Classes ===== */
+@layer components {
+  /* Glassmorphism */
+  .glass {
+    background: rgba(17, 18, 23, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card {
+    @apply glass transition-all duration-300;
+  }
+  .glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(23, 26, 33, 0.85);
+    transform: translateY(-4px);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(90deg, #c0c1ff, #d2bbff, #2fd9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: text-shine 4s linear infinite;
+  }
+
+  /* Glow Button */
+  .glow-button {
+    background: linear-gradient(135deg, #5b5fff, #6001d1);
+    box-shadow: 0px 0px 20px rgba(91, 95, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+  .glow-button:hover {
+    box-shadow: 0px 0px 30px rgba(91, 95, 255, 0.5);
+    transform: scale(1.02);
+  }
+  .glow-button:active {
+    transform: scale(0.98);
+  }
+  .glow-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Floating Orb */
+  .floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  /* Scroll Reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop;
+  }
+}
+
+/* ===== Keyframes ===== */
+@keyframes text-shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===== RTL Utilities ===== */
+[dir="rtl"] .rtl\:flip {
+  transform: scaleX(-1);
 }

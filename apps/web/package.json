@@ -9,16 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@qevora/schemas": "*",
-    "@qevora/shared": "*",
     "@qevora/design-system": "*",
     "@qevora/qevora-renderer": "*",
+    "@qevora/schemas": "*",
+    "@qevora/shared": "*",
     "@qevora/ui": "*",
-    "next": "^15.0.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "axios": "^1.18.1",
     "lucide-react": "^0.395.0",
-    "posthog-js": "^1.139.3"
+    "next": "^15.0.0",
+    "posthog-js": "^1.139.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@types/node": "^20.14.2",

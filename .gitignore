@@ -21,7 +21,8 @@ venv/
 
 # Environment
 .env
-.env.local
+.env.*
+!.env.example
 
 # Prisma
 prisma/generated/
@@ -48,3 +49,10 @@ coverage/
 
 # Cache
 .cache/
+.pytest_cache/
+.mypy_cache/
+
+# Temp files
+*.temp
+*.tmp
+*~

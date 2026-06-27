@@ -1,0 +1,459 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Qevora AI - Intelligent Loading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#4206d7",
+                    "glow-purple": "rgba(108, 77, 255, 0.4)",
+                    "surface-container-low": "#1c1a24",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-container": "#005640",
+                    "on-surface": "#e5e0ef",
+                    "background-deep": "#0D1117",
+                    "tertiary-fixed": "#ffddb5",
+                    "surface-variant": "#35333e",
+                    "on-surface-variant": "#c9c4d9",
+                    "on-secondary": "#003828",
+                    "surface-main": "#14121c",
+                    "tertiary": "#ffb955",
+                    "surface-dim": "#14121c",
+                    "surface": "#14121c",
+                    "on-error": "#690005",
+                    "surface-container-high": "#2a2933",
+                    "outline": "#928ea2",
+                    "on-tertiary-fixed": "#2a1800",
+                    "background": "#14121c",
+                    "primary-fixed-dim": "#c8bfff",
+                    "primary-fixed": "#e5deff",
+                    "surface-tint": "#c8bfff",
+                    "secondary-fixed": "#54fdc7",
+                    "surface-container-lowest": "#0e0d17",
+                    "primary-container": "#6c4dff",
+                    "on-primary-fixed": "#190064",
+                    "primary": "#c8bfff",
+                    "glass-border": "rgba(255, 255, 255, 0.1)",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "shimmer-gradient": "linear-gradient(90deg, #6c4dff, #44f1bc)",
+                    "secondary": "#44f1bc",
+                    "on-primary-container": "#f6f0ff",
+                    "surface-bright": "#3a3843",
+                    "surface-container-highest": "#35333e",
+                    "tertiary-container": "#996300",
+                    "surface-container": "#201e29",
+                    "on-primary": "#2d009d",
+                    "inverse-primary": "#5b38ee",
+                    "inverse-on-surface": "#312f3a",
+                    "on-tertiary": "#452b00",
+                    "tertiary-fixed-dim": "#ffb955",
+                    "on-tertiary-container": "#fff0e2",
+                    "inverse-surface": "#e5e0ef",
+                    "glass-fill": "rgba(255, 255, 255, 0.03)",
+                    "secondary-fixed-dim": "#27e0ac",
+                    "on-background": "#e5e0ef",
+                    "error": "#ffb4ab",
+                    "error-container": "#93000a",
+                    "secondary-container": "#00d4a2",
+                    "on-secondary-fixed": "#002116",
+                    "outline-variant": "#474556",
+                    "on-secondary-fixed-variant": "#00513c"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "sidebar-width": "320px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "base": "4px",
+                    "xl": "64px",
+                    "lg": "40px",
+                    "xs": "8px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Rubik"],
+                    "headline-xl": ["Rubik"],
+                    "caption": ["Rubik"],
+                    "headline-lg": ["Rubik"],
+                    "body-md": ["Rubik"],
+                    "body-lg": ["Rubik"],
+                    "label-md": ["Rubik"],
+                    "display-lg-mobile": ["Rubik"],
+                    "display-lg": ["Rubik"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "caption": ["10px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "headline-lg": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0D1117;
+            overflow: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .luminous-border {
+            position: relative;
+        }
+
+        .luminous-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            padding: 1px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #6c4dff, transparent 40%, transparent 60%, #44f1bc);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .bloom-glow {
+            filter: drop-shadow(0 0 15px rgba(108, 77, 255, 0.4));
+        }
+
+        .shimmer-progress {
+            background: linear-gradient(90deg, #6c4dff 0%, #44f1bc 50%, #6c4dff 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 100% 0%; }
+            100% { background-position: -100% 0%; }
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            color: #c8bfff;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        #particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: #c8bfff;
+            border-radius: 50%;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen w-full">
+<!-- Particle Layer -->
+<div id="particles-container"></div>
+<!-- Background Atmospheric Blurs -->
+<div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<!-- Main Loading Interface -->
+<main class="relative z-10 w-full max-w-lg px-margin-mobile md:px-0">
+<!-- Header Branding -->
+<div class="text-center mb-lg flex flex-col items-center gap-2">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tighter leading-none">
+                Qevora AI
+            </h1>
+<p class="font-label-md text-label-md text-on-surface-variant tracking-[0.2em] uppercase">
+                Intelligence Synchronizing
+            </p>
+</div>
+<!-- Central Glassmorphic Card -->
+<div class="glass-card luminous-border rounded-[2rem] p-lg flex flex-col items-center relative overflow-hidden">
+<!-- AI Orb Container -->
+<div class="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+<!-- Inner Glow -->
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-2xl animate-pulse"></div>
+<!-- The Shader Orb -->
+<div class="relative z-10 w-full h-full transform hover:scale-105 transition-transform duration-700 cursor-default">
+<!-- STITCH_SHADER_START:ANIMATION_30 class="w-full h-full drop-shadow-[0_0_30px_rgba(108,77,255,0.4)]" -->
+<div class="w-full h-full drop-shadow-[0_0_30px_rgba(108,77,255,0.4)]" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_30" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_30');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = (v_texCoord - 0.5) * 2.0;
+    uv.x *= u_resolution.x / u_resolution.y;
+    
+    // Core Orb
+    float dist = length(uv);
+    float orb = 0.3 / dist;
+    
+    // Pulsing and Swirling
+    float swirl = sin(dist * 10.0 - u_time * 3.0);
+    float glow = smoothstep(0.5, 0.0, dist) * (0.8 + 0.2 * sin(u_time * 2.0));
+    
+    // Brand Colors (Qevora Purple and Cyan)
+    vec3 color1 = vec3(0.42, 0.30, 1.0); // #6c4dff
+    vec3 color2 = vec3(0.27, 0.94, 0.74); // #44f1bc
+    
+    vec3 finalColor = mix(color1, color2, swirl * 0.5 + 0.5);
+    finalColor *= orb * glow;
+    
+    // Add some noise/particles
+    float n = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+    finalColor += n * 0.05 * glow;
+    
+    gl_FragColor = vec4(finalColor, glow * 0.8);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_30 -->
+</div>
+</div>
+<!-- Dynamic Status Text -->
+<div class="mt-lg text-center h-12 flex items-center justify-center">
+<span class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface typing-cursor" id="typing-container">Genera</span>
+</div>
+<!-- Detailed Stats (Subtle) -->
+<div class="mt-md w-full flex justify-between px-md text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[14px]">memory</span>
+<span>Neural Link: Stable</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[14px]">auto_awesome</span>
+<span id="percentage-text">0%</span>
+</div>
+</div>
+<!-- Progress Bar Section -->
+<div class="mt-sm w-full bg-surface-container-highest h-1 rounded-full overflow-hidden relative">
+<div class="absolute left-0 top-0 h-full shimmer-progress transition-all duration-300 ease-out" id="progress-bar" style="width: 0%"></div>
+</div>
+<!-- Secondary Decorative Elements -->
+<div class="absolute top-4 right-4 flex gap-1">
+<div class="w-1 h-1 rounded-full bg-primary animate-ping"></div>
+<div class="w-1 h-1 rounded-full bg-secondary/50"></div>
+<div class="w-1 h-1 rounded-full bg-on-surface-variant/20"></div>
+</div>
+</div>
+<!-- Footer Note -->
+<div class="mt-md text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant/40 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[12px]">security</span>
+                Encrypted with Quantum-Grade Security
+            </p>
+</div>
+</main>
+<script>
+        // Particle System
+        const container = document.getElementById('particles-container');
+        const particleCount = 40;
+
+        function createParticle() {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 3 + 1;
+            p.style.width = `${size}px`;
+            p.style.height = `${size}px`;
+            
+            const startX = Math.random() * window.innerWidth;
+            const startY = Math.random() * window.innerHeight;
+            
+            p.style.left = `${startX}px`;
+            p.style.top = `${startY}px`;
+            
+            container.appendChild(p);
+            
+            const duration = Math.random() * 10 + 10;
+            const targetX = startX + (Math.random() - 0.5) * 200;
+            const targetY = startY + (Math.random() - 0.5) * 200;
+
+            p.animate([
+                { transform: 'translate(0, 0)', opacity: 0 },
+                { transform: `translate(${(Math.random() - 0.5) * 50}px, ${(Math.random() - 0.5) * 50}px)`, opacity: 0.4, offset: 0.5 },
+                { transform: `translate(${targetX - startX}px, ${targetY - startY}px)`, opacity: 0 }
+            ], {
+                duration: duration * 1000,
+                iterations: Infinity,
+                easing: 'ease-in-out'
+            });
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            createParticle();
+        }
+
+        // Typing Effect & Progress Tracking
+        const messages = [
+            "Generating sections...",
+            "Building layout...",
+            "Writing content...",
+            "Optimizing SEO...",
+            "Preparing deployment..."
+        ];
+        
+        const typingContainer = document.getElementById('typing-container');
+        const progressBar = document.getElementById('progress-bar');
+        const percentageText = document.getElementById('percentage-text');
+        
+        let currentMsgIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        let progress = 0;
+
+        function type() {
+            const currentMessage = messages[currentMsgIndex];
+            
+            if (isDeleting) {
+                typingContainer.textContent = currentMessage.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+                typingSpeed = 50;
+            } else {
+                typingContainer.textContent = currentMessage.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && currentCharIndex === currentMessage.length) {
+                isDeleting = true;
+                typingSpeed = 2000; // Pause at end
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentMsgIndex = (currentMsgIndex + 1) % messages.length;
+                typingSpeed = 500; // Pause before next
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+
+        function updateProgress() {
+            if (progress < 100) {
+                // Natural varying speed for progress
+                const increment = Math.random() * 0.5 + 0.1;
+                progress = Math.min(progress + increment, 100);
+                progressBar.style.width = `${progress}%`;
+                percentageText.textContent = `${Math.floor(progress)}%`;
+                
+                requestAnimationFrame(updateProgress);
+            } else {
+                percentageText.textContent = "Complete";
+            }
+        }
+
+        // Init
+        setTimeout(type, 1000);
+        updateProgress();
+
+        // Subtle mouse tracking for the card
+        const card = document.querySelector('.glass-card');
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 10;
+            const y = (e.clientY / window.innerHeight - 0.5) * 10;
+            card.style.transform = `perspective(1000px) rotateX(${-y}deg) rotateY(${x}deg)`;
+        });
+    </script>
+</body></html>

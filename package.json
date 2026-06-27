@@ -13,7 +13,11 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "clean": "turbo run clean"
+    "clean": "turbo run clean",
+    "format": "turbo run format",
+    "generate": "turbo run generate",
+    "migrate": "npx prisma migrate dev",
+    "seed": "npx tsx infrastructure/database/seed.ts"
   },
   "devDependencies": {
     "prisma": "^5.18.0",

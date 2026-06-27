@@ -1,0 +1,371 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>User Profile | Qevora AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: #0e0d17;
+            color: #e5e0ef;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(108, 77, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(108, 77, 255, 0.1), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav {
+            background: #6c4dff;
+            color: #f6f0ff;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c8bfff",
+                        "primary-container": "#6c4dff",
+                        "on-primary-container": "#f6f0ff",
+                        "surface": "#14121c",
+                        "surface-container-low": "#1c1a24",
+                        "surface-container-lowest": "#0e0d17",
+                        "on-surface": "#e5e0ef",
+                        "on-surface-variant": "#c9c4d9",
+                        "outline-variant": "#474556",
+                        "secondary": "#44f1bc",
+                        "tertiary": "#ffb955"
+                    },
+                    spacing: {
+                        "sm": "16px",
+                        "md": "24px",
+                        "lg": "40px",
+                        "xl": "64px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Rubik"],
+                        "headline-lg": ["Rubik"],
+                        "label-md": ["Rubik"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="dark bg-surface-container-lowest text-on-surface">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-[320px] bg-surface-container-lowest backdrop-blur-xl border-r border-outline-variant flex flex-col py-xl px-md z-50">
+<div class="mb-xl">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">Creative Suite</h1>
+<p class="text-on-surface-variant font-label-md text-label-md opacity-70">Pro Plan Member</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Navigation items from JSON -->
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="font-label-md">Projects</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md">Subscriptions</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md">Activity</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-lg px-4 py-3 shadow-lg shadow-primary-container/20" href="#">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-label-md">Security</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4">
+<div class="p-4 rounded-xl bg-surface-variant/20 border border-outline-variant/30 text-center">
+<p class="text-label-md font-medium text-primary mb-2">Upgrade to Max</p>
+<button class="w-full py-2 px-4 bg-primary-container text-white rounded-lg text-label-md font-bold active:scale-95 transition-transform">Unlock All Features</button>
+</div>
+<div class="pt-4 border-t border-outline-variant/30">
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Bar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-320px)] h-16 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 flex justify-between items-center px-lg z-40">
+<div class="flex items-center gap-8">
+<div class="relative">
+<span class="absolute inset-y-0 left-3 flex items-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="bg-surface-container-low border border-outline-variant/50 rounded-full py-1.5 pl-10 pr-4 text-label-md focus:ring-1 focus:ring-primary outline-none w-64" placeholder="Quick search..." type="text">
+</div>
+<nav class="flex gap-6">
+<a class="font-label-md text-on-surface-variant hover:text-primary transition-all" href="#">Explorer</a>
+<a class="font-label-md text-on-surface-variant hover:text-primary transition-all" href="#">Community</a>
+<a class="font-label-md text-on-surface-variant hover:text-primary transition-all" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">dark_mode</button>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<button class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-full text-label-md font-bold active:scale-[0.98] transition-all">Create New</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of Alex Rivera, a young male tech professional with a friendly smile, set against a blurred modern office background with neon purple accent lighting that matches the Qevora AI brand aesthetic. The lighting is soft and high-fidelity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiZkQYHXwE4BYR139tZIrAc6fWNoVYbYx00-zUHVzutP1UklyUQrvZag0MP-g8ODaXDnCGZetwTurqLFa86ujdqr3xSZuMsq7O7tL5i-x2BdC_HqmWb5TfxoeTVxw30RMbZi8xEiExvga7rl26LhajjDUKlwstumVakjGtAcPjiBVTOXeVfr6H0dtM5QtYvXOxm_reeV-jaAI6Csd1XCBQOwdsT3tPfqeJY3efUdxjFZZLgswx4gaQDavLAor6AWE-lNq-sD2Mt1o">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[320px] pt-16 min-h-screen p-lg">
+<div class="max-w-[1200px] mx-auto">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row items-start md:items-end justify-between mb-xl gap-6">
+<div class="flex items-center gap-8">
+<div class="relative group">
+<div class="w-32 h-32 rounded-3xl overflow-hidden border-4 border-surface-container-low shadow-2xl relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110 duration-500" data-alt="A high-resolution, premium headshot of a creative professional male in his early 30s named Alex Rivera. He has a sharp, modern appearance and is wearing a dark, minimal turtleneck. The background features deep purple and dark charcoal tones with a cinematic soft-focus glow. The lighting is sophisticated and highlights his features with a professional edge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPq231la-YykIgAmW9Tkv0NM7BKRxubrs5Ft2atCAx9rQPSk1AHA2L8SoB9kJBls5TjyWAhayFhD8UG1Mkf6eboA9j7P_MEM5sUID6FruvnC9g7sgcgie_NuynvkdVG80G_iuXU0zrqETpwQeXaE7LZuq2U2e916GV-2iX7qWRRHv1OBx7unOFRVnFvvonRThp7DGTptM4DIi6YN2MPqTm80umLV9-u0y_aKxKck17uaPaP9HlO0CeVv9KkwGKDV3Ju47Nz00fRps">
+</div>
+<button class="absolute -bottom-2 -right-2 bg-primary-container p-2 rounded-xl shadow-lg border border-white/10 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-white text-[20px]">edit</span>
+</button>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<h2 class="font-headline-xl text-headline-xl font-bold tracking-tight">Alex Rivera</h2>
+<div class="flex gap-2">
+<span class="bg-primary-container/20 text-primary px-3 py-1 rounded-full text-label-sm font-bold border border-primary/20">Pro Creator</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-label-sm font-bold border border-secondary/20">Early Adopter</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                            alex@qevora.ai
+                        </p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-xl border border-outline-variant text-on-surface font-label-md hover:bg-surface-variant/30 active:scale-95 transition-all">Public Profile</button>
+<button class="px-6 py-2.5 rounded-xl bg-primary-container text-white font-label-md shadow-lg shadow-primary-container/30 active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">settings_account_box</span>
+                        Edit Profile
+                    </button>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Recent Projects: Large Horizontal Card -->
+<div class="col-span-12 lg:col-span-8 glass-card rounded-[2rem] p-md overflow-hidden relative">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-headline-lg font-bold">Recent Projects</h3>
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline">
+                            View All <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Project Card 1 -->
+<div class="group cursor-pointer">
+<div class="h-40 rounded-2xl mb-3 overflow-hidden border border-outline-variant/30 relative">
+<div class="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A futuristic minimalist portfolio website layout showcasing geometric typography and dark purple glassmorphic UI elements. The design is sleek, professional, and captures a premium AI-driven web aesthetic with glowing accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaYoKLK-gPhvzilXM9zUaOLDSTGpoZyey1XKaZsPLIPY8AB__LLyWTo5U7g2oRpJ5myZLQFbiVcFGkht_cXeOHfR3cpw18ipBZif9I1ZniJmdx6hh65EMng1-93EYcP1jOwyXJaOP1NzJsxMjqOFM45Sm1SlSN3eVAw_8UQ3Ab0MISMX78RgTWf_5EzJaOmLEZgKFpulmO-uE23wpJct4RaSAKYIR29hQQBm8XgB_CBdaDDbdn6omjz16jy2F_565hkUsi-JJHeGs')"></div>
+</div>
+<p class="font-label-md font-bold mb-1">Portfolio Site</p>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 2 hours ago
+                            </p>
+</div>
+<!-- Project Card 2 -->
+<div class="group cursor-pointer">
+<div class="h-40 rounded-2xl mb-3 overflow-hidden border border-outline-variant/30 relative">
+<div class="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A dashboard UI design for a high-tech SaaS application called Qevora. The interface features complex data visualizations, purple neon charts, and a glassmorphic sidebar. The overall mood is futuristic and deeply immersive." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWdefaJeQXM6fe0n7V4voQM5tQIr85IUd-KvFGGIFDs_yWDF0NuV6sijoZIJCmQFkJ4bb5MFUSA9lg3E4R0tcP4K6-LJQ0F2dp6AaTD3Pkvi_JCg3K8RJxpY6RcHCTyD5zzG92aV8GTa_9h-pXg2JwYtk3TMI1087eVgUzKKRELD3CAM7HKB4wQ2zLUn9ANj5XKeaTen4fNWu2e0qQZFO0BYy9sNvCZZzQ-wN7zBV9a2WD4Z9FxV5P1yASLWkOz-5JPhKoB6pewcQ')"></div>
+</div>
+<p class="font-label-md font-bold mb-1">Qevora App</p>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Yesterday
+                            </p>
+</div>
+<!-- Project Card 3 -->
+<div class="group cursor-pointer">
+<div class="h-40 rounded-2xl mb-3 overflow-hidden border border-outline-variant/30 relative">
+<div class="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Conceptual AI interface designs showing 3D neural network visualizations in a dark, ethereal digital space. The colors are dominated by electric purple and deep void black, representing cutting-edge AI technology." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCd5DY53JTKjfp7fBbGekUh4XdFB0pFWI16tI6KcRqHJRNeN4u-oT6R0SrQ8H-uqUnv1OY1aDaz88obRp_2OrZehCGoFAHiNtrTD5Nudk8QMZ0S5qyCdnOjvmheCzTQ2HNW_8PIzgAE2aCvr9yPUkE4E95-_bJZpf3qUyGKj4qqscB5b6Nny-fPamZdVQivw_XnYLrcTJgmtPzdji7ZsEFsQMMthFgy3FlgJYJNrR6AbISvMwu6MuuB0x2qxNa92a5EAUNteWZYZnM')"></div>
+</div>
+<p class="font-label-md font-bold mb-1">AI Concept</p>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 3 days ago
+                            </p>
+</div>
+</div>
+<!-- Background Shader Effect -->
+
+</div>
+<!-- Subscription Card -->
+<div class="col-span-12 lg:col-span-4 glass-card rounded-[2rem] p-md flex flex-col relative overflow-hidden">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-headline-lg font-bold">Pro Plan</h3>
+<p class="text-label-sm text-primary">Renews on Oct 12, 2024</p>
+</div>
+<span class="material-symbols-outlined text-primary text-[32px]">workspace_premium</span>
+</div>
+<div class="space-y-8 flex-1">
+<!-- Storage Usage -->
+<div class="space-y-2">
+<div class="flex justify-between text-label-md">
+<span class="font-medium">Cloud Storage</span>
+<span class="text-on-surface-variant">12.4 GB / 50 GB</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden border border-outline-variant/30">
+<div class="h-full bg-primary-container rounded-full shimmer" style="width: 25%"></div>
+</div>
+</div>
+<!-- AI Credits Usage -->
+<div class="space-y-2">
+<div class="flex justify-between text-label-md">
+<span class="font-medium">AI Credits</span>
+<span class="text-on-surface-variant">1,240 / 5,000</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden border border-outline-variant/30">
+<div class="h-full bg-secondary rounded-full shimmer" style="width: 24.8%"></div>
+</div>
+</div>
+</div>
+<button class="mt-8 w-full py-3 bg-surface-variant/30 rounded-xl font-label-md text-on-surface border border-outline-variant/50 hover:bg-surface-variant/50 transition-all active:scale-95">Manage Billing</button>
+</div>
+<!-- Activity Timeline -->
+<div class="col-span-12 lg:col-span-6 glass-card rounded-[2rem] p-md">
+<h3 class="text-headline-lg font-bold mb-8">Activity Timeline</h3>
+<div class="space-y-8 relative">
+<!-- Connecting Line -->
+<div class="absolute left-6 top-2 bottom-2 w-0.5 bg-outline-variant/20"></div>
+<div class="flex gap-6 relative">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 border border-primary/30 flex items-center justify-center shrink-0 z-10 backdrop-blur-md">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+</div>
+<div>
+<p class="font-label-md font-bold text-on-surface">Generated Portfolio Site</p>
+<p class="text-label-sm text-on-surface-variant mb-1">AI builder completed layout generation</p>
+<p class="text-label-sm text-outline font-medium">Oct 10, 10:45 AM</p>
+</div>
+</div>
+<div class="flex gap-6 relative">
+<div class="w-12 h-12 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center shrink-0 z-10 backdrop-blur-md">
+<span class="material-symbols-outlined text-secondary">cloud_done</span>
+</div>
+<div>
+<p class="font-label-md font-bold text-on-surface">Published Qevora App</p>
+<p class="text-label-sm text-on-surface-variant mb-1">Production deployment successful</p>
+<p class="text-label-sm text-outline font-medium">Oct 08, 04:20 PM</p>
+</div>
+</div>
+<div class="flex gap-6 relative">
+<div class="w-12 h-12 rounded-full bg-tertiary/10 border border-tertiary/20 flex items-center justify-center shrink-0 z-10 backdrop-blur-md">
+<span class="material-symbols-outlined text-tertiary">credit_card</span>
+</div>
+<div>
+<p class="font-label-md font-bold text-on-surface">Updated Subscription</p>
+<p class="text-label-sm text-on-surface-variant mb-1">Switched to Pro Annual Billing</p>
+<p class="text-label-sm text-outline font-medium">Oct 01, 11:30 AM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Security & Connections -->
+<div class="col-span-12 lg:col-span-6 glass-card rounded-[2rem] p-md">
+<h3 class="text-headline-lg font-bold mb-8">Security &amp; Access</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-surface-container/30 border border-outline-variant/30 rounded-2xl p-4">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-primary">lock_person</span>
+<span class="bg-secondary/20 text-secondary text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider">Enabled</span>
+</div>
+<p class="font-label-md font-bold">2FA Security</p>
+<p class="text-label-sm text-on-surface-variant mb-4">Authenticator app linked</p>
+<button class="text-primary text-label-sm font-bold hover:underline">Configure Settings</button>
+</div>
+<div class="bg-surface-container/30 border border-outline-variant/30 rounded-2xl p-4">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-on-surface-variant">history_edu</span>
+<span class="text-on-surface-variant text-label-sm">12d ago</span>
+</div>
+<p class="font-label-md font-bold">Last Password Change</p>
+<p class="text-label-sm text-on-surface-variant mb-4">Keep your account secure</p>
+<button class="text-primary text-label-sm font-bold hover:underline">Update Now</button>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/30">
+<p class="text-label-md font-bold mb-6">Connected Accounts</p>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-3 bg-surface-container/50 border border-outline-variant/30 rounded-xl px-4 py-2 hover:border-primary/50 transition-colors cursor-pointer group">
+<img alt="GitHub" class="w-5 h-5 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGmacybRUyFel0jUY-jQADpFN2MaKoycPoa3bV9pgApiRW8tFK1KAafTXdwkS5m0LE0Hb4W6vJgC2poITXx3V5fRkDQ7C8W-GNhYJIsYnNjaIWBWM9e7e7WLVcfJNVngG6nLlwjWo-qGgXOdiYMM0nU4imhLcAQAn_oTB1ixyPi5aX_-CCuAz-qYanEub7ZNfUSX18Wfrfih-XduK2nzXybJi_rOyBcAMaHpMDaMZYpY2aMRl6ebphOtkume8HvnIMAp5NHhmsfkU">
+<span class="font-label-md group-hover:text-primary">GitHub</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+</div>
+<div class="flex items-center gap-3 bg-surface-container/50 border border-outline-variant/30 rounded-xl px-4 py-2 hover:border-primary/50 transition-colors cursor-pointer group">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfboYNCrbflcNBRhSpx91fLlTimxYswj2Lm2WzrglRMSM4OnHmsBYUPIAJe1A-WomAuAPb0wIzopruoxn-0yINJJTx0UC6XnF2B9H0roqPXKBl14bJy-ST405Uu043-0mD4B7X_OOUWfsPab_o0Q4S5c5zyzc4UyvhMMadOVwY1tSXQbTbEUjA4tA7JEc3nPp85lzSPHzQCGs9o_ps-iVMHpK6MLohTEM6KjXT4M0lLUWcvU5HF1aqBL0JniHMPoCWJzYbWGgNXis">
+<span class="font-label-md group-hover:text-primary">Google</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+</div>
+<div class="flex items-center gap-3 bg-surface-container/50 border border-outline-variant/30 rounded-xl px-4 py-2 hover:border-primary/50 transition-colors cursor-pointer group opacity-60">
+<img alt="Discord" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgiPN3kImLERGy1mTHNzIpMz67op4KtlPxEY6pdOG5_cFrFBklfhN0wHgzp093BBpiyw_v46Z0dRK8pCC7JCt-Mmis3n-sVU89AT0evIwuXBh_aTlp9cXRXWbBmrEamsyRf-IYrRv-RcaCjZ8fT4yaRpCb4SuvmtY051ZBeVSWzfLGLXoPMRIB7BRdAiS-CEzKvFdS-e5kn3eF5x4o79C-CullZ4Nne8mcr9GxXyFnztTVbk8eojmWJzDWnF7JHYZWbJAtgSWFu3E">
+<span class="font-label-md group-hover:text-primary">Discord</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">add_circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions and subtle hover effects
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.96)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+
+        // Interactive progress simulation (just for visual flair)
+        setTimeout(() => {
+            console.log("Qevora UI Ready.");
+        }, 500);
+    </script>
+</body></html>

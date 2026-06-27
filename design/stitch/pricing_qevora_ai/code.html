@@ -1,0 +1,499 @@
+<!DOCTYPE html><html class="dark" dir="ltr" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Pricing | Qevora AI Builder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#c8bfff",
+                        "inverse-on-surface": "#312f3a",
+                        "secondary": "#44f1bc",
+                        "primary": "#c8bfff",
+                        "tertiary-container": "#986300",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "on-primary-container": "#f6f0ff",
+                        "on-tertiary-container": "#fff0e2",
+                        "on-primary-fixed-variant": "#4206d7",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#54fdc6",
+                        "surface-container-lowest": "#0e0d17",
+                        "surface-variant": "#35333e",
+                        "on-surface-variant": "#c9c4d9",
+                        "surface-dim": "#14121c",
+                        "on-surface": "#e5e0ef",
+                        "tertiary-fixed": "#ffddb4",
+                        "tertiary-fixed-dim": "#ffb955",
+                        "surface": "#14121c",
+                        "secondary-fixed-dim": "#27e0ab",
+                        "primary-fixed": "#e5deff",
+                        "on-tertiary-fixed": "#291800",
+                        "surface-container-high": "#2a2933",
+                        "on-secondary-fixed-variant": "#00513c",
+                        "on-primary-fixed": "#190064",
+                        "surface-bright": "#3a3843",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1c1a24",
+                        "on-secondary-container": "#00563f",
+                        "tertiary": "#ffb955",
+                        "on-primary": "#2d009d",
+                        "background": "#14121c",
+                        "on-tertiary": "#452b00",
+                        "surface-container": "#201e29",
+                        "primary-container": "#6c4dff",
+                        "surface-container-highest": "#35333e",
+                        "inverse-surface": "#e5e0ef",
+                        "primary-fixed-dim": "#c8bfff",
+                        "on-secondary": "#003828",
+                        "on-secondary-fixed": "#002116",
+                        "outline": "#928ea2",
+                        "on-error": "#690005",
+                        "on-background": "#e5e0ef",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#5b38ee",
+                        "secondary-container": "#00d4a1",
+                        "outline-variant": "#474556"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "xs": "8px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "container-max": "1440px",
+                        "xl": "64px",
+                        "gutter": "24px",
+                        "stack-xl": "80px",
+                        "stack-lg": "48px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Rubik"],
+                        "label-md": ["Rubik"],
+                        "body-md": ["Rubik"],
+                        "display-lg-mobile": ["Rubik"],
+                        "display-lg": ["Rubik"],
+                        "label-sm": ["Rubik"],
+                        "headline-xl": ["Rubik"],
+                        "body-lg": ["Rubik"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #14121c;
+            color: #e5e0ef;
+            font-family: 'Rubik', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(200, 191, 255, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .primary-glow {
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #c8bfff 0%, #44f1bc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .toggle-knob {
+            transition: transform 0.3s ease;
+        }
+
+        [dir="rtl"] .toggle-knob {
+            transform: translateX(-100%);
+        }
+
+        .animate-flow {
+            background: linear-gradient(90deg, #c8bfff, #44f1bc, #c8bfff);
+            background-size: 200% auto;
+            animation: flow 3s linear infinite;
+        }
+
+        @keyframes flow {
+            to { background-position: 200% center; }
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-xl">
+<div class="flex justify-between items-center px-6 md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<img alt="Qevora Logo" class="w-8 h-8 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeyzSBtAU56gqsCJD6uGwpirNYV9pmfkufk4TRFcuz7czk4Z7dyR62yxTwd406TKvAJTXDOz-1Jheg0VDGIQW1Y57oRABJNMfmkxbOj5sXcWQKpd-eagkdDZ4flBuOlpfEdKPMg5gtd45Dx-DM4Z00ROJbvMvWFZ8w9KoUWxpebIRH1UyCWwr4BtFB2-VK2ppplPrYeBW3YivnMhOB0eOpNqpbSwwjAzaUPOZR7iamaqY7c_M8eGVAAoFX9FnlRd8_61SN4dp0waw">
+<span class="font-headline-md text-headline-md font-bold tracking-tighter text-on-surface">Qevora</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="#">Features</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="#">Templates</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-sm text-label-sm" href="#">Pricing</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="#">Docs</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" id="lang-switch">العربية</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-bold text-label-sm hover:scale-95 transition-transform active:scale-90">Start Building</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="pt-40 pb-20 px-6 max-w-container-max mx-auto text-center relative">
+
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 en-content">Simple, Transparent Pricing</h1>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 ar-content hidden" dir="rtl">تسعير بسيط وشفاف</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10 en-content">Choose the plan that's right for your creative journey. All plans include our core AI engine.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10 ar-content hidden" dir="rtl">اختر الخطة المناسبة لرحلتك الإبداعية. تشمل جميع الخطط محرك الذكاء الاصطناعي الأساسي لدينا.</p>
+<!-- Toggle Switch -->
+<div class="flex items-center justify-center gap-4 mb-16">
+<span class="font-label-md text-label-md text-on-surface">Monthly</span>
+<button class="w-14 h-7 bg-surface-variant rounded-full p-1 relative transition-colors duration-300 hover:bg-outline-variant" id="billing-toggle">
+<div class="w-5 h-5 bg-primary rounded-full transition-all duration-300 shadow-lg" id="toggle-knob"></div>
+</button>
+<span class="font-label-md text-label-md text-on-surface">Yearly <span class="text-secondary bg-secondary/10 px-2 py-0.5 rounded-full text-[10px] ml-1">-20%</span></span>
+</div>
+</section>
+<!-- Pricing Grid -->
+<section class="px-6 pb-24 max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Free Plan -->
+<div class="glass-card p-8 rounded-3xl flex flex-col">
+<div class="mb-8">
+<h3 class="font-headline-lg text-headline-lg mb-2">Free</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">For hobbyists and curious minds.</p>
+</div>
+<div class="mb-8">
+<span class="text-5xl font-black">$0</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">AI Web Builder (Basic)</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">Qevora Subdomain</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">5 Pages per site</span>
+</li>
+<li class="flex items-center gap-3 opacity-40">
+<span class="material-symbols-outlined text-lg">cancel</span>
+<span class="font-body-md text-body-md">Custom Domains</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-white/10 font-bold hover:bg-white/5 transition-colors">Get Started</button>
+</div>
+<!-- Pro Plan -->
+<div class="glass-card p-8 rounded-3xl flex flex-col relative border-primary/50 ring-2 ring-primary/20 scale-105 z-10 bg-surface-container">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Most Popular</div>
+<div class="mb-8">
+<h3 class="font-headline-lg text-headline-lg mb-2 text-primary">Pro</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">Advanced AI for professionals.</p>
+</div>
+<div class="mb-8">
+<span class="text-5xl font-black price-value" data-monthly="24" data-yearly="19">$19</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-body-md text-body-md font-bold">Full AI Designer</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">Custom Domains</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">Unlimited Pages</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">0% Transaction Fees</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">SEO Optimization Tools</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-black primary-glow hover:brightness-110 transition-all">Start 14-Day Trial</button>
+</div>
+<!-- Enterprise Plan -->
+<div class="glass-card p-8 rounded-3xl flex flex-col">
+<div class="mb-8">
+<h3 class="font-headline-lg text-headline-lg mb-2">Enterprise</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">Scale with power and security.</p>
+</div>
+<div class="mb-8">
+<span class="text-5xl font-black">Custom</span>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">Dedicated Support</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">SAML SSO &amp; Security</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">White-label CMS</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-body-md text-body-md">Custom API Integration</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-white/10 font-bold hover:bg-white/5 transition-colors">Contact Sales</button>
+</div>
+</div>
+</section>
+<!-- Comparison Table -->
+<section class="px-6 py-24 max-w-container-max mx-auto overflow-hidden">
+<h2 class="font-headline-xl text-headline-xl text-center mb-16">Compare Features</h2>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="border-b border-white/10">
+<th class="py-6 px-4 text-left font-label-md text-label-md text-on-surface-variant">Feature</th>
+<th class="py-6 px-4 text-center font-label-md text-label-md">Free</th>
+<th class="py-6 px-4 text-center font-label-md text-label-md text-primary">Pro</th>
+<th class="py-6 px-4 text-center font-label-md text-label-md">Enterprise</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+<td class="py-6 px-4 font-medium">AI Credits /mo</td>
+<td class="py-6 px-4 text-center">100</td>
+<td class="py-6 px-4 text-center font-bold">Unlimited</td>
+<td class="py-6 px-4 text-center font-bold">Custom</td>
+</tr>
+<tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+<td class="py-6 px-4 font-medium">Storage</td>
+<td class="py-6 px-4 text-center">1 GB</td>
+<td class="py-6 px-4 text-center">50 GB</td>
+<td class="py-6 px-4 text-center">Unlimited</td>
+</tr>
+<tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+<td class="py-6 px-4 font-medium">Bandwidth</td>
+<td class="py-6 px-4 text-center">5 GB</td>
+<td class="py-6 px-4 text-center">Unlimited</td>
+<td class="py-6 px-4 text-center">Priority</td>
+</tr>
+<tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+<td class="py-6 px-4 font-medium">Analytics</td>
+<td class="py-6 px-4 text-center">Basic</td>
+<td class="py-6 px-4 text-center">Advanced</td>
+<td class="py-6 px-4 text-center">Real-time</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="py-6 px-4 font-medium">Support</td>
+<td class="py-6 px-4 text-center text-on-surface-variant">Community</td>
+<td class="py-6 px-4 text-center">Email 24/7</td>
+<td class="py-6 px-4 text-center">Dedicated Agent</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="px-6 py-24 bg-surface-container-low">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl text-center mb-12">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<!-- FAQ 1 -->
+<div class="faq-item glass-card rounded-2xl overflow-hidden cursor-pointer">
+<div class="flex items-center justify-between p-6" onclick="toggleFaq(this)">
+<h4 class="font-headline-lg text-[18px]">Can I cancel my subscription at any time?</h4>
+<span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+</div>
+<div class="faq-content px-6 pb-6 text-on-surface-variant font-body-md">
+                        Yes, you can cancel your subscription at any time from your account settings. You will retain access to your plan's features until the end of your current billing period.
+                    </div>
+</div>
+<!-- FAQ 2 -->
+<div class="faq-item glass-card rounded-2xl overflow-hidden cursor-pointer">
+<div class="flex items-center justify-between p-6" onclick="toggleFaq(this)">
+<h4 class="font-headline-lg text-[18px]">What are AI Credits?</h4>
+<span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+</div>
+<div class="faq-content px-6 pb-6 text-on-surface-variant font-body-md">
+                        AI Credits power the generative features like "Write with AI", "Generate Sections", and "Auto-Design". Each major action consumes a credit. Pro and Enterprise plans enjoy unlimited generations.
+                    </div>
+</div>
+<!-- FAQ 3 -->
+<div class="faq-item glass-card rounded-2xl overflow-hidden cursor-pointer">
+<div class="flex items-center justify-between p-6" onclick="toggleFaq(this)">
+<h4 class="font-headline-lg text-[18px]">Does Qevora offer student discounts?</h4>
+<span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+</div>
+<div class="faq-content px-6 pb-6 text-on-surface-variant font-body-md">
+                        Absolutely! We offer a 50% discount for students and educators with a valid .edu email address. Contact our support team to activate your discount.
+                    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="px-6 py-32 text-center relative overflow-hidden">
+<div class="absolute inset-0 -z-10 flex justify-center items-center">
+<div class="w-[800px] h-[400px] bg-primary/20 blur-[120px] rounded-full"></div>
+</div>
+<h2 class="font-headline-xl text-headline-xl mb-6">Ready to build your future?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10">Start your 14-day free trial today. No credit card required.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-black text-lg primary-glow hover:scale-105 active:scale-95 transition-all">Start Free Trial</button>
+<button class="glass-card px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-colors">Watch Demo</button>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface w-full py-stack-xl border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg px-6 md:px-margin-desktop max-w-container-max mx-auto">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<img alt="Qevora Logo" class="w-8 h-8 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeyzSBtAU56gqsCJD6uGwpirNYV9pmfkufk4TRFcuz7czk4Z7dyR62yxTwd406TKvAJTXDOz-1Jheg0VDGIQW1Y57oRABJNMfmkxbOj5sXcWQKpd-eagkdDZ4flBuOlpfEdKPMg5gtd45Dx-DM4Z00ROJbvMvWFZ8w9KoUWxpebIRH1UyCWwr4BtFB2-VK2ppplPrYeBW3YivnMhOB0eOpNqpbSwwjAzaUPOZR7iamaqY7c_M8eGVAAoFX9FnlRd8_61SN4dp0waw">
+<span class="font-headline-sm text-headline-sm font-black text-on-surface">Qevora AI</span>
+</div>
+<p class="text-on-surface-variant max-w-sm font-body-md">Empowering creators with the world's most intuitive AI-driven website builder. Design, launch, and grow with zero friction.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+<div class="flex flex-col gap-3">
+<span class="font-label-sm text-label-sm text-on-surface font-bold uppercase tracking-wider mb-2">Product</span>
+<a class="text-on-surface-variant font-label-xs text-label-xs hover:text-primary transition-all" href="#">Status</a>
+<a class="text-on-surface-variant font-label-xs text-label-xs hover:text-primary transition-all" href="#">Twitter</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-sm text-label-sm text-on-surface font-bold uppercase tracking-wider mb-2">Community</span>
+<a class="text-on-surface-variant font-label-xs text-label-xs hover:text-primary transition-all" href="#">GitHub</a>
+<a class="text-on-surface-variant font-label-xs text-label-xs hover:text-primary transition-all" href="#">Discord</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-sm text-label-sm text-on-surface font-bold uppercase tracking-wider mb-2">Legal</span>
+<a class="text-on-surface-variant font-label-xs text-label-xs hover:text-primary transition-all" href="#">Privacy</a>
+<a class="text-on-surface-variant font-label-xs text-label-xs hover:text-primary transition-all" href="#">Terms</a>
+</div>
+</div>
+</div>
+<div class="mt-20 pt-8 border-t border-white/5 text-center text-on-surface-variant font-label-xs text-label-xs">
+            © 2024 Qevora AI. All rights reserved.
+        </div>
+</footer>
+<script>
+        // Language Switcher Logic
+        const langBtn = document.getElementById('lang-switch');
+        const enContents = document.querySelectorAll('.en-content');
+        const arContents = document.querySelectorAll('.ar-content');
+        let currentLang = 'en';
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            langBtn.textContent = currentLang === 'ar' ? 'English' : 'العربية';
+            
+            enContents.forEach(el => el.classList.toggle('hidden', currentLang === 'ar'));
+            arContents.forEach(el => el.classList.toggle('hidden', currentLang === 'en'));
+        });
+
+        // Billing Toggle Logic
+        const billingBtn = document.getElementById('billing-toggle');
+        const knob = document.getElementById('toggle-knob');
+        const prices = document.querySelectorAll('.price-value');
+        let isYearly = true;
+
+        billingBtn.addEventListener('click', () => {
+            isYearly = !isYearly;
+            knob.style.transform = isYearly ? 'translateX(100%)' : 'translateX(0)';
+            if (document.documentElement.dir === 'rtl') {
+                knob.style.transform = isYearly ? 'translateX(-100%)' : 'translateX(0)';
+            }
+            
+            prices.forEach(price => {
+                const val = isYearly ? price.dataset.yearly : price.dataset.monthly;
+                price.textContent = `$${val}`;
+            });
+        });
+
+        // Initialize knob position
+        knob.style.transform = 'translateX(100%)';
+
+        // FAQ Accordion Logic
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all items
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            
+            // Toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Atmosphere Micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

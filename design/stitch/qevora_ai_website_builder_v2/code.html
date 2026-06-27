@@ -1,0 +1,591 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Qevora | Build Stunning Websites with AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#6c4dff",
+                        "on-tertiary-container": "#fff0e2",
+                        "primary-fixed": "#e5deff",
+                        "on-background": "#e5e0ef",
+                        "inverse-surface": "#e5e0ef",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "on-primary-container": "#f6f0ff",
+                        "tertiary-fixed": "#ffddb4",
+                        "on-secondary-fixed-variant": "#00513c",
+                        "surface-container-lowest": "#0e0d17",
+                        "on-surface-variant": "#c9c4d9",
+                        "surface": "#14121c",
+                        "outline": "#928ea2",
+                        "tertiary": "#ffb955",
+                        "on-primary-fixed-variant": "#4206d7",
+                        "surface-container-highest": "#35333e",
+                        "on-tertiary": "#452b00",
+                        "on-secondary-fixed": "#002116",
+                        "on-tertiary-fixed": "#291800",
+                        "inverse-on-surface": "#312f3a",
+                        "tertiary-fixed-dim": "#ffb955",
+                        "surface-variant": "#35333e",
+                        "surface-tint": "#c8bfff",
+                        "error-container": "#93000a",
+                        "on-primary": "#2d009d",
+                        "secondary-fixed-dim": "#27e0ab",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1c1a24",
+                        "on-surface": "#e5e0ef",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#44f1bc",
+                        "outline-variant": "#474556",
+                        "surface-dim": "#14121c",
+                        "secondary-container": "#00d4a1",
+                        "on-secondary": "#003828",
+                        "primary": "#c8bfff",
+                        "background": "#14121c",
+                        "primary-fixed-dim": "#c8bfff",
+                        "on-secondary-container": "#00563f",
+                        "on-error": "#690005",
+                        "tertiary-container": "#986300",
+                        "surface-bright": "#3a3843",
+                        "surface-container-high": "#2a2933",
+                        "surface-container": "#201e29",
+                        "inverse-primary": "#5b38ee",
+                        "secondary-fixed": "#54fdc6",
+                        "on-primary-fixed": "#190064"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "margin-mobile": "16px",
+                        "md": "24px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Rubik"],
+                        "display-lg": ["Rubik"],
+                        "label-md": ["Rubik"],
+                        "headline-xl": ["Rubik"],
+                        "headline-lg": ["Rubik"],
+                        "label-sm": ["Rubik"],
+                        "body-md": ["Rubik"],
+                        "body-lg": ["Rubik"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0D1117;
+            font-family: 'Rubik', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(200, 191, 255, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .glow-border {
+            position: relative;
+        }
+
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, #c8bfff, transparent, #44f1bc);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glow-border:hover::after {
+            opacity: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .arabic-text {
+            direction: rtl;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        /* Mouse tracking glow effect */
+        .mouse-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(108, 77, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="text-on-background">
+<div class="mouse-glow" id="cursor-glow"></div>
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 h-20 shadow-sm">
+<div class="flex justify-between items-center px-6 md:px-20 max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-2">
+<img alt="Qevora Logo" class="h-10 w-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTvv8-e982g7Jru-f4FoF3zvclDVUAIA8grOJ2RAElkGp41IN7-CDy7sBK9tYzIOWp_0M8kA1Ep0D_U6JhGgZAlZa_7NzGTYUfPBf-L4SnKzUu0IXEv4xRiwuG9eVqt_Z4C19wYPpf8CtNEsPPfIfuZSOdr9fV8jFZE9jRVmfCeuibfplVa4mevSvjB74R4sZOAAuJtNUpiLxIKNOZUU446YSHSl3MPezJFmBCcKOgw2We5AY9IlqY7UhDJQl9Mc0y3V53BGu35Sw">
+<span class="font-headline-md text-headline-lg font-bold text-on-surface tracking-tight">Qevora</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#features">Features</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#templates">Templates</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#pricing">Pricing</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#faq">FAQ</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-on-surface-variant font-medium hover:text-on-surface transition-colors">Login</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-bold active:scale-95 transition-transform">Start Building</button>
+</div>
+</div>
+</nav>
+<main class="relative z-10">
+<!-- Hero Section -->
+<section class="pt-40 pb-20 px-6 overflow-hidden min-h-screen flex flex-col items-center justify-center text-center">
+<!-- Background Decorations -->
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 blur-[100px] rounded-full floating"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/10 blur-[100px] rounded-full floating" style="animation-delay: -1.5s"></div>
+<div class="reveal max-w-4xl">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight">
+                    Build Stunning Websites <br>
+<span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">with AI</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12 arabic-text">
+                    ابنِ موقعك بالذكاء الاصطناعي خلال دقائق. تجربة تصميم فريدة تجمع بين الإبداع والقوة التقنية.
+                </p>
+<!-- AI Prompt Bar -->
+<div class="max-w-2xl mx-auto p-2 glass-card rounded-2xl flex flex-col md:flex-row gap-2 border-white/20">
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-on-surface-variant/50 px-6 py-4" placeholder="Describe the website you want to create..." type="text">
+<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(108,77,255,0.4)] transition-all">
+<span class="material-symbols-outlined">auto_awesome</span>
+                        Generate
+                    </button>
+</div>
+</div>
+<!-- Trusted By -->
+<div class="mt-24 reveal">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-widest mb-8">Trusted by visionary teams</p>
+<div class="flex flex-wrap justify-center gap-12 opacity-40 grayscale hover:grayscale-0 transition-all">
+<div class="flex items-center gap-2 font-bold text-headline-lg">NEON</div>
+<div class="flex items-center gap-2 font-bold text-headline-lg">LUMINA</div>
+<div class="flex items-center gap-2 font-bold text-headline-lg">VECTOR</div>
+<div class="flex items-center gap-2 font-bold text-headline-lg">OMEGA</div>
+</div>
+</div>
+</section>
+<!-- Interactive Builder Preview -->
+<section class="py-20 px-6 max-w-container-max mx-auto reveal">
+<div class="glass-card rounded-[32px] overflow-hidden border-white/5 shadow-2xl relative">
+<div class="flex flex-col lg:flex-row h-[700px]">
+<!-- Editor Sidebar -->
+<div class="w-full lg:w-[320px] bg-surface-container-low border-r border-white/5 p-6 flex flex-col">
+<div class="flex items-center gap-2 mb-8">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+</div>
+<div class="flex-1 space-y-6">
+<div class="space-y-2">
+<label class="text-label-sm text-on-surface-variant/60 uppercase">AI Architect</label>
+<div class="bg-surface-container-high rounded-xl p-4 text-body-md text-on-surface/80 border border-white/5">
+                                    "I've updated the hero section to use a sleek dark aesthetic with neon purple accents. How does it look?"
+                                </div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-label-md">
+<span>Brand Color</span>
+<span class="text-primary">#6C4DFF</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[65%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6">
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-3 px-4 text-body-md" placeholder="Message AI..." type="text">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary">send</span>
+</div>
+</div>
+</div>
+<!-- Live Preview -->
+<div class="flex-1 bg-[#0D1117] relative group overflow-hidden">
+<div class="absolute inset-0 p-8">
+<div class="w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-inner">
+<div class="bg-white/5 h-12 w-full flex items-center px-4 gap-2">
+<div class="flex gap-1.5">
+<div class="w-2 h-2 rounded-full bg-white/20"></div>
+<div class="w-2 h-2 rounded-full bg-white/20"></div>
+<div class="w-2 h-2 rounded-full bg-white/20"></div>
+</div>
+<div class="mx-auto bg-white/10 h-6 w-1/2 rounded-full"></div>
+</div>
+<div class="relative h-full w-full">
+<div class="w-full h-full bg-cover bg-center" data-alt="A high-fidelity website interface preview showcasing a futuristic architectural website. The layout uses deep charcoal backgrounds, elegant serif typography, and large atmospheric photography of minimalist concrete buildings at dusk. Neon purple light leaks dance across the screen, creating a premium luxury feel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBpVXr7VIubQfCQFjw0cBEZGbrGP9bXKeJIEPcoKQ1KkVXWFqckC2aDx151-zzSFHmPV31J4Lnv1uKvoipv6Omh8s-J98AbYwcAsfDtmtOrweufwuvQg5xERRtofESi29HRXWVTSe1RjZSW2O-feMhX7X62-hJmDMPmqWAnjsLKqa25ypxuQ95SPZ_T6_EUSPp5ZBfZ1bl7cf1v1GAJONkumawralvHUTVLEaE439lo2wfKp2xmOnyN_KqRk228ekW7glLmm97pM9k')"></div>
+</div>
+</div>
+</div>
+<!-- UI Overlays -->
+<div class="absolute bottom-12 right-12 flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">desktop_windows</span>
+</button>
+<button class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">smartphone</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Features -->
+<section class="py-stack-xl px-6 max-w-container-max mx-auto reveal" id="features">
+<div class="text-center mb-16">
+<span class="text-secondary font-bold tracking-widest uppercase text-label-sm">Ecosystem</span>
+<h2 class="font-headline-xl text-headline-xl mt-4">Powerful Features for Modern Creation</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<div class="md:col-span-8 glass-card rounded-[2rem] p-8 flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="text-headline-lg font-bold mb-2">Generative Intelligence</h3>
+<p class="text-on-surface-variant max-w-md">Our AI doesn't just copy templates. It understands your brand essence and builds bespoke layouts optimized for conversion.</p>
+</div>
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary/20 rounded-full blur-[80px] group-hover:scale-125 transition-transform duration-700"></div>
+</div>
+<div class="md:col-span-4 glass-card rounded-[2rem] p-8 flex flex-col justify-between border-secondary/20">
+<div>
+<span class="material-symbols-outlined text-secondary text-4xl mb-4">speed</span>
+<h3 class="text-headline-lg font-bold mb-2">Zero-Latency</h3>
+<p class="text-on-surface-variant">Real-time collaboration and instant previews as you build.</p>
+</div>
+<div class="mt-8 flex gap-2 overflow-hidden">
+<div class="h-12 w-12 rounded-lg bg-surface-container-highest animate-pulse"></div>
+<div class="h-12 w-12 rounded-lg bg-surface-container-highest animate-pulse" style="animation-delay: 0.2s"></div>
+<div class="h-12 w-12 rounded-lg bg-surface-container-highest animate-pulse" style="animation-delay: 0.4s"></div>
+</div>
+</div>
+<div class="md:col-span-4 glass-card rounded-[2rem] p-8 flex flex-col justify-between border-tertiary/20">
+<div>
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4">library_apps</span>
+<h3 class="text-headline-lg font-bold mb-2">Infinite Library</h3>
+<p class="text-on-surface-variant">Access 10,000+ AI-generated components and blocks.</p>
+</div>
+</div>
+<div class="md:col-span-8 glass-card rounded-[2rem] p-8 flex items-center justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<h3 class="text-headline-lg font-bold mb-2">Global Edge Publishing</h3>
+<p class="text-on-surface-variant max-w-md">Deploy your site to 300+ edge locations worldwide with a single click. Lightning fast speed, guaranteed.</p>
+<button class="mt-6 flex items-center gap-2 text-secondary font-bold group">
+                            Learn more <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="hidden md:block absolute right-12 top-12 opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="material-symbols-outlined text-[160px]">public</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-20 px-6 reveal overflow-hidden">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-xl">
+<h2 class="font-headline-xl text-headline-xl mb-4">Chosen by the world's best creators</h2>
+<p class="text-on-surface-variant text-body-lg">See why thousands of design professionals have switched to Qevora for their high-end projects.</p>
+</div>
+<div class="flex gap-4">
+<button class="p-4 rounded-full border border-white/10 hover:bg-white/5"><span class="material-symbols-outlined">west</span></button>
+<button class="p-4 rounded-full border border-white/10 hover:bg-white/5"><span class="material-symbols-outlined">east</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card p-8 rounded-3xl">
+<div class="flex items-center gap-4 mb-6">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A professional studio portrait of a modern creative director in her 30s. She has a minimalist aesthetic, wearing a black high-neck top. The lighting is soft and cinematic, with a clean neutral background. Her expression is confident and friendly, reflecting a professional yet creative industry persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcz-oLQ8qXcVVtn0hihgyE6d_QhNEDeluN68Me3JEeM_QvObPUb4h3_121IJkSNGOlfdEnwJ2rgWt6Fg-qZLJhWEdEBuiANcHI-Aaj_YIovc-H61nRXwrMxjKE-1QuX4T0IZwKSpXcxoDTneeIYV2L59vCfz4Vg4f6uZ0reReKXq5o2RGgkiyqeIh3UU7dzucpYOd4poze_efsimihb0xE1pbS-0s7hqHOUdvrSpCA7WSgauHI0p65yG4RNsEJA0ejcl_HNZH2PwQ">
+<div>
+<h4 class="font-bold">Elena Vance</h4>
+<p class="text-label-sm text-on-surface-variant">CD at Visionary Labs</p>
+</div>
+</div>
+<p class="text-body-md text-on-surface/90 italic">"The AI builder didn't just save me time; it inspired new layout ideas I hadn't considered. It's like having a senior designer as an assistant."</p>
+</div>
+<div class="glass-card p-8 rounded-3xl border-primary/20">
+<div class="flex items-center gap-4 mb-6">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A portrait of a male tech entrepreneur in a modern office setting. He is wearing a grey linen shirt, looking directly at the camera with a slight, intelligent smile. The background shows a blurred high-tech workspace with soft blue and purple lighting accents, suggesting a cutting-edge startup environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmCgHGkICIIBkCCEu6Q2ZlC-lg6WYxnGfG6yWtxxZueI6GdSOUP2fSWFN2MylmiQKn58RhGDkLsEJLBFkbM8f6iHAPYn6QzczDhYRs29GkwCMJWPWLzAuZG77rZiITQ0YiitJuEYhJegnCAuEAPz1JJKPrzFWJh5tvXr9PREOi6YWMx4JR8N390ue4eoAFBPft1HyG4Ej36wNzHkxsj08tH2n45wt0AWjusHI9BAWCpd-8uZ0R740_LEzlE8mpGZG-l74CJoZaeVc">
+<div>
+<h4 class="font-bold">Marcus Chen</h4>
+<p class="text-label-sm text-on-surface-variant">Founder of Nexus</p>
+</div>
+</div>
+<p class="text-body-md text-on-surface/90 italic">"We launched our entire marketing site in three days. The performance scores are perfect, and the design looks custom-coded."</p>
+</div>
+<div class="glass-card p-8 rounded-3xl">
+<div class="flex items-center gap-4 mb-6">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A portrait of a young female software engineer with a stylish, modern look. She is wearing a cream-colored sweater and has thick-rimmed glasses. The setting is a cozy but professional home studio with plants and warm ambient lighting in the background, creating a trustworthy and relatable expert feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJq79aHPVgSCXM9prFMGKguESNvfB5fli8TsSH_dFJvcY7ClLwrj9n6f0rnT3PSZkbLkERJ90qpmqBTnIPUVn-HZhUD-zLiHTyTSeGHPUZr_nL58ap-6SxJPExdQDzzfAmSC44kxE3OpCWhn37MRWgXaoG7lgtrN2jD46RqbWvnGaIzqmjmYqtayqbdnTiO5wKbnAWf8erYHHFEtc9q1ca41SmTqrq_3DgfVjfK_EA-WmxPMzH_43W9DMcaYGtGjpNP5M16AKfV24">
+<div>
+<h4 class="font-bold">Sarah Jenkins</h4>
+<p class="text-label-sm text-on-surface-variant">Full Stack Dev</p>
+</div>
+</div>
+<p class="text-body-md text-on-surface/90 italic">"As a developer, I usually hate 'no-code' tools. But Qevora generates clean, semantically correct code that I'm actually happy to host."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing -->
+<section class="py-20 px-6 reveal" id="pricing">
+<div class="max-w-4xl mx-auto text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl mb-4">Simple, transparent pricing</h2>
+<p class="text-on-surface-variant">Choose the plan that fits your creative scale.</p>
+</div>
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="glass-card p-10 rounded-[2.5rem] flex flex-col">
+<span class="text-label-sm text-on-surface-variant uppercase tracking-widest mb-4">Personal</span>
+<div class="text-headline-xl font-bold mb-6">$0<span class="text-body-md font-normal text-on-surface-variant">/mo</span></div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-sm">check_circle</span> 3 Projects</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-sm">check_circle</span> Basic AI Generation</li>
+<li class="flex items-center gap-3 text-on-surface-variant/50"><span class="material-symbols-outlined text-sm">circle</span> Custom Domains</li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-white/10 font-bold hover:bg-white/5 transition-colors">Get Started</button>
+</div>
+<div class="glass-card p-10 rounded-[2.5rem] flex flex-col border-primary/40 relative scale-105 z-10 bg-surface-container">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 rounded-full text-label-sm font-bold">MOST POPULAR</div>
+<span class="text-label-sm text-primary uppercase tracking-widest mb-4">Professional</span>
+<div class="text-headline-xl font-bold mb-6">$29<span class="text-body-md font-normal text-on-surface-variant">/mo</span></div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-sm">check_circle</span> Unlimited Projects</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-sm">check_circle</span> Advanced AI Designer</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-sm">check_circle</span> Custom Domains</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-sm">check_circle</span> Remove Qevora Branding</li>
+</ul>
+<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-bold hover:shadow-[0_0_25px_rgba(200,191,255,0.4)] transition-all">Start 14-Day Trial</button>
+</div>
+<div class="glass-card p-10 rounded-[2.5rem] flex flex-col">
+<span class="text-label-sm text-on-surface-variant uppercase tracking-widest mb-4">Agency</span>
+<div class="text-headline-xl font-bold mb-6">$99<span class="text-body-md font-normal text-on-surface-variant">/mo</span></div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-sm">check_circle</span> Team Workspaces</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-sm">check_circle</span> Client Hand-off Tools</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-sm">check_circle</span> Priority Support</li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-white/10 font-bold hover:bg-white/5 transition-colors">Contact Sales</button>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-20 px-6 reveal" id="faq">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl text-center mb-12">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<div class="glass-card rounded-2xl overflow-hidden">
+<button class="w-full p-6 text-left flex justify-between items-center" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span').classList.toggle('rotate-180')">
+<span class="font-bold">Is the code exportable?</span>
+<span class="material-symbols-outlined transition-transform">expand_more</span>
+</button>
+<div class="p-6 pt-0 text-on-surface-variant hidden">
+                            Yes, all Pro and Agency plans include high-quality, clean code export in React, Vue, or static HTML/CSS formats.
+                        </div>
+</div>
+<div class="glass-card rounded-2xl overflow-hidden">
+<button class="w-full p-6 text-left flex justify-between items-center" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span').classList.toggle('rotate-180')">
+<span class="font-bold">Can I use my own domain?</span>
+<span class="material-symbols-outlined transition-transform">expand_more</span>
+</button>
+<div class="p-6 pt-0 text-on-surface-variant hidden">
+                            Absolutely. We provide free SSL certificates and one-click domain connection for all paid plans.
+                        </div>
+</div>
+<div class="glass-card rounded-2xl overflow-hidden">
+<button class="w-full p-6 text-left flex justify-between items-center" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span').classList.toggle('rotate-180')">
+<span class="font-bold">How does the AI work?</span>
+<span class="material-symbols-outlined transition-transform">expand_more</span>
+</button>
+<div class="p-6 pt-0 text-on-surface-variant hidden">
+                            Our proprietary LLM is trained specifically on high-end web design patterns, semantic HTML structure, and modern CSS frameworks to ensure your site is beautiful and functional.
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Call to Action -->
+<section class="py-32 px-6">
+<div class="max-w-5xl mx-auto glass-card rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-secondary/10 -z-10"></div>
+<h2 class="font-display-lg text-headline-xl md:text-display-lg mb-8">Ready to build the future?</h2>
+<div class="flex flex-col md:flex-row justify-center gap-4">
+<button class="bg-primary-container text-on-primary-container px-10 py-5 rounded-2xl font-bold text-headline-lg-mobile md:text-headline-lg active:scale-95 transition-transform hover:shadow-2xl">
+                        Start Building for Free
+                    </button>
+<button class="bg-white/5 border border-white/10 px-10 py-5 rounded-2xl font-bold text-headline-lg-mobile md:text-headline-lg hover:bg-white/10 transition-colors">
+                        View Templates
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-white/10 w-full py-stack-xl">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter px-6 md:px-20 max-w-container-max mx-auto">
+<div class="col-span-2">
+<div class="flex items-center gap-2 mb-6">
+<img alt="Qevora" class="h-8 w-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTvv8-e982g7Jru-f4FoF3zvclDVUAIA8grOJ2RAElkGp41IN7-CDy7sBK9tYzIOWp_0M8kA1Ep0D_U6JhGgZAlZa_7NzGTYUfPBf-L4SnKzUu0IXEv4xRiwuG9eVqt_Z4C19wYPpf8CtNEsPPfIfuZSOdr9fV8jFZE9jRVmfCeuibfplVa4mevSvjB74R4sZOAAuJtNUpiLxIKNOZUU446YSHSl3MPezJFmBCcKOgw2We5AY9IlqY7UhDJQl9Mc0y3V53BGu35Sw">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Qevora</span>
+</div>
+<p class="text-on-surface-variant text-body-md max-w-xs mb-6">Redefining the boundaries of web creation with intelligent AI assistance.</p>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-on-surface">Product</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">Features</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">Templates</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-on-surface">Company</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">About</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">Blog</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-on-surface">Legal</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">Privacy</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">Terms</a></li>
+<li><a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">Security</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-on-surface">Language</h5>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-sm">language</span>
+                    English / العربية
+                </button>
+</div>
+</div>
+<div class="px-6 md:px-20 max-w-container-max mx-auto mt-20 pt-8 border-t border-white/5 flex justify-between items-center">
+<p class="text-on-surface-variant text-body-sm">© 2024 Qevora. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Smooth scroll reveal observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mouse tracking glow effect
+        const cursorGlow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // Parallax effect for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const xPercent = (x / rect.width - 0.5) * 10;
+                const yPercent = (y / rect.height - 0.5) * 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${-yPercent}deg) rotateY(${xPercent}deg) translateY(-4px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+    </script>
+</body></html>

@@ -5,18 +5,18 @@ import { checkContrastAA } from "@qevora/shared";
 export const DEFAULT_LIGHT_THEME: Theme = {
   colorScheme: "light",
   colors: {
-    primary: "#7C3AED",
-    primaryDark: "#5B21B6",
-    primaryLight: "#EDE9FE",
-    secondary: "#F59E0B",
-    secondaryDark: "#D97706",
-    secondaryLight: "#FEF3C7",
-    background: "#FFFFFF",
-    backgroundAlt: "#F9FAFB",
+    primary: "#6D28D9",          // Premium Purple
+    primaryDark: "#4C1D95",
+    primaryLight: "#F5F3FF",
+    secondary: "#10B981",        // Emerald Green
+    secondaryDark: "#047857",
+    secondaryLight: "#ECFDF5",
+    background: "#F9FAFB",
+    backgroundAlt: "#FFFFFF",
     surface: "#FFFFFF",
     surfaceElevated: "#F3F4F6",
     text: "#111827",
-    textSecondary: "#6B7280",
+    textSecondary: "#4B5563",
     textMuted: "#9CA3AF",
     textInverse: "#FFFFFF",
     border: "#E5E7EB",
@@ -29,8 +29,8 @@ export const DEFAULT_LIGHT_THEME: Theme = {
   },
   typography: {
     fontFamily: {
-      primary: "Inter",
-      arabic: "Cairo",
+      primary: "Rubik",
+      arabic: "Rubik",
       mono: "JetBrains Mono",
     },
     fontWeights: {
@@ -86,7 +86,100 @@ export const DEFAULT_LIGHT_THEME: Theme = {
     xl: "0 20px 25px rgba(0,0,0,0.1)",
   },
   layout: {
-    containerMaxWidth: "1280px",
+    containerMaxWidth: "1440px",
+    navbarHeight: "72px",
+    sectionPaddingY: "5rem",
+    gridColumns: 12,
+    gutter: "1.5rem",
+  },
+};
+
+// --- Default Dark Theme ---
+export const DEFAULT_DARK_THEME: Theme = {
+  colorScheme: "dark",
+  colors: {
+    primary: "#C8BFFF",          // Electric Violet
+    primaryDark: "#6D28D9",      // Vibrant Purple
+    primaryLight: "#F5F3FF",     // Glow tint
+    secondary: "#44F1BC",        // Neon Mint
+    secondaryDark: "#047857",    // Deep Emerald
+    secondaryLight: "#ECFDF5",   // Mint tint
+    background: "#09090B",       // Obsidian Black
+    backgroundAlt: "#111217",    // Dark Slate
+    surface: "#111217",          // Container Slate
+    surfaceElevated: "#171A21",  // Popover/Interactive Card
+    text: "#F9FAFB",             // High-contrast gray-white
+    textSecondary: "#9CA3AF",    // Muted gray
+    textMuted: "#4B5563",        // Dark gray
+    textInverse: "#09090B",      // Text on light backgrounds
+    border: "rgba(255, 255, 255, 0.08)", // Premium glassmorphic border
+    borderStrong: "rgba(255, 255, 255, 0.2)",
+    success: "#44F1BC",
+    warning: "#FFB955",
+    error: "#FFB4AB",
+    info: "#2FD9F4",
+    overlay: "rgba(0,0,0,0.7)",
+  },
+  typography: {
+    fontFamily: {
+      primary: "Rubik",
+      arabic: "Rubik",
+      mono: "JetBrains Mono",
+    },
+    fontWeights: {
+      regular: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+      extrabold: 800,
+    },
+    scale: {
+      xs: "0.75rem",
+      sm: "0.875rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem",
+      "5xl": "3rem",
+      "6xl": "3.75rem",
+    },
+    lineHeights: {
+      tight: 1.2,
+      snug: 1.375,
+      normal: 1.5,
+      relaxed: 1.625,
+      loose: 2,
+    },
+  },
+  spacing: {
+    xs: "0.5rem",
+    sm: "1rem",
+    md: "1.5rem",
+    lg: "2rem",
+    xl: "3rem",
+    "2xl": "5rem",
+    "3xl": "8rem",
+  },
+  borderRadius: {
+    none: "0",
+    sm: "0.25rem",
+    md: "0.5rem",
+    lg: "0.75rem",
+    xl: "1rem",
+    "2xl": "1.5rem",
+    full: "9999px",
+  },
+  shadows: {
+    none: "none",
+    sm: "0 1px 2px rgba(0,0,0,0.5)",
+    md: "0 4px 6px rgba(0,0,0,0.6)",
+    lg: "0 10px 15px rgba(0,0,0,0.7)",
+    xl: "0 0 20px rgba(109, 40, 217, 0.15)", // Ambient purple glow shadow
+  },
+  layout: {
+    containerMaxWidth: "1440px",
     navbarHeight: "72px",
     sectionPaddingY: "5rem",
     gridColumns: 12,
@@ -95,107 +188,175 @@ export const DEFAULT_LIGHT_THEME: Theme = {
 };
 
 // --- CSS Variables Generator ---
-export function generateCSSVariables(theme: Theme): string {
-  // Validate contrast of text against background
-  let textColor = theme.colors.text;
-  if (!checkContrastAA(textColor, theme.colors.background)) {
-    textColor = theme.colorScheme === "light" ? "#111827" : "#F9FAFB";
-  }
+export function generateCSSVariables(theme: Theme, darkTheme?: Theme): string {
+  // Resolve the opposite theme if not explicitly provided
+  const resolvedDarkTheme = darkTheme || (theme.colorScheme === "dark" ? theme : DEFAULT_DARK_THEME);
+  const resolvedLightTheme = theme.colorScheme === "light" ? theme : DEFAULT_LIGHT_THEME;
 
-  return `
-    :root {
-      /* Colors */
-      --color-primary: ${theme.colors.primary};
-      --color-primary-dark: ${theme.colors.primaryDark};
-      --color-primary-light: ${theme.colors.primaryLight};
-      --color-secondary: ${theme.colors.secondary};
-      --color-secondary-dark: ${theme.colors.secondaryDark};
-      --color-secondary-light: ${theme.colors.secondaryLight};
-      --color-background: ${theme.colors.background};
-      --color-background-alt: ${theme.colors.backgroundAlt};
-      --color-surface: ${theme.colors.surface};
-      --color-surface-elevated: ${theme.colors.surfaceElevated};
+  const getThemeVariables = (t: Theme) => {
+    let textColor = t.colors.text;
+    if (!checkContrastAA(textColor, t.colors.background)) {
+      textColor = t.colorScheme === "light" ? "#111827" : "#F9FAFB";
+    }
+
+    return `
+      --color-primary: ${t.colors.primary};
+      --color-primary-dark: ${t.colors.primaryDark};
+      --color-primary-light: ${t.colors.primaryLight};
+      --color-secondary: ${t.colors.secondary};
+      --color-secondary-dark: ${t.colors.secondaryDark};
+      --color-secondary-light: ${t.colors.secondaryLight};
+      --color-background: ${t.colors.background};
+      --color-background-alt: ${t.colors.backgroundAlt};
+      --color-surface: ${t.colors.surface};
+      --color-surface-elevated: ${t.colors.surfaceElevated};
       --color-text: ${textColor};
-      --color-text-secondary: ${theme.colors.textSecondary};
-      --color-text-muted: ${theme.colors.textMuted};
-      --color-text-inverse: ${theme.colors.textInverse};
-      --color-border: ${theme.colors.border};
-      --color-border-strong: ${theme.colors.borderStrong};
-      --color-success: ${theme.colors.success};
-      --color-warning: ${theme.colors.warning};
-      --color-error: ${theme.colors.error};
-      --color-info: ${theme.colors.info};
-      --color-overlay: ${theme.colors.overlay};
+      --color-text-secondary: ${t.colors.textSecondary};
+      --color-text-muted: ${t.colors.textMuted};
+      --color-text-inverse: ${t.colors.textInverse};
+      --color-border: ${t.colors.border};
+      --color-border-strong: ${t.colors.borderStrong};
+      --color-success: ${t.colors.success};
+      --color-warning: ${t.colors.warning};
+      --color-error: ${t.colors.error};
+      --color-info: ${t.colors.info};
+      --color-overlay: ${t.colors.overlay};
 
       /* Fonts */
-      --font-primary: '${theme.typography.fontFamily.primary}', sans-serif;
-      --font-arabic: '${theme.typography.fontFamily.arabic}', sans-serif;
-      --font-mono: '${theme.typography.fontFamily.mono}', monospace;
+      --font-primary: var(--font-rubik), '${t.typography.fontFamily.primary}', sans-serif;
+      --font-arabic: var(--font-rubik), '${t.typography.fontFamily.arabic}', sans-serif;
+      --font-mono: '${t.typography.fontFamily.mono}', monospace;
 
       /* Font Weights */
-      --font-weight-regular: ${theme.typography.fontWeights.regular};
-      --font-weight-medium: ${theme.typography.fontWeights.medium};
-      --font-weight-semibold: ${theme.typography.fontWeights.semibold};
-      --font-weight-bold: ${theme.typography.fontWeights.bold};
-      --font-weight-extrabold: ${theme.typography.fontWeights.extrabold};
+      --font-weight-regular: ${t.typography.fontWeights.regular};
+      --font-weight-medium: ${t.typography.fontWeights.medium};
+      --font-weight-semibold: ${t.typography.fontWeights.semibold};
+      --font-weight-bold: ${t.typography.fontWeights.bold};
+      --font-weight-extrabold: ${t.typography.fontWeights.extrabold};
 
       /* Text Scale */
-      --text-xs: ${theme.typography.scale.xs};
-      --text-sm: ${theme.typography.scale.sm};
-      --text-base: ${theme.typography.scale.base};
-      --text-lg: ${theme.typography.scale.lg};
-      --text-xl: ${theme.typography.scale.xl};
-      --text-2xl: ${theme.typography.scale["2xl"]};
-      --text-3xl: ${theme.typography.scale["3xl"]};
-      --text-4xl: ${theme.typography.scale["4xl"]};
-      --text-5xl: ${theme.typography.scale["5xl"]};
-      --text-6xl: ${theme.typography.scale["6xl"]};
+      --text-xs: ${t.typography.scale.xs};
+      --text-sm: ${t.typography.scale.sm};
+      --text-base: ${t.typography.scale.base};
+      --text-lg: ${t.typography.scale.lg};
+      --text-xl: ${t.typography.scale.xl};
+      --text-2xl: ${t.typography.scale["2xl"]};
+      --text-3xl: ${t.typography.scale["3xl"]};
+      --text-4xl: ${t.typography.scale["4xl"]};
+      --text-5xl: ${t.typography.scale["5xl"]};
+      --text-6xl: ${t.typography.scale["6xl"]};
 
       /* Line Heights */
-      --lh-tight: ${theme.typography.lineHeights.tight};
-      --lh-snug: ${theme.typography.lineHeights.snug};
-      --lh-normal: ${theme.typography.lineHeights.normal};
-      --lh-relaxed: ${theme.typography.lineHeights.relaxed};
-      --lh-loose: ${theme.typography.lineHeights.loose};
+      --lh-tight: ${t.typography.lineHeights.tight};
+      --lh-snug: ${t.typography.lineHeights.snug};
+      --lh-normal: ${t.typography.lineHeights.normal};
+      --lh-relaxed: ${t.typography.lineHeights.relaxed};
+      --lh-loose: ${t.typography.lineHeights.loose};
 
       /* Spacing */
-      --space-xs: ${theme.spacing.xs};
-      --space-sm: ${theme.spacing.sm};
-      --space-md: ${theme.spacing.md};
-      --space-lg: ${theme.spacing.lg};
-      --space-xl: ${theme.spacing.xl};
-      --space-2xl: ${theme.spacing["2xl"]};
-      --space-3xl: ${theme.spacing["3xl"]};
+      --space-xs: ${t.spacing.xs};
+      --space-sm: ${t.spacing.sm};
+      --space-md: ${t.spacing.md};
+      --space-lg: ${t.spacing.lg};
+      --space-xl: ${t.spacing.xl};
+      --space-2xl: ${t.spacing["2xl"]};
+      --space-3xl: ${t.spacing["3xl"]};
 
       /* Border Radius */
-      --radius-none: ${theme.borderRadius.none};
-      --radius-sm: ${theme.borderRadius.sm};
-      --radius-md: ${theme.borderRadius.md};
-      --radius-lg: ${theme.borderRadius.lg};
-      --radius-xl: ${theme.borderRadius.xl};
-      --radius-2xl: ${theme.borderRadius["2xl"]};
-      --radius-full: ${theme.borderRadius.full};
+      --radius-none: ${t.borderRadius.none};
+      --radius-sm: ${t.borderRadius.sm};
+      --radius-md: ${t.borderRadius.md};
+      --radius-lg: ${t.borderRadius.lg};
+      --radius-xl: ${t.borderRadius.xl};
+      --radius-2xl: ${t.borderRadius["2xl"]};
+      --radius-full: ${t.borderRadius.full};
 
       /* Shadows */
-      --shadow-none: ${theme.shadows.none};
-      --shadow-sm: ${theme.shadows.sm};
-      --shadow-md: ${theme.shadows.md};
-      --shadow-lg: ${theme.shadows.lg};
-      --shadow-xl: ${theme.shadows.xl};
+      --shadow-none: ${t.shadows.none};
+      --shadow-sm: ${t.shadows.sm};
+      --shadow-md: ${t.shadows.md};
+      --shadow-lg: ${t.shadows.lg};
+      --shadow-xl: ${t.shadows.xl};
 
       /* Layout */
-      --container-max-width: ${theme.layout.containerMaxWidth};
-      --navbar-height: ${theme.layout.navbarHeight};
-      --section-padding-y: ${theme.layout.sectionPaddingY};
-      --grid-columns: ${theme.layout.gridColumns};
-      --grid-gutter: ${theme.layout.gutter};
+      --container-max-width: ${t.layout.containerMaxWidth};
+      --navbar-height: ${t.layout.navbarHeight};
+      --section-padding-y: ${t.layout.sectionPaddingY};
+      --grid-columns: ${t.layout.gridColumns};
+      --grid-gutter: ${t.layout.gutter};
+    `;
+  };
+
+  // Generate :root based on primary theme, and toggle class based on the other theme
+  let css = `
+    :root {
+      ${getThemeVariables(theme)}
     }
   `;
+
+  if (theme.colorScheme === "light") {
+    css += `
+      @media (prefers-color-scheme: dark) {
+        :root {
+          ${getThemeVariables(resolvedDarkTheme)}
+        }
+      }
+      .dark {
+        ${getThemeVariables(resolvedDarkTheme)}
+      }
+    `;
+  } else {
+    css += `
+      @media (prefers-color-scheme: light) {
+        :root {
+          ${getThemeVariables(resolvedLightTheme)}
+        }
+      }
+      .light {
+        ${getThemeVariables(resolvedLightTheme)}
+      }
+    `;
+  }
+
+  // Inject premium animations and helper keyframes
+  css += `
+    @keyframes qevora-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes qevora-pulse-glow {
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.05); }
+    }
+    .animate-float {
+      animation: qevora-float 5s ease-in-out infinite;
+    }
+    .animate-pulse-glow {
+      animation: qevora-pulse-glow 6s ease-in-out infinite;
+    }
+    .text-glow-primary {
+      text-shadow: 0 0 12px color-mix(in srgb, var(--color-primary) 50%, transparent);
+    }
+    .bg-gradient-premium {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    }
+    .bg-glow-radial {
+      background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 12%, transparent) 0%, transparent 70%);
+    }
+    .glass-effect {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+      border-color: color-mix(in srgb, var(--color-border) 50%, transparent);
+    }
+  `;
+
+  return css;
 }
 
 // --- Dynamic Styling Injector ---
-export function injectThemeCSS(theme: Theme, documentObject?: Document): void {
-  const css = generateCSSVariables(theme);
+export function injectThemeCSS(theme: Theme, darkTheme?: Theme, documentObject?: Document): void {
+  const css = generateCSSVariables(theme, darkTheme);
   const doc = documentObject || (typeof document !== "undefined" ? document : null);
   if (!doc) return;
 
@@ -207,3 +368,4 @@ export function injectThemeCSS(theme: Theme, documentObject?: Document): void {
   }
   styleEl.textContent = css;
 }
+

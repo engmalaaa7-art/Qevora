@@ -24,6 +24,12 @@ class DatabaseManager:
             row = await conn.fetchrow('SELECT * FROM "User" WHERE email = $1 AND "deletedAt" IS NULL', email)
             return dict(row) if row else None
 
+    async def get_user_by_id(self, user_id: str) -> Optional[Dict[str, Any]]:
+        await self.connect()
+        async with self.pool.acquire() as conn:
+            row = await conn.fetchrow('SELECT * FROM "User" WHERE id = $1 AND "deletedAt" IS NULL', user_id)
+            return dict(row) if row else None
+
     async def create_user(self, email: str, full_name: str, password_hash: str, provider: str = "email") -> Dict[str, Any]:
         await self.connect()
         async with self.pool.acquire() as conn:
@@ -192,6 +198,24 @@ class DatabaseManager:
                 domain_id, project_id, published_site_id, domain_name, verification_token
             )
             return dict(row)
+
+    async def get_project_versions(self, project_id: str) -> List[Dict[str, Any]]:
+        await self.connect()
+        async with self.pool.acquire() as conn:
+            rows = await conn.fetch(
+                'SELECT "versionNumber", "createdBy", "createdAt" FROM "ProjectVersion" WHERE "projectId" = $1 ORDER BY "versionNumber" DESC',
+                project_id
+            )
+            return [dict(r) for r in rows]
+
+    async def get_project_schema_by_version(self, project_id: str, version_number: int) -> Optional[Dict[str, Any]]:
+        await self.connect()
+        async with self.pool.acquire() as conn:
+            row = await conn.fetchrow(
+                'SELECT s.payload FROM "ProjectVersion" v JOIN "WebsiteSchema" s ON v."schemaId" = s.id WHERE v."projectId" = $1 AND v."versionNumber" = $2',
+                project_id, version_number
+            )
+            return json.loads(row["payload"]) if row else None
 
 db_manager = DatabaseManager()
 import uuid # Imported inside for safe scope usage

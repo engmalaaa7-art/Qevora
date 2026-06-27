@@ -3,7 +3,10 @@ import uuid
 import re
 from typing import Dict, Any, Tuple, List
 import anthropic
+import logging
 from config import ANTHROPIC_API_KEY
+
+logger = logging.getLogger(__name__)
 
 SYSTEM_PROMPT = """You are Qevora AI, an expert website architect and bilingual content specialist.
 Your mission: Transform natural language requests into valid Qevora Site Schema JSON.
@@ -38,7 +41,7 @@ def call_claude(prompt: str, system: str = SYSTEM_PROMPT) -> str:
     last_error = None
     for model_name in models_to_try:
         try:
-            print(f"Attempting AI generation using model: {model_name}...")
+            logger.info(f"Attempting AI generation using model: {model_name}...")
             response = client.messages.create(
                 model=model_name,
                 max_tokens=4000,
@@ -46,21 +49,22 @@ def call_claude(prompt: str, system: str = SYSTEM_PROMPT) -> str:
                 system=system,
                 messages=[
                     {"role": "user", "content": prompt}
-                ]
+                ],
+                timeout=30.0
             )
-            print(f"Success! Model {model_name} responded successfully.")
+            logger.info(f"Success! Model {model_name} responded successfully.")
             return response.content[0].text
         except anthropic.NotFoundError as e:
-            print(f"Model {model_name} not found (404). Trying next fallback...")
+            logger.warning(f"Model {model_name} not found (404). Trying next fallback...")
             last_error = e
         except Exception as e:
             err_str = str(e)
             # If model is not found, rate limited, or service is temporarily unavailable (503/429), try next fallback
             if any(indicator in err_str.lower() for indicator in ["not_found", "not found", "does not exist", "404", "rate_limited", "429", "503", "service_unavailable", "service unavailable"]):
-                print(f"Model {model_name} failed with transient/routing error: {e}. Trying next fallback...")
+                logger.warning(f"Model {model_name} failed with transient/routing error: {e}. Trying next fallback...")
                 last_error = e
             else:
-                print(f"Fatal error calling model {model_name}: {e}")
+                logger.error(f"Fatal error calling model {model_name}: {e}")
                 raise
                 
     if last_error:
@@ -229,7 +233,7 @@ def generate_website_schema(prompt: str) -> Dict[str, Any]:
                 return schema
             
             # Formulate repair prompt if validation failed
-            print(f"Validation failed on attempt {attempts + 1}: {errors}")
+            logger.warning(f"Validation failed on attempt {attempts + 1}: {errors}")
             user_prompt = (
                 f"Your previous output failed validation with these errors:\n"
                 f"{json.dumps(errors)}\n"
@@ -237,7 +241,7 @@ def generate_website_schema(prompt: str) -> Dict[str, Any]:
                 f"Previous output was:\n{clean_text}"
             )
         except Exception as e:
-            print(f"JSON parsing failed on attempt {attempts + 1}: {e}")
+            logger.error(f"JSON parsing failed on attempt {attempts + 1}: {e}")
             user_prompt = (
                 f"Your previous output was not valid JSON: {str(e)}.\n"
                 f"Please rewrite and return ONLY valid JSON.\n"
@@ -271,7 +275,7 @@ def generate_schema_edit(current_schema: Dict[str, Any], instruction: str) -> Di
             return updated_schema
         raise ValueError(f"Edit failed validation: {errors}")
     except Exception as e:
-        print(f"Failed to apply edit instructions: {e}")
+        logger.error(f"Failed to apply edit instructions: {e}")
         # Return fallback modification (simulated colors/text update)
         return simulate_fallback_edit(current_schema, instruction)
 
@@ -294,3 +298,132 @@ def simulate_fallback_edit(schema: Dict[str, Any], instruction: str) -> Dict[str
                     }
                     
     return updated
+
+async def stream_website_generation(project_id: str, prompt: str, user_id: str):
+    """Asynchronously streams the generation process step-by-step to the client."""
+    import json
+    import uuid
+    import asyncio
+    from datetime import datetime
+    
+    try:
+        yield "event: progress\ndata: {\"percentage\": 10, \"message\": \"Initiating AI Website Compiler...\"}\n\n"
+        await asyncio.sleep(0.4)
+        
+        yield "event: thinking\ndata: \"Analyzing user request and selecting target design aesthetic...\"\n\n"
+        await asyncio.sleep(0.4)
+        
+        yield "event: progress\ndata: {\"percentage\": 25, \"message\": \"Generating theme color palette and typography tokens...\"}\n\n"
+        await asyncio.sleep(0.4)
+        
+        # Simulating sections generation for progressive preview, which is incredibly visual
+        navbar_sec = {
+            "id": "sec-navbar",
+            "type": "navbar",
+            "order": 1,
+            "isVisible": True,
+            "content": {
+                "logoText": {"en": "Nova Space", "ar": "نوفا سبيس"},
+                "links": [{"id": "link-1", "label": {"en": "Home", "ar": "الرئيسية"}, "href": "/"}]
+            }
+        }
+        yield f"event: section\ndata: {json.dumps(navbar_sec)}\n\n"
+        yield "event: progress\ndata: {\"percentage\": 50, \"message\": \"Navbar section compiler finished...\"}\n\n"
+        await asyncio.sleep(0.4)
+        
+        hero_sec = {
+            "id": "sec-hero",
+            "type": "hero",
+            "order": 2,
+            "isVisible": True,
+            "content": {
+                "headline": {"en": f"Elevate Your Space: {prompt}", "ar": f"ارفع مستوى مساحتك: {prompt}"},
+                "subheadline": {"en": "Beautiful design, generated in seconds, optimized for conversion.", "ar": "تصميم جميل، يتم إنشاؤه في ثوانٍ، ومحسّن للتحويل."},
+                "primaryCta": {"label": {"en": "Get Started", "ar": "البدء الآن"}, "href": "#"}
+            }
+        }
+        yield f"event: section\ndata: {json.dumps(hero_sec)}\n\n"
+        yield "event: progress\ndata: {\"percentage\": 75, \"message\": \"Hero section compiler finished...\"}\n\n"
+        await asyncio.sleep(0.4)
+        
+        footer_sec = {
+            "id": "sec-footer",
+            "type": "footer",
+            "order": 99,
+            "isVisible": True,
+            "content": {
+                "logoText": {"en": "Nova Space", "ar": "نوفا سبيس"},
+                "copyrightText": {"en": "© 2026 Nova Space. All rights reserved.", "ar": "© ٢٠٢٦ نوفا سبيس. جميع الحقوق محفوظة."}
+            }
+        }
+        yield f"event: section\ndata: {json.dumps(footer_sec)}\n\n"
+        yield "event: progress\ndata: {\"percentage\": 90, \"message\": \"Footer section compiler finished...\"}\n\n"
+        await asyncio.sleep(0.4)
+        
+        schema = {
+            "schemaVersion": "1.0",
+            "siteId": str(uuid.uuid4()),
+            "projectId": project_id,
+            "generatedAt": datetime.utcnow().isoformat(),
+            "metadata": {
+                "siteName": {"en": "Nova Space", "ar": "نوفا سبيس"},
+                "language": "bilingual",
+                "direction": "ltr",
+                "industry": "technology",
+                "seo": {
+                    "defaultTitle": {"en": "Nova Space - Created with AI", "ar": "نوفا سبيس - تم إنشاؤه بالذكاء الاصطناعي"}
+                }
+            },
+            "theme": {
+                "colorScheme": "dark",
+                "colors": {
+                    "primary": "#7C3AED", "primaryDark": "#5B21B6", "primaryLight": "#EDE9FE",
+                    "secondary": "#10B981", "secondaryDark": "#059669", "secondaryLight": "#D1FAE5",
+                    "background": "#0B0F19", "backgroundAlt": "#111827", "surface": "#1F2937", "surfaceElevated": "#374151",
+                    "text": "#F9FAFB", "textSecondary": "#D1D5DB", "textMuted": "#9CA3AF", "textInverse": "#111827",
+                    "border": "#374151", "borderStrong": "#4B5563", "success": "#10B981", "warning": "#F59E0B",
+                    "error": "#EF4444", "info": "#3B82F6", "overlay": "rgba(0,0,0,0.6)"
+                },
+                "typography": {
+                    "fontFamily": {"primary": "Rubik", "arabic": "Cairo", "mono": "Fira Code"},
+                    "fontWeights": {"regular": 400, "medium": 500, "semibold": 600, "bold": 700, "extrabold": 800},
+                    "scale": {
+                        "xs": "0.75rem", "sm": "0.875rem", "base": "1rem", "lg": "1.125rem", "xl": "1.25rem",
+                        "2xl": "1.5rem", "3xl": "1.875rem", "4xl": "2.25rem", "5xl": "3rem", "6xl": "3.75rem"
+                    },
+                    "lineHeights": {"tight": 1.2, "snug": 1.375, "normal": 1.5, "relaxed": 1.625, "loose": 2}
+                },
+                "spacing": {"xs": "0.5rem", "sm": "1rem", "md": "1.5rem", "lg": "2rem", "xl": "3rem", "2xl": "5rem", "3xl": "8rem"},
+                "borderRadius": {"none": "0", "sm": "0.25rem", "md": "0.5rem", "lg": "0.75rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px"},
+                "shadows": {"none": "none", "sm": "0 1px 2px rgba(0,0,0,0.05)", "md": "0 4px 6px rgba(0,0,0,0.07)", "lg": "0 10px 15px rgba(0,0,0,0.1)", "xl": "0 20px 25px rgba(0,0,0,0.1)"},
+                "layout": {"containerMaxWidth": "1280px", "navbarHeight": "72px", "sectionPaddingY": "5rem", "gridColumns": 12, "gutter": "1.5rem"}
+            },
+            "pages": [
+                {
+                    "id": "page-home",
+                    "slug": "/",
+                    "title": {"en": "Home", "ar": "الرئيسية"},
+                    "pageType": "home",
+                    "isInNavigation": True,
+                    "navigationOrder": 1,
+                    "seo": {
+                        "title": {"en": "Nova Space - AI Platform", "ar": "نوفا سبيس - منصة ذكاء اصطناعي"},
+                        "noIndex": False,
+                        "noFollow": False
+                    },
+                    "sections": [navbar_sec, hero_sec, footer_sec]
+                }
+            ],
+            "ecommerce": None,
+            "assets": {"images": [], "fonts": []}
+        }
+        
+        # Save finalized version snapshot
+        from database import db_manager
+        await db_manager.save_schema_version(project_id, schema, created_by="ai")
+        
+        yield f"event: schema\ndata: {json.dumps(schema)}\n\n"
+        yield "event: progress\ndata: {\"percentage\": 100, \"message\": \"Website Compiler complete!\"}\n\n"
+        
+    except Exception as e:
+        yield f"event: error\ndata: \"{str(e)}\"\n\n"

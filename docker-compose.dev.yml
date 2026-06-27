@@ -1,0 +1,103 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: qevora-postgres-dev
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: qevora
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata_dev:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: qevora-redis-dev
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata_dev:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: qevora-api-dev
+    command: python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/qevora?schema=public
+      - REDIS_URL=redis://redis:6379/0
+      - ANTHROPIC_API_KEY=sk-nry-yfcPVD3B_aKhJHZc4kpzfyh53zMyMyegA5WuhQKxz-k
+      - JWT_SECRET=super_secret_dev_jwt_key_32_bytes_long_minimum
+      - SMTP_HOST=mailhog
+      - SMTP_PORT=1025
+      - SMTP_USER=test
+      - SMTP_PASS=test
+    volumes:
+      - ./apps/api:/app/apps/api
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  worker:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: qevora-worker-dev
+    command: python worker.py
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/qevora?schema=public
+      - REDIS_URL=redis://redis:6379/0
+      - ANTHROPIC_API_KEY=sk-nry-yfcPVD3B_aKhJHZc4kpzfyh53zMyMyegA5WuhQKxz-k
+      - JWT_SECRET=super_secret_dev_jwt_key_32_bytes_long_minimum
+      - SMTP_HOST=mailhog
+      - SMTP_PORT=1025
+      - SMTP_USER=test
+      - SMTP_PASS=test
+    volumes:
+      - ./apps/api:/app/apps/api
+      - ./packages:/app/packages
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: qevora-web-dev
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - api
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: qevora-mailhog
+    ports:
+      - "8025:8025"
+
+volumes:
+  pgdata_dev:
+  redisdata_dev:

@@ -1,23 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Cairo } from "next/font/google";
-import { DEFAULT_LIGHT_THEME, generateCSSVariables } from "@qevora/design-system";
+import { Rubik } from "next/font/google";
 import "./globals.css";
+import { Providers } from "../components/Providers";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const cairo = Cairo({
-  subsets: ["arabic"],
-  variable: "--font-cairo",
+const rubik = Rubik({
+  subsets: ["latin", "arabic"],
+  variable: "--font-rubik",
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Qevora — From Words to Website",
-  description: "AI-powered bilingual website generation platform",
+  description:
+    "AI-powered bilingual website generation platform. Transform your vision into a professional-grade digital experience in seconds.",
 };
 
 export default function RootLayout({
@@ -25,15 +21,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cssVariables = generateCSSVariables(DEFAULT_LIGHT_THEME);
-
   return (
-    <html lang="en" className={`${inter.variable} ${cairo.variable}`}>
-      <head>
-        <style dangerouslySetInnerHTML={{ __html: cssVariables }} />
-      </head>
-      <body className="antialiased font-primary">
-        {children}
+    <html lang="en" dir="ltr" className={`dark ${rubik.variable}`}>
+      <body className="font-rubik antialiased">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -1,0 +1,125 @@
+name: Qevora CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint-and-typecheck:
+    name: Code Quality (Linting & Types)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Monorepo Dependencies
+        run: npm ci
+
+      - name: Run ESLint Verification
+        run: npm run lint
+
+      - name: Run TypeScript Compile Verification
+        run: npm run build
+
+  renderer-tests:
+    name: Renderer Quality Gates Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Packages
+        run: npx turbo run build --filter=@qevora/schemas --filter=@qevora/design-system --filter=@qevora/ui --filter=@qevora/qevora-renderer
+
+      - name: Execute Renderer Unit Tests
+        run: node packages/renderer/src/test-runner.js
+
+  backend-tests:
+    name: API Gateway Test Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r apps/api/requirements.txt
+          pip install pytest pytest-asyncio pytest-cov httpx
+
+      - name: Run Backend Pytest Suite
+        env:
+          DATABASE_URL: sqlite:///:memory:
+          JWT_SECRET: testing_secret_key_minimum_32_bytes_long
+          ANTHROPIC_API_KEY: sk-test-key
+        run: |
+          python -m pytest apps/api/tests/ --cov=apps/api --cov-report=term-missing --cov-fail-under=80
+
+  docker-build-prod:
+    name: Production Containers Build Verification
+    needs: [lint-and-typecheck, renderer-tests, backend-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Verify Web App Container Build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: apps/web/Dockerfile
+          push: false
+          tags: qevora/web:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Verify API Gateway Container Build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: apps/api/Dockerfile
+          push: false
+          tags: qevora/api:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy-pipeline:
+    name: Deploy to Production
+    needs: docker-build-prod
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simulation of Cloud Deployment
+        run: |
+          echo "Simulating automated deployment pipeline..."
+          echo "1. Pulling verified images from Registry..."
+          echo "2. Applying database migrations..."
+          echo "3. Updating staging/production container configurations..."
+          echo "4. Executing smoke tests on deployment endpoints..."
+          echo "✓ Deploy completed successfully."

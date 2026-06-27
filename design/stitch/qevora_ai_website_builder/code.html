@@ -1,0 +1,577 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Qevora | Build your website with AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ffb4ab",
+                    "surface-bright": "#39393b",
+                    "tertiary-container": "#008092",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#f7fdff",
+                    "surface-container-high": "#2a2a2c",
+                    "primary": "#c0c1ff",
+                    "inverse-primary": "#4345e8",
+                    "surface-container-highest": "#353437",
+                    "on-tertiary-fixed-variant": "#004e5a",
+                    "surface-container-low": "#1c1b1d",
+                    "surface-container-lowest": "#0e0e10",
+                    "on-secondary-fixed-variant": "#5a00c6",
+                    "on-secondary-fixed": "#25005a",
+                    "secondary": "#d2bbff",
+                    "on-error-container": "#ffdad6",
+                    "inverse-surface": "#e5e1e4",
+                    "on-background": "#e5e1e4",
+                    "tertiary": "#2fd9f4",
+                    "primary-fixed": "#e1e0ff",
+                    "surface-tint": "#c0c1ff",
+                    "tertiary-fixed-dim": "#2fd9f4",
+                    "tertiary-fixed": "#a2eeff",
+                    "on-secondary": "#3f008e",
+                    "secondary-fixed": "#eaddff",
+                    "surface-container": "#201f22",
+                    "on-primary-fixed": "#05006c",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-surface": "#e5e1e4",
+                    "secondary-fixed-dim": "#d2bbff",
+                    "primary-container": "#5b5fff",
+                    "on-primary": "#0d00aa",
+                    "on-tertiary": "#00363e",
+                    "on-surface-variant": "#c6c4d8",
+                    "on-secondary-container": "#c9aeff",
+                    "on-primary-container": "#fffcff",
+                    "surface-dim": "#131315",
+                    "inverse-on-surface": "#313032",
+                    "background": "#09090b",
+                    "surface-variant": "#353437",
+                    "on-primary-fixed-variant": "#2623d1",
+                    "on-tertiary-fixed": "#001f25",
+                    "surface": "#131315",
+                    "secondary-container": "#6001d1",
+                    "outline": "#908fa1",
+                    "outline-variant": "#454555",
+                    "error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "12px",
+                    "2xl": "24px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-xl": "64px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "container-max": "1440px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "stack-lg": "32px",
+                    "gutter": "24px",
+                    "margin-desktop": "48px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-xs": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-xs": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #09090b; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .glass { background: rgba(17, 18, 23, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-card:hover { border-color: rgba(255, 255, 255, 0.2); background: rgba(23, 26, 33, 0.85); transform: translateY(-4px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .gradient-text { background: linear-gradient(90deg, #c0c1ff, #d2bbff, #2fd9f4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: textShine 4s linear infinite; }
+        @keyframes textShine { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+        .glow-button { background: linear-gradient(135deg, #5b5fff, #6001d1); box-shadow: 0px 0px 20px rgba(91, 95, 255, 0.3); transition: all 0.3s ease; }
+        .glow-button:hover { box-shadow: 0px 0px 30px rgba(91, 95, 255, 0.5); transform: scale(1.02); }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .floating-orb { position: absolute; border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.15; pointer-events: none; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="text-on-surface">
+<div class="fixed inset-0 z-[-2]">
+<!-- STITCH_SHADER_START:ANIMATION_3 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_3" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_3');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 p = (uv * 2.0 - 1.0);
+    p.x *= u_resolution.x / u_resolution.y;
+    
+    // Slow moving blobs
+    float time = u_time * 0.2;
+    vec3 color = vec3(0.035, 0.035, 0.043); // Deep dark background
+    
+    // Ambient Glow 1: Purple
+    float d1 = length(p - vec2(sin(time)*0.5, cos(time)*0.3));
+    float glow1 = 0.05 / (d1 * d1 + 0.1);
+    color += glow1 * vec3(0.35, 0.22, 0.93); // #5B5FFF approx
+    
+    // Ambient Glow 2: Blue
+    float d2 = length(p - vec2(cos(time*0.8)*0.7, sin(time*1.2)*0.4));
+    float glow2 = 0.04 / (d2 * d2 + 0.15);
+    color += glow2 * vec3(0.13, 0.83, 0.93); // #22D3EE approx
+    
+    // Ambient Glow 3: Deep Violet
+    float d3 = length(p - vec2(sin(time*1.5)*-0.6, cos(time*0.5)*-0.5));
+    float glow3 = 0.03 / (d3 * d3 + 0.2);
+    color += glow3 * vec3(0.48, 0.23, 0.93); // #7C3AED approx
+
+    gl_FragColor = vec4(color * 0.4, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_3 -->
+</div>
+<div class="floating-orb w-[600px] h-[600px] bg-primary top-[-10%] left-[-10%]"></div>
+<div class="floating-orb w-[400px] h-[400px] bg-tertiary bottom-[10%] right-[-5%]"></div>
+<header class="fixed top-0 w-full z-50 glass border-b border-white/10">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<img alt="Qevora Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPiWDgRj7rsMjbfSXd3mdNffKc9GmLj6QmdsoCJCHAl8-Nm-DT0kk7-RPlCFin7sBpcMV3whvBCc2cnWIzYlsRoFBASNZPOA6psQwhZrJGXUe90SalW2rTHl3aiWmoqeA9VqsK0keJtxdTTXkM9piBtMKR_M3Mi_FQ_GPjXUjnUX-QB75Ni_J49dSGCk6n1rsVFkafJBSGWxUgfC8ogx_W74V5SqZDeqhXJxZ-jPHnyyvh0YObjhdYSI0yE8_v_6MnnY44qUSW9Dc">
+</div>
+<nav class="hidden md:flex items-center gap-stack-lg">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#features">Features</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#templates">Templates</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#pricing">Pricing</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Docs</a>
+</nav>
+<button class="glow-button px-6 py-2.5 rounded-xl font-label-sm text-label-sm text-on-primary-container font-bold">
+                Start Building
+            </button>
+</div>
+</header>
+<main class="relative">
+<section class="min-h-screen flex flex-col items-center justify-center pt-32 pb-stack-xl px-margin-mobile md:px-margin-desktop overflow-hidden">
+<div class="max-w-4xl text-center space-y-6 reveal active">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-label-xs font-label-xs uppercase tracking-widest mb-4">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                    The Future of Web Design
+                </div>
+<h1 class="font-display-lg text-display-lg leading-[1.1] text-on-surface">
+                    Build your website with AI.<br>
+<span class="gradient-text">From a single prompt.</span>
+</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Transform your vision into a professional-grade digital experience in seconds. Qevora uses advanced generative models to craft high-performance websites for visionary brands.
+                </p>
+</div>
+<div class="w-full max-w-3xl mt-12 reveal active delay-200">
+<div class="glass p-2 rounded-2xl flex items-center shadow-2xl">
+<div class="flex-grow flex items-center px-4">
+<span class="material-symbols-outlined text-on-surface-variant mr-3">auto_awesome</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-body-md font-body-md text-on-surface placeholder:text-on-surface-variant/50 py-4" placeholder="Create a modern restaurant website in Arabic..." type="text">
+</div>
+<button class="glow-button px-8 py-4 rounded-xl font-label-sm text-label-sm text-white font-bold flex items-center gap-2">
+                        Generate <span class="material-symbols-outlined text-sm">rocket_launch</span>
+</button>
+</div>
+</div>
+<div class="mt-20 flex flex-wrap justify-center gap-12 reveal active delay-500 opacity-60">
+<div class="text-center">
+<div class="text-headline-md font-headline-md text-on-surface">100K+</div>
+<div class="text-label-xs font-label-xs text-on-surface-variant uppercase tracking-wider">Websites</div>
+</div>
+<div class="text-center">
+<div class="text-headline-md font-headline-md text-on-surface">45</div>
+<div class="text-label-xs font-label-xs text-on-surface-variant uppercase tracking-wider">Countries</div>
+</div>
+<div class="text-center">
+<div class="text-headline-md font-headline-md text-on-surface">99.9%</div>
+<div class="text-label-xs font-label-xs text-on-surface-variant uppercase tracking-wider">Uptime</div>
+</div>
+</div>
+</section>
+<section class="py-stack-xl px-margin-desktop max-w-container-max mx-auto reveal" id="features">
+<div class="text-center mb-16 space-y-4">
+<h2 class="text-headline-xl font-headline-xl text-on-surface">Hyper-intelligent capabilities.</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Everything you need to scale, fully automated.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<div class="md:col-span-8 glass-card glass p-8 rounded-2xl flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">auto_fix_high</span>
+</div>
+<h3 class="text-headline-md font-headline-md mb-2">Generative Layout Engine</h3>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-md">Our proprietary AI understands content hierarchy and aesthetic balance, creating unique layouts for every prompt.</p>
+</div>
+<div class="mt-8 rounded-xl overflow-hidden border border-white/5 bg-surface-container-low h-48 relative">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
+<div class="p-4 space-y-3 opacity-40">
+<div class="h-4 w-3/4 bg-on-surface/10 rounded"></div>
+<div class="h-32 w-full bg-on-surface/5 rounded"></div>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 glass-card glass p-8 rounded-2xl flex flex-col">
+<div class="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary mb-6">
+<span class="material-symbols-outlined">language</span>
+</div>
+<h3 class="text-headline-md font-headline-md mb-2">Global Content</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Native support for 120+ languages including RTL scripts like Arabic and Hebrew.</p>
+<div class="mt-auto pt-8 flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-white/5 text-[10px] border border-white/10 uppercase font-bold">English</span>
+<span class="px-3 py-1 rounded-full bg-white/5 text-[10px] border border-white/10 uppercase font-bold">العربية</span>
+<span class="px-3 py-1 rounded-full bg-white/5 text-[10px] border border-white/10 uppercase font-bold">日本語</span>
+</div>
+</div>
+<div class="md:col-span-4 glass-card glass p-8 rounded-2xl">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<h3 class="text-headline-md font-headline-md mb-2">Turbo Speed</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Optimized assets and edge delivery ensure your site scores 100 on Core Web Vitals.</p>
+</div>
+<div class="md:col-span-8 glass-card glass p-8 rounded-2xl flex items-center gap-8">
+<div class="flex-grow">
+<div class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">draw</span>
+</div>
+<h3 class="text-headline-md font-headline-md mb-2">Smart Brand Sync</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Upload your logo, and we'll automatically generate a complete visual system.</p>
+</div>
+<div class="hidden lg:block w-48 h-48 rounded-full border-4 border-dashed border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-white/20">cloud_upload</span>
+</div>
+</div>
+</div>
+</section>
+<section class="py-stack-xl bg-surface-container-lowest/30 overflow-hidden reveal">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/3 space-y-6">
+<h2 class="text-headline-xl font-headline-xl">Interactive Creation.</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Talk to your website. Refine sections, swap colors, or change copy using simple natural language commands.</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Real-time AI editing
+                            </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Dynamic asset generation
+                            </li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                Instant SEO deployment
+                            </li>
+</ul>
+</div>
+<div class="lg:w-2/3 w-full">
+<div class="glass rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-video flex flex-col">
+<div class="bg-surface-container-high px-4 py-3 border-b border-white/10 flex items-center justify-between">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-red-500/30"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-500/30"></div>
+<div class="w-3 h-3 rounded-full bg-green-500/30"></div>
+</div>
+<div class="px-4 py-1 rounded bg-background/50 border border-white/5 text-[10px] text-on-surface-variant">qevora.ai/preview/restaura-modern</div>
+<div class="w-12"></div>
+</div>
+<div class="flex-grow flex">
+<div class="w-64 border-r border-white/10 bg-surface/50 p-4 space-y-4 hidden md:block">
+<div class="text-label-xs font-label-xs text-on-surface-variant/50 uppercase">AI Copilot</div>
+<div class="p-3 bg-primary/10 rounded-lg text-[12px] text-primary border border-primary/20">
+                                        "Add a reservation form with a dark glassmorphic style."
+                                    </div>
+<div class="flex items-center gap-2 text-on-surface-variant italic text-[11px]">
+<span class="animate-pulse w-2 h-2 rounded-full bg-primary"></span> Generating components...
+                                    </div>
+</div>
+<div class="flex-grow bg-[#0f0f12] p-8 relative overflow-hidden">
+<div class="space-y-8 animate-pulse">
+<div class="h-10 w-48 bg-white/10 rounded"></div>
+<div class="space-y-3">
+<div class="h-4 w-full bg-white/5 rounded"></div>
+<div class="h-4 w-5/6 bg-white/5 rounded"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="aspect-square bg-white/5 rounded-xl border border-white/5"></div>
+<div class="aspect-square bg-white/5 rounded-xl border border-white/5"></div>
+</div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0f0f12]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-stack-xl px-margin-desktop max-w-container-max mx-auto reveal" id="templates">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-headline-xl font-headline-xl">Stunning Foundations.</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Start from a template or a blank prompt. The quality remains unmatched.</p>
+</div>
+<button class="text-primary font-label-sm text-label-sm hover:underline">Explore all 200+ templates</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden glass border border-white/5 mb-6 relative">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" data-alt="A luxurious minimalist interior design website template with high-contrast typography, large cinematic photography of modern architectural spaces, and a deep charcoal and ivory color scheme. The interface looks premium and high-end with smooth scrolling effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMIVo2gClQqxAyq4jQvQq7ut1_dpziYa8W1FZJuCsFoyk7iv1TSDsUhsqcuOEstIzDEndYZFJRjqtuwcY4RNt-wtV0ErSuIiN85xSkYBSrnHOOKpSbo9oMNNH5S5OYOvYw-6oUtvPTO-uC8PpKdyOU0TY5-U-ZZ1Etz-F5bHQkp70Ds7n8buWyuIW5fR81S1QmV398hF0bL_SgamLn0FR383y_h_HDc3TLuCEinpKxQYWkMhWbMJd05YzMVz3PdAR9qm7QJtgleUk">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+</div>
+<h3 class="text-headline-md font-headline-md group-hover:text-primary transition-colors">Vanguard Portfolio</h3>
+<p class="text-label-xs font-label-xs text-on-surface-variant uppercase">Creative Agency / Design</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden glass border border-white/5 mb-6 relative">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" data-alt="A modern restaurant website template featuring stunning close-up food photography with a moody, cinematic lighting style. The UI includes glassmorphic reservation cards, elegant serif typography, and a refined color palette of deep blacks and emerald greens. The aesthetic is sophisticated and culinary-focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBilSVXDxOV07iTDURDMW-evNUuu3Llwl9lX9iwh5cNnEhyx2LkPVIZnNRw45TWCuetPut0bDOh9q8GVpHHUS3temMmrebyZIfCPfOA1QbOj7WIiYkQlCN46NmqYErUAYRZsVYyoUWB9yofuIsqdUFvZFRSnI-XpMCKIjdySDMk5zaUuxzJP111qF2Z6WdK6blmr_vQxs_IwKMY9szZtDL17g0rNSuHbskLac8mNF83rI5gC7Tqgo0bBrg4kPRqBINXc0Dh8aLYKl4">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+</div>
+<h3 class="text-headline-md font-headline-md group-hover:text-primary transition-colors">Lumière Dining</h3>
+<p class="text-label-xs font-label-xs text-on-surface-variant uppercase">Hospitality / Food</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden glass border border-white/5 mb-6 relative">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" data-alt="A futuristic SaaS dashboard landing page with neon blue and purple glowing accents. The layout is structured as a bento grid with 3D abstract visualizations, clean sans-serif typography, and a tech-forward minimalist aesthetic. High-tech precision and clean enterprise design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPY01A7Ur01PAeIVZXaaXPYdZWDOI_imDNWqNwxj6kuaICerWEAfraBB6-TqyJ4uCDdfN92D03ZV6NszfkpbMNULzahlf5Nu4b-Zvj40bWsKhGDiu0QtaXxsUa7YPoppowK49iR7gE_PKsjt49ljoU-vwiIssPmtp-5hAOUSIbGkRuLayhcQU1x7W4qCnMGOMf9C3RZW284P5vdIVgD0_3MICx5AXSnWhVsV48e-hJV2udCqH5ZhXAOI5ni32kUEGCKKWnU6e-QtA">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+</div>
+<h3 class="text-headline-md font-headline-md group-hover:text-primary transition-colors">Nexus Cloud</h3>
+<p class="text-label-xs font-label-xs text-on-surface-variant uppercase">Technology / SaaS</p>
+</div>
+</div>
+</section>
+<section class="py-stack-xl px-margin-desktop max-w-container-max mx-auto reveal" id="pricing">
+<div class="text-center mb-16">
+<h2 class="text-headline-xl font-headline-xl mb-4">Investment for growth.</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Simple, transparent pricing for teams of all sizes.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+<div class="glass p-10 rounded-2xl border border-white/5 flex flex-col">
+<div class="mb-8">
+<div class="text-label-xs font-label-xs text-on-surface-variant uppercase mb-2">Starter</div>
+<div class="text-headline-xl font-headline-xl">$0 <span class="text-body-md font-body-md text-on-surface-variant">/mo</span></div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-2 text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-sm text-primary">done</span> 1 Website</li>
+<li class="flex items-center gap-2 text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-sm text-primary">done</span> Qevora Subdomain</li>
+<li class="flex items-center gap-2 text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-sm text-primary">done</span> AI Basic Editor</li>
+</ul>
+<button class="w-full py-3 rounded-xl border border-white/10 hover:bg-white/5 transition-colors font-bold">Choose Free</button>
+</div>
+<div class="glass p-10 rounded-2xl relative border border-primary/40 shadow-[0_0_40px_rgba(91,95,255,0.15)] transform scale-105 z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary text-[10px] font-black px-4 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+<div class="mb-8">
+<div class="text-label-xs font-label-xs text-primary uppercase mb-2">Professional</div>
+<div class="text-headline-xl font-headline-xl">$19 <span class="text-body-md font-body-md text-on-surface-variant">/mo</span></div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-2 text-body-md"><span class="material-symbols-outlined text-sm text-primary">done</span> 5 Websites</li>
+<li class="flex items-center gap-2 text-body-md"><span class="material-symbols-outlined text-sm text-primary">done</span> Custom Domain</li>
+<li class="flex items-center gap-2 text-body-md"><span class="material-symbols-outlined text-sm text-primary">done</span> Advanced AI Copilot</li>
+<li class="flex items-center gap-2 text-body-md"><span class="material-symbols-outlined text-sm text-primary">done</span> Premium Templates</li>
+<li class="flex items-center gap-2 text-body-md"><span class="material-symbols-outlined text-sm text-primary">done</span> Priority Support</li>
+</ul>
+<button class="glow-button w-full py-3 rounded-xl font-bold">Get Started</button>
+</div>
+<div class="glass p-10 rounded-2xl border border-white/5 flex flex-col">
+<div class="mb-8">
+<div class="text-label-xs font-label-xs text-on-surface-variant uppercase mb-2">Scale</div>
+<div class="text-headline-xl font-headline-xl">$49 <span class="text-body-md font-body-md text-on-surface-variant">/mo</span></div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-2 text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-sm text-primary">done</span> Unlimited Sites</li>
+<li class="flex items-center gap-2 text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-sm text-primary">done</span> Team Collaboration</li>
+<li class="flex items-center gap-2 text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-sm text-primary">done</span> White Label Option</li>
+<li class="flex items-center gap-2 text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-sm text-primary">done</span> Dedicated Account Manager</li>
+</ul>
+<button class="w-full py-3 rounded-xl border border-white/10 hover:bg-white/5 transition-colors font-bold">Contact Sales</button>
+</div>
+</div>
+</section>
+<section class="py-stack-xl px-margin-desktop max-w-container-max mx-auto reveal">
+<div class="glass rounded-3xl p-16 text-center relative overflow-hidden">
+<div class="floating-orb w-[300px] h-[300px] bg-primary top-[-50%] left-[-20%] opacity-20"></div>
+<div class="relative z-10 max-w-2xl mx-auto space-y-8">
+<h2 class="text-display-lg font-display-lg">Ready to build the future?</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Join thousands of creators who have ditched the traditional website builders for AI-powered precision.</p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-4">
+<button class="glow-button px-10 py-5 rounded-2xl text-headline-md font-headline-md">Try Qevora AI Free</button>
+<button class="px-10 py-5 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors font-headline-md">Watch Demo</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-surface py-stack-xl border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg px-margin-desktop max-w-container-max mx-auto">
+<div>
+<img alt="Qevora Logo" class="h-8 mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPiWDgRj7rsMjbfSXd3mdNffKc9GmLj6QmdsoCJCHAl8-Nm-DT0kk7-RPlCFin7sBpcMV3whvBCc2cnWIzYlsRoFBASNZPOA6psQwhZrJGXUe90SalW2rTHl3aiWmoqeA9VqsK0keJtxdTTXkM9piBtMKR_M3Mi_FQ_GPjXUjnUX-QB75Ni_J49dSGCk6n1rsVFkafJBSGWxUgfC8ogx_W74V5SqZDeqhXJxZ-jPHnyyvh0YObjhdYSI0yE8_v_6MnnY44qUSW9Dc">
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm">Elevating the web through hyper-intelligent design and automated precision. Built for the next generation of digital builders.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+<div>
+<h4 class="text-label-xs font-label-xs text-on-surface uppercase mb-4">Product</h4>
+<ul class="space-y-2 text-label-sm font-label-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Features</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Templates</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-xs font-label-xs text-on-surface uppercase mb-4">Company</h4>
+<ul class="space-y-2 text-label-sm font-label-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">About</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-xs font-label-xs text-on-surface uppercase mb-4">Legal</h4>
+<ul class="space-y-2 text-label-sm font-label-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mt-stack-xl px-margin-desktop max-w-container-max mx-auto border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-label-xs font-label-xs text-on-surface-variant">© 2024 Qevora AI. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-xs text-label-xs uppercase tracking-widest" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-xs text-label-xs uppercase tracking-widest" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-xs text-label-xs uppercase tracking-widest" href="#">Discord</a>
+</div>
+</div>
+</footer>
+<script>
+        // Reveal animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Subtle mouse interaction for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

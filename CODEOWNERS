@@ -1,0 +1,20 @@
+# These owners will be the default reviewers for pull requests in these paths
+
+# Global default
+*       @qevora/core-team
+
+# Backend / API
+/apps/api/                 @qevora/backend-team
+/packages/ai-engine/       @qevora/ai-team
+
+# Frontend / Web
+/apps/web/                 @qevora/frontend-team
+/packages/renderer/        @qevora/frontend-team
+/packages/ui/              @qevora/frontend-team
+/packages/design-system/   @qevora/design-team
+
+# Infrastructure & CI
+/.github/                  @qevora/devops
+/infrastructure/           @qevora/devops
+/turbo.json                @qevora/devops
+/package.json              @qevora/core-team

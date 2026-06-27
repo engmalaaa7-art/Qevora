@@ -1,0 +1,569 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Settings | Qevora AI Cloud</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: #0D1117;
+            color: #e5e0ef;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .luminous-border {
+            position: relative;
+        }
+
+        .luminous-border::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            padding: 1px;
+            border-radius: inherit;
+            background: linear-gradient(to right, #6c4dff, transparent, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .shimmer-bg {
+            background: linear-gradient(90deg, rgba(108, 77, 255, 0.1), rgba(68, 241, 188, 0.1));
+            background-size: 200% 200%;
+            animation: shimmer 8s ease infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(108, 77, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c8bfff",
+                        "on-secondary": "#003828",
+                        "surface-container-highest": "#35333e",
+                        "primary-container": "#6c4dff",
+                        "surface-container-low": "#1c1a24",
+                        "inverse-primary": "#5b38ee",
+                        "surface-container-lowest": "#0e0d17",
+                        "secondary-fixed": "#54fdc7",
+                        "on-primary-fixed-variant": "#4206d7",
+                        "background-deep": "#0D1117",
+                        "primary": "#c8bfff",
+                        "surface-tint": "#c8bfff",
+                        "surface-bright": "#3a3843",
+                        "primary-fixed": "#e5deff",
+                        "tertiary-fixed": "#ffddb5",
+                        "glass-border": "rgba(255, 255, 255, 0.1)",
+                        "surface-dim": "#14121c",
+                        "on-surface": "#e5e0ef",
+                        "surface-variant": "#35333e",
+                        "inverse-surface": "#e5e0ef",
+                        "surface-container": "#201e29",
+                        "on-tertiary": "#452b00",
+                        "on-primary": "#2d009d",
+                        "background": "#14121c",
+                        "tertiary": "#ffb955",
+                        "on-secondary-container": "#005640",
+                        "outline-variant": "#474556",
+                        "surface-main": "#14121c",
+                        "secondary-container": "#00d4a2",
+                        "on-background": "#e5e0ef",
+                        "error": "#ffb4ab",
+                        "outline": "#928ea2",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#190064",
+                        "surface-container-high": "#2a2933",
+                        "surface": "#14121c",
+                        "glow-purple": "rgba(108, 77, 255, 0.4)",
+                        "glass-fill": "rgba(255, 255, 255, 0.03)",
+                        "on-surface-variant": "#c9c4d9",
+                        "secondary": "#44f1bc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "container-max": "1440px",
+                        "sidebar-width": "320px",
+                        "xs": "8px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Rubik"],
+                        "display-lg": ["Rubik"],
+                        "label-sm": ["Rubik"],
+                        "body-lg": ["Rubik"],
+                        "label-md": ["Rubik"],
+                        "headline-lg": ["Rubik"],
+                        "display-lg-mobile": ["Rubik"],
+                        "headline-xl": ["Rubik"],
+                        "caption": ["Rubik"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "caption": ["10px", {"lineHeight": "1", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background-deep text-on-surface font-body-md overflow-hidden">
+<!-- WebGL Background Overlay -->
+<div class="fixed inset-0 pointer-events-none opacity-30 z-0">
+
+</div>
+<!-- SIDE NAV BAR (Shared) -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width border-r border-glass-border backdrop-blur-xl bg-background-deep flex flex-col p-md gap-sm z-50">
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(108,77,255,0.4)]">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Qevora</h1>
+<p class="text-label-sm text-on-surface-variant tracking-wider uppercase">AI Cloud Platform</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-xs overflow-y-auto custom-scrollbar">
+<!-- Nav Items from JSON -->
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-glass-fill hover:text-primary transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">dashboard</span>
+<span class="font-body-md">Workspace</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-glass-fill hover:text-primary transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">analytics</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-glass-fill hover:text-primary transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">cloud</span>
+<span class="font-body-md">Storage</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-glass-fill hover:text-primary transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">language</span>
+<span class="font-body-md">Domains</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-glass-fill hover:text-primary transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">web_stories</span>
+<span class="font-body-md">Templates</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-glass-fill hover:text-primary transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">payments</span>
+<span class="font-body-md">Billing</span>
+</a>
+<!-- Active State for Settings -->
+<a class="flex items-center gap-md p-md bg-primary-container text-on-primary-container rounded-lg shadow-[0_0_15px_rgba(108,77,255,0.4)] active:scale-[0.96] transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-body-md font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-md border-t border-glass-border">
+<button class="w-full py-sm bg-primary text-on-primary font-label-md rounded-xl hover:brightness-110 active:scale-95 transition-all">
+                Upgrade Plan
+            </button>
+</div>
+</aside>
+<!-- TOP NAV BAR (Shared) -->
+<header class="fixed top-0 right-0 w-[calc(100%-320px)] h-20 bg-surface-main/80 backdrop-blur-md border-b border-glass-border z-40">
+<div class="flex justify-between items-center px-md h-full w-full">
+<div class="flex items-center gap-md">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-low border border-outline-variant rounded-full pl-10 pr-md py-2 text-label-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search settings..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-6 w-[1px] bg-glass-border mx-1"></div>
+<button class="px-md py-2 border border-outline-variant text-on-surface rounded-lg text-label-md hover:bg-glass-fill transition-all">Support</button>
+<button class="px-md py-2 bg-primary-container text-on-primary-container rounded-lg font-bold text-label-md active:scale-95 transition-all">New Project</button>
+<img class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="A professional headshot of a software engineer in a high-tech studio environment. The subject is wearing a sleek, dark techwear jacket. The background features blurred neon digital interfaces in shades of violet and mint, matching the Qevora Lumina brand aesthetic. The lighting is dramatic, high-contrast, and cinematic, emphasizing technical expertise and futuristic vision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbA41V71fDYKLbvssL4d3aJoJI3ptW-XvkQHDsFpvvSaUOUplBHT_CiQYVCatOXo9knsWKhl2o6CAUdlRuN-IggZYcsf_GUwB-z3_h5VXw9IALHiDxoZ3rhZaoG9MJsWQ3tD2opffBLquGMyn7L_XCFqvPJ0ee3I4JKIziHVEYWFGuUNnZQTHr_546_ycPoSsnrduxBDG721iEoNLJYqJLPdIjTiKjKlrme8j4FhMPgO_u7wWWZT1sJdSZBbu_dZmCZhcFaBhkyVg">
+</div>
+</div>
+</header>
+<!-- MAIN CONTENT -->
+<main class="ml-sidebar-width pt-20 h-screen overflow-y-auto custom-scrollbar relative z-10">
+<div class="max-w-[1200px] mx-auto p-xl">
+<header class="mb-lg">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-xs">Platform Settings</h2>
+<p class="text-body-lg text-on-surface-variant">Manage your AI workspace, security protocols, and system preferences.</p>
+</header>
+<div class="flex gap-lg flex-col lg:flex-row">
+<!-- Tabs Sidebar -->
+<nav class="w-full lg:w-64 flex flex-col gap-xs shrink-0">
+<button class="setting-tab flex items-center gap-sm px-md py-3 rounded-xl bg-primary-container text-on-primary-container shadow-[0_0_15px_rgba(108,77,255,0.4)] transition-all" id="tab-general" onclick="switchTab('general')">
+<span class="material-symbols-outlined">business_center</span>
+<span class="font-label-md">General</span>
+</button>
+<button class="setting-tab flex items-center gap-sm px-md py-3 rounded-xl text-on-surface-variant hover:bg-glass-fill transition-all" id="tab-appearance" onclick="switchTab('appearance')">
+<span class="material-symbols-outlined">palette</span>
+<span class="font-label-md">Appearance</span>
+</button>
+<button class="setting-tab flex items-center gap-sm px-md py-3 rounded-xl text-on-surface-variant hover:bg-glass-fill transition-all" id="tab-language" onclick="switchTab('language')">
+<span class="material-symbols-outlined">translate</span>
+<span class="font-label-md">Language</span>
+</button>
+<button class="setting-tab flex items-center gap-sm px-md py-3 rounded-xl text-on-surface-variant hover:bg-glass-fill transition-all" id="tab-notifications" onclick="switchTab('notifications')">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-label-md">Notifications</span>
+</button>
+<button class="setting-tab flex items-center gap-sm px-md py-3 rounded-xl text-on-surface-variant hover:bg-glass-fill transition-all" id="tab-security" onclick="switchTab('security')">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-md">Security</span>
+</button>
+<button class="setting-tab flex items-center gap-sm px-md py-3 rounded-xl text-on-surface-variant hover:bg-glass-fill transition-all" id="tab-api" onclick="switchTab('api')">
+<span class="material-symbols-outlined">key</span>
+<span class="font-label-md">API Keys</span>
+</button>
+<button class="setting-tab flex items-center gap-sm px-md py-3 rounded-xl text-on-surface-variant hover:bg-glass-fill transition-all" id="tab-integrations" onclick="switchTab('integrations')">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-md">Integrations</span>
+</button>
+<div class="h-px bg-glass-border my-2"></div>
+<button class="setting-tab flex items-center gap-sm px-md py-3 rounded-xl text-error hover:bg-error-container/20 transition-all" id="tab-danger" onclick="switchTab('danger')">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="font-label-md">Danger Zone</span>
+</button>
+</nav>
+<!-- Settings Canvas -->
+<div class="flex-1 min-w-0 pb-xl">
+<!-- General Tab -->
+<section class="tab-content block animate-in fade-in slide-in-from-bottom-4 duration-500" id="content-general">
+<div class="glass-card rounded-2xl p-lg luminous-border mb-md">
+<h3 class="font-headline-lg text-headline-lg mb-md">Workspace Identity</h3>
+<div class="space-y-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-xs">
+<label class="font-label-md text-on-surface">Workspace Name</label>
+<input class="w-full bg-surface-container-highest border border-outline-variant rounded-xl p-md text-on-surface focus:ring-2 focus:ring-primary focus:border-transparent transition-all" type="text" value="Quantum Labs Alpha">
+<p class="text-caption text-outline">Visible to all team members.</p>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-on-surface">Workspace URL</label>
+<div class="flex items-center">
+<span class="bg-surface-container border border-r-0 border-outline-variant px-md py-md rounded-l-xl text-outline text-label-md">qevora.cloud/</span>
+<input class="w-full bg-surface-container-highest border border-outline-variant rounded-r-xl p-md text-on-surface focus:ring-2 focus:ring-primary focus:border-transparent transition-all" type="text" value="quantum-labs">
+</div>
+</div>
+</div>
+<div class="p-md bg-surface-container rounded-xl border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+</div>
+<div>
+<p class="font-label-md">Workspace Ownership</p>
+<p class="text-caption text-outline">Owner: alex@qevora.cloud</p>
+</div>
+</div>
+<button class="px-md py-2 border border-outline-variant rounded-lg text-label-md hover:bg-glass-fill transition-all">Transfer Ownership</button>
+</div>
+</div>
+</div>
+<div class="flex justify-end gap-md">
+<button class="px-lg py-3 text-on-surface hover:text-primary transition-colors font-label-md">Discard</button>
+<button class="px-lg py-3 bg-primary text-on-primary rounded-xl font-bold font-label-md hover:scale-105 active:scale-95 transition-all">Save Changes</button>
+</div>
+</section>
+<!-- Appearance Tab -->
+<section class="tab-content hidden animate-in fade-in slide-in-from-bottom-4 duration-500" id="content-appearance">
+<div class="glass-card rounded-2xl p-lg mb-md">
+<h3 class="font-headline-lg text-headline-lg mb-md">Visual Theme</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<button class="p-md rounded-2xl border-2 border-primary bg-surface-container-high text-left relative overflow-hidden group">
+<div class="w-full h-24 rounded-lg bg-background-deep mb-md border border-outline-variant flex flex-col gap-xs p-2">
+<div class="w-1/2 h-2 bg-surface-container rounded-full"></div>
+<div class="w-full h-12 bg-surface-container-low rounded-lg"></div>
+</div>
+<p class="font-label-md">Deep Space (Dark)</p>
+<div class="absolute top-2 right-2 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</button>
+<button class="p-md rounded-2xl border border-outline-variant bg-white/5 text-left group hover:border-primary/50 transition-all">
+<div class="w-full h-24 rounded-lg bg-gray-100 mb-md border border-gray-300 flex flex-col gap-xs p-2">
+<div class="w-1/2 h-2 bg-gray-200 rounded-full"></div>
+<div class="w-full h-12 bg-white rounded-lg shadow-sm"></div>
+</div>
+<p class="font-label-md text-on-surface-variant">Lumina (Light)</p>
+</button>
+<button class="p-md rounded-2xl border border-outline-variant bg-white/5 text-left group hover:border-primary/50 transition-all">
+<div class="w-full h-24 rounded-lg bg-gradient-to-br from-background-deep to-surface-container-high mb-md border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">settings_brightness</span>
+</div>
+<p class="font-label-md text-on-surface-variant">System Default</p>
+</button>
+</div>
+<div class="mt-lg">
+<label class="font-label-md mb-md block">Accent Color</label>
+<div class="flex gap-md">
+<button class="w-8 h-8 rounded-full bg-[#6c4dff] border-2 border-white"></button>
+<button class="w-8 h-8 rounded-full bg-[#44f1bc] hover:scale-110 transition-transform"></button>
+<button class="w-8 h-8 rounded-full bg-[#ffb955] hover:scale-110 transition-transform"></button>
+<button class="w-8 h-8 rounded-full bg-[#ffb4ab] hover:scale-110 transition-transform"></button>
+</div>
+</div>
+</div>
+</section>
+<!-- API Keys Tab -->
+<section class="tab-content hidden animate-in fade-in slide-in-from-bottom-4 duration-500" id="content-api">
+<div class="glass-card rounded-2xl p-lg mb-md">
+<div class="flex justify-between items-center mb-lg">
+<div>
+<h3 class="font-headline-lg text-headline-lg">API Integrations</h3>
+<p class="text-on-surface-variant">Manage secret keys for programmatic access to the Qevora API.</p>
+</div>
+<button class="px-md py-2 bg-primary-container text-on-primary-container rounded-lg font-bold flex items-center gap-xs">
+<span class="material-symbols-outlined">add</span>
+                                    Create Key
+                                </button>
+</div>
+<div class="space-y-md">
+<div class="p-md border border-outline-variant rounded-xl flex items-center justify-between hover:border-primary transition-all">
+<div class="flex items-center gap-lg">
+<span class="material-symbols-outlined text-primary text-3xl">key</span>
+<div>
+<p class="font-label-md">Production-Core-Service</p>
+<p class="text-caption text-outline">sk_live_••••••••••••••••••••••••3a9d</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="text-right">
+<p class="text-caption text-outline">Created Aug 12, 2023</p>
+<p class="text-caption text-secondary">Last used: 2 mins ago</p>
+</div>
+<button class="p-2 hover:bg-error-container/20 text-error rounded-lg transition-all">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="p-md border border-outline-variant rounded-xl flex items-center justify-between hover:border-primary transition-all">
+<div class="flex items-center gap-lg">
+<span class="material-symbols-outlined text-primary text-3xl">key</span>
+<div>
+<p class="font-label-md">Staging-Debug-Key</p>
+<p class="text-caption text-outline">sk_test_••••••••••••••••••••••••1f2b</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="text-right">
+<p class="text-caption text-outline">Created Sep 05, 2023</p>
+<p class="text-caption text-outline">Never used</p>
+</div>
+<button class="p-2 hover:bg-error-container/20 text-error rounded-lg transition-all">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Notifications Tab -->
+<section class="tab-content hidden animate-in fade-in slide-in-from-bottom-4 duration-500" id="content-notifications">
+<div class="glass-card rounded-2xl p-lg mb-md">
+<h3 class="font-headline-lg text-headline-lg mb-lg">Notification Preferences</h3>
+<div class="space-y-xl">
+<div>
+<h4 class="font-label-md text-primary mb-md uppercase tracking-widest">Global Events</h4>
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md">Critical Alerts</p>
+<p class="text-caption text-outline">Receive emails for system downtime and security breaches.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md">Usage Milestones</p>
+<p class="text-caption text-outline">Get notified when you reach 80% and 100% of your plan limits.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-primary mb-md uppercase tracking-widest">Activity Feed</h4>
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md">Project Updates</p>
+<p class="text-caption text-outline">Notifications for deployment status changes.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md">Direct Messages</p>
+<p class="text-caption text-outline">Receive push notifications for team comments.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Danger Zone Tab -->
+<section class="tab-content hidden animate-in fade-in slide-in-from-bottom-4 duration-500" id="content-danger">
+<div class="glass-card rounded-2xl p-lg border-error/30 mb-md relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<h3 class="font-headline-lg text-headline-lg text-error mb-md">Irreversible Actions</h3>
+<p class="text-body-md mb-lg text-on-surface-variant">These actions cannot be undone. Please proceed with extreme caution.</p>
+<div class="space-y-md">
+<div class="p-md rounded-xl bg-error-container/5 border border-error/20 flex items-center justify-between">
+<div>
+<p class="font-label-md text-on-surface">Delete Workspace</p>
+<p class="text-caption text-outline">Permanently remove all data, models, and history from this workspace.</p>
+</div>
+<button class="px-md py-2 bg-error text-on-error font-bold rounded-lg hover:brightness-110 transition-all">Delete Workspace</button>
+</div>
+<div class="p-md rounded-xl bg-error-container/5 border border-error/20 flex items-center justify-between">
+<div>
+<p class="font-label-md text-on-surface">Archive Projects</p>
+<p class="text-caption text-outline">Disable all active integrations and put the workspace in read-only mode.</p>
+</div>
+<button class="px-md py-2 border border-error text-error font-bold rounded-lg hover:bg-error/10 transition-all">Archive All</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Placeholder sections for other tabs to keep the UI clean -->
+<section class="tab-content hidden animate-in fade-in slide-in-from-bottom-4 duration-500" id="content-security">
+<div class="glass-card rounded-2xl p-lg mb-md">
+<h3 class="font-headline-lg text-headline-lg mb-md">Security &amp; Access</h3>
+<div class="space-y-lg">
+<div class="flex items-center justify-between p-md bg-surface-container rounded-xl border border-outline-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">vibration</span>
+<div>
+<p class="font-label-md">Two-Factor Authentication</p>
+<p class="text-caption text-outline">Add an extra layer of security to your account.</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-secondary/20 text-secondary text-caption rounded-full">ACTIVE</span>
+</div>
+<div class="flex items-center justify-between p-md bg-surface-container rounded-xl border border-outline-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">devices</span>
+<div>
+<p class="font-label-md">Active Sessions</p>
+<p class="text-caption text-outline">Logged in on 3 devices.</p>
+</div>
+</div>
+<button class="text-primary text-label-md hover:underline">Manage Sessions</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+            contents.forEach(content => content.classList.remove('block'));
+
+            // Reset all tab button styles
+            const buttons = document.querySelectorAll('.setting-tab');
+            buttons.forEach(button => {
+                button.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_15px_rgba(108,77,255,0.4)]');
+                button.classList.add('text-on-surface-variant', 'hover:bg-glass-fill');
+            });
+
+            // Show selected content
+            const activeContent = document.getElementById('content-' + tabId);
+            if(activeContent) {
+                activeContent.classList.remove('hidden');
+                activeContent.classList.add('block');
+            }
+
+            // Set active button style
+            const activeButton = document.getElementById('tab-' + tabId);
+            if(activeButton) {
+                activeButton.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_15px_rgba(108,77,255,0.4)]');
+                activeButton.classList.remove('text-on-surface-variant', 'hover:bg-glass-fill');
+            }
+        }
+
+        // Interaction scale effect logic
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-[0.98]'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-[0.98]'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-[0.98]'));
+        });
+    </script>
+</body></html>

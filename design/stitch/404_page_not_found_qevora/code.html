@@ -1,0 +1,393 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>404 - Lost in the Digital Sector | Qevora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#00d4a2",
+                      "on-secondary-container": "#005640",
+                      "on-secondary-fixed-variant": "#00513c",
+                      "on-surface": "#e5e0ef",
+                      "secondary-fixed-dim": "#27e0ac",
+                      "surface-variant": "#35333e",
+                      "surface": "#14121c",
+                      "glow-purple": "rgba(108, 77, 255, 0.4)",
+                      "on-tertiary-fixed": "#2a1800",
+                      "on-primary": "#2d009d",
+                      "surface-container-highest": "#35333e",
+                      "on-primary-container": "#f6f0ff",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed": "#ffddb5",
+                      "on-secondary-fixed": "#002116",
+                      "primary-fixed-dim": "#c8bfff",
+                      "primary-container": "#6c4dff",
+                      "inverse-surface": "#e5e0ef",
+                      "tertiary": "#ffb955",
+                      "glass-border": "rgba(255, 255, 255, 0.1)",
+                      "surface-container-high": "#2a2933",
+                      "background-deep": "#0D1117",
+                      "surface-tint": "#c8bfff",
+                      "surface-dim": "#14121c",
+                      "secondary-fixed": "#54fdc7",
+                      "on-tertiary-fixed-variant": "#633f00",
+                      "shimmer-gradient": "linear-gradient(90deg, #6c4dff, #44f1bc)",
+                      "on-primary-fixed": "#190064",
+                      "surface-main": "#14121c",
+                      "inverse-primary": "#5b38ee",
+                      "surface-bright": "#3a3843",
+                      "background": "#14121c",
+                      "primary": "#c8bfff",
+                      "inverse-on-surface": "#312f3a",
+                      "on-tertiary-container": "#fff0e2",
+                      "error": "#ffb4ab",
+                      "surface-container": "#201e29",
+                      "on-secondary": "#003828",
+                      "surface-container-lowest": "#0e0d17",
+                      "tertiary-fixed-dim": "#ffb955",
+                      "glass-fill": "rgba(255, 255, 255, 0.03)",
+                      "on-primary-fixed-variant": "#4206d7",
+                      "on-surface-variant": "#c9c4d9",
+                      "on-background": "#e5e0ef",
+                      "secondary": "#44f1bc",
+                      "outline-variant": "#474556",
+                      "error-container": "#93000a",
+                      "on-error": "#690005",
+                      "surface-container-low": "#1c1a24",
+                      "primary-fixed": "#e5deff",
+                      "outline": "#928ea2",
+                      "on-tertiary": "#452b00",
+                      "tertiary-container": "#996300"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sidebar-width": "320px",
+                      "xl": "64px",
+                      "container-max": "1440px",
+                      "xs": "8px",
+                      "gutter": "24px",
+                      "base": "4px",
+                      "sm": "16px",
+                      "md": "24px",
+                      "lg": "40px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Rubik"],
+                      "label-md": ["Rubik"],
+                      "headline-xl": ["Rubik"],
+                      "display-lg-mobile": ["Rubik"],
+                      "caption": ["Rubik"],
+                      "label-sm": ["Rubik"],
+                      "headline-lg": ["Rubik"],
+                      "display-lg": ["Rubik"],
+                      "body-md": ["Rubik"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "caption": ["10px", {"lineHeight": "1", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                      "headline-lg": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0D1117;
+            overflow: hidden;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .luminous-outline {
+            position: relative;
+        }
+
+        .luminous-outline::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, #c8bfff, transparent, #44f1bc);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.3;
+            animation: float-particle var(--duration) linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) translateX(var(--drift)); opacity: 0; }
+        }
+
+        .bloom-glow:active {
+            box-shadow: 0 0 25px rgba(108, 77, 255, 0.6);
+            transform: scale(0.96);
+        }
+
+        .shimmer-bg {
+            background: linear-gradient(90deg, #6c4dff, #44f1bc);
+            background-size: 200% auto;
+            animation: shimmer-anim 3s linear infinite;
+        }
+
+        @keyframes shimmer-anim {
+            to { background-position: 200% center; }
+        }
+
+        .direction-rtl {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Particle Background -->
+<div class="fixed inset-0 z-0" id="particle-container"><div class="particle" style="width: 1.09646px; height: 1.09646px; left: 47.7739vw; top: 110vh; --duration: 15.518960027916458s; --drift: 53.21339498899238px;"></div><div class="particle" style="width: 3.41884px; height: 3.41884px; left: 71.9214vw; top: 110vh; --duration: 18.335242137211903s; --drift: -57.76978672387052px;"></div><div class="particle" style="width: 1.58957px; height: 1.58957px; left: 89.9002vw; top: 110vh; --duration: 23.9088280683453s; --drift: 2.329222144091725px;"></div><div class="particle" style="width: 1.00625px; height: 1.00625px; left: 32.2094vw; top: 110vh; --duration: 11.55802010694678s; --drift: -19.827799912076305px;"></div><div class="particle" style="width: 1.49957px; height: 1.49957px; left: 5.52202vw; top: 110vh; --duration: 21.286912394922048s; --drift: 11.239672487993735px;"></div><div class="particle" style="width: 2.92813px; height: 2.92813px; left: 58.2914vw; top: 110vh; --duration: 12.482260418859449s; --drift: -22.23810278110474px;"></div><div class="particle" style="width: 1.22252px; height: 1.22252px; left: 73.0173vw; top: 110vh; --duration: 13.086370130273469s; --drift: 60.58654150746465px;"></div><div class="particle" style="width: 3.18365px; height: 3.18365px; left: 85.7182vw; top: 110vh; --duration: 12.128533800991894s; --drift: -64.3564280479838px;"></div><div class="particle" style="width: 1.57625px; height: 1.57625px; left: 62.6375vw; top: 110vh; --duration: 17.13251124076917s; --drift: 94.1566541760624px;"></div><div class="particle" style="width: 2.7192px; height: 2.7192px; left: 94.3142vw; top: 110vh; --duration: 18.12895549544183s; --drift: 23.18557294332757px;"></div></div>
+<!-- Navigation Shell (Suppressed based on Transactional/Task focus rule, but including subtle brand anchor) -->
+<header class="fixed top-0 w-full z-50 h-20 flex justify-between items-center px-6 md:px-12 pointer-events-none">
+<div class="font-headline-lg text-headline-lg font-extrabold text-on-surface tracking-tight pointer-events-auto">
+            Qevora
+        </div>
+<div class="pointer-events-auto">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="language">language</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 flex flex-col items-center justify-center grow p-6 pt-24 text-center">
+<!-- Hero Animation Section -->
+<div class="relative w-full max-w-2xl aspect-video md:aspect-square md:max-h-[500px] mb-8">
+<!-- STITCH_THREEJS_START:ANIMATION_30 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_30" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_30');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+camera.position.z = 5;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0x6c4dff, 1); // Qevora Primary
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+// Robot Group
+const robot = new THREE.Group();
+scene.add(robot);
+
+// Robot Head
+const headGeo = new THREE.BoxGeometry(1.2, 1, 1);
+const headMat = new THREE.MeshPhongMaterial({ color: 0x1c1a24, shininess: 100 });
+const head = new THREE.Mesh(headGeo, headMat);
+robot.add(head);
+
+// Screen Face
+const faceGeo = new THREE.PlaneGeometry(1, 0.8);
+const faceMat = new THREE.MeshBasicMaterial({ color: 0x6c4dff });
+const face = new THREE.Mesh(faceGeo, faceMat);
+face.position.z = 0.51;
+robot.add(face);
+
+// Eyes
+const eyeGeo = new THREE.CircleGeometry(0.1, 32);
+const eyeMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+const eyeL = new THREE.Mesh(eyeGeo, eyeMat);
+eyeL.position.set(-0.25, 0, 0.52);
+robot.add(eyeL);
+
+const eyeR = new THREE.Mesh(eyeGeo, eyeMat);
+eyeR.position.set(0.25, 0, 0.52);
+robot.add(eyeR);
+
+// Body
+const bodyGeo = new THREE.CylinderGeometry(0.6, 0.4, 1.2, 32);
+const bodyMat = new THREE.MeshPhongMaterial({ color: 0x1c1a24 });
+const body = new THREE.Mesh(bodyGeo, bodyMat);
+body.position.y = -1.2;
+robot.add(body);
+
+// Floating Rings
+const ringGeo = new THREE.TorusGeometry(1.5, 0.05, 16, 100);
+const ringMat = new THREE.MeshBasicMaterial({ color: 0x6c4dff, transparent: true, opacity: 0.3 });
+const ring1 = new THREE.Mesh(ringGeo, ringMat);
+ring1.rotation.x = Math.PI / 2;
+scene.add(ring1);
+
+const ring2 = new THREE.Mesh(ringGeo, ringMat);
+ring2.rotation.x = Math.PI / 2.5;
+ring2.scale.set(1.2, 1.2, 1.2);
+scene.add(ring2);
+
+// Animation
+let time = 0;
+function animate() {
+    requestAnimationFrame(animate);
+    time += 0.01;
+    
+    // Robot floating motion
+    robot.position.y = Math.sin(time) * 0.2;
+    robot.rotation.y = Math.sin(time * 0.5) * 0.2;
+    robot.rotation.z = Math.cos(time * 0.3) * 0.1;
+    
+    // Rings rotation
+    ring1.rotation.z += 0.005;
+    ring2.rotation.z -= 0.007;
+    
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+animate();
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_30 -->
+<!-- Glow under the animation -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-48 h-12 bg-primary/20 blur-[60px] rounded-full"></div>
+</div>
+<!-- 404 Message Bento Container -->
+<div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Main Content Card -->
+<div class="md:col-span-12 lg:col-span-8 glass-card luminous-outline p-8 md:p-12 rounded-xl text-left flex flex-col gap-4">
+<h1 class="font-display-lg text-display-lg md:text-[96px] text-primary tracking-tighter leading-none mb-2">
+                    404
+                </h1>
+<div class="flex flex-col md:flex-row md:items-center gap-4 border-l-2 border-primary/40 pl-6 mb-4">
+<h2 class="font-headline-xl text-headline-xl text-on-surface">Page not found</h2>
+<span class="hidden md:block text-outline-variant">|</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface direction-rtl">الصفحة غير موجودة</h2>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    It seems you've wandered into an uncharted digital sector. Our exploration unit is investigating this anomaly to bring you back to the grid.
+                </p>
+</div>
+<!-- Action Card (Bento Side) -->
+<div class="md:col-span-12 lg:col-span-4 flex flex-col gap-4">
+<button class="w-full group relative overflow-hidden bg-primary-container text-on-primary-container font-label-md text-label-md py-6 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 bloom-glow hover:brightness-110" onclick="window.location.href='/'">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<div class="flex flex-col items-center">
+<span>Back Home</span>
+<span class="text-xs opacity-80">العودة للرئيسية</span>
+</div>
+</button>
+<button class="w-full glass-card hover:bg-white/5 border border-white/10 text-on-surface font-label-md text-label-md py-6 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+<div class="flex flex-col items-center">
+<span>Generate New Website</span>
+<span class="text-xs opacity-60">إنشاء موقع جديد</span>
+</div>
+</button>
+<!-- Status Mini-Card -->
+<div class="glass-card p-4 rounded-xl flex items-center gap-4">
+<div class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Scanning for data leaks...</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Identity -->
+<footer class="relative z-10 w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center text-on-surface-variant/50 border-t border-white/5">
+<p class="font-caption text-caption">© 2024 Qevora. All rights reserved.</p>
+<div class="flex gap-6 mt-4 md:mt-0 font-caption text-caption">
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">Status</a>
+</div>
+</footer>
+<!-- Interactive Scripts -->
+<script>
+        // Particle Generator
+        const container = document.getElementById('particle-container');
+        const particleCount = 40;
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 3 + 1;
+            const duration = Math.random() * 15 + 10;
+            const drift = (Math.random() - 0.5) * 200;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `110vh`;
+            particle.style.setProperty('--duration', `${duration}s`);
+            particle.style.setProperty('--drift', `${drift}px`);
+            
+            container.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+                createParticle();
+            }, duration * 1000);
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            setTimeout(createParticle, Math.random() * 5000);
+        }
+
+        // Button Micro-interactions logic handled by Tailwind transition classes
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                // Potential sound effect trigger or additional JS-led animation
+            });
+        });
+    </script>
+</body></html>

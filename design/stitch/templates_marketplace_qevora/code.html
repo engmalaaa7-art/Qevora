@@ -1,0 +1,432 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Qevora | Premium Templates Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#0e0d17",
+                    "primary-fixed-dim": "#c8bfff",
+                    "on-secondary-container": "#00563f",
+                    "on-surface": "#e5e0ef",
+                    "on-secondary": "#003828",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#ffb955",
+                    "secondary-fixed-dim": "#27e0ab",
+                    "surface-container-low": "#1c1a24",
+                    "on-surface-variant": "#c9c4d9",
+                    "error": "#ffb4ab",
+                    "tertiary": "#ffb955",
+                    "on-tertiary-fixed": "#291800",
+                    "inverse-surface": "#e5e0ef",
+                    "background": "#14121c",
+                    "on-secondary-fixed": "#002116",
+                    "surface-container": "#201e29",
+                    "tertiary-container": "#986300",
+                    "on-secondary-fixed-variant": "#00513c",
+                    "on-primary-container": "#f6f0ff",
+                    "on-primary": "#2d009d",
+                    "surface-bright": "#3a3843",
+                    "secondary-fixed": "#54fdc6",
+                    "primary-container": "#6c4dff",
+                    "primary": "#c8bfff",
+                    "on-primary-fixed-variant": "#4206d7",
+                    "on-background": "#e5e0ef",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary": "#452b00",
+                    "outline-variant": "#474556",
+                    "on-tertiary-container": "#fff0e2",
+                    "tertiary-fixed": "#ffddb4",
+                    "inverse-on-surface": "#312f3a",
+                    "secondary": "#44f1bc",
+                    "surface": "#14121c",
+                    "primary-fixed": "#e5deff",
+                    "surface-variant": "#35333e",
+                    "surface-container-highest": "#35333e",
+                    "surface-tint": "#c8bfff",
+                    "outline": "#928ea2",
+                    "secondary-container": "#00d4a1",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "on-primary-fixed": "#190064",
+                    "surface-dim": "#14121c",
+                    "inverse-primary": "#5b38ee",
+                    "surface-container-high": "#2a2933"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "sm": "16px",
+                    "md": "24px",
+                    "container-max": "1440px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "lg": "40px",
+                    "xl": "64px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Rubik"],
+                    "label-sm": ["Rubik"],
+                    "label-md": ["Rubik"],
+                    "headline-xl": ["Rubik"],
+                    "display-lg-mobile": ["Rubik"],
+                    "headline-lg": ["Rubik"],
+                    "display-lg": ["Rubik"],
+                    "body-lg": ["Rubik"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0D1117;
+            font-family: 'Rubik', sans-serif;
+            color: #e5e0ef;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(200, 191, 255, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .luminous-border {
+            position: relative;
+        }
+
+        .luminous-border::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, #c8bfff, transparent, #44f1bc);
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .luminous-border:hover::after {
+            opacity: 1;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0D1117; }
+        ::-webkit-scrollbar-thumb { background: #35333e; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c8bfff; }
+
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background">
+<!-- TopNavBar (Shared Component Identity) -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-xl">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto px-6 md:px-12">
+<!-- Brand -->
+<div class="font-headline-md text-headline-lg font-bold tracking-tighter text-on-surface">
+                Qevora
+            </div>
+<!-- Navigation Links -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="#">Features</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Templates</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="#">Pricing</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="#">Docs</a>
+</div>
+<!-- Trailing Action & Search -->
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block group">
+<input class="bg-surface-container-low border border-white/10 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-primary/50 transition-all w-48 group-hover:w-64" placeholder="Search templates..." type="text">
+<span class="material-symbols-outlined absolute right-3 top-2 text-on-surface-variant text-lg">search</span>
+</div>
+<button class="bg-primary text-on-primary font-bold px-6 py-2 rounded-full hover:scale-105 active:scale-95 transition-all text-sm">
+                    Start Building
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-24 min-h-screen">
+<!-- Hero Section & Background Shader -->
+<section class="relative py-xl px-margin-desktop max-w-container-max mx-auto text-center overflow-hidden">
+
+<div class="relative z-10 space-y-6 max-w-3xl mx-auto px-6">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg leading-none tracking-tighter text-on-surface">
+                    Your Vision, <span class="text-primary italic">Automated</span>.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Browse our curated gallery of high-fidelity, AI-ready templates designed for modern creators and visionary brands.
+                </p>
+<!-- Search & Filters UI -->
+<div class="pt-8">
+<div class="bg-surface-container-high/50 p-1.5 rounded-full border border-white/5 flex items-center shadow-2xl max-w-2xl mx-auto">
+<span class="material-symbols-outlined px-4 text-on-surface-variant">auto_awesome</span>
+<input class="bg-transparent border-none focus:ring-0 flex-grow text-on-surface placeholder:text-on-surface-variant/50 font-body-md text-body-md py-3" placeholder="I need a minimalist portfolio for a Japanese architect..." type="text">
+<button class="bg-secondary text-on-secondary px-8 py-3 rounded-full font-bold hover:brightness-110 transition-all shadow-lg shadow-secondary/20">
+                            Search
+                        </button>
+</div>
+</div>
+<!-- Category Chips -->
+<div class="flex flex-wrap justify-center gap-3 mt-10">
+<button class="px-5 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium hover:bg-primary/20 transition-all">All</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-white/5 text-on-surface-variant text-sm font-medium hover:border-primary/30 transition-all">Business</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-white/5 text-on-surface-variant text-sm font-medium hover:border-primary/30 transition-all">Restaurant</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-white/5 text-on-surface-variant text-sm font-medium hover:border-primary/30 transition-all">Portfolio</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-white/5 text-on-surface-variant text-sm font-medium hover:border-primary/30 transition-all">Agency</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-white/5 text-on-surface-variant text-sm font-medium hover:border-primary/30 transition-all">Medical</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-white/5 text-on-surface-variant text-sm font-medium hover:border-primary/30 transition-all">Education</button>
+<button class="px-5 py-2 rounded-full bg-surface-container border border-white/5 text-on-surface-variant text-sm font-medium hover:border-primary/30 transition-all">E-commerce</button>
+</div>
+</div>
+</section>
+<!-- Template Grid -->
+<section class="px-6 md:px-12 py-12 max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A hyper-realistic, premium UI design for a high-end architectural firm website. The aesthetic is extremely minimalist with large typography, monochromatic black and white tones, and high-key studio lighting. The scene suggests a sophisticated digital workspace with a sleek, glass-like interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt1rMcuze-mC2ue6d0GNxKNHPsKB5DGgO3muatxfqGeCi8Lvo09KLvdzgMo2EKn64AhDdpamSPhFYUqgl3vCOJsGwgUBsVhcCQZI-OC0_kNpqu4IX8zGtGpkcfqKl_gvV9xZ7PD6lLvWj3cUNmlejrCKgARHJ1zU8Vt_MnUe9--tDj8_DaQ03iDDSVEPNnyRaHFLUYGCY4-Vy_38kvHWS8OULTEDBKo-etbnmRu-apgJx4mP1KxKshFjCTVlCY3L2e2NALwoBzMrg">
+<!-- Hover Overlay -->
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">Use Template</button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75">Preview</button>
+<button class="absolute top-4 right-4 text-white hover:text-error transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-6 space-y-2">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg text-headline-lg text-on-surface group-hover:text-primary transition-colors">Obsidian Noir</h3>
+<span class="px-3 py-1 rounded-full bg-surface-container text-[10px] font-bold tracking-widest uppercase border border-white/5">Portfolio</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-2">A stark, brutalist aesthetic for creative directors and visionary architects.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A lush and vibrant landing page for a sustainable organic restaurant. The UI features deep forest green backgrounds, gold serif typography, and high-fidelity photography of gourmet plant-based dishes. Soft, warm ambient lighting creates an inviting and premium atmosphere. The style is modern organic luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0kstDN9F2pZp7OqvfUkQwgw99CCjjyZ11yDmfgYbQn1fhs6cenMyYikyg4Xm7w_iG7yye_1TWPuC2xdjKMNXdU8AAcBk30e7FMezJaNnbVSvPAkqhy-kAynTWiyiz6iGmpeazrjmsFMV7atBuW7K30lgdB4T7J_v28-ceWWUNzPq3X7p2eJOVU2dEQfMKpk9p4bTHZfGyo8-Jofze0ktHcO0TUcXRy0x3ziS7VXDqtEy_jW_qPlEQ_WE_nRsRoZMsnePlAafmc9s">
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">Use Template</button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75">Preview</button>
+<button class="absolute top-4 right-4 text-white hover:text-error transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-6 space-y-2">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg text-headline-lg text-on-surface group-hover:text-primary transition-colors">Verdant Bistro</h3>
+<span class="px-3 py-1 rounded-full bg-surface-container text-[10px] font-bold tracking-widest uppercase border border-white/5">Restaurant</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-2">Elevated dining experiences with integrated reservation logic and organic visuals.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A sophisticated corporate dashboard UI for a modern medical technology company. The interface uses clean laboratory-white and sky-blue color palettes, featuring transparent data visualizations and 3D medical iconography. The lighting is sterile and bright, evoking precision and trust. Professional, sleek, and high-fidelity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ6uTmS1d-eavgCWSbJyu2PlPn4OTfKPu9V8jY25OND3o-m340ImlKMtJl2MN-AZOlNe8nlbVnDcr_hlhlTyED92mc8LX_TLjBNHdRIl6qAXqXVFcODMLFvpiae1QQiIFMmoWwkvEgBdnyJHbacqTGdCXFCNP5gcF2gAcajg4VEQnixL4qrmnir1MuUHi7vHQmJJCHYaOkiHldeULWR7_2t9XPns9ORuNYIAW6jvLsbSI2grKh6JE4FBqQvVkd1hXkCXpIiAiQMUk">
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">Use Template</button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75">Preview</button>
+<button class="absolute top-4 right-4 text-white hover:text-error transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-6 space-y-2">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg text-headline-lg text-on-surface group-hover:text-primary transition-colors">Nexus Care</h3>
+<span class="px-3 py-1 rounded-full bg-surface-container text-[10px] font-bold tracking-widest uppercase border border-white/5">Medical</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-2">Trustworthy and precise interface for clinics, biotech startups, and health platforms.</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="An edgy, avant-garde website design for a high-fashion digital agency. The UI features bold neon purple accents on a deep obsidian black background. Text is oversized and kinetic, with glitch-art elements and high-contrast editorial photography. The mood is futuristic, energetic, and unapologetically bold." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUsMJBSuJfcllvbKIDGtoFT9zAoFkQk9l5YyBzIcTQWzh3F2hP7kTEL3rmSk3zG_on0QqUMVBhsWC3hY_Yuoi9PbaPBLyeOzjFdUSHVOI3Lg0_A3EuqkkdMqXTckqqH4vC6zRK_0kjiwJxiEsnRa9ztOMQCo4eQZq3ysqq9HSgxLaAUqakDLHRMZVawbVTjj3HDeGbAFMSAP1tcOgr8th93uAZmpCehgbItqrn7BN8BUcszsMi6qpbm2Rq1xtmchjoIbgmu3zgAJQ">
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">Use Template</button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75">Preview</button>
+<button class="absolute top-4 right-4 text-white hover:text-error transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-6 space-y-2">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg text-headline-lg text-on-surface group-hover:text-primary transition-colors">Vanguard Collective</h3>
+<span class="px-3 py-1 rounded-full bg-surface-container text-[10px] font-bold tracking-widest uppercase border border-white/5">Agency</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-2">High-impact storytelling for digital studios and disruptive marketing agencies.</p>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A clean, luminous e-commerce interface for a luxury skincare brand. The background is a soft, frosted-glass white with pastel pink and peach accents. The product shots are bright and airy, with soft shadows and high-end photographic detail. The overall aesthetic is calm, premium, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH04UL64q0sV9LUzi3E6SML-Vo1rmx6gbLSH4IUlPHgQev2ZvjaFgjgc4RgIsF-hgEsoqUCIRH8B2z2oTA_P2Vqg2QWDDjAXBUv_rlNqQPjtun1jqI_3QpdmYFHQ-AgBdR6cBnR_Pm9T5D-ElwCXNti0KFuPeGqMnaaJI6x2G8Nmf2MKHAN0izFY3d8G-LFzoRiYh7AJGgmxZRYONNwjNYVYGnMrQIOR9aCdxVJZnmClfIUgHe-z95DX6nmQ7UO07T4snncxgx5Mg">
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">Use Template</button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75">Preview</button>
+<button class="absolute top-4 right-4 text-white hover:text-error transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-6 space-y-2">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg text-headline-lg text-on-surface group-hover:text-primary transition-colors">Lumina Shop</h3>
+<span class="px-3 py-1 rounded-full bg-surface-container text-[10px] font-bold tracking-widest uppercase border border-white/5">E-commerce</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-2">Seamless shopping experience for premium brands with integrated cart logic.</p>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-[4/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A modern and interactive educational platform interface for a high-tech coding bootcamp. The design features dark mode backgrounds with electric green highlights, utilizing code-like aesthetics, terminal windows, and futuristic geometric patterns. The lighting is tech-focused with neon glows. Clean, structured, and inspiring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEdlR5X0uSeVq9F-yjiAHrsNP9LH_QOjUuG-SUzsz5hSDDZUTUqyZOo3YWCL-_fFcEcXEZ6kdvXXJhD1rb00uAmTANmgO6nS2nh6UJcoSOHP8_LtVaKnG48nX1IweLLz6EZ5pm6J21WEpAvDmOexzDj4k9FRIe6Atuna31EI4Nc76i3SrVWC02cYM21YMnD7tovwInwLEQHDZi4uVnF_rHW6TMsFHmOelhwSXhh7D0nulQNL7GSGXZPedzePZ1b2oIt2Xayth5a7w">
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">Use Template</button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75">Preview</button>
+<button class="absolute top-4 right-4 text-white hover:text-error transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-6 space-y-2">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg text-headline-lg text-on-surface group-hover:text-primary transition-colors">Cypher Academy</h3>
+<span class="px-3 py-1 rounded-full bg-surface-container text-[10px] font-bold tracking-widest uppercase border border-white/5">Education</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-2">Future-focused learning management system for tech and design courses.</p>
+</div>
+</div>
+</div>
+<!-- Pagination/Load More -->
+<div class="mt-16 flex justify-center">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md group">
+                    View More Templates
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-xl px-6 md:px-12 max-w-container-max mx-auto">
+<div class="glass-card rounded-[40px] p-12 md:p-24 text-center relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary"></div>
+<h2 class="font-display-lg text-headline-xl md:text-display-lg mb-6 text-on-surface">Can't find the perfect fit?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    Let Qevora AI generate a bespoke template based on your specific requirements in seconds.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-xl shadow-primary/20">Generate with AI</button>
+<button class="bg-white/5 border border-white/10 text-on-surface px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">Talk to Sales</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component Identity) -->
+<footer class="w-full py-stack-xl bg-surface border-t border-white/5 sticky bottom-0 z-40 backdrop-blur-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg px-margin-desktop max-w-container-max mx-auto px-6 md:px-12">
+<div class="space-y-4">
+<div class="font-headline-sm text-headline-sm font-black text-on-surface uppercase tracking-widest">Qevora</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Building the future of the web, one pixel at a time. AI-driven precision for visionary creators.</p>
+<p class="font-label-xs text-label-xs text-on-surface-variant opacity-50">© 2024 Qevora AI. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap md:justify-end gap-x-8 gap-y-4 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md focus:underline" href="#">Status</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md focus:underline" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md focus:underline" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md focus:underline" href="#">Discord</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md focus:underline" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-label-md text-label-md focus:underline" href="#">Terms</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and effects
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.98)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+
+        // Favorite Toggle Logic
+        document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
+            if (icon.textContent === 'favorite') {
+                icon.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
+                    icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+                    icon.classList.toggle('text-error', !isFilled);
+                });
+            }
+        });
+
+        // Search highlight effect
+        const searchInput = document.querySelector('input[type="text"]');
+        if(searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+            });
+        }
+    </script>
+</body></html>

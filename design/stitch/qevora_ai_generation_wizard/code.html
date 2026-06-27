@@ -1,0 +1,694 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Qevora AI Website Wizard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-elevated": "#171A21",
+                    "secondary-fixed": "#54fdc6",
+                    "tertiary-container": "#986300",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a2c",
+                    "surface-container-highest": "#353437",
+                    "on-secondary-fixed-variant": "#00513c",
+                    "surface-container-lowest": "#0e0e10",
+                    "secondary": "#44f1bc",
+                    "on-primary-container": "#f6f0ff",
+                    "inverse-on-surface": "#313032",
+                    "on-tertiary-fixed": "#291800",
+                    "on-primary-fixed-variant": "#4206d7",
+                    "outline": "#928ea2",
+                    "surface": "#111217",
+                    "error-container": "#93000a",
+                    "on-surface": "#e5e1e4",
+                    "on-tertiary": "#452b00",
+                    "on-secondary-container": "#00563f",
+                    "on-surface-variant": "#c9c4d9",
+                    "primary-fixed": "#e5deff",
+                    "surface-tint": "#c8bfff",
+                    "on-background": "#e5e1e4",
+                    "tertiary": "#ffb955",
+                    "on-secondary": "#003828",
+                    "tertiary-fixed": "#ffddb4",
+                    "tertiary-fixed-dim": "#ffb955",
+                    "surface-container": "#201f22",
+                    "on-primary-fixed": "#190064",
+                    "primary-fixed-dim": "#c8bfff",
+                    "surface-bright": "#39393b",
+                    "primary": "#c8bfff",
+                    "on-tertiary-container": "#fff0e2",
+                    "on-error": "#690005",
+                    "inverse-primary": "#5b38ee",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "glow-primary": "rgba(108, 77, 255, 0.15)",
+                    "surface-container-low": "#1c1b1d",
+                    "on-secondary-fixed": "#002116",
+                    "inverse-surface": "#e5e1e4",
+                    "on-error-container": "#ffdad6",
+                    "surface-dim": "#131315",
+                    "background": "#09090B",
+                    "surface-variant": "#353437",
+                    "border-subtle": "rgba(255, 255, 255, 0.08)",
+                    "secondary-container": "#00d4a1",
+                    "outline-variant": "#474556",
+                    "secondary-fixed-dim": "#27e0ab",
+                    "on-primary": "#2d009d",
+                    "primary-container": "#6c4dff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "stack-lg": "32px",
+                    "stack-xl": "64px",
+                    "stack-sm": "8px",
+                    "stack-xs": "4px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Rubik"],
+                    "headline-md": ["Rubik"],
+                    "headline-lg": ["Rubik"],
+                    "display-lg-mobile": ["Rubik"],
+                    "body-lg": ["Rubik"],
+                    "label-md": ["Rubik"],
+                    "label-sm": ["Rubik"],
+                    "display-lg": ["Rubik"],
+                    "body-sm": ["Rubik"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(17, 18, 23, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .step-active {
+            box-shadow: 0 0 15px rgba(108, 77, 255, 0.4);
+        }
+        .typing-cursor::after {
+            content: "|";
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+        .glow-pulse {
+            animation: glow 3s ease-in-out infinite;
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(108, 77, 255, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(108, 77, 255, 0.5); }
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #353437; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-border-subtle shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tighter">
+                Qevora AI
+            </div>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Inspiration</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Templates</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">History</a>
+</div>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors active:scale-95" data-icon="notifications">notifications</span>
+<img class="w-8 h-8 rounded-full border border-border-subtle" data-alt="A professional high-resolution close-up of a diverse female entrepreneur avatar in a minimalist digital workspace. She has a warm expression and wears a sleek, modern headset. The background features soft, atmospheric purple and blue lighting with a high-end SaaS interface visible in shallow focus, reinforcing the premium creative tool aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrPzyWtWKupGytRtLmnz48PplTwYxQ-BISOI_KrBcSxvRNOWmZMhewpzpktxaWMESbtgKmLRNNlJ9L9TrVjJF2Y0PwhFz3JdDfOVzDng8Kk8tiGosTaW2xNbgGLt_DwZPEK0Z0gt9sGSNDymz_QdDQGehaciNtT-uLJdCx5Tf049MP_0q5dSlMB2cSndzB0OeQA5X-rA90tNeBLaNq_fABWVUfn7bKhQiTK7GKZQodVP1MbADqun7fSJaGb7oSJb1tX8gavxLXygU">
+</div>
+</div>
+</nav>
+<!-- Side Bar (Wizard Context) -->
+<aside class="fixed left-0 top-[72px] h-[calc(100vh-72px)] w-64 hidden lg:flex flex-col bg-surface-container-low/50 backdrop-blur-2xl border-r border-border-subtle p-stack-md gap-stack-lg z-40">
+<div class="flex flex-col gap-2">
+<span class="font-headline-md text-headline-md text-primary">Project Wizard</span>
+<span class="font-label-md text-label-md text-on-surface-variant opacity-70">V0.1 Alpha</span>
+</div>
+<nav class="flex flex-col gap-2">
+<div class="text-primary bg-primary/10 rounded-xl flex items-center gap-3 p-3 transition-all">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-label-md">Design</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-variant/50 rounded-xl flex items-center gap-3 p-3 transition-all cursor-pointer group">
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="account_tree">account_tree</span>
+<span class="font-label-md">Structure</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-variant/50 rounded-xl flex items-center gap-3 p-3 transition-all cursor-pointer group">
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-md">Content</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-variant/50 rounded-xl flex items-center gap-3 p-3 transition-all cursor-pointer group">
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="rocket_launch">rocket_launch</span>
+<span class="font-label-md">Publish</span>
+</div>
+</nav>
+<div class="mt-auto flex flex-col gap-4">
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-xl font-label-md hover:brightness-110 active:scale-95 transition-all">
+                Upgrade to Pro
+            </button>
+<div class="flex gap-4 px-2">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors" data-icon="settings">settings</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors" data-icon="contact_support">contact_support</span>
+</div>
+</div>
+</aside>
+<!-- Main Wizard Content Canvas -->
+<main class="pt-[100px] lg:pl-72 px-margin-mobile md:px-margin-desktop min-h-screen pb-24 transition-opacity duration-700" id="wizard-canvas">
+<!-- Progress Bar -->
+<div class="max-w-4xl mx-auto mb-stack-xl">
+<div class="flex justify-between items-center relative mb-4">
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-surface-container-high -z-10 -translate-y-1/2"></div>
+<div class="absolute top-1/2 left-0 w-[0%] h-[2px] bg-primary-container -z-10 -translate-y-1/2 transition-all duration-500" id="progress-line"></div>
+<!-- Step Nodes -->
+<div class="flex flex-col items-center gap-2 group cursor-pointer" onclick="goToStep(1)">
+<div class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-primary border-primary step-active transition-all" id="step-1-node">1</div>
+<span class="text-label-sm text-primary">Describe</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer" onclick="goToStep(2)">
+<div class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant transition-all" id="step-2-node">2</div>
+<span class="text-label-sm text-on-surface-variant">Industry</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer" onclick="goToStep(3)">
+<div class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant transition-all" id="step-3-node">3</div>
+<span class="text-label-sm text-on-surface-variant">Language</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer" onclick="goToStep(4)">
+<div class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant transition-all" id="step-4-node">4</div>
+<span class="text-label-sm text-on-surface-variant">Style</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer" onclick="goToStep(5)">
+<div class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant transition-all" id="step-5-node">5</div>
+<span class="text-label-sm text-on-surface-variant">Colors</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer" onclick="goToStep(6)">
+<div class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant transition-all" id="step-6-node">6</div>
+<span class="text-label-sm text-on-surface-variant">Review</span>
+</div>
+</div>
+</div>
+<!-- Wizard Steps Container -->
+<div class="max-w-4xl mx-auto" id="steps-container">
+<!-- Step 1: Describe -->
+<section class="step-section" id="step-1">
+<div class="flex flex-col gap-6">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Describe your business</h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">Tell our AI what makes your business unique. Be as detailed as possible to get a tailored website structure.</p>
+<div class="relative">
+<textarea class="w-full h-64 bg-surface-elevated border border-border-subtle rounded-3xl p-stack-md text-body-lg focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all placeholder:text-on-surface-variant/30" placeholder="e.g., We are a boutique organic coffee roastery based in Portland, focusing on sustainable sourcing and minimal eco-footprint packaging..."></textarea>
+<div class="absolute bottom-6 right-6 p-4 rounded-full bg-primary-container text-on-primary-container shadow-lg hover:scale-110 active:scale-95 transition-all cursor-pointer glow-pulse">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 2: Industry (Hidden by default) -->
+<section class="step-section hidden" id="step-2">
+<div class="flex flex-col gap-6">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Choose industry</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+<div class="glass-card p-6 rounded-3xl flex flex-col items-center gap-4 hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform" data-icon="computer">computer</span>
+<span class="font-label-md">Technology</span>
+</div>
+<div class="glass-card p-6 rounded-3xl flex flex-col items-center gap-4 hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform" data-icon="restaurant">restaurant</span>
+<span class="font-label-md">Food</span>
+</div>
+<div class="glass-card p-6 rounded-3xl flex flex-col items-center gap-4 hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform" data-icon="apartment">apartment</span>
+<span class="font-label-md">Real Estate</span>
+</div>
+<div class="glass-card p-6 rounded-3xl flex flex-col items-center gap-4 hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform" data-icon="brush">brush</span>
+<span class="font-label-md">Creative</span>
+</div>
+<div class="glass-card p-6 rounded-3xl flex flex-col items-center gap-4 hover:border-primary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform" data-icon="medical_services">medical_services</span>
+<span class="font-label-md">Medical</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 3: Language (Hidden by default) -->
+<section class="step-section hidden" id="step-3">
+<div class="flex flex-col gap-6">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Choose language</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card p-8 rounded-3xl flex flex-col gap-4 border-2 border-primary-container bg-primary/5 cursor-pointer">
+<span class="text-primary font-bold text-xl">English</span>
+<span class="text-on-surface-variant font-body-sm">Standard Western layout and LTR text direction.</span>
+</div>
+<div class="glass-card p-8 rounded-3xl flex flex-col gap-4 hover:border-primary transition-all cursor-pointer" dir="rtl">
+<span class="text-primary font-bold text-xl">العربية</span>
+<span class="text-on-surface-variant font-body-sm">دعم كامل للغة العربية وتخطيط من اليمين إلى اليسار.</span>
+</div>
+<div class="glass-card p-8 rounded-3xl flex flex-col gap-4 hover:border-primary transition-all cursor-pointer">
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-xl">Both</span>
+<span class="bg-secondary-container/20 text-secondary text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider">Premium</span>
+</div>
+<span class="text-on-surface-variant font-body-sm">Fully bilingual website with automated translation toggle.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 4: Style -->
+<section class="step-section hidden" id="step-4">
+<div class="flex flex-col gap-6">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Choose style</h2>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden glass-card mb-3 border-2 border-transparent group-hover:border-primary transition-all relative">
+<img class="w-full h-full object-cover" data-alt="A screenshot of a sleek, ultra-modern website design with high-contrast dark backgrounds, vibrant purple neon accents, and sharp geometric layouts. The visual style is inspired by futuristic SaaS platforms, with floating glassmorphic elements and clean sans-serif typography. Atmospheric digital lighting creates a premium, high-tech mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfbU_u_6frpMUvVB9Y2mIHUVGJ7_884t2JRbI1We142YZi3kqgYrSk1EKxaCAtfXO2mkVJRo51twMOsfHN33eQkExGp6Dj7fAmhY1FNCcA7HyOqHXrS4oSehUOGAZlcaEEcdExqlgYfnfxkVfjA6ombIMX-Oem4JPjdodEAmUeYMNCWYTPfeVCq6cP_0NGE5s7gaziyjCovW5EsyC7ycFlASyJNQXlJmXdCuWdfnES6XrlPr7EQ8Hh-Vu26byvYUQkj2SYl8c3aCI">
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+</div>
+<span class="font-label-md text-center block">Modern</span>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden glass-card mb-3 border-2 border-transparent group-hover:border-primary transition-all relative">
+<img class="w-full h-full object-cover" data-alt="A screenshot of a luxury brand website featuring elegant serif typography, generous whitespace, and a sophisticated color palette of deep charcoal and muted gold. The images are high-end fashion or architectural shots with soft, warm lighting. The overall feel is premium, exclusive, and timeless." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIHS9Jodg2Tdqm2kVeE56W3dLXKiS6w-LF0b0QjFGO8yu84afO92GghRmNP5klrHuay00Zy4rMG6iev3q1UFtaQmcLJrYh_q2XxTki8tvENI2CaEgaj9alHJd-EEYmOIkEB6trH2MZ2Z3jolZlbc37dhMm5OW0SXvfFAMS_A0ofE1Uz8mTff6zkNi81RMolTGyLAtTQVFH4D9uOj2sLMaP5sxlg0K27znqxMY4OW3p4kPM2r-wB0SRqh1dDAbsYJDBXyNdLDSrcyk">
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+</div>
+<span class="font-label-md text-center block">Luxury</span>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden glass-card mb-3 border-2 border-transparent group-hover:border-primary transition-all relative">
+<img class="w-full h-full object-cover" data-alt="A corporate website mockup showcasing a clean, professional grid layout with primary blue and white tones. It includes crisp iconography, clear call-to-action buttons, and high-quality photography of a modern glass office building. The mood is trustworthy, efficient, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQrqtK93L3byhucZCavYy-wxiGq_ZFFR4mTcb41iiJ0R2bg88JSsy4HozPEYDMZhvObKB722qbLgE2l4qi173ZMHM-PWtQye3Bsv9iYM_Ykh7Yj9oUg50Db7eAOdsb-rlaF-yg8EJwH6uoe4x2jzvoqRFP0V2ABuTaY1GgLSjkJlgW1uHCucByjoNvGCNpz6yk1Zff6xOiJlmIOhuSKkc5zBOUnkpcrwwNu2AVKnnNPR3XqrRf9pfim3dbcKq6iYlgWnaGwZipwyc">
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+</div>
+<span class="font-label-md text-center block">Corporate</span>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden glass-card mb-3 border-2 border-transparent group-hover:border-primary transition-all relative">
+<img class="w-full h-full object-cover" data-alt="A minimalist website interface with extreme use of negative space, simple thin line-art icons, and monochrome colors. The typography is a clean, thin sans-serif. The layout is centered and calm, conveying a sense of essentialism and high-end digital design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_znLDpuQOBKRmjqIZ6qIibu7U9PdtbaZXT0ZMaTCqvZGhKzLR-_Gv9chNjvOMZ-76pTT0WP0mtOWiw37Yiz5FI2lRdQ1u1SsMOGrWOzUP5I4icO4kH-0VBxipP0T2eymvkMBUFnenV6Rt-fWk9ncq0Df0Ley5jlvt_uAOO8JfwS0bF5YELPZaGhdUmXiTd9ncLx_53WLfHuIDipJv-B6JyvqyEsGL_5nI-ZviSnaaWFKdnrzODtHd9SJ3WUZn68S98magzM6FMZg">
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+</div>
+<span class="font-label-md text-center block">Minimal</span>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden glass-card mb-3 border-2 border-transparent group-hover:border-primary transition-all relative">
+<img class="w-full h-full object-cover" data-alt="A vibrant, creative website design with playful asymmetrical layouts, bold primary color splashes, and custom abstract illustrations. The mood is energetic, artistic, and experimental, suitable for a design agency or an independent creator." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdsCrKyCpMAdV5Sa9sD2MQEkHb-2zXJDcHGgyKbnHlHAz3ml-44w0IecyCAsnSa2y-gzurkqMzqzBDpRv4UY9nsA1kzWNGP76oQ9SZtyUKLjt61s--JAhqt-M9i_x5kyOZojMpmgE6fUfoePGdHgF-n3hW1Al7bx7xj3ByqCB4jRqiaaKp6mpM4ufxqtgAmgCIbpdYjxJkktTAbGylAQXK3cRarQyLONyWFBbWyZzraS8klj2N7ZBa2xi_BoBb7-uNWea33B4osII">
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+</div>
+<span class="font-label-md text-center block">Creative</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 5: Colors -->
+<section class="step-section hidden" id="step-5">
+<div class="flex flex-col gap-6">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Choose colors</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<div class="flex flex-col gap-4">
+<span class="text-label-md opacity-60">PRESETS</span>
+<div class="flex flex-wrap gap-4">
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-container to-secondary border-2 border-white/20 cursor-pointer hover:scale-105 transition-transform"></div>
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-700 border-2 border-transparent cursor-pointer hover:scale-105 transition-transform"></div>
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-900 border-2 border-transparent cursor-pointer hover:scale-105 transition-transform"></div>
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-200 to-slate-500 border-2 border-transparent cursor-pointer hover:scale-105 transition-transform"></div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-label-md opacity-60">CUSTOM PICKER</span>
+<div class="glass-card p-4 rounded-3xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container shadow-inner"></div>
+<div class="flex-1">
+<div class="h-2 w-full bg-gradient-to-r from-red-500 via-green-500 to-blue-500 rounded-full"></div>
+<div class="flex justify-between mt-2">
+<span class="text-label-sm">Hue</span>
+<span class="text-label-sm font-mono">#6C4DFF</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 6: Review -->
+<section class="step-section hidden" id="step-6">
+<div class="flex flex-col gap-stack-lg">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Review &amp; Generate</h2>
+<div class="glass-card p-stack-md rounded-[32px] flex flex-col gap-6">
+<div class="flex justify-between items-start border-b border-border-subtle pb-6">
+<div>
+<span class="text-label-sm text-primary uppercase tracking-widest">Project Name</span>
+<h3 class="text-headline-md mt-1">Organic Roast Co.</h3>
+</div>
+<div class="flex gap-2">
+<span class="bg-surface-variant px-3 py-1 rounded-full text-label-sm">Technology</span>
+<span class="bg-surface-variant px-3 py-1 rounded-full text-label-sm">Modern</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<span class="text-label-sm text-on-surface-variant">Description Summary</span>
+<p class="text-body-sm mt-2 opacity-80 leading-relaxed">Artisan coffee roastery focusing on sustainable ethics, premium blends, and eco-conscious customer experience.</p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-sm text-on-surface-variant">Selected Stack</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="language">language</span>
+<span class="text-label-md">English Only</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="palette">palette</span>
+<span class="text-label-md">Vibrant Purple (Default)</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-5 rounded-2xl font-headline-md shadow-[0_0_30px_rgba(108,77,255,0.4)] hover:brightness-110 active:scale-[0.98] transition-all glow-pulse" onclick="startGeneration()">
+                            Generate My Website
+                        </button>
+</div>
+</div>
+</section>
+<!-- Navigation Buttons -->
+<div class="flex justify-between mt-stack-xl" id="nav-controls">
+<button class="px-8 py-3 rounded-xl glass-card text-on-surface hover:bg-surface-variant transition-all disabled:opacity-0" disabled="" id="prev-btn" onclick="prevStep()">
+                    Back
+                </button>
+<button class="px-10 py-3 rounded-xl bg-on-surface text-background font-bold hover:brightness-90 active:scale-95 transition-all" id="next-btn" onclick="nextStep()">
+                    Next Step
+                </button>
+</div>
+</div>
+</main>
+<!-- Screen 2: AI Thinking Screen (Hidden initially) -->
+<div class="fixed inset-0 z-[100] hidden bg-background overflow-hidden flex items-center justify-center" id="generating-screen">
+<!-- STITCH_SHADER_START:ANIMATION_7 class="absolute inset-0 w-full h-full opacity-40" -->
+<div class="absolute inset-0 w-full h-full opacity-40" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_7" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_7');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 p = (uv * 2.0 - 1.0);
+    p.x *= u_resolution.x / u_resolution.y;
+    
+    float time = u_time * 0.5;
+    
+    // Swirling AI energy
+    vec3 color = vec3(0.04, 0.04, 0.06); // Deep background
+    
+    for(float i = 1.0; i < 4.0; i++) {
+        p.x += 0.3 / i * sin(i * 3.0 * p.y + time + i * 0.5);
+        p.y += 0.3 / i * cos(i * 3.0 * p.x + time + i * 0.8);
+    }
+    
+    float r = length(p);
+    float glow = 0.02 / (abs(sin(r * 2.0 - time)) + 0.1);
+    
+    // Qevora Purple #6C4DFF and Secondary #14D9A5
+    vec3 purple = vec3(0.42, 0.3, 1.0);
+    vec3 emerald = vec3(0.08, 0.85, 0.65);
+    
+    color += mix(purple, emerald, sin(time * 0.5) * 0.5 + 0.5) * glow;
+    
+    // Add some "particles" (noise)
+    float n = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+    if(n > 0.995) color += vec3(0.8, 0.9, 1.0) * 0.5;
+
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_7 -->
+<div class="relative z-10 flex flex-col items-center gap-stack-lg max-w-lg w-full px-margin-mobile">
+<!-- Pulsing Orb -->
+<div class="w-32 h-32 rounded-full bg-primary/20 flex items-center justify-center relative glow-pulse border border-primary/30">
+<div class="absolute inset-0 rounded-full border border-primary animate-ping opacity-20"></div>
+<span class="material-symbols-outlined text-5xl text-primary" data-icon="auto_awesome" data-weight="fill">auto_awesome</span>
+</div>
+<div class="text-center">
+<h2 class="text-display-lg-mobile md:text-display-lg text-primary font-bold tracking-tighter">AI is thinking...</h2>
+<p class="text-label-md text-on-surface-variant mt-2" id="remaining-time">Approx. 15 seconds remaining</p>
+</div>
+<!-- Progress Bar -->
+<div class="w-full flex flex-col gap-2">
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary shadow-[0_0_15px_rgba(108,77,255,0.8)] transition-all duration-300" id="gen-progress-bar" style="width: 0%"></div>
+</div>
+<div class="flex justify-between text-label-sm font-mono text-primary">
+<span id="gen-percent">0%</span>
+<span>Processing</span>
+</div>
+</div>
+<!-- Typing Logs -->
+<div class="w-full glass-card p-6 rounded-2xl h-48 overflow-y-auto font-mono text-body-sm text-primary/80 flex flex-col gap-2 border-primary/10" id="log-container">
+<div class="flex gap-2">
+<span class="text-on-surface-variant opacity-40">&gt;&gt;</span>
+<span class="typing-cursor" id="typing-log"></span>
+</div>
+<div class="flex flex-col gap-2 opacity-50" id="past-logs"></div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-stack-md mt-auto border-t border-border-subtle bg-surface-container-lowest z-30">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+<span class="font-body-md text-body-md text-on-surface opacity-60">© 2024 Qevora AI. Powering the future of web.</span>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="text-on-surface-variant font-label-sm hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-label-sm hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-label-sm hover:text-secondary-fixed transition-colors" href="#">API Status</a>
+</div>
+</div>
+</footer>
+<script>
+        let currentStep = 1;
+        const totalSteps = 6;
+
+        function updateProgress() {
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progress-line').style.width = `${progress}%`;
+            
+            for (let i = 1; i <= totalSteps; i++) {
+                const node = document.getElementById(`step-${i}-node`);
+                const text = node.nextElementSibling;
+                
+                if (i < currentStep) {
+                    node.classList.add('bg-primary', 'text-on-primary', 'border-primary');
+                    node.classList.remove('text-primary', 'text-on-surface-variant', 'step-active');
+                    text.classList.add('text-primary');
+                    text.classList.remove('text-on-surface-variant');
+                } else if (i === currentStep) {
+                    node.classList.add('step-active', 'text-primary', 'border-primary');
+                    node.classList.remove('bg-primary', 'text-on-primary', 'text-on-surface-variant');
+                    text.classList.add('text-primary');
+                    text.classList.remove('text-on-surface-variant');
+                } else {
+                    node.classList.remove('step-active', 'text-primary', 'border-primary', 'bg-primary', 'text-on-primary');
+                    node.classList.add('text-on-surface-variant');
+                    text.classList.add('text-on-surface-variant');
+                    text.classList.remove('text-primary');
+                }
+            }
+        }
+
+        function goToStep(step) {
+            if(step > currentStep + 1 && step !== currentStep) return; // Basic validation
+            
+            document.querySelectorAll('.step-section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+            
+            currentStep = step;
+            updateProgress();
+
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            prevBtn.disabled = currentStep === 1;
+            
+            if (currentStep === totalSteps) {
+                nextBtn.classList.add('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) goToStep(currentStep + 1);
+        }
+
+        function prevStep() {
+            if (currentStep > 1) goToStep(currentStep - 1);
+        }
+
+        const logs = [
+            "Analyzing industry trends...",
+            "Contextualizing brand identity...",
+            "Generating responsive grid system...",
+            "Compiling custom theme tokens...",
+            "Optimizing image assets...",
+            "Structuring semantic HTML...",
+            "Injecting interactive micro-states...",
+            "Finalizing design tokens...",
+            "Validating cross-platform accessibility...",
+            "Preparing final preview..."
+        ];
+
+        let logIndex = 0;
+        function typeLog() {
+            const typingSpan = document.getElementById('typing-log');
+            const pastLogs = document.getElementById('past-logs');
+            const currentLog = logs[logIndex];
+            
+            let charIndex = 0;
+            typingSpan.textContent = "";
+            
+            const interval = setInterval(() => {
+                typingSpan.textContent += currentLog[charIndex];
+                charIndex++;
+                
+                if (charIndex === currentLog.length) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        const div = document.createElement('div');
+                        div.className = "flex gap-2";
+                        div.innerHTML = `<span class="text-on-surface-variant opacity-40">>></span><span>${currentLog}</span>`;
+                        pastLogs.prepend(div);
+                        
+                        logIndex++;
+                        if (logIndex < logs.length) {
+                            typeLog();
+                        }
+                    }, 800);
+                }
+            }, 40);
+        }
+
+        function startGeneration() {
+            const genScreen = document.getElementById('generating-screen');
+            genScreen.classList.remove('hidden');
+            genScreen.classList.add('flex');
+            
+            typeLog();
+            
+            let progress = 0;
+            const bar = document.getElementById('gen-progress-bar');
+            const percent = document.getElementById('gen-percent');
+            const timer = document.getElementById('remaining-time');
+            
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 3;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(progressInterval);
+                    setTimeout(() => {
+                        alert("Website Generation Complete! Redirecting to Editor...");
+                    }, 1000);
+                }
+                
+                bar.style.width = `${progress}%`;
+                percent.textContent = `${Math.floor(progress)}%`;
+                
+                const remaining = Math.max(0, 15 - Math.floor(progress / 6.6));
+                timer.textContent = `Approx. ${remaining} seconds remaining`;
+            }, 300);
+        }
+
+        // Initialize progress
+        updateProgress();
+    </script>
+</body></html>

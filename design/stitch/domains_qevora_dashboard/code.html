@@ -1,0 +1,480 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Qevora | Domains Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#35333e",
+                    "outline": "#928ea2",
+                    "tertiary-container": "#986300",
+                    "primary": "#c8bfff",
+                    "on-secondary-fixed": "#002116",
+                    "secondary": "#44f1bc",
+                    "on-surface": "#e5e0ef",
+                    "on-secondary-container": "#00563f",
+                    "on-primary": "#2d009d",
+                    "on-surface-variant": "#c9c4d9",
+                    "on-secondary-fixed-variant": "#00513c",
+                    "surface-variant": "#35333e",
+                    "tertiary-fixed-dim": "#ffb955",
+                    "surface-tint": "#c8bfff",
+                    "primary-fixed": "#e5deff",
+                    "on-error-container": "#ffdad6",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#c8bfff",
+                    "surface-container-high": "#2a2933",
+                    "secondary-fixed-dim": "#27e0ab",
+                    "surface-dim": "#14121c",
+                    "surface": "#14121c",
+                    "on-primary-fixed-variant": "#4206d7",
+                    "surface-container": "#201e29",
+                    "on-primary-fixed": "#190064",
+                    "on-tertiary": "#452b00",
+                    "background": "#14121c",
+                    "on-tertiary-fixed": "#291800",
+                    "inverse-surface": "#e5e0ef",
+                    "secondary-container": "#00d4a1",
+                    "inverse-on-surface": "#312f3a",
+                    "outline-variant": "#474556",
+                    "error-container": "#93000a",
+                    "tertiary": "#ffb955",
+                    "surface-bright": "#3a3843",
+                    "surface-container-lowest": "#0e0d17",
+                    "primary-container": "#6c4dff",
+                    "tertiary-fixed": "#ffddb4",
+                    "secondary-fixed": "#54fdc6",
+                    "on-background": "#e5e0ef",
+                    "surface-container-low": "#1c1a24",
+                    "on-primary-container": "#f6f0ff",
+                    "inverse-primary": "#5b38ee",
+                    "on-secondary": "#003828",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "on-tertiary-container": "#fff0e2",
+                    "glass-bg": "rgba(20, 18, 28, 0.7)",
+                    "glass-border": "rgba(255, 255, 255, 0.1)"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "sm": "16px",
+                    "lg": "40px",
+                    "gutter": "24px",
+                    "xs": "8px",
+                    "xl": "64px",
+                    "md": "24px",
+                    "margin-mobile": "16px",
+                    "container-max": "1440px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Rubik"],
+                    "headline-lg": ["Rubik"],
+                    "label-md": ["Rubik"],
+                    "headline-xl": ["Rubik"],
+                    "display-lg-mobile": ["Rubik"],
+                    "body-md": ["Rubik"],
+                    "label-sm": ["Rubik"],
+                    "display-lg": ["Rubik"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+        }
+        .shimmer-border {
+            position: relative;
+            border-radius: 0.75rem;
+        }
+        .shimmer-border::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(90deg, #c8bfff, transparent, #44f1bc);
+            border-radius: 0.75rem;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary/30">
+<!-- Shell Layout -->
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full w-72 bg-glass-bg border-r border-glass-border backdrop-blur-xl py-stack-lg shadow-md z-50">
+<div class="px-md mb-xl flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container font-black">bolt</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Qevora</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Premium SaaS</p>
+</div>
+</div>
+<nav class="flex-1 px-sm space-y-1">
+<!-- Navigation Items -->
+<a class="flex items-center gap-3 px-md py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Workspace</span>
+</a>
+<a class="flex items-center gap-3 px-md py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-md py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined">database</span>
+<span class="font-body-md">Storage</span>
+</a>
+<!-- Active Tab: Domains -->
+<a class="flex items-center gap-3 px-md py-3 rounded-lg text-primary font-bold border-r-2 border-primary bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined fill-icon" style="font-variation-settings: 'FILL' 1;">language</span>
+<span class="font-body-md">Domains</span>
+</a>
+<a class="flex items-center gap-3 px-md py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined">dashboard_customize</span>
+<span class="font-body-md">Templates</span>
+</a>
+<a class="flex items-center gap-3 px-md py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md">Billing</span>
+</a>
+<a class="flex items-center gap-3 px-md py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-sm border-t border-glass-border pt-md">
+<div class="px-md mb-md">
+<div class="p-md rounded-xl glass-card text-center">
+<p class="font-label-md mb-2">Unlock AI Power</p>
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-label-md hover:opacity-90 transition-opacity active:scale-95">Upgrade Plan</button>
+</div>
+</div>
+<a class="flex items-center gap-3 px-md py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-md py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-error">logout</span>
+<span class="font-body-md">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- TopNavBar -->
+<header class="h-16 bg-glass-bg border-b border-glass-border backdrop-blur-xl flex items-center justify-between px-margin-mobile md:px-margin-desktop z-40">
+<div class="flex items-center gap-md">
+<div class="md:hidden w-8 h-8 bg-primary rounded-md flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-sm">menu</span>
+</div>
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-low border border-glass-border rounded-full py-1.5 pl-10 pr-4 text-body-md focus:outline-none focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search domains..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="hidden lg:flex items-center gap-md mr-4">
+<a class="text-on-surface-variant hover:text-on-surface font-label-md transition-colors" href="#">Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-md transition-colors" href="#">Updates</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-md transition-colors" href="#">Community</a>
+</div>
+<button class="hidden sm:flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Create Website
+                    </button>
+<div class="flex items-center gap-2 border-l border-glass-border pl-sm">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-primary/30 object-cover" data-alt="Professional headshot of a software engineer in their 30s with a clean-cut look, smiling confidently against a minimalist blurred office background. High-end portrait photography style, shallow depth of field, cool blue and purple ambient lighting reflecting the Qevora dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzXhy-ASzyCmXQA8S3daCzzhvoreTm1dAtpXyhdTH-Kt-99CK1Gs6TUYAGumyUITteFRYsErW-Q4In0WKY50QjMoBf-FbUk_5qRDjHASBl0KW2fimL2RwUMxQITJ4hB8cu9rHmCSFl2Bp05pGdmLdHQyvot7z49_WtWbNLLUYxVDXR6KexhY73g9XIz-ELc1Y0PTW8dHPLebTJ663DIN97MU1m6Lbs7v5LDwsdPZDOj4dbnAYMhv4ysW-FVRkeZT15QcasQQKYrx8">
+</div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-margin-mobile md:p-lg space-y-lg max-w-container-max mx-auto w-full">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface">Domains</h2>
+<p class="font-body-lg text-on-surface-variant max-w-xl">Manage your custom domains and subdomains for all your Qevora sites.</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-secondary text-on-secondary px-6 py-3 rounded-xl font-label-md hover:brightness-110 transition-all active:scale-95 group">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform">add_circle</span>
+                        Add Domain
+                    </button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Domain Connection Card -->
+<section class="lg:col-span-8 flex flex-col gap-gutter">
+<div class="glass-card rounded-xl p-lg shimmer-border">
+<div class="flex items-center gap-4 mb-sm">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">add_link</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg">Connect an existing domain</h3>
+<p class="font-body-md text-on-surface-variant">Point your domain to Qevora and secure it with automatic SSL.</p>
+</div>
+</div>
+<form class="flex flex-col sm:flex-row gap-3 mt-lg">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">language</span>
+<input class="w-full bg-surface-container-highest/50 border border-glass-border rounded-xl py-3.5 pl-12 pr-4 text-body-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="example.com" type="text">
+</div>
+<button class="bg-primary text-on-primary px-8 py-3.5 rounded-xl font-headline-md shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.98] transition-all">
+                                    Connect
+                                </button>
+</form>
+<div class="mt-lg flex items-center gap-2 py-2 px-4 bg-white/5 rounded-full w-fit border border-glass-border">
+<span class="material-symbols-outlined text-secondary-fixed text-sm">verified_user</span>
+<span class="text-label-sm text-on-surface-variant">Cloudflare Network Protection Included</span>
+<span class="material-symbols-outlined text-secondary-fixed text-xs ml-1">info</span>
+</div>
+</div>
+<!-- Domains Table -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="p-md border-b border-glass-border flex justify-between items-center">
+<h4 class="font-headline-md text-headline-md">Active Domains</h4>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded flex items-center justify-center hover:bg-white/5"><span class="material-symbols-outlined text-sm">filter_list</span></button>
+<button class="w-8 h-8 rounded flex items-center justify-center hover:bg-white/5"><span class="material-symbols-outlined text-sm">refresh</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-label-sm text-outline border-b border-glass-border uppercase tracking-wider">
+<th class="px-md py-4 font-semibold">Domain Name</th>
+<th class="px-md py-4 font-semibold">DNS Status</th>
+<th class="px-md py-4 font-semibold">SSL Status</th>
+<th class="px-md py-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<!-- Active Domain -->
+<tr class="hover:bg-white/[0.02] transition-colors">
+<td class="px-md py-5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">public</span>
+<div>
+<p class="font-body-md font-medium">qevora.io</p>
+<p class="font-label-sm text-outline">Primary Domain</p>
+</div>
+</div>
+</td>
+<td class="px-md py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-secondary/10 text-secondary rounded-full text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                                                    Active
+                                                </span>
+</td>
+<td class="px-md py-5">
+<span class="flex items-center gap-1 text-secondary text-label-sm">
+<span class="material-symbols-outlined text-[18px] fill-icon" style="font-variation-settings: 'FILL' 1;">shield</span>
+                                                    Secure
+                                                </span>
+</td>
+<td class="px-md py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-white/10 rounded-lg text-on-surface-variant hover:text-on-surface transition-all"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 hover:bg-error/10 rounded-lg text-on-surface-variant hover:text-error transition-all"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Pending Domain -->
+<tr class="hover:bg-white/[0.02] transition-colors">
+<td class="px-md py-5">
+<div class="flex items-center gap-3 opacity-80">
+<span class="material-symbols-outlined text-outline">public</span>
+<div>
+<p class="font-body-md font-medium">mycreative.studio</p>
+<p class="font-label-sm text-outline">External</p>
+</div>
+</div>
+</td>
+<td class="px-md py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-label-sm">
+<span class="material-symbols-outlined text-[14px]">history</span>
+                                                    Pending
+                                                </span>
+</td>
+<td class="px-md py-5">
+<span class="flex items-center gap-1 text-outline text-label-sm">
+<span class="material-symbols-outlined text-[18px]">lock_clock</span>
+                                                    Generating
+                                                </span>
+</td>
+<td class="px-md py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-white/10 rounded-lg text-on-surface-variant hover:text-on-surface transition-all"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 hover:bg-error/10 rounded-lg text-on-surface-variant hover:text-error transition-all"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Sidebar Content -->
+<section class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Verification Section -->
+<div class="glass-card rounded-xl p-md bg-gradient-to-br from-white/[0.04] to-transparent">
+<div class="flex items-center justify-between mb-md">
+<h4 class="font-headline-md text-headline-md">Verify Domain</h4>
+<span class="bg-tertiary/20 text-tertiary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-tighter">Action Required</span>
+</div>
+<p class="font-label-md text-on-surface-variant mb-md leading-relaxed">Add these DNS records to <span class="text-on-surface font-bold">mycreative.studio</span> to verify ownership.</p>
+<div class="space-y-3">
+<!-- Record 1 -->
+<div class="bg-surface-container-low p-3 rounded-lg border border-glass-border group relative overflow-hidden">
+<div class="flex justify-between items-center mb-1">
+<span class="text-label-sm text-primary font-bold">A Record</span>
+<button class="text-xs text-outline hover:text-primary flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+<p class="font-mono text-xs text-on-surface break-all">76.76.21.21</p>
+</div>
+<!-- Record 2 -->
+<div class="bg-surface-container-low p-3 rounded-lg border border-glass-border group relative overflow-hidden">
+<div class="flex justify-between items-center mb-1">
+<span class="text-label-sm text-primary font-bold">CNAME</span>
+<button class="text-xs text-outline hover:text-primary flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+<p class="font-mono text-xs text-on-surface break-all">cname.qevora.io</p>
+</div>
+<!-- Record 3 -->
+<div class="bg-surface-container-low p-3 rounded-lg border border-glass-border group relative overflow-hidden">
+<div class="flex justify-between items-center mb-1">
+<span class="text-label-sm text-primary font-bold">TXT</span>
+<button class="text-xs text-outline hover:text-primary flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+<p class="font-mono text-xs text-on-surface break-all">qevora-site-verification=2x4a7...</p>
+</div>
+</div>
+<button class="w-full mt-lg py-3 border border-primary/30 text-primary rounded-xl font-label-md hover:bg-primary/5 transition-all active:scale-95">
+                                Re-verify records
+                            </button>
+</div>
+<!-- Subdomains Section -->
+<div class="glass-card rounded-xl p-md">
+<div class="flex items-center justify-between mb-sm">
+<h4 class="font-headline-md text-headline-md">Subdomains</h4>
+<button class="text-primary hover:underline text-label-sm">Manage All</button>
+</div>
+<div class="relative mb-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full bg-surface-container-lowest/50 border border-glass-border rounded-lg py-2 pl-9 pr-4 text-label-md focus:outline-none focus:border-primary/50" placeholder="Search..." type="text">
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-3 hover:bg-white/5 rounded-lg group transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+</div>
+<span class="font-label-md">app.qevora.io</span>
+</div>
+<span class="material-symbols-outlined text-sm text-outline opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</div>
+<div class="flex items-center justify-between p-3 hover:bg-white/5 rounded-lg group transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">article</span>
+</div>
+<span class="font-label-md">blog.qevora.io</span>
+</div>
+<span class="material-symbols-outlined text-sm text-outline opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</div>
+<div class="flex items-center justify-between p-3 hover:bg-white/5 rounded-lg group transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">store</span>
+</div>
+<span class="font-label-md">shop.qevora.io</span>
+</div>
+<span class="material-symbols-outlined text-sm text-outline opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</div>
+</div>
+<button class="w-full mt-4 flex items-center justify-center gap-2 text-outline hover:text-on-surface py-2 rounded-lg text-label-sm border border-dashed border-glass-border hover:border-outline transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                                Create Subdomain
+                            </button>
+</div>
+</section>
+</div>
+<!-- Atmospheric Visual Decoration -->
+<div class="relative w-full h-64 glass-card rounded-2xl overflow-hidden mt-xl border-none">
+
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent flex flex-col items-center justify-center text-center p-md">
+<span class="material-symbols-outlined text-primary text-5xl mb-4 animate-bounce">auto_awesome</span>
+<h5 class="font-headline-lg text-headline-lg text-white mb-2">Global Edge Acceleration</h5>
+<p class="font-body-md text-on-surface-variant max-w-lg">Your domains are automatically served through 250+ global edge locations for ultra-fast performance and DDoS protection.</p>
+<div class="mt-lg flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-label-sm font-medium">99.9% Uptime Guarantee</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-label-sm font-medium">Auto-renewing SSL</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', ()</script></body></html>

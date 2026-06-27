@@ -1,9 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, Eye, EyeOff, Lock, Mail, User, ArrowRight } from "lucide-react";
+import { Mail, Lock, User, ArrowRight, Eye, EyeOff, Chrome, Github, Terminal } from "lucide-react";
+import { useLanguage } from "../../components/LanguageContext";
+import { AuthLayout } from "../../components/AuthLayout";
+import { GuestRoute } from "../../components/GuestRoute";
+import { useAuth } from "../../components/AuthContext";
+import { api } from "../../lib/api";
+import Link from "next/link";
 
 export default function SignupPage() {
+  const { t } = useLanguage();
+  const { register } = useAuth();
+  
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,108 +26,123 @@ export default function SignupPage() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, fullName, password }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.detail || "Signup failed. Please try again.");
-      }
-
-      // Save token and redirect
-      localStorage.setItem("qevora_token", data.access_token);
-      localStorage.setItem("qevora_user_id", data.userId);
-      window.location.href = "/dashboard";
+      await register(email, fullName, password);
     } catch (err: any) {
-      setError(err.message);
+      setError(err.message || "Signup failed. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-950 via-[#0b0f19] to-black flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Decorative Blur Backgrounds */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
-
-      <div className="w-full max-w-md bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.3)] rounded-2xl p-8 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-semibold text-primary-light mb-4">
-            <Sparkles size={14} className="text-primary" /> Start building for free
-          </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">Create Account</h1>
-          <p className="text-sm text-gray-400 mt-2">Get started with your Qevora workspace</p>
+    <GuestRoute>
+      <AuthLayout>
+        <div className="text-center md:text-left rtl:md:text-right space-y-2">
+          <h1 className="font-rubik text-headline-xl font-bold text-white">
+            {t("signupWelcome")}
+          </h1>
+          <p className="text-body-md text-on-surface-variant">
+            {t("signupSubWelcome")}
+          </p>
         </div>
 
-        {/* Error message */}
         {error && (
-          <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-sm text-red-400">
+          <div className="p-4 rounded-xl bg-error/10 border border-error/20 text-sm text-error">
             {error}
           </div>
         )}
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
-            <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Full Name</label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500 pointer-events-none">
-                <User size={18} />
-              </span>
+        <div className="grid grid-cols-3 gap-4">
+          <button
+            className="glass p-3 flex items-center justify-center rounded-xl hover:bg-white/5 border border-white/10 transition active:scale-95 text-on-surface hover:border-primary/20"
+            title="Google"
+          >
+            <Chrome size={18} />
+          </button>
+          <button
+            className="glass p-3 flex items-center justify-center rounded-xl hover:bg-white/5 border border-white/10 transition active:scale-95 text-on-surface hover:border-primary/20"
+            title="GitHub"
+          >
+            <Github size={18} />
+          </button>
+          <button
+            className="glass p-3 flex items-center justify-center rounded-xl hover:bg-white/5 border border-white/10 transition active:scale-95 text-on-surface hover:border-primary/20"
+            title="Microsoft"
+          >
+            <Terminal size={18} />
+          </button>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <div className="h-[1px] flex-grow bg-white/10" />
+          <span className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">
+            {t("loginOr")}
+          </span>
+          <div className="h-[1px] flex-grow bg-white/10" />
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <label className="text-label-md text-on-surface block font-medium">
+              {t("signupNameLabel")}
+            </label>
+            <div className="relative group">
+              <User
+                size={18}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors rtl:left-auto rtl:right-4"
+              />
               <input
-                type="text"
                 required
+                type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
+                className="w-full pl-12 pr-4 py-3.5 bg-surface-container-low border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition text-body-md text-on-surface placeholder:text-on-surface-variant/30 rtl:pl-4 rtl:pr-12"
                 placeholder="John Doe"
-                className="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl py-3 pl-10 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition"
               />
             </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Email Address</label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500 pointer-events-none">
-                <Mail size={18} />
-              </span>
+          <div className="space-y-2">
+            <label className="text-label-md text-on-surface block font-medium">
+              {t("loginEmailLabel")}
+            </label>
+            <div className="relative group">
+              <Mail
+                size={18}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors rtl:left-auto rtl:right-4"
+              />
               <input
-                type="email"
                 required
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="name@example.com"
-                className="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl py-3 pl-10 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition"
+                className="w-full pl-12 pr-4 py-3.5 bg-surface-container-low border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition text-body-md text-on-surface placeholder:text-on-surface-variant/30 rtl:pl-4 rtl:pr-12"
+                placeholder="name@company.com"
               />
             </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Password</label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500 pointer-events-none">
-                <Lock size={18} />
-              </span>
+          <div className="space-y-2">
+            <label className="text-label-md text-on-surface block font-medium">
+              {t("loginPassLabel")}
+            </label>
+            <div className="relative group">
+              <Lock
+                size={18}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors rtl:left-auto rtl:right-4"
+              />
               <input
-                type={showPassword ? "text" : "password"}
                 required
+                type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className="w-full pl-12 pr-10 py-3.5 bg-surface-container-low border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition text-body-md text-on-surface placeholder:text-on-surface-variant/30 rtl:pl-10 rtl:pr-12"
                 placeholder="••••••••"
-                className="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl py-3 pl-10 pr-10 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 focus:bg-white/[0.04] transition"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-300"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-on-surface-variant hover:text-on-surface rtl:right-auto rtl:left-0 rtl:pl-3"
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
@@ -128,20 +152,22 @@ export default function SignupPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary hover:bg-primary-dark text-text-inverse font-bold py-3.5 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3.5 bg-primary text-background font-bold text-sm rounded-xl hover:bg-primary/95 transition shadow-lg hover:shadow-primary/20 flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-50 mt-2"
           >
-            {loading ? "Creating account..." : "Sign Up"}
-            {!loading && <ArrowRight size={18} />}
+            <span>{loading ? "..." : t("signupBtn")}</span>
+            {!loading && <ArrowRight size={16} className="rtl:rotate-180" />}
           </button>
         </form>
 
-        <div className="mt-8 text-center text-sm text-gray-400">
-          Already have an account?{" "}
-          <a href="/login" className="text-primary hover:text-primary-light font-semibold transition">
-            Log In
-          </a>
+        <div className="text-center pt-4">
+          <p className="text-xs text-on-surface-variant">
+            {t("signupFooterText")}{" "}
+            <Link href="/login" className="text-primary font-bold hover:underline">
+              {t("loginSignIn")}
+            </Link>
+          </p>
         </div>
-      </div>
-    </div>
+      </AuthLayout>
+    </GuestRoute>
   );
 }

@@ -77,26 +77,48 @@ export function mockExtractIntent(prompt: string) {
 }
 
 export function mockGenerateTheme(intent: any) {
-  const isDark = intent.toneKeywords.includes("dark");
+  const isDark = intent.toneKeywords.includes("dark") || intent.toneKeywords.includes("luxury") || intent.toneKeywords.includes("minimalist");
   return {
     colorScheme: isDark ? "dark" : "light",
-    colors: {
-      primary: "#7C3AED",
-      primaryDark: "#5B21B6",
-      primaryLight: "#EDE9FE",
-      secondary: "#F59E0B",
-      secondaryDark: "#D97706",
-      secondaryLight: "#FEF3C7",
-      background: isDark ? "#0F1117" : "#FFFFFF",
-      backgroundAlt: isDark ? "#1A1D27" : "#F9FAFB",
-      surface: isDark ? "#1E2130" : "#FFFFFF",
-      surfaceElevated: isDark ? "#242838" : "#F3F4F6",
-      text: isDark ? "#F9FAFB" : "#111827",
-      textSecondary: isDark ? "#9CA3AF" : "#6B7280",
-      textMuted: isDark ? "#6B7280" : "#9CA3AF",
+    colors: isDark ? {
+      primary: "#C8BFFF",          // Electric Violet
+      primaryDark: "#6D28D9",      // Vibrant Purple
+      primaryLight: "#F5F3FF",
+      secondary: "#44F1BC",        // Neon Mint
+      secondaryDark: "#047857",    // Deep Emerald
+      secondaryLight: "#ECFDF5",
+      background: "#09090B",       // Obsidian Black
+      backgroundAlt: "#111217",    // Dark Slate
+      surface: "#111217",          // Container Slate
+      surfaceElevated: "#171A21",  // Popover/Interactive Card
+      text: "#F9FAFB",             // High-contrast white-gray
+      textSecondary: "#9CA3AF",    // Neutral gray
+      textMuted: "#4B5563",        // Dark gray
+      textInverse: "#09090B",      // Text on light backgrounds
+      border: "rgba(255, 255, 255, 0.08)", // Transparent glassmorphic border
+      borderStrong: "rgba(255, 255, 255, 0.2)",
+      success: "#44F1BC",
+      warning: "#FFB955",
+      error: "#FFB4AB",
+      info: "#2FD9F4",
+      overlay: "rgba(0,0,0,0.7)",
+    } : {
+      primary: "#6D28D9",          // Premium Purple
+      primaryDark: "#4C1D95",
+      primaryLight: "#F5F3FF",
+      secondary: "#10B981",        // Emerald Green
+      secondaryDark: "#047857",
+      secondaryLight: "#ECFDF5",
+      background: "#F9FAFB",
+      backgroundAlt: "#FFFFFF",
+      surface: "#FFFFFF",
+      surfaceElevated: "#F3F4F6",
+      text: "#111827",
+      textSecondary: "#4B5563",
+      textMuted: "#9CA3AF",
       textInverse: "#FFFFFF",
-      border: isDark ? "#374151" : "#E5E7EB",
-      borderStrong: isDark ? "#4B5563" : "#D1D5DB",
+      border: "#E5E7EB",
+      borderStrong: "#D1D5DB",
       success: "#10B981",
       warning: "#F59E0B",
       error: "#EF4444",
@@ -105,8 +127,8 @@ export function mockGenerateTheme(intent: any) {
     },
     typography: {
       fontFamily: {
-        primary: "Inter",
-        arabic: "Cairo",
+        primary: "Rubik",
+        arabic: "Rubik",
         mono: "JetBrains Mono",
       },
       fontWeights: { regular: 400, medium: 500, semibold: 600, bold: 700, extrabold: 800 },
@@ -126,8 +148,20 @@ export function mockGenerateTheme(intent: any) {
     },
     spacing: { xs: "0.5rem", sm: "1rem", md: "1.5rem", lg: "2rem", xl: "3rem", "2xl": "5rem", "3xl": "8rem" },
     borderRadius: { none: "0", sm: "0.25rem", md: "0.5rem", lg: "0.75rem", xl: "1rem", "2xl": "1.5rem", full: "9999px" },
-    shadows: { none: "none", sm: "0 1px 2px rgba(0,0,0,0.05)", md: "0 4px 6px rgba(0,0,0,0.07)", lg: "0 10px 15px rgba(0,0,0,0.1)", xl: "0 20px 25px rgba(0,0,0,0.1)" },
-    layout: { containerMaxWidth: "1280px", navbarHeight: "72px", sectionPaddingY: "5rem", gridColumns: 12, gutter: "1.5rem" },
+    shadows: isDark ? {
+      none: "none",
+      sm: "0 1px 2px rgba(0,0,0,0.5)",
+      md: "0 4px 6px rgba(0,0,0,0.6)",
+      lg: "0 10px 15px rgba(0,0,0,0.7)",
+      xl: "0 0 20px rgba(109, 40, 217, 0.15)", // Ambient violet glow
+    } : {
+      none: "none",
+      sm: "0 1px 2px rgba(0,0,0,0.05)",
+      md: "0 4px 6px rgba(0,0,0,0.07)",
+      lg: "0 10px 15px rgba(0,0,0,0.1)",
+      xl: "0 20px 25px rgba(0,0,0,0.1)",
+    },
+    layout: { containerMaxWidth: "1440px", navbarHeight: "72px", sectionPaddingY: "5rem", gridColumns: 12, gutter: "1.5rem" },
   };
 }
 
@@ -193,7 +227,7 @@ export function mockAssembleSchema(
             order: 2,
             isVisible: true,
             content: {
-              headline: { en: intent.isBilingual ? "The Future of Your Business" : !isAr ? headline : null, ar: intent.isBilingual ? "مستقبل أعمالك يبدأ هنا" : isAr ? headline : null },
+              headline: { en: "The Future of Your Business Starts Here", ar: "مستقبل أعمالك يبدأ هنا" },
               subheadline: { en: "Premium business scaling platforms", ar: "منصات متميزة لتطوير الأعمال" },
               primaryCta: { label: { en: "Get Started", ar: "ابدأ الآن" }, href: "/contact" },
               imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
@@ -241,8 +275,7 @@ export function mockAssembleSchema(
         }
       ],
       fonts: [
-        { family: "Inter", weights: [400, 600, 700], source: "google" },
-        { family: "Cairo", weights: [400, 600, 700], source: "google" }
+        { family: "Rubik", weights: [300, 400, 500, 600, 700, 800], source: "google" }
       ]
     }
   };

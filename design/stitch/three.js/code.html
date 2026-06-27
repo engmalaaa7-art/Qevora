@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_30 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_30" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_30');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+camera.position.z = 5;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0x6c4dff, 1); // Qevora Primary
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+// Robot Group
+const robot = new THREE.Group();
+scene.add(robot);
+
+// Robot Head
+const headGeo = new THREE.BoxGeometry(1.2, 1, 1);
+const headMat = new THREE.MeshPhongMaterial({ color: 0x1c1a24, shininess: 100 });
+const head = new THREE.Mesh(headGeo, headMat);
+robot.add(head);
+
+// Screen Face
+const faceGeo = new THREE.PlaneGeometry(1, 0.8);
+const faceMat = new THREE.MeshBasicMaterial({ color: 0x6c4dff });
+const face = new THREE.Mesh(faceGeo, faceMat);
+face.position.z = 0.51;
+robot.add(face);
+
+// Eyes
+const eyeGeo = new THREE.CircleGeometry(0.1, 32);
+const eyeMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+const eyeL = new THREE.Mesh(eyeGeo, eyeMat);
+eyeL.position.set(-0.25, 0, 0.52);
+robot.add(eyeL);
+
+const eyeR = new THREE.Mesh(eyeGeo, eyeMat);
+eyeR.position.set(0.25, 0, 0.52);
+robot.add(eyeR);
+
+// Body
+const bodyGeo = new THREE.CylinderGeometry(0.6, 0.4, 1.2, 32);
+const bodyMat = new THREE.MeshPhongMaterial({ color: 0x1c1a24 });
+const body = new THREE.Mesh(bodyGeo, bodyMat);
+body.position.y = -1.2;
+robot.add(body);
+
+// Floating Rings
+const ringGeo = new THREE.TorusGeometry(1.5, 0.05, 16, 100);
+const ringMat = new THREE.MeshBasicMaterial({ color: 0x6c4dff, transparent: true, opacity: 0.3 });
+const ring1 = new THREE.Mesh(ringGeo, ringMat);
+ring1.rotation.x = Math.PI / 2;
+scene.add(ring1);
+
+const ring2 = new THREE.Mesh(ringGeo, ringMat);
+ring2.rotation.x = Math.PI / 2.5;
+ring2.scale.set(1.2, 1.2, 1.2);
+scene.add(ring2);
+
+// Animation
+let time = 0;
+function animate() {
+    requestAnimationFrame(animate);
+    time += 0.01;
+    
+    // Robot floating motion
+    robot.position.y = Math.sin(time) * 0.2;
+    robot.rotation.y = Math.sin(time * 0.5) * 0.2;
+    robot.rotation.z = Math.cos(time * 0.3) * 0.1;
+    
+    // Rings rotation
+    ring1.rotation.z += 0.005;
+    ring2.rotation.z -= 0.007;
+    
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+animate();
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_30 -->
+
+
+</body></html>
