@@ -619,7 +619,7 @@ async def export_project(project_id: str, format: str, user_id: str = Depends(ge
 
     try:
         proc = subprocess.Popen(
-            ["node", "packages/renderer/dist/compile-cli.js"],
+            ["node", "../../packages/renderer/dist/compile-cli.js"],
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
