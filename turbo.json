@@ -5,6 +5,10 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "dist/**"]
     },
+    "build:cli": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/renderer.cjs"]
+    },
     "dev": {
       "cache": false,
       "persistent": true

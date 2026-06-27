@@ -37,3 +37,74 @@ services:
       - key: CORS_ORIGINS
         value: "https://qevora-ai.vercel.app,http://localhost:3000"
     healthCheckPath: /health
+
+  - type: worker
+    name: qevora-worker
+    env: docker
+    region: ohio
+    dockerfilePath: apps/api/Dockerfile
+    dockerContext: .
+    dockerCommand: "python worker.py"
+    envVars:
+      - key: ENV
+        value: production
+      - key: DATABASE_URL
+        fromService:
+          type: web
+          name: qevora-api
+          envVarKey: DATABASE_URL
+      - key: UPSTASH_REDIS_REST_URL
+        fromService:
+          type: web
+          name: qevora-api
+          envVarKey: UPSTASH_REDIS_REST_URL
+      - key: UPSTASH_REDIS_REST_TOKEN
+        fromService:
+          type: web
+          name: qevora-api
+          envVarKey: UPSTASH_REDIS_REST_TOKEN
+      - key: CLOUDINARY_CLOUD_NAME
+        fromService:
+          type: web
+          name: qevora-api
+          envVarKey: CLOUDINARY_CLOUD_NAME
+      - key: CLOUDINARY_API_KEY
+        fromService:
+          type: web
+          name: qevora-api
+          envVarKey: CLOUDINARY_API_KEY
+      - key: CLOUDINARY_API_SECRET
+        fromService:
+          type: web
+          name: qevora-api
+          envVarKey: CLOUDINARY_API_SECRET
+      - key: CLOUDINARY_URL
+        fromService:
+          type: web
+          name: qevora-api
+          envVarKey: CLOUDINARY_URL
+      - key: ANTHROPIC_API_KEY
+        fromService:
+          type: web
+          name: qevora-api
+          envVarKey: ANTHROPIC_API_KEY
+      - key: AI_BASE_URL
+        value: https://router.bynara.id
+      - key: JWT_SECRET
+        fromService:
+          type: web
+          name: qevora-api
+          envVarKey: JWT_SECRET
+
+  - type: web
+    name: qevora-web
+    env: docker
+    region: ohio
+    dockerfilePath: apps/web/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: qevora-api
+          property: host
