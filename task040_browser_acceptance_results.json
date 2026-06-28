@@ -1,0 +1,88 @@
+{
+  "results": {
+    "STEP 1": {
+      "status": "PASS",
+      "http_status": 200,
+      "latency_ms": 1840
+    },
+    "STEP 2": {
+      "status": "PASS",
+      "latency_ms": 5004
+    },
+    "STEP 3": {
+      "status": "PASS",
+      "latency_ms": 158
+    },
+    "STEP 4": {
+      "status": "PASS",
+      "latency_ms": 421
+    },
+    "STEP 5": {
+      "status": "PASS",
+      "projectId": "5889b5bc-4679-4fa0-a399-f3c53a93fd9e",
+      "latency_ms": 1451
+    },
+    "STEP 6": {
+      "status": "PASS"
+    },
+    "STEP 7": {
+      "status": "PASS",
+      "duration_s": "6.02"
+    },
+    "STEP 8": {
+      "status": "PASS",
+      "schema_present": true
+    },
+    "STEP 9": {
+      "status": "PASS",
+      "exports": {
+        "static": {
+          "status": 200,
+          "size_bytes": 6482,
+          "latency_ms": 1160
+        },
+        "react": {
+          "status": 200,
+          "size_bytes": 366,
+          "latency_ms": 1124
+        },
+        "nextjs": {
+          "status": 200,
+          "size_bytes": 599,
+          "latency_ms": 1076
+        }
+      }
+    },
+    "STEP 10": {
+      "status": "PASS"
+    },
+    "STEP 11": {
+      "status": "PASS"
+    },
+    "STEP 12": {
+      "status": "PASS"
+    },
+    "OVERALL": "PRODUCTION READY"
+  },
+  "timings": {
+    "homepage_ms": 1840,
+    "signup_ms": 5004,
+    "login_ms": 158,
+    "dashboard_ms": 421,
+    "create_project_ms": 1451,
+    "generate_ms": 6016,
+    "export_static_ms": 1160,
+    "export_react_ms": 1124,
+    "export_nextjs_ms": 1076
+  },
+  "consoleLogs": [
+    "[warning] [.WebGL-0x46c4001d6e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+    "[warning] [.WebGL-0x46c4001d7a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+    "[warning] [.WebGL-0x46c4001d6e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+    "[warning] [.WebGL-0x46c4001d7a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+  ],
+  "failedRequests": [
+    "GET https://qevora-api-production-016a.up.railway.app/auth/me (net::ERR_ABORTED)",
+    "GET https://qevora-api-production-016a.up.railway.app/auth/me (net::ERR_ABORTED)"
+  ]
+}
