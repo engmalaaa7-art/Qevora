@@ -1,0 +1,141 @@
+{
+  "results": {
+    "STEP 1": {
+      "status": "PASS",
+      "http_status": 200,
+      "latency_ms": 1293
+    },
+    "STEP 2": {
+      "status": "PASS",
+      "latency_ms": 3690
+    },
+    "STEP 3": {
+      "status": "PASS",
+      "latency_ms": 1093
+    },
+    "STEP 4": {
+      "status": "PASS",
+      "projectId": "2bb1afcf-dabb-4be2-b8ca-6c2756a096f6",
+      "latency_ms": 1409
+    },
+    "STEP 5": {
+      "status": "PASS"
+    },
+    "STEP 6": {
+      "status": "PASS",
+      "duration_s": "5.77",
+      "sequence": [
+        "pending",
+        "running",
+        "completed"
+      ]
+    },
+    "STEP 7": {
+      "status": "PASS",
+      "schema_present": true
+    },
+    "STEP 8": {
+      "status": "PASS",
+      "exports": {
+        "static": {
+          "status": 200,
+          "size_bytes": 6484,
+          "latency_ms": 1522
+        },
+        "react": {
+          "status": 200,
+          "size_bytes": 366,
+          "latency_ms": 1056
+        },
+        "nextjs": {
+          "status": 200,
+          "size_bytes": 599,
+          "latency_ms": 1056
+        }
+      }
+    },
+    "STEP 9": {
+      "status": "PASS",
+      "verification": "App loads cleanly without runtime exceptions"
+    },
+    "STEP 10": {
+      "status": "PASS"
+    },
+    "STEP 11": {
+      "status": "PASS"
+    },
+    "STEP 12": {
+      "status": "PASS",
+      "codes": {
+        "task_status": 200,
+        "export_status": 400
+      }
+    },
+    "STEP 13": {
+      "status": "PASS",
+      "timings": {
+        "homepage_ms": 1293,
+        "signup_ms": 3690,
+        "login_ms": 1093,
+        "create_project_ms": 1409,
+        "generate_ms": 5767,
+        "export_static_ms": 1522,
+        "export_react_ms": 1056,
+        "export_nextjs_ms": 1056
+      }
+    },
+    "STEP 14": {
+      "status": "PASS",
+      "logs_captured": 22,
+      "network_requests": 354
+    },
+    "STEP 15": {
+      "status": "PASS",
+      "verdict": "PRODUCTION READY"
+    }
+  },
+  "consoleLogs": [
+    "[error] Failed to load resource: the server responded with a status of 403 ()",
+    "[warning] [GSI_LOGGER]: Your client application uses one of the Google One Tap prompt UI status methods that may stop functioning when FedCM becomes mandatory. Refer to the migration guide to update your code accordingly and opt-in to FedCM to test your changes. Learn more: https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment and https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#skipped_moment",
+    "[error] Provider's accounts list is empty.",
+    "[error] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token.",
+    "[error] Failed to load resource: the server responded with a status of 429 ()",
+    "[log] %c\n▲\n\n    ________   _ __ _          ____           __\n   /  _/ __/  (_) /( )_____   / __/___ ______/ /_\n   / // /_   / / __/// ___/  / /_/ __ `/ ___/ __/\n _/ // __/  / / /_  (__  )  / __/ /_/ (__  ) /_\n/___/_/    /_/\\__/ /____/  /_/  \\__,_/____/\\__/\n    _ __ _                         _    __                    __\n   (_) /( )_____   ____  ____     | |  / /__  _____________  / /\n  / / __/// ___/  / __ \\/ __ \\    | | / / _ \\/ ___/ ___/ _ \\/ /\n / / /_  (__  )  / /_/ / / / /    | |/ /  __/ /  / /__/  __/ /\n/_/\\__/ /____/   \\____/_/ /_/     |___/\\___/_/   \\___/\\___/_/\n  \n\nHello!\n\n- Open Source https://vercel.com/oss\n- Careers https://vercel.com/careers\n- Status https://vercel-status.com\n\n font-family: \"Geist Mono\", monospace; white-space: pre; line-height: 1;",
+    "[warning] [GSI_LOGGER]: Your client application uses one of the Google One Tap prompt UI status methods that may stop functioning when FedCM becomes mandatory. Refer to the migration guide to update your code accordingly and opt-in to FedCM to test your changes. Learn more: https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment and https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#skipped_moment",
+    "[error] Not signed in with the identity provider.",
+    "[warning] Deprecated API for given entry type.",
+    "[error] Failed to load resource: the server responded with a status of 403 ()",
+    "[error] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token.",
+    "[error] Failed to load resource: the server responded with a status of 429 ()",
+    "[log] %c\n▲\n\n _____ _              _                    _   _             __\n|_   _| |__   ___    / \\   __ _  ___ _ __ | |_(_) ___       / /\n  | | | '_ \\ / _ \\  / _ \\ / _` |/ _ \\ '_ \\| __| |/ __|     / /\n  | | | | | |  __/ / ___ \\ (_| |  __/ | | | |_| | (__     /_/\n  |_| |_| |_|\\___|/_/   \\_\\__, |\\___|_| |_|\\__|_|\\___|    (_)\n                           |___/\n ___        __               _                   _                 _\n|_ _|_ __  / _|_ __ __ _ ___| |_ _ __ _   _  ___| |_ _   _ _ __ ___\n | || '_ \\| |_| '__/ _` / __| __| '__| | | |/ __| __| | | | '__/ _ \\\n | || | | |  _| | | (_| \\__ \\ |_| |  | |_| | (__| |_| |_| | | |  __/\n|___|_| |_|_| |_|  \\__,_|___/\\__|_|   \\__,_|\\___|\\__|\\__,_|_|  \\___|\n  \n\nHello!\n\n- Open Source https://vercel.com/oss\n- Careers https://vercel.com/careers\n- Status https://vercel-status.com\n\n font-family: \"Geist Mono\", monospace; white-space: pre; line-height: 1;",
+    "[warning] [GSI_LOGGER]: Your client application uses one of the Google One Tap prompt UI status methods that may stop functioning when FedCM becomes mandatory. Refer to the migration guide to update your code accordingly and opt-in to FedCM to test your changes. Learn more: https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment and https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#skipped_moment",
+    "[error] Not signed in with the identity provider.",
+    "[warning] Deprecated API for given entry type.",
+    "[error] Failed to load resource: the server responded with a status of 403 ()",
+    "[error] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token.",
+    "[error] Failed to load resource: the server responded with a status of 429 ()",
+    "[error] Failed to load resource: the server responded with a status of 400 ()"
+  ],
+  "networkLogs": [
+    "[200] https://vercel.com/signup?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Fqevora-app.vercel.app%252Feditor%253Fproject%253D2bb1afcf-dabb-4be2-b8ca-6c2756a096f6%26nonce%3D586a8f08970cc09df07ea04db53e8483a2d5d8b6e109f4a83fbe030cfadb9c61&_rsc=_H_fFy2_Q06N8BA7",
+    "[200] https://vercel.com/api/stream/internal",
+    "[200] https://o205439.ingest.sentry.io/api/1323670/envelope/?sentry_key=d00780d432ac4ccf882f60dd02062e14&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.111.0",
+    "[200] https://vercel.com/signup?_rsc=_H_fFy2_Q06N8BA7",
+    "[200] https://vercel.com/signup?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Fqevora-app.vercel.app%252Feditor%253Fproject%253D2bb1afcf-dabb-4be2-b8ca-6c2756a096f6%26nonce%3D586a8f08970cc09df07ea04db53e8483a2d5d8b6e109f4a83fbe030cfadb9c61&_rsc=vMXKetKx_uNlGRnr",
+    "[200] https://vercel.com/_next/static/immutable/chunks/0zj477rf6ylnu.js",
+    "[200] https://vercel.com/_next/static/immutable/chunks/1i50ocmaxn1qr.js",
+    "[200] https://qevora-api-production-016a.up.railway.app/projects/2bb1afcf-dabb-4be2-b8ca-6c2756a096f6/generate",
+    "[200] https://qevora-api-production-016a.up.railway.app/tasks/gen-f5e207f9ae96",
+    "[200] https://qevora-api-production-016a.up.railway.app/tasks/gen-f5e207f9ae96",
+    "[200] https://o205439.ingest.sentry.io/api/1323670/envelope/?sentry_key=d00780d432ac4ccf882f60dd02062e14&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.111.0",
+    "[429] https://o205439.ingest.sentry.io/api/1323670/envelope/?sentry_key=d00780d432ac4ccf882f60dd02062e14&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.111.0",
+    "[200] https://qevora-api-production-016a.up.railway.app/projects/2bb1afcf-dabb-4be2-b8ca-6c2756a096f6/export/static",
+    "[200] https://qevora-api-production-016a.up.railway.app/projects/2bb1afcf-dabb-4be2-b8ca-6c2756a096f6/export/react",
+    "[200] https://qevora-api-production-016a.up.railway.app/projects/2bb1afcf-dabb-4be2-b8ca-6c2756a096f6/export/nextjs",
+    "[200] https://qevora-api-production-016a.up.railway.app/projects",
+    "[204] https://vercel.com/.well-known/otel/metrics",
+    "[200] https://qevora-api-production-016a.up.railway.app/projects/2bb1afcf-dabb-4be2-b8ca-6c2756a096f6",
+    "[200] https://qevora-api-production-016a.up.railway.app/tasks/invalid-task-id-9999",
+    "[400] https://qevora-api-production-016a.up.railway.app/projects/any-id/export/invalid-fmt"
+  ]
+}
