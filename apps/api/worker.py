@@ -194,28 +194,33 @@ async def worker_loop():
     
     try:
         while True:
-            # BLPOP blocks until a task is available
-            task = redis_manager.pop_task("default", timeout_seconds=5)
-            if not task:
-                await asyncio.sleep(0.5)
-                continue
+            try:
+                task = await asyncio.to_thread(redis_manager.pop_task, "default", 3)
+                if not task:
+                    await asyncio.sleep(0.5)
+                    continue
 
-            task_id = task.get("task_id")
-            task_type = task.get("type")
-            payload = task.get("payload", {})
-            logger.info(f"Dequeued task {task_id} of type {task_type}")
+                task_id = task.get("task_id")
+                task_type = task.get("type")
+                payload = task.get("payload", {})
+                logger.info(f"Dequeued task {task_id} of type {task_type}")
 
-            if task_type == "generate_ai_site":
-                await handle_generate_ai_site(task_id, payload)
-            elif task_type == "publish_site":
-                await handle_publish_site(task_id, payload)
-            elif task_type == "verify_custom_domain":
-                await handle_verify_custom_domain(task_id, payload)
-            elif task_type == "dispatch_email":
-                await handle_dispatch_email(task_id, payload)
-            else:
-                logger.error(f"Unknown task type: {task_type}")
-                redis_manager.set_cache(f"task:status:{task_id}", {"status": "failed", "error": "Unknown task type"}, expire_seconds=300)
+                if task_type == "generate_ai_site":
+                    await handle_generate_ai_site(task_id, payload)
+                elif task_type == "publish_site":
+                    await handle_publish_site(task_id, payload)
+                elif task_type == "verify_custom_domain":
+                    await handle_verify_custom_domain(task_id, payload)
+                elif task_type == "dispatch_email":
+                    await handle_dispatch_email(task_id, payload)
+                else:
+                    logger.error(f"Unknown task type: {task_type}")
+                    redis_manager.set_cache(f"task:status:{task_id}", {"status": "failed", "error": "Unknown task type"}, expire_seconds=300)
+            except asyncio.CancelledError:
+                raise
+            except Exception as loop_err:
+                logger.error(f"Error processing task cycle: {loop_err}. Retrying loop in 1s...")
+                await asyncio.sleep(1.0)
 
     except asyncio.CancelledError:
         logger.info("Background task worker loop cancelled cleanly.")
