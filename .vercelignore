@@ -1,0 +1,10 @@
+**/node_modules
+**/.next
+**/.turbo
+.venv
+.git
+.pytest_cache
+.railway
+apps/api
+*.pptx
+*.html

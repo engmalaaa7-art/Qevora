@@ -1,0 +1,25 @@
+{
+  "user_id": "cb848274-19a9-423e-a190-0e8acb088ade",
+  "project_id": "47828284-7e3a-4e2d-8ed6-e49e948602d1",
+  "task_id": "gen-51238567ba93",
+  "task_states": [
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending",
+    "pending"
+  ],
+  "completed": false,
+  "export_success": false,
+  "zip_files": []
+}

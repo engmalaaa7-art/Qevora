@@ -1,0 +1,617 @@
+{
+  "completed": false,
+  "timeline": [
+    "[03:24:39.067] === PHASE 1: INITIALIZATION & TRIGGER ===",
+    "[03:24:42.304] User created successfully. ID: N/A",
+    "[03:24:43.425] Project created successfully. ID: 400ac6cd-5adc-4ca2-9bad-f5042a91021a",
+    "[03:24:44.491] AI Generation triggered successfully. Task ID: gen-21059bbdcfd8",
+    "[03:24:44.492] \n=== PHASE 2: POLLING TASK STATUS (Every 2s, up to 120s) ===",
+    "[03:24:47.385] Poll #01 (03.07s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:24:50.179] Poll #02 (05.96s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:24:53.125] Poll #03 (08.76s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:24:55.949] Poll #04 (11.70s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:24:58.874] Poll #05 (14.53s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:01.639] Poll #06 (17.45s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:04.533] Poll #07 (20.21s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:07.394] Poll #08 (23.11s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:10.274] Poll #09 (25.97s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:13.045] Poll #10 (28.85s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:15.913] Poll #11 (31.62s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:18.685] Poll #12 (34.49s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:21.565] Poll #13 (37.26s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:24.345] Poll #14 (40.14s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:27.230] Poll #15 (42.92s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:30.004] Poll #16 (45.81s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:32.868] Poll #17 (48.58s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:35.663] Poll #18 (51.45s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:38.524] Poll #19 (54.24s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:41.378] Poll #20 (57.10s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:44.325] Poll #21 (59.96s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:47.115] Poll #22 (62.90s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:49.987] Poll #23 (65.69s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:52.844] Poll #24 (68.56s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:55.754] Poll #25 (71.42s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:25:58.594] Poll #26 (74.33s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:01.502] Poll #27 (77.17s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:04.284] Poll #28 (80.08s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:07.191] Poll #29 (82.86s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:09.994] Poll #30 (85.77s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:12.925] Poll #31 (88.57s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:15.688] Poll #32 (91.50s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:18.544] Poll #33 (94.26s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:21.332] Poll #34 (97.12s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:24.224] Poll #35 (99.91s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:27.033] Poll #36 (102.80s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:29.924] Poll #37 (105.61s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:32.734] Poll #38 (108.51s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:35.591] Poll #39 (111.31s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:38.357] Poll #40 (114.17s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:41.235] Poll #41 (116.93s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:44.064] Poll #42 (119.81s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:46.955] Poll #43 (122.64s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:49.736] Poll #44 (125.53s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:53.772] Poll #45 (128.31s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:26:57.009] Poll #46 (132.35s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:00.467] Poll #47 (135.59s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:03.814] Poll #48 (139.04s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:07.804] Poll #49 (142.39s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:10.618] Poll #50 (146.38s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:13.464] Poll #51 (149.19s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:16.262] Poll #52 (152.04s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:19.186] Poll #53 (154.84s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:21.962] Poll #54 (157.76s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:24.830] Poll #55 (160.54s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:27.613] Poll #56 (163.41s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:30.544] Poll #57 (166.19s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:33.383] Poll #58 (169.12s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:36.312] Poll #59 (171.96s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:39.104] Poll #60 (174.89s) -> HTTP 200 | Status: 'pending' | Payload: {'status': 'pending', 'message': 'Task queued in background loop'}",
+    "[03:27:39.104] \n\u274c STOPPING IMMEDIATELY: Task did not reach 'completed' state within polling window.",
+    "[03:27:39.104] States observed: pending"
+  ],
+  "http_responses": [
+    {
+      "poll": 1,
+      "elapsed_sec": 3.07,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 2,
+      "elapsed_sec": 5.96,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 3,
+      "elapsed_sec": 8.76,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 4,
+      "elapsed_sec": 11.7,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 5,
+      "elapsed_sec": 14.53,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 6,
+      "elapsed_sec": 17.45,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 7,
+      "elapsed_sec": 20.21,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 8,
+      "elapsed_sec": 23.11,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 9,
+      "elapsed_sec": 25.97,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 10,
+      "elapsed_sec": 28.85,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 11,
+      "elapsed_sec": 31.62,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 12,
+      "elapsed_sec": 34.49,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 13,
+      "elapsed_sec": 37.26,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 14,
+      "elapsed_sec": 40.14,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 15,
+      "elapsed_sec": 42.92,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 16,
+      "elapsed_sec": 45.81,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 17,
+      "elapsed_sec": 48.58,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 18,
+      "elapsed_sec": 51.45,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 19,
+      "elapsed_sec": 54.24,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 20,
+      "elapsed_sec": 57.1,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 21,
+      "elapsed_sec": 59.96,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 22,
+      "elapsed_sec": 62.9,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 23,
+      "elapsed_sec": 65.69,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 24,
+      "elapsed_sec": 68.56,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 25,
+      "elapsed_sec": 71.42,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 26,
+      "elapsed_sec": 74.33,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 27,
+      "elapsed_sec": 77.17,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 28,
+      "elapsed_sec": 80.08,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 29,
+      "elapsed_sec": 82.86,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 30,
+      "elapsed_sec": 85.77,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 31,
+      "elapsed_sec": 88.57,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 32,
+      "elapsed_sec": 91.5,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 33,
+      "elapsed_sec": 94.26,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 34,
+      "elapsed_sec": 97.12,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 35,
+      "elapsed_sec": 99.91,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 36,
+      "elapsed_sec": 102.8,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 37,
+      "elapsed_sec": 105.61,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 38,
+      "elapsed_sec": 108.51,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 39,
+      "elapsed_sec": 111.31,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 40,
+      "elapsed_sec": 114.17,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 41,
+      "elapsed_sec": 116.93,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 42,
+      "elapsed_sec": 119.81,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 43,
+      "elapsed_sec": 122.64,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 44,
+      "elapsed_sec": 125.53,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 45,
+      "elapsed_sec": 128.31,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 46,
+      "elapsed_sec": 132.35,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 47,
+      "elapsed_sec": 135.59,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 48,
+      "elapsed_sec": 139.04,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 49,
+      "elapsed_sec": 142.39,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 50,
+      "elapsed_sec": 146.38,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 51,
+      "elapsed_sec": 149.19,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 52,
+      "elapsed_sec": 152.04,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 53,
+      "elapsed_sec": 154.84,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 54,
+      "elapsed_sec": 157.76,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 55,
+      "elapsed_sec": 160.54,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 56,
+      "elapsed_sec": 163.41,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 57,
+      "elapsed_sec": 166.19,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 58,
+      "elapsed_sec": 169.12,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 59,
+      "elapsed_sec": 171.96,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    },
+    {
+      "poll": 60,
+      "elapsed_sec": 174.89,
+      "status_code": 200,
+      "response": {
+        "status": "pending",
+        "message": "Task queued in background loop"
+      }
+    }
+  ],
+  "states_seen": [
+    "pending"
+  ]
+}

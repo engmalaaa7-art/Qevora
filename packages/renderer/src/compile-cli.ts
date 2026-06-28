@@ -1,38 +1,50 @@
 import { renderSite } from "./index";
 import * as fs from "fs";
 
+function exitWithJson(obj: any, code: number) {
+  const payload = JSON.stringify(obj) + "\n";
+  process.exitCode = code;
+  if (!process.stdout.write(payload)) {
+    process.stdout.once("drain", () => {
+      process.exit(code);
+    });
+  } else {
+    // Small timeout to allow stream flush in bundled execution
+    setTimeout(() => {
+      process.exit(code);
+    }, 10);
+  }
+}
+
 function main() {
   try {
     const inputData = fs.readFileSync(0, "utf-8");
     if (!inputData.trim()) {
-      console.error(JSON.stringify({ success: false, errors: ["No input schema provided on stdin."] }));
-      process.exit(1);
+      exitWithJson({ success: false, errors: ["No input schema provided on stdin."] }, 1);
+      return;
     }
 
     const schema = JSON.parse(inputData);
     const result = renderSite(schema, { mode: "publish" });
 
     if (result.success) {
-      console.log(JSON.stringify({
+      exitWithJson({
         success: true,
         files: result.files,
         warnings: result.warnings
-      }));
-      process.exit(0);
+      }, 0);
     } else {
-      console.log(JSON.stringify({
+      exitWithJson({
         success: false,
         errors: result.errors || ["Unknown compilation error"],
         warnings: result.warnings
-      }));
-      process.exit(1);
+      }, 1);
     }
   } catch (error: any) {
-    console.log(JSON.stringify({
+    exitWithJson({
       success: false,
       errors: [error.message || "Invalid JSON or internal failure"]
-    }));
-    process.exit(1);
+    }, 1);
   }
 }
 

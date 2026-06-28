@@ -1,0 +1,280 @@
+{
+  "timestamp": "2026-06-28 02:43:01 UTC",
+  "part1_backend": {
+    "/": {
+      "status": 404,
+      "latency_ms": 779.6,
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "body_preview": "{\"detail\":\"Not Found\"}"
+    },
+    "/docs": {
+      "status": 200,
+      "latency_ms": 343.66,
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "body_preview": "\n    <!DOCTYPE html>\n    <html>\n    <head>\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.9.0/swagger-ui.css\">\n    <link rel=\"shortcut icon\" href=\"http..."
+    },
+    "/openapi.json": {
+      "status": 200,
+      "latency_ms": 315.33,
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "body_preview": "{\"openapi\":\"3.1.0\",\"info\":{\"title\":\"Qevora API Gateway\",\"description\":\"Core backend orchestrator, database bridge, and AI compilation engine for Qevora\",\"version\":\"1.0.0\"},\"paths\":{\"/health\":{\"get\":{\"..."
+    },
+    "/health": {
+      "status": 200,
+      "latency_ms": 342.88,
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "body_preview": "{\"status\":\"OK\",\"timestamp\":\"2026-06-28T02:43:03.155077\",\"database\":\"CONNECTED\"}"
+    },
+    "/health/live": {
+      "status": 200,
+      "latency_ms": 508.7,
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "body_preview": "{\"status\":\"alive\",\"timestamp\":\"2026-06-28T02:43:03.659196\"}"
+    },
+    "/health/ready": {
+      "status": 200,
+      "latency_ms": 1709.52,
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "body_preview": "{\"status\":\"ready\",\"postgres\":\"healthy\",\"redis\":\"healthy\",\"timestamp\":\"2026-06-28T02:43:05.372055\"}"
+    }
+  },
+  "part2_openapi": {
+    "total_endpoints": 28,
+    "categories": {
+      "auth": 5,
+      "projects": 12,
+      "generation": 3,
+      "export": 2,
+      "health": 3,
+      "other": 3
+    },
+    "endpoints": [
+      "GET /health",
+      "GET /health/ready",
+      "GET /health/live",
+      "GET /tasks/{task_id}",
+      "POST /auth/signup",
+      "POST /auth/login",
+      "POST /auth/refresh",
+      "POST /auth/logout",
+      "GET /auth/me",
+      "GET /projects",
+      "POST /projects",
+      "PUT /projects/{project_id}",
+      "DELETE /projects/{project_id}",
+      "POST /projects/{project_id}/duplicate",
+      "POST /projects/{project_id}/generate",
+      "POST /projects/{project_id}/edit",
+      "GET /projects/{project_id}/schema",
+      "POST /projects/{project_id}/schema",
+      "POST /projects/{project_id}/publish",
+      "POST /projects/{project_id}/domain",
+      "POST /projects/{project_id}/domain/verify",
+      "GET /projects/{project_id}/export/{format}",
+      "POST /projects/{project_id}/generate/stream",
+      "GET /projects/{project_id}/versions",
+      "GET /projects/{project_id}/versions/{version_number}",
+      "POST /projects/{project_id}/versions/{version_number}/restore",
+      "POST /assets/upload",
+      "DELETE /assets/{public_id}"
+    ]
+  },
+  "part3_auth": {
+    "signup": {
+      "status": 200,
+      "body": {
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYWJkY2Y5Yy02NzU2LTQ4Y2MtOTBlYi01Yjg1NjM0MGU5YTkiLCJleHAiOjE3ODI3MDA5ODcsInR5cGUiOiJhY2Nlc3MifQ.oPNVVRpKZsE5SBWq_XVy1jg46QKwnYpHJ6U54oM3fKs",
+        "token_type": "bearer",
+        "userId": "cabdcf9c-6756-48cc-90eb-5b856340e9a9"
+      },
+      "cookies": ""
+    },
+    "login": {
+      "status": 200,
+      "body": {
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYWJkY2Y5Yy02NzU2LTQ4Y2MtOTBlYi01Yjg1NjM0MGU5YTkiLCJleHAiOjE3ODI3MDA5ODgsInR5cGUiOiJhY2Nlc3MifQ.tWyM0ZCCUymjNA2SwtjWOEYIXdO5DsVOmwwj9pEj4Ko",
+        "token_type": "bearer",
+        "userId": "cabdcf9c-6756-48cc-90eb-5b856340e9a9"
+      },
+      "cookies": ""
+    },
+    "me": {
+      "status": 200,
+      "body_preview": "{\"id\":\"cabdcf9c-6756-48cc-90eb-5b856340e9a9\",\"email\":\"audit_user_1782614585@qevora-test.com\",\"fullName\":\"Audit Test User\",\"planId\":\"4f337202-af36-45aa-a57d-4ca8e4a22c09\"}"
+    },
+    "unauthorized_status": 401,
+    "invalid_jwt_status": 401
+  },
+  "part4_projects": {
+    "create": {
+      "status": 200,
+      "project_id": "a4650901-4a68-49bd-b887-5ff80f43ad70",
+      "body": {
+        "id": "a4650901-4a68-49bd-b887-5ff80f43ad70",
+        "userId": "cabdcf9c-6756-48cc-90eb-5b856340e9a9",
+        "name": "Audit Project 1782614585",
+        "description": "Black-box test project",
+        "status": "draft",
+        "createdAt": "2026-06-28T02:43:11.758000",
+        "updatedAt": "2026-06-28T02:43:11.758000"
+      }
+    },
+    "update": {
+      "status": 200
+    },
+    "list": {
+      "status": 200,
+      "count": 1
+    }
+  },
+  "part5_generation": {
+    "trigger_status": 200,
+    "task_id": "gen-30bb27ce3e05",
+    "body": {
+      "success": true,
+      "taskId": "gen-30bb27ce3e05",
+      "message": "Generation task successfully queued in background worker."
+    },
+    "polls": [
+      {
+        "attempt": 1,
+        "status_code": 200,
+        "body": {
+          "status": "pending",
+          "message": "Task queued in background loop"
+        }
+      },
+      {
+        "attempt": 2,
+        "status_code": 200,
+        "body": {
+          "status": "pending",
+          "message": "Task queued in background loop"
+        }
+      },
+      {
+        "attempt": 3,
+        "status_code": 200,
+        "body": {
+          "status": "pending",
+          "message": "Task queued in background loop"
+        }
+      },
+      {
+        "attempt": 4,
+        "status_code": 200,
+        "body": {
+          "status": "pending",
+          "message": "Task queued in background loop"
+        }
+      },
+      {
+        "attempt": 5,
+        "status_code": 200,
+        "body": {
+          "status": "pending",
+          "message": "Task queued in background loop"
+        }
+      }
+    ]
+  },
+  "part6_renderer": {
+    "export_status": 404,
+    "zip_size_bytes": 22,
+    "files": []
+  },
+  "part7_frontend": {
+    "/": {
+      "status": 200,
+      "latency_ms": 979.07,
+      "html_len": 211518,
+      "has_localhost": false
+    },
+    "/login": {
+      "status": 200,
+      "latency_ms": 870.26,
+      "html_len": 211539,
+      "has_localhost": false
+    },
+    "/signup": {
+      "status": 200,
+      "latency_ms": 1230.33,
+      "html_len": 211548,
+      "has_localhost": false
+    },
+    "/dashboard": {
+      "status": 200,
+      "latency_ms": 867.57,
+      "html_len": 211563,
+      "has_localhost": false
+    },
+    "/editor": {
+      "status": 200,
+      "latency_ms": 890.57,
+      "html_len": 211548,
+      "has_localhost": false
+    },
+    "/pricing": {
+      "status": 200,
+      "latency_ms": 963.17,
+      "html_len": 211549,
+      "has_localhost": false
+    },
+    "/templates": {
+      "status": 200,
+      "latency_ms": 860.23,
+      "html_len": 211563,
+      "has_localhost": false
+    },
+    "/settings": {
+      "status": 200,
+      "latency_ms": 1894.82,
+      "html_len": 211558,
+      "has_localhost": false
+    }
+  },
+  "part8_integration": {
+    "health_cors_status": 200,
+    "allow_origin_header": "*"
+  },
+  "part9_performance": {
+    "health_latencies_ms": [
+      335.99,
+      350.9,
+      327.04
+    ],
+    "avg_health_latency_ms": 337.98
+  },
+  "part10_security": {
+    "security_headers": {
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' http://localhost:8000 https://api.qevora.com ws://localhost:3000;",
+      "x-xss-protection": "1; mode=block"
+    },
+    "missing_headers": []
+  },
+  "part11_negative": {
+    "bad_login_status": 401,
+    "malformed_json_status": 422,
+    "invalid_uuid_status": 405
+  },
+  "part12_regression": {
+    "exit_code": 0,
+    "stdout_preview": "============================= test session starts =============================\nplatform win32 -- Python 3.12.10, pytest-9.1.1, pluggy-1.6.0 -- C:\\Users\\A Al Malah\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\ncachedir: .pytest_cache\nrootdir: c:\\Users\\A Al Malah\\Desktop\\Qevora\nplugins: anyio-4.14.1, asyncio-1.4.0, cov-7.1.0\nasyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollecting ... collected 12 items\n\napps/api/tes",
+    "stderr_preview": ""
+  }
+}

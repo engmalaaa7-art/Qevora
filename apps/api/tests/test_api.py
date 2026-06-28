@@ -55,7 +55,7 @@ client = TestClient(app)
 
 def test_health_endpoint():
     mock_db.pool = MagicMock()
-    mock_db.pool.closed = False
+    mock_db.pool.is_closing.return_value = False
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json()["status"] == "OK"

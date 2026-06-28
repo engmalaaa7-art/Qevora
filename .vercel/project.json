@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_PCW7JwpWpYRg0YWgN0daBGnahEsJ",
+  "orgId": "team_1SRLGA9ZLsnszq7UwhSWt7UG",
+  "projectName": "qevora-ai",
+  "settings": {
+    "createdAt": 1782533158899,
+    "framework": "nextjs",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": "apps/web",
+    "directoryListing": false,
+    "nodeVersion": "20.x"
+  }
+}
