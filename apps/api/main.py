@@ -1,3 +1,29 @@
+print("\n========== MODULE LOADED ==========", flush=True)
+import os
+import sys
+import hashlib
+import inspect
+import subprocess
+from pathlib import Path
+
+print("FILE:", __file__, flush=True)
+print("CWD :", os.getcwd(), flush=True)
+print("ARGV:", sys.argv, flush=True)
+print("MODULE NAME:", __name__, flush=True)
+
+try:
+    sha = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    print("SHA256:", sha, flush=True)
+except Exception as e:
+    print("SHA ERROR:", e, flush=True)
+
+try:
+    print("GIT COMMIT:", subprocess.check_output(["git", "rev-parse", "HEAD"]).decode().strip(), flush=True)
+except Exception as e:
+    print("GIT ERROR:", e, flush=True)
+
+print("===================================\n", flush=True)
+
 import uuid
 import time
 import io
@@ -6,7 +32,6 @@ import json
 import bcrypt
 import jwt
 import traceback
-import subprocess
 import logging
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
@@ -33,6 +58,10 @@ app = FastAPI(
     description="Core backend orchestrator, database bridge, and AI compilation engine for Qevora",
     version="1.0.0"
 )
+
+print("APP OBJECT:", id(app), flush=True)
+print("APP TITLE :", app.title, flush=True)
+print("APP CLASS FILE:", inspect.getfile(app.__class__), flush=True)
 
 # Ingress CORS Middleware Configuration
 app.add_middleware(
@@ -137,6 +166,7 @@ worker_task = None
 @app.on_event("startup")
 async def startup():
     global worker_task
+    print(">>>> STARTUP HANDLER ENTERED <<<<", flush=True)
     logger.info("========== FASTAPI STARTUP ==========")
     try:
         await db_manager.connect()
@@ -156,6 +186,23 @@ async def startup():
         logger.info("Successfully started background task worker loop in API process.")
     except Exception as e:
         logger.error(f"Failed to start background task worker: {e}")
+
+@app.get("/__runtime_info")
+def runtime_info():
+    import os
+    import sys
+    import hashlib
+    from pathlib import Path
+
+    return {
+        "file": __file__,
+        "cwd": os.getcwd(),
+        "argv": sys.argv,
+        "python": sys.executable,
+        "sha256": hashlib.sha256(
+            Path(__file__).read_bytes()
+        ).hexdigest(),
+    }
 
 @app.on_event("shutdown")
 async def shutdown():
