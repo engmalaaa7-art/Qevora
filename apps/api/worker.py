@@ -200,14 +200,14 @@ async def handle_dispatch_email(task_id: str, payload: Dict[str, Any]):
         redis_manager.set_cache(f"task:status:{task_id}", status_payload, expire_seconds=300)
 
 async def worker_loop():
-    print("[FORENSIC] WORKER STARTED", flush=True)
+    logger.info("========== WORKER LOOP ENTERED ==========")
     logger.info("Initializing Qevora background task worker...")
     await db_manager.connect()
     redis_manager.connect()
-    print("[FORENSIC] Redis connection established", flush=True)
+    logger.info("WORKER: Redis connection OK")
     
     logger.info("Worker active. Listening to Redis task queue 'queue:default'...")
-    print("[FORENSIC] Waiting for queue...", flush=True)
+    logger.info("WORKER: Waiting for queue")
     
     try:
         while True:
@@ -220,12 +220,13 @@ async def worker_loop():
                 task_id = task.get("task_id")
                 task_type = task.get("type")
                 payload = task.get("payload", {})
-                print(f"[FORENSIC] Task dequeued: {task_id}", flush=True)
-                print(f"[FORENSIC] Task payload: {payload}", flush=True)
+                logger.info("WORKER: Task dequeued")
                 logger.info(f"Dequeued task {task_id} of type {task_type}")
 
                 if task_type == "generate_ai_site":
+                    logger.info("WORKER: Running task")
                     await handle_generate_ai_site(task_id, payload)
+                    logger.info("WORKER: Task completed")
                 elif task_type == "publish_site":
                     await handle_publish_site(task_id, payload)
                 elif task_type == "verify_custom_domain":

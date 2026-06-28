@@ -137,7 +137,7 @@ worker_task = None
 @app.on_event("startup")
 async def startup():
     global worker_task
-    print("[FORENSIC] FASTAPI STARTUP EVENT TRIGGERED", flush=True)
+    logger.info("========== FASTAPI STARTUP ==========")
     try:
         await db_manager.connect()
         logger.info("Successfully established connection pool to PostgreSQL.")
@@ -151,7 +151,7 @@ async def startup():
         logger.critical(f"Fatal: Could not connect to Redis server: {e}")
 
     try:
-        print("[FORENSIC] CREATING WORKER TASK", flush=True)
+        logger.info("========== WORKER TASK CREATED ==========")
         worker_task = asyncio.create_task(worker_loop())
         logger.info("Successfully started background task worker loop in API process.")
     except Exception as e:
