@@ -207,7 +207,8 @@ async def get_liveness():
 async def get_task_status(task_id: str, user_id: str = Depends(get_current_user_id)):
     status_data = redis_manager.get_cache(f"task:status:{task_id}")
     if not status_data:
-        # Check if task is still in queue
+        status_data = await db_manager.get_task_status(task_id)
+    if not status_data:
         return {"status": "pending", "message": "Task queued in background loop"}
     return status_data
 
@@ -509,8 +510,10 @@ async def generate_site(project_id: str, payload: GenerateRequest, user_id: str 
             "userId": user_id
         }
     }
-    # Initialize pending status cache
-    redis_manager.set_cache(f"task:status:{task_id}", {"status": "pending", "message": "Generation task queued"}, expire_seconds=300)
+    # Initialize pending status cache and DB persistence
+    init_status = {"status": "pending", "message": "Generation task queued"}
+    redis_manager.set_cache(f"task:status:{task_id}", init_status, expire_seconds=300)
+    await db_manager.set_task_status(task_id, init_status)
     redis_manager.push_task("default", task_payload)
     asyncio.create_task(handle_generate_ai_site(task_id, task_payload["payload"]))
     return {"success": True, "taskId": task_id, "message": "Generation task successfully queued in background worker."}

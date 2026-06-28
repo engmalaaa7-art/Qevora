@@ -22,7 +22,9 @@ async def handle_generate_ai_site(task_id: str, payload: Dict[str, Any]):
     logger.info(f"Task {task_id}: Processing AI generation for project {project_id}")
 
     # Set status to running immediately upon job pick up
-    redis_manager.set_cache(f"task:status:{task_id}", {"status": "running", "message": "AI Generation in progress"}, expire_seconds=300)
+    run_status = {"status": "running", "message": "AI Generation in progress"}
+    redis_manager.set_cache(f"task:status:{task_id}", run_status, expire_seconds=300)
+    await db_manager.set_task_status(task_id, run_status)
 
     try:
         start_time = datetime.utcnow()
@@ -42,11 +44,13 @@ async def handle_generate_ai_site(task_id: str, payload: Dict[str, Any]):
             "latencyMs": duration
         }
         redis_manager.set_cache(f"task:status:{task_id}", status_payload, expire_seconds=600)
+        await db_manager.set_task_status(task_id, status_payload)
         logger.info(f"Task {task_id}: AI generation finished successfully.")
     except Exception as e:
         logger.error(f"Task {task_id}: AI generation failed: {e}")
         status_payload = {"status": "failed", "error": str(e)}
         redis_manager.set_cache(f"task:status:{task_id}", status_payload, expire_seconds=600)
+        await db_manager.set_task_status(task_id, status_payload)
 
 async def handle_publish_site(task_id: str, payload: Dict[str, Any]):
     project_id = payload["projectId"]

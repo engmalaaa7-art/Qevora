@@ -11,6 +11,33 @@ class DatabaseManager:
         if not self.pool:
             clean_url = DATABASE_URL.split("?")[0]
             self.pool = await asyncpg.create_pool(clean_url)
+            async with self.pool.acquire() as conn:
+                await conn.execute("""
+                    CREATE TABLE IF NOT EXISTS "TaskStatus" (
+                        id VARCHAR(255) PRIMARY KEY,
+                        status VARCHAR(50) NOT NULL,
+                        payload JSONB,
+                        "updatedAt" TIMESTAMP DEFAULT NOW()
+                    )
+                """)
+
+    async def set_task_status(self, task_id: str, data: Dict[str, Any]):
+        await self.connect()
+        status_val = data.get("status", "pending")
+        async with self.pool.acquire() as conn:
+            await conn.execute(
+                'INSERT INTO "TaskStatus" (id, status, payload, "updatedAt") VALUES ($1, $2, $3, NOW()) '
+                'ON CONFLICT (id) DO UPDATE SET status = EXCLUDED.status, payload = EXCLUDED.payload, "updatedAt" = NOW()',
+                task_id, status_val, json.dumps(data)
+            )
+
+    async def get_task_status(self, task_id: str) -> Optional[Dict[str, Any]]:
+        await self.connect()
+        async with self.pool.acquire() as conn:
+            row = await conn.fetchrow('SELECT payload FROM "TaskStatus" WHERE id = $1', task_id)
+            if row and row["payload"]:
+                return json.loads(row["payload"]) if isinstance(row["payload"], str) else dict(row["payload"])
+            return None
 
     async def disconnect(self):
         if self.pool:
