@@ -45,7 +45,15 @@ RUN pip install --no-cache-dir -r apps/api/requirements.txt
 COPY --from=node-builder /app/packages/renderer/dist/renderer.cjs /app/bin/renderer.cjs
 
 # Copy backend source
+RUN pwd
+RUN ls -R
+RUN echo "===== BEFORE COPY ====="
 COPY apps/api /app/apps/api
+RUN echo "===== AFTER COPY ====="
+RUN ls /app/apps/api
+RUN sha256sum /app/apps/api/main.py
+RUN grep "__runtime_info" /app/apps/api/main.py || true
+RUN grep "MODULE LOADED" /app/apps/api/main.py || true
 
 # Run uvicorn server from the correct working directory
 WORKDIR /app/apps/api
