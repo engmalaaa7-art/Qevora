@@ -1,0 +1,26 @@
+{
+  "/health": {
+    "status": 200,
+    "body": {
+      "status": "OK",
+      "timestamp": "2026-06-28T17:27:21.625489",
+      "database": "CONNECTED"
+    }
+  },
+  "/health/live": {
+    "status": 200,
+    "body": {
+      "status": "alive",
+      "timestamp": "2026-06-28T17:27:22.138225"
+    }
+  },
+  "/health/ready": {
+    "status": 200,
+    "body": {
+      "status": "ready",
+      "postgres": "healthy",
+      "redis": "healthy",
+      "timestamp": "2026-06-28T17:27:23.667093"
+    }
+  }
+}
