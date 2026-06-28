@@ -21,10 +21,13 @@ async def handle_generate_ai_site(task_id: str, payload: Dict[str, Any]):
     user_id = payload["userId"]
     logger.info(f"Task {task_id}: Processing AI generation for project {project_id}")
 
+    # Set status to running immediately upon job pick up
+    redis_manager.set_cache(f"task:status:{task_id}", {"status": "running", "message": "AI Generation in progress"}, expire_seconds=300)
+
     try:
         start_time = datetime.utcnow()
-        # Simulate / perform the generator call
-        schema = generate_website_schema(prompt)
+        # Perform generator call on separate thread to prevent event loop blocking
+        schema = await asyncio.to_thread(generate_website_schema, prompt)
         
         # Save version snapshot
         await db_manager.save_schema_version(project_id, schema, created_by="ai")
