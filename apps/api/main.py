@@ -22,7 +22,7 @@ from database import db_manager
 from redis_manager import redis_manager
 from security import SecurityHeadersMiddleware, RequestTracingMiddleware, CSRFMiddleware, RedisRateLimitMiddleware
 from generation import generate_website_schema, generate_schema_edit
-from worker import worker_loop
+from worker import worker_loop, handle_generate_ai_site
 
 # Setup logging configuration
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] [%(name)s] %(message)s")
@@ -509,7 +509,10 @@ async def generate_site(project_id: str, payload: GenerateRequest, user_id: str 
             "userId": user_id
         }
     }
+    # Initialize pending status cache
+    redis_manager.set_cache(f"task:status:{task_id}", {"status": "pending", "message": "Generation task queued"}, expire_seconds=300)
     redis_manager.push_task("default", task_payload)
+    asyncio.create_task(handle_generate_ai_site(task_id, task_payload["payload"]))
     return {"success": True, "taskId": task_id, "message": "Generation task successfully queued in background worker."}
 
 # --- 009.7 AI Editing Engine ---
