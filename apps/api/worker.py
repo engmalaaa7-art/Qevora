@@ -19,19 +19,22 @@ async def handle_generate_ai_site(task_id: str, payload: Dict[str, Any]):
     project_id = payload["projectId"]
     prompt = payload["prompt"]
     user_id = payload["userId"]
+    print(f"[FORENSIC] Status -> running", flush=True)
     logger.info(f"Task {task_id}: Processing AI generation for project {project_id}")
 
-    # Set status to running immediately upon job pick up
     run_status = {"status": "running", "message": "AI Generation in progress"}
+    print(f"[FORENSIC] Updating Redis", flush=True)
     redis_manager.set_cache(f"task:status:{task_id}", run_status, expire_seconds=300)
+    print(f"[FORENSIC] Updating database", flush=True)
     await db_manager.set_task_status(task_id, run_status)
 
     try:
         start_time = datetime.utcnow()
-        # Perform generator call on separate thread to prevent event loop blocking
+        print(f"[FORENSIC] Generation started", flush=True)
         schema = await asyncio.to_thread(generate_website_schema, prompt)
+        print(f"[FORENSIC] Generation finished", flush=True)
         
-        # Save version snapshot
+        print(f"[FORENSIC] Saving schema", flush=True)
         await db_manager.save_schema_version(project_id, schema, created_by="ai")
         
         duration = int((datetime.utcnow() - start_time).total_seconds() * 1000)
@@ -43,10 +46,14 @@ async def handle_generate_ai_site(task_id: str, payload: Dict[str, Any]):
             "tokensConsumed": 4500,
             "latencyMs": duration
         }
+        print(f"[FORENSIC] Status -> completed", flush=True)
         redis_manager.set_cache(f"task:status:{task_id}", status_payload, expire_seconds=600)
         await db_manager.set_task_status(task_id, status_payload)
         logger.info(f"Task {task_id}: AI generation finished successfully.")
     except Exception as e:
+        print(f"[FORENSIC] EXCEPTION IN GENERATION: {e}", flush=True)
+        import traceback
+        traceback.print_exc()
         logger.error(f"Task {task_id}: AI generation failed: {e}")
         status_payload = {"status": "failed", "error": str(e)}
         redis_manager.set_cache(f"task:status:{task_id}", status_payload, expire_seconds=600)
@@ -193,11 +200,14 @@ async def handle_dispatch_email(task_id: str, payload: Dict[str, Any]):
         redis_manager.set_cache(f"task:status:{task_id}", status_payload, expire_seconds=300)
 
 async def worker_loop():
+    print("[FORENSIC] WORKER STARTED", flush=True)
     logger.info("Initializing Qevora background task worker...")
     await db_manager.connect()
     redis_manager.connect()
+    print("[FORENSIC] Redis connection established", flush=True)
     
     logger.info("Worker active. Listening to Redis task queue 'queue:default'...")
+    print("[FORENSIC] Waiting for queue...", flush=True)
     
     try:
         while True:
@@ -210,6 +220,8 @@ async def worker_loop():
                 task_id = task.get("task_id")
                 task_type = task.get("type")
                 payload = task.get("payload", {})
+                print(f"[FORENSIC] Task dequeued: {task_id}", flush=True)
+                print(f"[FORENSIC] Task payload: {payload}", flush=True)
                 logger.info(f"Dequeued task {task_id} of type {task_type}")
 
                 if task_type == "generate_ai_site":
