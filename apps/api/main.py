@@ -4,6 +4,7 @@ import io
 import zipfile
 import json
 import bcrypt
+import jwt
 import traceback
 import subprocess
 import logging
@@ -15,11 +16,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field, EmailStr
 
+import asyncio
 from config import JWT_SECRET, JWT_ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, CORS_ORIGINS, ENV
 from database import db_manager
 from redis_manager import redis_manager
 from security import SecurityHeadersMiddleware, RequestTracingMiddleware, CSRFMiddleware, RedisRateLimitMiddleware
 from generation import generate_website_schema, generate_schema_edit
+from worker import worker_loop
 
 # Setup logging configuration
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] [%(name)s] %(message)s")
@@ -128,9 +131,12 @@ async def get_current_user_id(request: Request) -> str:
     except Exception:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid session token")
 
+worker_task = None
+
 # --- Startup/Shutdown Lifecycles ---
 @app.on_event("startup")
 async def startup():
+    global worker_task
     try:
         await db_manager.connect()
         logger.info("Successfully established connection pool to PostgreSQL.")
@@ -143,8 +149,17 @@ async def startup():
     except Exception as e:
         logger.critical(f"Fatal: Could not connect to Redis server: {e}")
 
+    try:
+        worker_task = asyncio.create_task(worker_loop())
+        logger.info("Successfully started background task worker loop in API process.")
+    except Exception as e:
+        logger.error(f"Failed to start background task worker: {e}")
+
 @app.on_event("shutdown")
 async def shutdown():
+    global worker_task
+    if worker_task:
+        worker_task.cancel()
     await db_manager.disconnect()
     redis_manager.disconnect()
     logger.info("Monorepo API services shut down cleanly.")
@@ -152,7 +167,7 @@ async def shutdown():
 # --- Monitoring & Probe Endpoints ---
 @app.get("/health")
 async def get_health():
-    db_status = "CONNECTED" if (db_manager.pool and not db_manager.pool.closed) else "OFFLINE"
+    db_status = "CONNECTED" if (db_manager.pool and not db_manager.pool.is_closing()) else "OFFLINE"
     return {
         "status": "OK",
         "timestamp": datetime.utcnow().isoformat(),
@@ -168,8 +183,8 @@ async def get_readiness():
             await conn.execute("SELECT 1")
             
         # Test Redis ping
-        redis_manager.connect()
-        redis_manager.client.ping()
+        if not redis_manager.ping():
+            raise Exception("Redis check failed")
         
         return {
             "status": "ready",
@@ -627,9 +642,19 @@ async def export_project(project_id: str, format: str, user_id: str = Depends(ge
             text=True
         )
         stdout, stderr = proc.communicate(input=json.dumps(schema), timeout=15)
-        result = json.loads(stdout)
+        result = None
+        for line in reversed(stdout.splitlines()):
+            line_str = line.strip()
+            if line_str.startswith("{") and line_str.endswith("}"):
+                try:
+                    result = json.loads(line_str)
+                    break
+                except Exception:
+                    continue
+        if result is None:
+            result = json.loads(stdout.strip())
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Compiler invocation failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Compiler invocation failed: {str(e)} | stdout: {stdout[:500] if 'stdout' in locals() else 'N/A'} | stderr: {stderr[:500] if 'stderr' in locals() else 'N/A'}")
 
     if not result.get("success"):
         raise HTTPException(status_code=400, detail={"message": "Export failed validation checks", "errors": result.get("errors")})
@@ -740,6 +765,4 @@ async def delete_asset(public_id: str, user_id: str = Depends(get_current_user_i
     if not success:
         raise HTTPException(status_code=400, detail="Failed to delete image from Cloudinary")
     return {"success": True}
-
-import jwt
 

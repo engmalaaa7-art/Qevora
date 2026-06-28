@@ -217,14 +217,14 @@ async def worker_loop():
                 logger.error(f"Unknown task type: {task_type}")
                 redis_manager.set_cache(f"task:status:{task_id}", {"status": "failed", "error": "Unknown task type"}, expire_seconds=300)
 
+    except asyncio.CancelledError:
+        logger.info("Background task worker loop cancelled cleanly.")
     except KeyboardInterrupt:
         logger.info("Shutting down worker loop due to manual interrupt.")
     except Exception as e:
         logger.critical(f"Worker crashed with exception: {e}", exc_info=True)
     finally:
-        await db_manager.disconnect()
-        redis_manager.disconnect()
-        logger.info("Worker cleanup complete.")
+        logger.info("Worker loop finished processing.")
 
 if __name__ == "__main__":
     asyncio.run(worker_loop())
