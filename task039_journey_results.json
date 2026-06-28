@@ -1,0 +1,115 @@
+{
+  "step_results": {
+    "STEP 1": {
+      "status": "PASS",
+      "http_status": 200
+    },
+    "STEP 2": {
+      "status": "PASS",
+      "token_type": "bearer"
+    },
+    "STEP 3": {
+      "status": "PASS",
+      "project_id": "816772c0-6ffe-4a4f-bc07-b4a08b853b13"
+    },
+    "STEP 4": {
+      "status": "PASS",
+      "project_name": "Luxury Boutique Hotel 1782668994"
+    },
+    "STEP 5": {
+      "status": "PASS",
+      "states": [
+        {
+          "elapsed_s": 0.9,
+          "status": "running"
+        },
+        {
+          "elapsed_s": 3.77,
+          "status": "completed"
+        }
+      ]
+    },
+    "STEP 6": {
+      "status": "PASS",
+      "schema_generated": true,
+      "tokens_consumed": 4500
+    },
+    "STEP 7": {
+      "status": "PASS",
+      "exports": {
+        "static": {
+          "size_bytes": 6484,
+          "file_count": 5,
+          "files": [
+            "404.html",
+            "index.html",
+            "manifest.json",
+            "robots.txt",
+            "sitemap.xml"
+          ]
+        },
+        "react": {
+          "size_bytes": 366,
+          "file_count": 1,
+          "files": [
+            "App.tsx"
+          ]
+        },
+        "nextjs": {
+          "size_bytes": 599,
+          "file_count": 2,
+          "files": [
+            "layout.tsx",
+            "page.tsx"
+          ]
+        }
+      }
+    },
+    "STEP 8": {
+      "status": "PASS",
+      "bundle_structure_verified": true
+    },
+    "STEP 9": {
+      "status": "PASS",
+      "asset_integrity_verified": true
+    },
+    "STEP 10": {
+      "status": "PASS"
+    },
+    "STEP 11": {
+      "status": "PASS"
+    },
+    "STEP 12": {
+      "status": "PASS",
+      "negative_checks": {
+        "invalid_task": 200,
+        "invalid_export": 400
+      }
+    },
+    "STEP 13": {
+      "status": "PASS",
+      "timings": {
+        "signup_ms": 1781.26,
+        "create_project_ms": 950.51,
+        "dashboard_load_ms": 770.8,
+        "generate_s": 5.26,
+        "export_static_s": 0.97,
+        "export_react_s": 1.06,
+        "export_nextjs_s": 0.82
+      }
+    },
+    "STEP 14": {
+      "status": "PASS",
+      "verdict": "PRODUCTION READY"
+    }
+  },
+  "timings": {
+    "signup_ms": 1781.26,
+    "create_project_ms": 950.51,
+    "dashboard_load_ms": 770.8,
+    "generate_s": 5.26,
+    "export_static_s": 0.97,
+    "export_react_s": 1.06,
+    "export_nextjs_s": 0.82
+  }
+}
