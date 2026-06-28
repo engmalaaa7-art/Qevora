@@ -1,0 +1,239 @@
+{
+  "health_latency_ms": 892.47,
+  "health_ready": {
+    "status": "ready",
+    "postgres": "healthy",
+    "redis": "healthy",
+    "timestamp": "2026-06-28T17:33:18.453070"
+  },
+  "auth_latency_ms": 2355.84,
+  "project_id": "d72235fa-1c23-4f39-96d6-06fa7b297e24",
+  "task_id": "gen-d90239d25d43",
+  "gen_duration_s": 6.49,
+  "states_captured": [
+    {
+      "elapsed_s": 1.2,
+      "status": "running",
+      "payload": {
+        "status": "running",
+        "message": "AI Generation in progress"
+      }
+    },
+    {
+      "elapsed_s": 4.29,
+      "status": "completed",
+      "payload": {
+        "status": "completed",
+        "schema": {
+          "schemaVersion": "1.0",
+          "siteId": "55fea558-00d1-4b1c-8213-71853ab26021",
+          "projectId": "a1a74a3c-b52a-455f-b942-7508a6a0e5d1",
+          "generatedAt": "2026-06-25T18:00:00Z",
+          "metadata": {
+            "siteName": {
+              "en": "Nova Cafe",
+              "ar": "\u0645\u0642\u0647\u0649 \u0646\u0648\u0641\u0627"
+            },
+            "language": "en",
+            "direction": "ltr",
+            "industry": "food-beverage",
+            "seo": {
+              "defaultTitle": {
+                "en": "Nova Cafe",
+                "ar": "\u0645\u0642\u0647\u0649 \u0646\u0648\u0641\u0627"
+              }
+            }
+          },
+          "theme": {
+            "colorScheme": "light",
+            "colors": {
+              "primary": "#7C3AED",
+              "primaryDark": "#5B21B6",
+              "primaryLight": "#EDE9FE",
+              "secondary": "#F59E0B",
+              "secondaryDark": "#D97706",
+              "secondaryLight": "#FEF3C7",
+              "background": "#FFFFFF",
+              "backgroundAlt": "#F9FAFB",
+              "surface": "#FFFFFF",
+              "surfaceElevated": "#F3F4F6",
+              "text": "#111827",
+              "textSecondary": "#6B7280",
+              "textMuted": "#9CA3AF",
+              "textInverse": "#FFFFFF",
+              "border": "#E5E7EB",
+              "borderStrong": "#D1D5DB",
+              "success": "#10B981",
+              "warning": "#F59E0B",
+              "error": "#EF4444",
+              "info": "#3B82F6",
+              "overlay": "rgba(0,0,0,0.5)"
+            },
+            "typography": {
+              "fontFamily": {
+                "primary": "Inter",
+                "arabic": "Cairo",
+                "mono": "JetBrains Mono"
+              },
+              "fontWeights": {
+                "regular": 400,
+                "medium": 500,
+                "semibold": 600,
+                "bold": 700,
+                "extrabold": 800
+              },
+              "scale": {
+                "xs": "0.75rem",
+                "sm": "0.875rem",
+                "base": "1rem",
+                "lg": "1.125rem",
+                "xl": "1.25rem",
+                "2xl": "1.5rem",
+                "3xl": "1.875rem",
+                "4xl": "2.25rem",
+                "5xl": "3rem",
+                "6xl": "3.75rem"
+              },
+              "lineHeights": {
+                "tight": 1.2,
+                "snug": 1.375,
+                "normal": 1.5,
+                "relaxed": 1.625,
+                "loose": 2
+              }
+            },
+            "spacing": {
+              "xs": "0.5rem",
+              "sm": "1rem",
+              "md": "1.5rem",
+              "lg": "2rem",
+              "xl": "3rem",
+              "2xl": "5rem",
+              "3xl": "8rem"
+            },
+            "borderRadius": {
+              "none": "0",
+              "sm": "0.25rem",
+              "md": "0.5rem",
+              "lg": "0.75rem",
+              "xl": "1rem",
+              "2xl": "1.5rem",
+              "full": "9999px"
+            },
+            "shadows": {
+              "none": "none",
+              "sm": "0 1px 2px rgba(0,0,0,0.05)",
+              "md": "0 4px 6px rgba(0,0,0,0.07)",
+              "lg": "0 10px 15px rgba(0,0,0,0.1)",
+              "xl": "0 20px 25px rgba(0,0,0,0.1)"
+            },
+            "layout": {
+              "containerMaxWidth": "1280px",
+              "navbarHeight": "72px",
+              "sectionPaddingY": "5rem",
+              "gridColumns": 12,
+              "gutter": "1.5rem"
+            }
+          },
+          "pages": [
+            {
+              "id": "page-home",
+              "slug": "/",
+              "title": {
+                "en": "Home",
+                "ar": "\u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629"
+              },
+              "pageType": "home",
+              "isInNavigation": true,
+              "navigationOrder": 1,
+              "seo": {
+                "title": {
+                  "en": "Nova Cafe - Speciality Coffee",
+                  "ar": "\u0645\u0642\u0647\u0649 \u0646\u0648\u0641\u0627 - \u0642\u0647\u0648\u0629 \u0645\u062e\u062a\u0635\u0629"
+                },
+                "noIndex": false,
+                "noFollow": false
+              },
+              "sections": [
+                {
+                  "id": "sec-navbar",
+                  "type": "navbar",
+                  "order": 1,
+                  "content": {
+                    "logoText": {
+                      "en": "Nova",
+                      "ar": "\u0646\u0648\u0641\u0627"
+                    },
+                    "links": [
+                      {
+                        "id": "link-1",
+                        "label": {
+                          "en": "Home",
+                          "ar": "\u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629"
+                        },
+                        "href": "/"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "sec-hero",
+                  "type": "hero",
+                  "order": 2,
+                  "content": {
+                    "headline": {
+                      "en": "Taste Speciality Coffee",
+                      "ar": "\u062a\u0630\u0648\u0642 \u0627\u0644\u0642\u0647\u0648\u0629 \u0627\u0644\u0645\u062e\u062a\u0635\u0629"
+                    },
+                    "subheadline": {
+                      "en": "Freshly roasted coffee in Riyadh",
+                      "ar": "\u0642\u0647\u0648\u0629 \u0645\u062d\u0645\u0635\u0629 \u0637\u0627\u0632\u062c\u0629 \u0641\u064a \u0627\u0644\u0631\u064a\u0627\u0636"
+                    },
+                    "primaryCta": {
+                      "label": {
+                        "en": "View Menu",
+                        "ar": "\u0639\u0631\u0636 \u0627\u0644\u0642\u0627\u0626\u0645\u0629"
+                      },
+                      "href": "/menu"
+                    }
+                  }
+                },
+                {
+                  "id": "sec-footer",
+                  "type": "footer",
+                  "order": 99,
+                  "content": {
+                    "logoText": {
+                      "en": "Nova",
+                      "ar": "\u0646\u0648\u0641\u0627"
+                    },
+                    "copyrightText": {
+                      "en": "\u00a9 2026 Nova.",
+                      "ar": "\u00a9 \u0662\u0660\u0662\u0666 \u0646\u0648\u0641\u0627."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "ecommerce": null,
+          "assets": {
+            "images": [],
+            "fonts": []
+          }
+        },
+        "tokensConsumed": 4500,
+        "latencyMs": 1105
+      }
+    }
+  ],
+  "zip_size_bytes": 6482,
+  "zip_contents": [
+    "robots.txt",
+    "sitemap.xml",
+    "manifest.json",
+    "404.html",
+    "index.html"
+  ],
+  "export_duration_s": 1.11
+}
