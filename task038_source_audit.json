@@ -1,0 +1,458 @@
+{
+  "TODO": [
+    {
+      "file": "PRODUCTION_AUDIT_REPORT.md",
+      "line": 85,
+      "snippet": "- **`TODO` / `FIXME` / `HACK` / `XXX` / `NOT IMPLEMENTED` / `raise NotImplementedError`:** **0 occur"
+    }
+  ],
+  "FIXME": [
+    {
+      "file": "PRODUCTION_AUDIT_REPORT.md",
+      "line": 85,
+      "snippet": "- **`TODO` / `FIXME` / `HACK` / `XXX` / `NOT IMPLEMENTED` / `raise NotImplementedError`:** **0 occur"
+    }
+  ],
+  "HACK": [
+    {
+      "file": "PRODUCTION_AUDIT_REPORT.md",
+      "line": 85,
+      "snippet": "- **`TODO` / `FIXME` / `HACK` / `XXX` / `NOT IMPLEMENTED` / `raise NotImplementedError`:** **0 occur"
+    }
+  ],
+  "XXX": [
+    {
+      "file": "PRODUCTION_AUDIT_REPORT.md",
+      "line": 85,
+      "snippet": "- **`TODO` / `FIXME` / `HACK` / `XXX` / `NOT IMPLEMENTED` / `raise NotImplementedError`:** **0 occur"
+    }
+  ],
+  "NotImplemented": [
+    {
+      "file": "PRODUCTION_AUDIT_REPORT.md",
+      "line": 85,
+      "snippet": "- **`TODO` / `FIXME` / `HACK` / `XXX` / `NOT IMPLEMENTED` / `raise NotImplementedError`:** **0 occur"
+    }
+  ],
+  "console.log": [
+    {
+      "file": "hardening_implementation_plan.md",
+      "line": 127,
+      "snippet": "Audit code for console.logs, hardcoded credentials, and localhost URLs. Complete final launch readin"
+    },
+    {
+      "file": "parse_ds.js",
+      "line": 10,
+      "snippet": "console.log('Saved formatted design system to formatted_ds.json');"
+    },
+    {
+      "file": "REPOSITORY_HEALTH_REPORT.md",
+      "line": 34,
+      "snippet": "- **Debug Artifacts**: All internal `console.log` statements in core libraries have been evaluated ("
+    },
+    {
+      "file": "update_ds_payload.js",
+      "line": 33,
+      "snippet": "console.log('Successfully wrote updated design system to updated_ds.json');"
+    },
+    {
+      "file": "infrastructure\\database\\seed.ts",
+      "line": 6,
+      "snippet": "console.log(\"Seeding subscription plans...\");"
+    },
+    {
+      "file": "infrastructure\\database\\seed.ts",
+      "line": 38,
+      "snippet": "console.log(\"Seeding template categories...\");"
+    },
+    {
+      "file": "infrastructure\\database\\seed.ts",
+      "line": 58,
+      "snippet": "console.log(\"Seeding completed successfully.\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 48,
+      "snippet": "console.log(\"==================================================\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 49,
+      "snippet": "console.log(\"=== Qevora Core Product E2E Validation Runner ===\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 50,
+      "snippet": "console.log(\"==================================================\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 54,
+      "snippet": "console.log(\"\\n[Step 0] Checking FastAPI backend health status...\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 57,
+      "snippet": "console.log(\"\u2713 Backend status is OK.\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 60,
+      "snippet": "console.log(\"\\n[Step 1] Creating new user account (/auth/signup)...\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 76,
+      "snippet": "console.log(`\u2713 User registered successfully. ID: ${userId}`);"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 86,
+      "snippet": "console.log(\"\\n[Step 2] Creating a new project workspace...\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 96,
+      "snippet": "console.log(`\u2713 Project created successfully. ID: ${projectId}`);"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 102,
+      "snippet": "console.log(\"\\n[Step 3] Executing AI Generation from natural prompt...\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 112,
+      "snippet": "console.log(\"\u2713 Site schema generated successfully. Direction set to RTL.\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 118,
+      "snippet": "console.log(\"\\n[Step 4] Applying conversational edit to existing layout...\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 127,
+      "snippet": "console.log(\"\u2713 Conversational schema editing applied correctly. Color updated.\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 133,
+      "snippet": "console.log(\"\\n[Step 5] Compiling and publishing static pages...\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 139,
+      "snippet": "console.log(`\u2713 Website compiled and published successfully. URL: ${publish.body.url}`);"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 145,
+      "snippet": "console.log(\"\\n[Step 6] Connecting custom domain and generating DNS TXT verification...\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 153,
+      "snippet": "console.log(\"\u2713 Custom domain registered. TXT Verification token generated.\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 158,
+      "snippet": "console.log(\"\\n==================================================\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 159,
+      "snippet": "console.log(\"\u2713\u2713\u2713 ALL QEVORA CORE PRODUCT E2E TESTS PASSED \u2713\u2713\u2713\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 160,
+      "snippet": "console.log(\"==================================================\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\test-runner.js",
+      "line": 164,
+      "snippet": "console.log(\"=== Running Qevora Quality Gates Test Suite ===\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\test-runner.js",
+      "line": 167,
+      "snippet": "console.log(\"\\n1. Testing Site Schema Zod validator...\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\test-runner.js",
+      "line": 170,
+      "snippet": "console.log(\"\u2713 Zod schema validation passed.\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\test-runner.js",
+      "line": 173,
+      "snippet": "console.log(\"\\n2. Testing Renderer Engine (Static Build mode)...\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\test-runner.js",
+      "line": 184,
+      "snippet": "console.log(\"\u2713 Static renderer compilation passed.\");"
+    },
+    {
+      "file": "packages\\renderer\\src\\test-runner.js",
+      "line": 185,
+      "snippet": "console.log(\"\\n=== ALL QUALITY GATE TESTS PASSED SUCCESSFULLY ===\");"
+    }
+  ],
+  "debugger": [],
+  "localhost": [
+    {
+      "file": "DEPLOYMENT_REPORT.md",
+      "line": 83,
+      "snippet": "| `CORS_ORIGINS` | **VALIDATED** | `https://qevora-ai.vercel.app,http://localhost:3000` |"
+    },
+    {
+      "file": "DEPLOYMENT_REPORT.md",
+      "line": 84,
+      "snippet": "| `SMTP_HOST` | **WARNING** | `localhost` (Transactional email verification disabled) |"
+    },
+    {
+      "file": "docker-compose.dev.yml",
+      "line": 91,
+      "snippet": "- NEXT_PUBLIC_API_URL=http://localhost:8000"
+    },
+    {
+      "file": "docker-compose.prod.yml",
+      "line": 59,
+      "snippet": "test: [\"CMD\", \"curl\", \"-f\", \"http://localhost:8000/health\"]"
+    },
+    {
+      "file": "docker-compose.prod.yml",
+      "line": 99,
+      "snippet": "test: [\"CMD\", \"curl\", \"-f\", \"http://localhost:3000/\"]"
+    },
+    {
+      "file": "frontend_completion_report.md",
+      "line": 21,
+      "snippet": "- Implemented `api.post('/auth/...')` instead of raw localhost fetch calls."
+    },
+    {
+      "file": "FRONTEND_DEPLOYMENT_REPORT.md",
+      "line": 31,
+      "snippet": "- **Development Flag Cleanup:** Removed hardcoded `localhost:8000` references across all component s"
+    },
+    {
+      "file": "FRONTEND_DEPLOYMENT_REPORT11.md",
+      "line": 31,
+      "snippet": "- **Development Flag Cleanup:** Removed hardcoded `localhost:8000` references across all component s"
+    },
+    {
+      "file": "ground_truth_audit_part1.md",
+      "line": 88,
+      "snippet": "| API hardcoded | \ud83d\udd34 FAIL | Line 20: `fetch(\"http://localhost:8000/auth/signup\")` |"
+    },
+    {
+      "file": "ground_truth_audit_part1.md",
+      "line": 205,
+      "snippet": "- `signup/page.tsx` line 20: `fetch(\"http://localhost:8000/auth/signup\")` \u2014 hardcoded `localhost`"
+    },
+    {
+      "file": "ground_truth_audit_part2.md",
+      "line": 53,
+      "snippet": "fetch(\"http://localhost:8000/auth/signup\", { method: \"POST\", ... })"
+    },
+    {
+      "file": "ground_truth_audit_part2.md",
+      "line": 138,
+      "snippet": "| **Production Readiness** | **12 / 100** | No auth guards. JWT in localStorage. Hardcoded `localhos"
+    },
+    {
+      "file": "ground_truth_audit_part2.md",
+      "line": 173,
+      "snippet": "- Reason: `signup/page.tsx` line 20 hardcodes `http://localhost:8000`. This will break in any non-lo"
+    },
+    {
+      "file": "hardening_implementation_plan.md",
+      "line": 127,
+      "snippet": "Audit code for console.logs, hardcoded credentials, and localhost URLs. Complete final launch readin"
+    },
+    {
+      "file": "HEALTH_ENDPOINT_REPORT.md",
+      "line": 55,
+      "snippet": "> curl.exe http://localhost:8000/health"
+    },
+    {
+      "file": "HEALTH_ENDPOINT_REPORT.md",
+      "line": 62,
+      "snippet": "> curl.exe -s -o NUL -w \"%{http_code}\" http://localhost:8000/docs"
+    },
+    {
+      "file": "HEALTH_ENDPOINT_REPORT.md",
+      "line": 69,
+      "snippet": "> curl.exe -i http://localhost:8000/"
+    },
+    {
+      "file": "master_audit_p2.md",
+      "line": 42,
+      "snippet": "| Signup | `POST /auth/signup` | \u2705 Full bcrypt + DB | Calls `http://localhost:8000/auth/signup` | \u26a0\ufe0f"
+    },
+    {
+      "file": "master_audit_p2.md",
+      "line": 67,
+      "snippet": "| API URL hardcoded | `signup/page.tsx:20` | `fetch(\"http://localhost:8000/auth/signup\")` breaks in "
+    },
+    {
+      "file": "master_audit_p2.md",
+      "line": 119,
+      "snippet": "| Add `NEXT_PUBLIC_API_URL` to `.env` | `.env`, `signup/page.tsx` | Hardcoded localhost will break i"
+    },
+    {
+      "file": "PRODUCTION_DEPLOYMENT_REPORT.md",
+      "line": 39,
+      "snippet": "- **Localhost Expunged:** Scanned repository. No forced `localhost` URLs exist in active production "
+    },
+    {
+      "file": "qevora_consolidation_audit.md",
+      "line": 248,
+      "snippet": "| **Environment Variables** | \ud83d\udd34 Missing (Frontend) | No `NEXT_PUBLIC_API_URL` in `.env`. The signup "
+    },
+    {
+      "file": "qevora_consolidation_audit.md",
+      "line": 268,
+      "snippet": "| C3 | No `NEXT_PUBLIC_API_URL` environment variable | Every API call hardcodes `localhost:8000` | 1"
+    },
+    {
+      "file": "qevora_consolidation_audit.md",
+      "line": 317,
+      "snippet": "2. Add `NEXT_PUBLIC_API_URL=http://localhost:8000` to `.env`"
+    },
+    {
+      "file": "qevora_ui_migration_audit.md",
+      "line": 165,
+      "snippet": "| `/signup` | \u2705 | Working (partially wired) | **Only page calling real API** (`http://localhost:8000"
+    },
+    {
+      "file": "qevora_ui_migration_audit.md",
+      "line": 297,
+      "snippet": "3. The signup form calls `localhost:8000` correctly, but stores the JWT in `localStorage` (security "
+    },
+    {
+      "file": "render.yaml",
+      "line": 38,
+      "snippet": "value: \"https://qevora-ai.vercel.app,http://localhost:3000\""
+    },
+    {
+      "file": "REPOSITORY_HEALTH_REPORT.md",
+      "line": 37,
+      "snippet": "- **Hardcoded Values**: Fallbacks for `localhost` in `apps/web/src/lib/config.ts` were mitigated to "
+    },
+    {
+      "file": "run_task030_blackbox.py",
+      "line": 11,
+      "snippet": "DATABASE_URL = os.getenv(\"DATABASE_URL\", \"postgresql://postgres:postgres@localhost:5432/qevora\")"
+    },
+    {
+      "file": "test_frontend_live.py",
+      "line": 19,
+      "snippet": "# Check for no localhost strings in HTML"
+    },
+    {
+      "file": "test_frontend_live.py",
+      "line": 20,
+      "snippet": "assert \"localhost\" not in html, \"Found localhost reference in rendered HTML!\""
+    },
+    {
+      "file": "zero_trust_raw_results.json",
+      "line": 203,
+      "snippet": "\"has_localhost\": false"
+    },
+    {
+      "file": "zero_trust_raw_results.json",
+      "line": 209,
+      "snippet": "\"has_localhost\": false"
+    },
+    {
+      "file": "zero_trust_raw_results.json",
+      "line": 215,
+      "snippet": "\"has_localhost\": false"
+    },
+    {
+      "file": "zero_trust_raw_results.json",
+      "line": 221,
+      "snippet": "\"has_localhost\": false"
+    },
+    {
+      "file": "zero_trust_raw_results.json",
+      "line": 227,
+      "snippet": "\"has_localhost\": false"
+    },
+    {
+      "file": "zero_trust_raw_results.json",
+      "line": 233,
+      "snippet": "\"has_localhost\": false"
+    },
+    {
+      "file": "zero_trust_raw_results.json",
+      "line": 239,
+      "snippet": "\"has_localhost\": false"
+    },
+    {
+      "file": "zero_trust_raw_results.json",
+      "line": 245,
+      "snippet": "\"has_localhost\": false"
+    },
+    {
+      "file": "zero_trust_raw_results.json",
+      "line": 265,
+      "snippet": "\"content-security-policy\": \"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http"
+    },
+    {
+      "file": "apps\\api\\config.py",
+      "line": 17,
+      "snippet": "\"postgresql://postgres:postgres@localhost:5432/qevora\""
+    },
+    {
+      "file": "apps\\api\\config.py",
+      "line": 23,
+      "snippet": "REDIS_URL = os.getenv(\"REDIS_URL\", \"redis://localhost:6379/0\")"
+    },
+    {
+      "file": "apps\\api\\config.py",
+      "line": 47,
+      "snippet": "SMTP_HOST = os.getenv(\"SMTP_HOST\", \"localhost\")"
+    },
+    {
+      "file": "apps\\api\\email_service.py",
+      "line": 24,
+      "snippet": "if ENV == \"development\" and SMTP_HOST == \"localhost\" and SMTP_PORT == 1025:"
+    },
+    {
+      "file": "apps\\api\\main.py",
+      "line": 69,
+      "snippet": "allow_origins=CORS_ORIGINS if CORS_ORIGINS else [\"http://localhost:3000\"],"
+    },
+    {
+      "file": "apps\\api\\security.py",
+      "line": 28,
+      "snippet": "\"connect-src 'self' http://localhost:8000 https://api.qevora.com ws://localhost:3000;\""
+    },
+    {
+      "file": "apps\\api\\tests\\test_api.py",
+      "line": 14,
+      "snippet": "os.environ[\"DATABASE_URL\"] = \"postgresql://test:test@localhost:5432/test\""
+    },
+    {
+      "file": "apps\\api\\tests\\test_api.py",
+      "line": 15,
+      "snippet": "os.environ[\"REDIS_URL\"] = \"redis://localhost:6379/0\""
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 6,
+      "snippet": "const BASE_URL = `http://localhost:${PORT}`;"
+    },
+    {
+      "file": "packages\\renderer\\src\\e2e-runner.js",
+      "line": 12,
+      "snippet": "hostname: \"localhost\","
+    }
+  ],
+  "127.0.0.1": []
+}

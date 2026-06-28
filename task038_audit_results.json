@@ -1,0 +1,72 @@
+{
+  "backend_endpoints": {
+    "/health": {
+      "status": 200,
+      "latency_ms": 520.05
+    },
+    "/health/live": {
+      "status": 200,
+      "latency_ms": 478.25
+    },
+    "/health/ready": {
+      "status": 200,
+      "latency_ms": 601.83
+    },
+    "/docs": {
+      "status": 200,
+      "latency_ms": 331.19
+    },
+    "/openapi.json": {
+      "status": 200,
+      "latency_ms": 316.65
+    }
+  },
+  "gen_duration_s": 5.28,
+  "states_captured": [
+    {
+      "elapsed_s": 0.88,
+      "status": "running"
+    },
+    {
+      "elapsed_s": 3.67,
+      "status": "completed"
+    }
+  ],
+  "exports": {
+    "static": {
+      "status": 200,
+      "size_bytes": 6482,
+      "file_count": 5,
+      "latency_s": 0.96,
+      "files": [
+        "robots.txt",
+        "sitemap.xml",
+        "manifest.json",
+        "404.html",
+        "index.html"
+      ]
+    },
+    "react": {
+      "status": 200,
+      "size_bytes": 366,
+      "file_count": 1,
+      "latency_s": 0.84,
+      "files": [
+        "App.tsx"
+      ]
+    },
+    "nextjs": {
+      "status": 200,
+      "size_bytes": 599,
+      "file_count": 2,
+      "latency_s": 0.94,
+      "files": [
+        "page.tsx",
+        "layout.tsx"
+      ]
+    }
+  },
+  "security": {
+    "unauthorized": 401
+  }
+}
