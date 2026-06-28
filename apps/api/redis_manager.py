@@ -128,6 +128,7 @@ class RedisManager:
     def __init__(self):
         self.client = None
         self._initialized = False
+        self._in_memory_cache: Dict[str, Any] = {}
 
     def connect(self):
         if self._initialized:
@@ -172,6 +173,7 @@ class RedisManager:
 
     # ─── Cache Management ──────────────────────────────────────────────────────
     def set_cache(self, key: str, data: Any, expire_seconds: int = 3600):
+        self._in_memory_cache[key] = data
         serialized = json.dumps(data)
         self._safe_exec(self.client.setex, f"cache:{key}", expire_seconds, serialized)
 
@@ -182,7 +184,7 @@ class RedisManager:
                 return json.loads(data)
             except Exception:
                 return data
-        return None
+        return self._in_memory_cache.get(key)
 
     def invalidate_cache(self, key: str):
         self._safe_exec(self.client.delete, f"cache:{key}")
