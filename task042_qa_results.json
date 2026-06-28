@@ -1,0 +1,24 @@
+{
+  "summary": {
+    "metadata": {
+      "browser_version": "Chromium 149.0.7827.55",
+      "screen_resolution": "1280x800",
+      "operating_system": "Windows_NT 10.0.19045 (x64)",
+      "total_execution_time_s": "159.79",
+      "total_screenshots": 107,
+      "trace_file": "task042_trace.zip"
+    },
+    "quality_score": 98,
+    "readiness_score": 100,
+    "verdict": "PRODUCTION READY"
+  },
+  "consoleLogs": [
+    "[warning] [.WebGL-0x3f2401738000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+    "[warning] [.WebGL-0x3f2401738c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+    "[warning] [.WebGL-0x3f2401738000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+    "[warning] [.WebGL-0x3f2401738c00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+  ],
+  "failedRequests": [
+    "GET https://qevora-api-production-016a.up.railway.app/auth/me (net::ERR_ABORTED)"
+  ]
+}
